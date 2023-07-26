@@ -1,0 +1,3 @@
+MyDefLastUrlEle = "/git_docs"
+# Enable Algolia DocSearch
+algolia_docsearch = true
