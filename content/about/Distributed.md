@@ -8,11 +8,12 @@ isCJKLanguage = true
 draft = false
 +++
 
+
 # Distributed - 分布式
 
 [https://git-scm.com/about/distributed](https://git-scm.com/about/distributed)
 
-​	任何分布式版本控制系统(包括 Git)最好的功能之一就是分布式。这意味着，与其**检出(checkout)**源代码的当前版本，你可以**克隆(clone)**整个仓库。
+​	任何分布式版本控制系统(包括 Git)最好的功能之一就是分布式。这意味着，与其 **检出(checkout)** 源代码的当前版本，你可以 **克隆(clone)** 整个仓库。
 
 ## 多重备份
 

@@ -8,6 +8,7 @@ isCJKLanguage = true
 draft = false
 +++
 
+
 ## Data Assurance - 数据保证
 
 ​	Git使用的数据模型确保了项目中每一位的密钥完整性。每一个文件和提交都被校验过，并在检查时根据其校验和进行检索。除了你输入的比特之外，不可能从Git中得到任何东西。

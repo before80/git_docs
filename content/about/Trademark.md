@@ -8,9 +8,10 @@ isCJKLanguage = true
 draft = false
 +++
 
-https://git-scm.com/about/trademark
 
 # GIT TRADEMARK POLICY - Git商标政策
+
+https://git-scm.com/about/trademark
 
 ## 1 目的
 

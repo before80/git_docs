@@ -1,42 +1,80 @@
++++
+title = "用户手册"
+weight = 30
+type = "docs"
+date = 2023-07-26T09:47:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
++++
+
+
+
+# User Manual - 用户手册
+
+
+
 https://git-scm.com/docs/user-manual
 
-## Introduction
+## 简介
 
 Git is a fast distributed revision control system.
 
+​	Git 是一个快速的分布式版本控制系统。
+
 This manual is designed to be readable by someone with basic UNIX command-line skills, but no previous knowledge of Git.
+
+​	本手册旨在适合具有基本UNIX命令行技能但没有Git先前知识的人阅读。
 
 [Repositories and Branches](https://git-scm.com/docs/user-manual#repositories-and-branches) and [Exploring Git history](https://git-scm.com/docs/user-manual#exploring-git-history) explain how to fetch and study a project using git—read these chapters to learn how to build and test a particular version of a software project, search for regressions, and so on.
 
+​	[Repositories and Branches](https://git-scm.com/docs/user-manual#repositories-and-branches)和[Exploring Git history](https://git-scm.com/docs/user-manual#exploring-git-history) 解释了如何使用git获取和研究项目。阅读这些章节可以了解如何构建和测试软件项目的特定版本，搜索回归等等。
+
 People needing to do actual development will also want to read [Developing with Git](https://git-scm.com/docs/user-manual#Developing-With-git) and [Sharing development with others](https://git-scm.com/docs/user-manual#sharing-development).
+
+​	需要进行实际开发的人还应阅读[Developing with Git](https://git-scm.com/docs/user-manual#Developing-With-git)和[Sharing development with others](https://git-scm.com/docs/user-manual#sharing-development)。
 
 Further chapters cover more specialized topics.
 
-Comprehensive reference documentation is available through the man pages, or [git-help[1]](https://git-scm.com/docs/git-help) command. For example, for the command `git clone <repo>`, you can either use:
+​	更多章节涵盖更多专业主题。
+
+Comprehensive reference documentation is available through the man pages, or [git-help[1]](../1/git-help) command. For example, for the command `git clone <repo>`, you can either use:
+
+​	完整的参考文档可通过man页或[git-help[1\]](https://chat.openai.com/1/git-help)命令获得。例如，对于命令 `git clone <repo>`，您可以选择使用：
 
 ```
 $ man git-clone
 ```
 
-or:
+或者：
 
 ```
 $ git help clone
 ```
 
-With the latter, you can use the manual viewer of your choice; see [git-help[1]](https://git-scm.com/docs/git-help) for more information.
+With the latter, you can use the manual viewer of your choice; see [git-help[1]](../1/git-help) for more information.
+
+​	使用后者，您可以使用您选择的手册查看器；有关更多信息，请参见[git-help[1\]](https://chat.openai.com/1/git-help)。
 
 See also [Git Quick Reference](https://git-scm.com/docs/user-manual#git-quick-start) for a brief overview of Git commands, without any explanation.
 
+​	还请查看[Git快速参考](https://git-scm.com/docs/user-manual#git-quick-start)，了解Git命令的简要概述，不含任何解释。
+
 Finally, see [Notes and todo list for this manual](https://git-scm.com/docs/user-manual#todo) for ways that you can help make this manual more complete.
 
-## Repositories and Branches
+​	最后，请参阅[此手册的注释和待办事项清单](https://git-scm.com/docs/user-manual#todo)，以了解如何帮助完善本手册。
 
-### How to get a Git repository
+## 仓库和分支
+
+### 获取Git仓库的方法
 
 It will be useful to have a Git repository to experiment with as you read this manual.
 
-The best way to get one is by using the [git-clone[1]](https://git-scm.com/docs/git-clone) command to download a copy of an existing repository. If you don’t already have a project in mind, here are some interesting examples:
+​	在阅读本手册时，有一个Git仓库供您实验会很有用。
+
+The best way to get one is by using the [git-clone[1]](../1/git-clone) command to download a copy of an existing repository. If you don’t already have a project in mind, here are some interesting examples:
+
+​	最佳方法是使用[git-clone[1\]](https://chat.openai.com/1/git-clone)命令下载现有仓库的副本。如果您还没有项目的选择，请参考以下一些有趣的示例：
 
 ```
 	# Git itself (approx. 40MB download):
@@ -47,15 +85,25 @@ $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 
 The initial clone may be time-consuming for a large project, but you will only need to clone once.
 
+​	对于大型项目，初始克隆可能需要较长时间，但您只需要克隆一次。
+
 The clone command creates a new directory named after the project (`git` or `linux` in the examples above). After you cd into this directory, you will see that it contains a copy of the project files, called the [working tree](https://git-scm.com/docs/user-manual#def_working_tree), together with a special top-level directory named `.git`, which contains all the information about the history of the project.
 
-### How to check out a different version of a project
+​	克隆命令会创建一个以项目名称（上述示例中为`git`或`linux`）命名的新目录。进入此目录后，您将看到它包含了一个项目文件的副本，称为[工作树](https://git-scm.com/docs/user-manual#def_working_tree)，以及一个特殊的顶级目录`.git`，其中包含有关项目历史的所有信息。
+
+### 如何检出项目的不同版本
 
 Git is best thought of as a tool for storing the history of a collection of files. It stores the history as a compressed collection of interrelated snapshots of the project’s contents. In Git each such version is called a [commit](https://git-scm.com/docs/user-manual#def_commit).
 
+​	Git最适合用作存储一组文件历史的工具。它将历史存储为项目内容的一组压缩的相互关联的快照。在Git中，每个这样的版本称为[commit](https://git-scm.com/docs/user-manual#def_commit)。
+
 Those snapshots aren’t necessarily all arranged in a single line from oldest to newest; instead, work may simultaneously proceed along parallel lines of development, called [branches](https://git-scm.com/docs/user-manual#def_branch), which may merge and diverge.
 
-A single Git repository can track development on multiple branches. It does this by keeping a list of [heads](https://git-scm.com/docs/user-manual#def_head) which reference the latest commit on each branch; the [git-branch[1]](https://git-scm.com/docs/git-branch) command shows you the list of branch heads:
+​	这些快照并不一定全部按照从最旧到最新的单一线排列；相反，工作可以同时沿着并行的开发线进行，称为[分支](https://git-scm.com/docs/user-manual#def_branch)，这些分支可以合并和分叉。
+
+A single Git repository can track development on multiple branches. It does this by keeping a list of [heads](https://git-scm.com/docs/user-manual#def_head) which reference the latest commit on each branch; the [git-branch[1]](../1/git-branch) command shows you the list of branch heads:
+
+​	单个Git仓库可以跟踪多个分支上的开发。它通过保持一个引用每个分支上最新提交的[头部](https://git-scm.com/docs/user-manual#def_head)列表来实现；[git-branch[1\]](https://chat.openai.com/1/git-branch)命令显示分支头列表：
 
 ```
 $ git branch
@@ -64,7 +112,11 @@ $ git branch
 
 A freshly cloned repository contains a single branch head, by default named "master", with the working directory initialized to the state of the project referred to by that branch head.
 
-Most projects also use [tags](https://git-scm.com/docs/user-manual#def_tag). Tags, like heads, are references into the project’s history, and can be listed using the [git-tag[1]](https://git-scm.com/docs/git-tag) command:
+​	新克隆的仓库默认包含一个分支头，名为“master”，并且工作目录初始化为该分支头指向的项目状态。
+
+Most projects also use [tags](https://git-scm.com/docs/user-manual#def_tag). Tags, like heads, are references into the project’s history, and can be listed using the [git-tag[1]](../1/git-tag) command:
+
+​	大多数项目还使用[标签](https://git-scm.com/docs/user-manual#def_tag)。标签与分支一样，是对项目历史的引用，可以使用[git-tag[1\]](https://chat.openai.com/1/git-tag)命令列出标签：
 
 ```
 $ git tag -l
@@ -82,13 +134,19 @@ v2.6.13
 
 Tags are expected to always point at the same version of a project, while heads are expected to advance as development progresses.
 
-Create a new branch head pointing to one of these versions and check it out using [git-switch[1]](https://git-scm.com/docs/git-switch):
+​	标签始终指向项目的相同版本，而分支则预期随着开发的进行而不断推进。
+
+Create a new branch head pointing to one of these versions and check it out using [git-switch[1]](../1/git-switch):
+
+​	创建一个新的分支头，指向这些版本之一，并使用[git-switch[1\]](https://chat.openai.com/1/git-switch)检出它：
 
 ```
 $ git switch -c new v2.6.13
 ```
 
-The working directory then reflects the contents that the project had when it was tagged v2.6.13, and [git-branch[1]](https://git-scm.com/docs/git-branch) shows two branches, with an asterisk marking the currently checked-out branch:
+The working directory then reflects the contents that the project had when it was tagged v2.6.13, and [git-branch[1]](../1/git-branch) shows two branches, with an asterisk marking the currently checked-out branch:
+
+​	工作目录将反映出项目在标记v2.6.13时的内容，并且[git-branch[1\]](https://chat.openai.com/1/git-branch)显示两个分支，其中星号标记当前检出的分支：
 
 ```
 $ git branch
@@ -98,15 +156,21 @@ $ git branch
 
 If you decide that you’d rather see version 2.6.17, you can modify the current branch to point at v2.6.17 instead, with
 
+​	如果您决定更换到2.6.17版本，可以使用以下命令将当前分支指向v2.6.17：
+
 ```
 $ git reset --hard v2.6.17
 ```
 
 Note that if the current branch head was your only reference to a particular point in history, then resetting that branch may leave you with no way to find the history it used to point to; so use this command carefully.
 
-### Understanding History: Commits
+请注意，如果当前分支头是对特定历史点的唯一引用，那么重置该分支可能会导致您无法找到它曾指向的历史；因此请谨慎使用此命令。
 
-Every change in the history of a project is represented by a commit. The [git-show[1]](https://git-scm.com/docs/git-show) command shows the most recent commit on the current branch:
+### 理解历史记录：Commits
+
+Every change in the history of a project is represented by a commit. The [git-show[1]](../1/git-show) command shows the most recent commit on the current branch:
+
+​	项目历史中的每个更改都由一个commit表示。[git-show[1\]](https://chat.openai.com/1/git-show)命令显示当前分支上最近的提交：
 
 ```
 $ git show
@@ -135,23 +199,39 @@ index 65898fa..b002dc6 100644
 
 As you can see, a commit shows who made the latest change, what they did, and why.
 
+​	如您所见，commit显示了谁进行了最新更改，他们做了什么以及为什么。
+
 Every commit has a 40-hexdigit id, sometimes called the "object name" or the "SHA-1 id", shown on the first line of the `git show` output. You can usually refer to a commit by a shorter name, such as a tag or a branch name, but this longer name can also be useful. Most importantly, it is a globally unique name for this commit: so if you tell somebody else the object name (for example in email), then you are guaranteed that name will refer to the same commit in their repository that it does in yours (assuming their repository has that commit at all). Since the object name is computed as a hash over the contents of the commit, you are guaranteed that the commit can never change without its name also changing.
+
+​	每个commit都有一个40位的十六进制id，有时称为"object name"或"SHA-1 id"，显示在`git show`输出的第一行上。通常您可以用较短的名字引用一个commit，例如标签或分支名称，但是这个较长的名字也可能很有用。最重要的是，它是该commit的全局唯一名称：因此，如果您将对象名称告诉其他人（例如通过电子邮件），那么您可以确保该名称在他们的仓库中引用的是与您的仓库中相同的commit（假设他们的仓库中确实有该commit）。由于对象名称是通过对commit内容进行哈希计算得到的，所以可以确保commit不会在其名称不变的情况下发生更改。
 
 In fact, in [Git concepts](https://git-scm.com/docs/user-manual#git-concepts) we shall see that everything stored in Git history, including file data and directory contents, is stored in an object with a name that is a hash of its contents.
 
-#### Understanding history: commits, parents, and reachability
+​	实际上，在[Git概念](https://git-scm.com/docs/user-manual#git-concepts)中我们将看到Git历史中存储的所有内容，包括文件数据和目录内容，都存储在具有其内容哈希的对象中。
+
+#### 理解历史：commits、parents和reachability 
 
 Every commit (except the very first commit in a project) also has a parent commit which shows what happened before this commit. Following the chain of parents will eventually take you back to the beginning of the project.
 
+​	每个commit（除了项目中的第一个commit）还有一个父commit，显示了此commit之前发生了什么。跟随父commit的链条最终会将您带回到项目的开始。
+
 However, the commits do not form a simple list; Git allows lines of development to diverge and then reconverge, and the point where two lines of development reconverge is called a "merge". The commit representing a merge can therefore have more than one parent, with each parent representing the most recent commit on one of the lines of development leading to that point.
 
-The best way to see how this works is using the [gitk[1]](https://git-scm.com/docs/gitk) command; running gitk now on a Git repository and looking for merge commits will help understand how Git organizes history.
+​	但是，commits不会形成简单的列表；Git允许开发线同时分叉和合并，两条开发线在哪里再次汇合被称为“合并点”。表示合并的commit因此可能具有多个父commit，其中每个父commit表示通往该点的一条开发线上最近的commit。
+
+The best way to see how this works is using the [gitk[1]](../1/gitk) command; running gitk now on a Git repository and looking for merge commits will help understand how Git organizes history.
+
+​	最好的方法是使用[gitk[1\]](https://chat.openai.com/1/gitk)命令来查看它是如何工作的；现在在Git仓库上运行gitk，并查找合并commit将有助于理解Git如何组织历史。
 
 In the following, we say that commit X is "reachable" from commit Y if commit X is an ancestor of commit Y. Equivalently, you could say that Y is a descendant of X, or that there is a chain of parents leading from commit Y to commit X.
 
-#### Understanding history: History diagrams
+​	在下面，我们说如果commit X“可达”commit Y，则commit X是commit Y的祖先。同样地，您可以说Y是X的后代，或者说有一条从commit Y到commit X的父链。
+
+#### 理解历史：历史图表
 
 We will sometimes represent Git history using diagrams like the one below. Commits are shown as "o", and the links between them with lines drawn with - / and \. Time goes left to right:
+
+​	我们有时使用如下的图表来表示Git历史。Commits显示为"o"，它们之间的链接用绘制线表示：- /和\。时间从左到右：
 
 ```
          o--o--o <-- Branch A
@@ -163,54 +243,80 @@ We will sometimes represent Git history using diagrams like the one below. Commi
 
 If we need to talk about a particular commit, the character "o" may be replaced with another letter or number.
 
-#### Understanding history: What is a branch?
+​	如果我们需要讨论特定的commit，字符"o"可能会替换为其他字母或数字。
+
+#### 理解历史：什么是分支？
 
 When we need to be precise, we will use the word "branch" to mean a line of development, and "branch head" (or just "head") to mean a reference to the most recent commit on a branch. In the example above, the branch head named "A" is a pointer to one particular commit, but we refer to the line of three commits leading up to that point as all being part of "branch A".
 
+​	当我们需要精确时，我们将使用"branch"一词表示开发线，"branch head"（或"head"）表示对分支上最新commit的引用。在上面的示例中，名为"A"的分支头是对一个特定commit的指针，但我们将这个指向该点的三个commit的行称为"branch A"的一部分。
+
 However, when no confusion will result, we often just use the term "branch" both for branches and for branch heads.
 
-### Manipulating branches
+​	然而，当不会导致混淆时，我们通常只使用"branch"这个术语来表示分支和分支头。
+
+### 操作分支
 
 Creating, deleting, and modifying branches is quick and easy; here’s a summary of the commands:
+
+​	创建、删除和修改分支都很快捷简单；以下是这些命令的摘要：
 
 - `git branch`
 
   list all branches.
 
+  列出所有分支。
+
 - `git branch <branch>`
 
   create a new branch named `<branch>`, referencing the same point in history as the current branch.
+
+  创建一个名为`<branch>`的新分支，它引用与当前分支相同的历史点。
 
 - `git branch <branch> <start-point>`
 
   create a new branch named `<branch>`, referencing `<start-point>`, which may be specified any way you like, including using a branch name or a tag name.
 
+  创建一个名为`<branch>`的新分支，它引用`<start-point>`，可以以任何您喜欢的方式指定它，包括使用分支名称或标签名称。
+
 - `git branch -d <branch>`
 
   delete the branch `<branch>`; if the branch is not fully merged in its upstream branch or contained in the current branch, this command will fail with a warning.
+
+  删除分支`<branch>`；如果分支未完全合并到其上游分支或包含在当前分支中，则此命令将带有警告的失败。
 
 - `git branch -D <branch>`
 
   delete the branch `<branch>` irrespective of its merged status.
 
+  无视分支合并状态删除分支`<branch>`。
+
 - `git switch <branch>`
 
   make the current branch `<branch>`, updating the working directory to reflect the version referenced by `<branch>`.
 
+  将当前分支切换为`<branch>`，更新工作目录以反映`<branch>`引用的版本。
+
 - `git switch -c <new> <start-point>`
 
   create a new branch `<new>` referencing `<start-point>`, and check it out.
+  
+  创建一个名为`<new>`的新分支，引用`<start-point>`，然后检出它。
 
 The special symbol "HEAD" can always be used to refer to the current branch. In fact, Git uses a file named `HEAD` in the `.git` directory to remember which branch is current:
+
+​	特殊符号"HEAD"始终可以用来指代当前分支。实际上，Git使用`.git`目录中的`HEAD`文件来记住当前的分支：
 
 ```
 $ cat .git/HEAD
 ref: refs/heads/master
 ```
 
-### Examining an old version without creating a new branch
+### 不创建新分支查看旧版本
 
 The `git switch` command normally expects a branch head, but will also accept an arbitrary commit when invoked with --detach; for example, you can check out the commit referenced by a tag:
+
+​	`git switch`命令通常期望一个分支头，但是当使用`--detach`参数调用时，它也会接受任意提交，例如，您可以检出由标签引用的提交：
 
 ```
 $ git switch --detach v2.6.17
@@ -230,6 +336,8 @@ HEAD is now at 427abfa Linux v2.6.17
 
 The HEAD then refers to the SHA-1 of the commit instead of to a branch, and git branch shows that you are no longer on a branch:
 
+​	然后，HEAD将指向提交的SHA-1，而不是分支，`git branch`显示您不再在分支上：
+
 ```
 $ cat .git/HEAD
 427abfa28afedffadfca9dd8b067eb6d36bac53f
@@ -240,11 +348,17 @@ $ git branch
 
 In this case we say that the HEAD is "detached".
 
+​	在这种情况下，我们称HEAD为"detached"。
+
 This is an easy way to check out a particular version without having to make up a name for the new branch. You can still create a new branch (or tag) for this version later if you decide to.
 
-### Examining branches from a remote repository
+​	这是一种无需为新分支编写名称就可以检查特定版本的简便方法。如果决定，稍后仍然可以为该版本创建新的分支（或标签）。
 
-The "master" branch that was created at the time you cloned is a copy of the HEAD in the repository that you cloned from. That repository may also have had other branches, though, and your local repository keeps branches which track each of those remote branches, called remote-tracking branches, which you can view using the `-r` option to [git-branch[1]](https://git-scm.com/docs/git-branch):
+### 查看远程仓库的分支
+
+The "master" branch that was created at the time you cloned is a copy of the HEAD in the repository that you cloned from. That repository may also have had other branches, though, and your local repository keeps branches which track each of those remote branches, called remote-tracking branches, which you can view using the `-r` option to [git-branch[1]](../1/git-branch):
+
+​	在克隆时创建的"master"分支是克隆源仓库中HEAD的副本。然而，该仓库可能还有其他分支，而您的本地仓库将保留每个远程分支的跟踪分支，称为远程跟踪分支，您可以使用`-r`选项查看它们，例如[git-branch[1\]](https://chat.openai.com/1/git-branch)：
 
 ```
 $ git branch -r
@@ -260,7 +374,11 @@ $ git branch -r
 
 In this example, "origin" is called a remote repository, or "remote" for short. The branches of this repository are called "remote branches" from our point of view. The remote-tracking branches listed above were created based on the remote branches at clone time and will be updated by `git fetch` (hence `git pull`) and `git push`. See [Updating a repository with git fetch](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch) for details.
 
+​	在这个例子中，"origin"被称为远程仓库，或简称为"remote"。从我们的角度来看，该仓库的分支称为"remote branches"。上面列出的远程跟踪分支是基于克隆时的远程分支创建的，并且将通过`git fetch`（因此`git pull`）和`git push`进行更新。详情请参见[使用git fetch更新仓库](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch)。
+
 You might want to build on one of these remote-tracking branches on a branch of your own, just as you would for a tag:
+
+​	您可能希望在自己的分支上构建其中一个远程跟踪分支，就像构建标签一样：
 
 ```
 $ git switch -c my-todo-copy origin/todo
@@ -268,33 +386,58 @@ $ git switch -c my-todo-copy origin/todo
 
 You can also check out `origin/todo` directly to examine it or write a one-off patch. See [detached head](https://git-scm.com/docs/user-manual#detached-head).
 
+​	您还可以直接检出`origin/todo`来查看它或编写一次性的补丁。详情请参见[分离头指针](https://git-scm.com/docs/user-manual#detached-head)。
+
 Note that the name "origin" is just the name that Git uses by default to refer to the repository that you cloned from.
 
-### Naming branches, tags, and other references
+​	请注意，"origin"只是Git默认用于引用克隆源仓库的名称。
+
+### 命名分支、标签和其他引用
 
 Branches, remote-tracking branches, and tags are all references to commits. All references are named with a slash-separated path name starting with `refs`; the names we’ve been using so far are actually shorthand:
+
+​	分支、远程跟踪分支和标签都是对commits的引用。所有引用都以以`refs`开头的斜杠分隔路径名命名；我们目前使用的名称实际上是缩写：
 
 - The branch `test` is short for `refs/heads/test`.
 - The tag `v2.6.18` is short for `refs/tags/v2.6.18`.
 - `origin/master` is short for `refs/remotes/origin/master`.
+- 分支`test`的缩写为`refs/heads/test`。
+- 标签`v2.6.18`的缩写为`refs/tags/v2.6.18`。
+- `origin/master`的缩写为`refs/remotes/origin/master`。
 
 The full name is occasionally useful if, for example, there ever exists a tag and a branch with the same name.
 
-(Newly created refs are actually stored in the `.git/refs` directory, under the path given by their name. However, for efficiency reasons they may also be packed together in a single file; see [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs)).
+​	完整名称有时在有多个具有相同简写名称的引用时很有用。
+
+(Newly created refs are actually stored in the `.git/refs` directory, under the path given by their name. However, for efficiency reasons they may also be packed together in a single file; see [git-pack-refs[1]](../1/git-pack-refs)).
+
+（新创建的引用实际上存储在`.git/refs`目录中，路径是其名称给出的路径。但是，出于效率考虑，它们也可能被打包在一个单独的文件中；详情请参见[git-pack-refs[1\]](https://chat.openai.com/1/git-pack-refs)）。
 
 As another useful shortcut, the "HEAD" of a repository can be referred to just using the name of that repository. So, for example, "origin" is usually a shortcut for the HEAD branch in the repository "origin".
 
-For the complete list of paths which Git checks for references, and the order it uses to decide which to choose when there are multiple references with the same shorthand name, see the "SPECIFYING REVISIONS" section of [gitrevisions[7]](https://git-scm.com/docs/gitrevisions).
+​	作为另一个有用的快捷方式，一个仓库的"HEAD"可以使用该仓库的名称来表示。例如，"origin"通常是指向仓库"origin"的"HEAD"分支的快捷方式。
 
-### Updating a repository with git fetch
+For the complete list of paths which Git checks for references, and the order it uses to decide which to choose when there are multiple references with the same shorthand name, see the "SPECIFYING REVISIONS" section of [gitrevisions[7]](../7/gitrevisions).
+
+​	有关Git检查引用的完整路径列表，以及在有多个具有相同简写名称的引用时决定选择哪个的顺序，请参阅[gitrevisions[7\]](https://chat.openai.com/7/gitrevisions)的"SPECIFYING REVISIONS"部分。
+
+
+
+### 使用git fetch更新仓库
 
 After you clone a repository and commit a few changes of your own, you may wish to check the original repository for updates.
 
+​	在克隆一个仓库并提交了一些自己的更改后，您可能希望检查原始仓库是否有更新。
+
 The `git-fetch` command, with no arguments, will update all of the remote-tracking branches to the latest version found in the original repository. It will not touch any of your own branches—not even the "master" branch that was created for you on clone.
 
-### Fetching branches from other repositories
+​	没有参数的`git-fetch`命令将更新所有远程跟踪分支到原始仓库中找到的最新版本。它不会影响您自己的任何分支，甚至不会影响在克隆时为您创建的"master"分支。
 
-You can also track branches from repositories other than the one you cloned from, using [git-remote[1]](https://git-scm.com/docs/git-remote):
+### 从其他仓库获取分支
+
+You can also track branches from repositories other than the one you cloned from, using [git-remote[1]](../1/git-remote):
+
+​	您还可以使用[git-remote[1\]](https://chat.openai.com/1/git-remote)从其他仓库跟踪分支，而不仅限于克隆的仓库：
 
 ```
 $ git remote add staging git://git.kernel.org/.../gregkh/staging.git
@@ -307,6 +450,8 @@ From git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging
 ```
 
 New remote-tracking branches will be stored under the shorthand name that you gave `git remote add`, in this case `staging`:
+
+​	新的远程跟踪分支将存储在您给出的`git remote add`的简写名称下，例如在本例中为`staging`：
 
 ```
 $ git branch -r
@@ -330,7 +475,7 @@ $ cat .git/config
 ...
 ```
 
-This is what causes Git to track the remote’s branches; you may modify or delete these configuration options by editing `.git/config` with a text editor. (See the "CONFIGURATION FILE" section of [git-config[1]](https://git-scm.com/docs/git-config) for details.)
+This is what causes Git to track the remote’s branches; you may modify or delete these configuration options by editing `.git/config` with a text editor. (See the "CONFIGURATION FILE" section of [git-config[1]](../1/git-config) for details.)
 
 ## Exploring Git history
 
@@ -342,7 +487,7 @@ We start with one specialized tool that is useful for finding the commit that in
 
 ### How to use bisect to find a regression
 
-Suppose version 2.6.18 of your project worked, but the version at "master" crashes. Sometimes the best way to find the cause of such a regression is to perform a brute-force search through the project’s history to find the particular commit that caused the problem. The [git-bisect[1]](https://git-scm.com/docs/git-bisect) command can help you do this:
+Suppose version 2.6.18 of your project worked, but the version at "master" crashes. Sometimes the best way to find the cause of such a regression is to perform a brute-force search through the project’s history to find the particular commit that caused the problem. The [git-bisect[1]](../1/git-bisect) command can help you do this:
 
 ```
 $ git bisect start
@@ -362,7 +507,7 @@ Bisecting: 1769 revisions left to test after this
 
 checks out an older version. Continue like this, telling Git at each stage whether the version it gives you is good or bad, and notice that the number of revisions left to test is cut approximately in half each time.
 
-After about 13 tests (in this case), it will output the commit id of the guilty commit. You can then examine the commit with [git-show[1]](https://git-scm.com/docs/git-show), find out who wrote it, and mail them your bug report with the commit id. Finally, run
+After about 13 tests (in this case), it will output the commit id of the guilty commit. You can then examine the commit with [git-show[1]](../1/git-show), find out who wrote it, and mail them your bug report with the commit id. Finally, run
 
 ```
 $ git bisect reset
@@ -392,7 +537,7 @@ $ git bisect skip
 
 In this case, though, Git may not eventually be able to tell the first bad one between some first skipped commits and a later bad commit.
 
-There are also ways to automate the bisecting process if you have a test script that can tell a good from a bad commit. See [git-bisect[1]](https://git-scm.com/docs/git-bisect) for more information about this and other `git bisect` features.
+There are also ways to automate the bisecting process if you have a test script that can tell a good from a bad commit. See [git-bisect[1]](../1/git-bisect) for more information about this and other `git bisect` features.
 
 ### Naming commits
 
@@ -403,7 +548,7 @@ We have seen several ways of naming commits already:
 - tag name: refers to the commit pointed to by the given tag (we’ve seen branches and tags are special cases of [references](https://git-scm.com/docs/user-manual#how-git-stores-references)).
 - HEAD: refers to the head of the current branch
 
-There are many more; see the "SPECIFYING REVISIONS" section of the [gitrevisions[7]](https://git-scm.com/docs/gitrevisions) man page for the complete list of ways to name revisions. Some examples:
+There are many more; see the "SPECIFYING REVISIONS" section of the [gitrevisions[7]](../7/gitrevisions) man page for the complete list of ways to name revisions. Some examples:
 
 ```
 $ git show fb47ddb2 # the first few characters of the object name
@@ -434,7 +579,7 @@ the fetched commits will still be available from FETCH_HEAD.
 
 When we discuss merges we’ll also see the special name MERGE_HEAD, which refers to the other branch that we’re merging in to the current branch.
 
-The [git-rev-parse[1]](https://git-scm.com/docs/git-rev-parse) command is a low-level command that is occasionally useful for translating some name for a commit to the object name for that commit:
+The [git-rev-parse[1]](../1/git-rev-parse) command is a low-level command that is occasionally useful for translating some name for a commit to the object name for that commit:
 
 ```
 $ git rev-parse origin
@@ -451,11 +596,11 @@ $ git tag stable-1 1b2e1d63ff
 
 You can use `stable-1` to refer to the commit 1b2e1d63ff.
 
-This creates a "lightweight" tag. If you would also like to include a comment with the tag, and possibly sign it cryptographically, then you should create a tag object instead; see the [git-tag[1]](https://git-scm.com/docs/git-tag) man page for details.
+This creates a "lightweight" tag. If you would also like to include a comment with the tag, and possibly sign it cryptographically, then you should create a tag object instead; see the [git-tag[1]](../1/git-tag) man page for details.
 
 ### Browsing revisions
 
-The [git-log[1]](https://git-scm.com/docs/git-log) command can show lists of commits. On its own, it shows all commits reachable from the parent commit; but you can also make more specific requests:
+The [git-log[1]](../1/git-log) command can show lists of commits. On its own, it shows all commits reachable from the parent commit; but you can also make more specific requests:
 
 ```
 $ git log v2.5..	# commits since (not reachable from) v2.5
@@ -482,13 +627,13 @@ You can also ask git log to show patches:
 $ git log -p
 ```
 
-See the `--pretty` option in the [git-log[1]](https://git-scm.com/docs/git-log) man page for more display options.
+See the `--pretty` option in the [git-log[1]](../1/git-log) man page for more display options.
 
 Note that git log starts with the most recent commit and works backwards through the parents; however, since Git history can contain multiple independent lines of development, the particular order that commits are listed in may be somewhat arbitrary.
 
 ### Generating diffs
 
-You can generate diffs between any two versions using [git-diff[1]](https://git-scm.com/docs/git-diff):
+You can generate diffs between any two versions using [git-diff[1]](../1/git-diff):
 
 ```
 $ git diff master..test
@@ -500,7 +645,7 @@ That will produce the diff between the tips of the two branches. If you’d pref
 $ git diff master...test
 ```
 
-Sometimes what you want instead is a set of patches; for this you can use [git-format-patch[1]](https://git-scm.com/docs/git-format-patch):
+Sometimes what you want instead is a set of patches; for this you can use [git-format-patch[1]](../1/git-format-patch):
 
 ```
 $ git format-patch master..test
@@ -528,7 +673,7 @@ Suppose you want to know how many commits you’ve made on `mybranch` since it d
 $ git log --pretty=oneline origin..mybranch | wc -l
 ```
 
-Alternatively, you may often see this sort of thing done with the lower-level command [git-rev-list[1]](https://git-scm.com/docs/git-rev-list), which just lists the SHA-1’s of all the given commits:
+Alternatively, you may often see this sort of thing done with the lower-level command [git-rev-list[1]](../1/git-rev-list), which just lists the SHA-1’s of all the given commits:
 
 ```
 $ git rev-list origin..mybranch | wc -l
@@ -571,14 +716,14 @@ You could just visually inspect the commits since e05db0fd:
 $ gitk e05db0fd..
 ```
 
-or you can use [git-name-rev[1]](https://git-scm.com/docs/git-name-rev), which will give the commit a name based on any tag it finds pointing to one of the commit’s descendants:
+or you can use [git-name-rev[1]](../1/git-name-rev), which will give the commit a name based on any tag it finds pointing to one of the commit’s descendants:
 
 ```
 $ git name-rev --tags e05db0fd
 e05db0fd tags/v1.5.0-rc1^0~23
 ```
 
-The [git-describe[1]](https://git-scm.com/docs/git-describe) command does the opposite, naming the revision using a tag on which the given commit is based:
+The [git-describe[1]](../1/git-describe) command does the opposite, naming the revision using a tag on which the given commit is based:
 
 ```
 $ git describe e05db0fd
@@ -587,7 +732,7 @@ v1.5.0-rc0-260-ge05db0f
 
 but that may sometimes help you guess which tags might come after the given commit.
 
-If you just want to verify whether a given tagged version contains a given commit, you could use [git-merge-base[1]](https://git-scm.com/docs/git-merge-base):
+If you just want to verify whether a given tagged version contains a given commit, you could use [git-merge-base[1]](../1/git-merge-base):
 
 ```
 $ git merge-base e05db0fd v1.5.0-rc1
@@ -604,7 +749,7 @@ $ git log v1.5.0-rc1..e05db0fd
 
 will produce empty output if and only if v1.5.0-rc1 includes e05db0fd, because it outputs only commits that are not reachable from v1.5.0-rc1.
 
-As yet another alternative, the [git-show-branch[1]](https://git-scm.com/docs/git-show-branch) command lists the commits reachable from its arguments with a display on the left-hand side that indicates which arguments that commit is reachable from. So, if you run something like
+As yet another alternative, the [git-show-branch[1]](../1/git-show-branch) command lists the commits reachable from its arguments with a display on the left-hand side that indicates which arguments that commit is reachable from. So, if you run something like
 
 ```
 $ git show-branch e05db0fd v1.5.0-rc0 v1.5.0-rc1 v1.5.0-rc2
@@ -629,7 +774,7 @@ shows that e05db0fd is reachable from itself, from v1.5.0-rc1, and from v1.5.0-r
 
 Suppose you would like to see all the commits reachable from the branch head named `master` but not from any other head in your repository.
 
-We can list all the heads in this repository with [git-show-ref[1]](https://git-scm.com/docs/git-show-ref):
+We can list all the heads in this repository with [git-show-ref[1]](../1/git-show-ref):
 
 ```
 $ git show-ref --heads
@@ -663,17 +808,17 @@ Obviously, endless variations are possible; for example, to see all commits reac
 $ gitk $( git show-ref --heads ) --not  $( git show-ref --tags )
 ```
 
-(See [gitrevisions[7]](https://git-scm.com/docs/gitrevisions) for explanations of commit-selecting syntax such as `--not`.)
+(See [gitrevisions[7]](../7/gitrevisions) for explanations of commit-selecting syntax such as `--not`.)
 
 #### Creating a changelog and tarball for a software release
 
-The [git-archive[1]](https://git-scm.com/docs/git-archive) command can create a tar or zip archive from any version of a project; for example:
+The [git-archive[1]](../1/git-archive) command can create a tar or zip archive from any version of a project; for example:
 
 ```
 $ git archive -o latest.tar.gz --prefix=project/ HEAD
 ```
 
-will use HEAD to produce a gzipped tar archive in which each filename is preceded by `project/`. The output file format is inferred from the output file extension if possible, see [git-archive[1]](https://git-scm.com/docs/git-archive) for details.
+will use HEAD to produce a gzipped tar archive in which each filename is preceded by `project/`. The output file format is inferred from the output file extension if possible, see [git-archive[1]](../1/git-archive) for details.
 
 Versions of Git older than 1.7.7 don’t know about the `tar.gz` format, you’ll need to use gzip explicitly:
 
@@ -715,13 +860,13 @@ $  git log --raw --abbrev=40 --pretty=oneline |
 	grep -B 1 `git hash-object filename`
 ```
 
-Figuring out why this works is left as an exercise to the (advanced) student. The [git-log[1]](https://git-scm.com/docs/git-log), [git-diff-tree[1]](https://git-scm.com/docs/git-diff-tree), and [git-hash-object[1]](https://git-scm.com/docs/git-hash-object) man pages may prove helpful.
+Figuring out why this works is left as an exercise to the (advanced) student. The [git-log[1]](../1/git-log), [git-diff-tree[1]](../1/git-diff-tree), and [git-hash-object[1]](../1/git-hash-object) man pages may prove helpful.
 
 ## Developing with Git
 
 ### Telling Git your name
 
-Before creating any commits, you should introduce yourself to Git. The easiest way to do so is to use [git-config[1]](https://git-scm.com/docs/git-config):
+Before creating any commits, you should introduce yourself to Git. The easiest way to do so is to use [git-config[1]](../1/git-config):
 
 ```
 $ git config --global user.name 'Your Name Comes Here'
@@ -736,7 +881,7 @@ Which will add the following to a file named `.gitconfig` in your home directory
 	email = you@yourdomain.example.com
 ```
 
-See the "CONFIGURATION FILE" section of [git-config[1]](https://git-scm.com/docs/git-config) for details on the configuration file. The file is plain text, so you can also edit it with your favorite editor.
+See the "CONFIGURATION FILE" section of [git-config[1]](../1/git-config) for details on the configuration file. The file is plain text, so you can also edit it with your favorite editor.
 
 ### Creating a new repository
 
@@ -833,11 +978,11 @@ $ git diff HEAD	    # difference between HEAD and working tree; what
 $ git status	    # a brief per-file summary of the above.
 ```
 
-You can also use [git-gui[1]](https://git-scm.com/docs/git-gui) to create commits, view changes in the index and the working tree files, and individually select diff hunks for inclusion in the index (by right-clicking on the diff hunk and choosing "Stage Hunk For Commit").
+You can also use [git-gui[1]](../1/git-gui) to create commits, view changes in the index and the working tree files, and individually select diff hunks for inclusion in the index (by right-clicking on the diff hunk and choosing "Stage Hunk For Commit").
 
 ### Creating good commit messages
 
-Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
+Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](../1/git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
 
 ### Ignoring files
 
@@ -857,13 +1002,13 @@ foo.txt
 *.[oa]
 ```
 
-See [gitignore[5]](https://git-scm.com/docs/gitignore) for a detailed explanation of the syntax. You can also place .gitignore files in other directories in your working tree, and they will apply to those directories and their subdirectories. The `.gitignore` files can be added to your repository like any other files (just run `git add .gitignore` and `git commit`, as usual), which is convenient when the exclude patterns (such as patterns matching build output files) would also make sense for other users who clone your repository.
+See [gitignore[5]](../5/gitignore) for a detailed explanation of the syntax. You can also place .gitignore files in other directories in your working tree, and they will apply to those directories and their subdirectories. The `.gitignore` files can be added to your repository like any other files (just run `git add .gitignore` and `git commit`, as usual), which is convenient when the exclude patterns (such as patterns matching build output files) would also make sense for other users who clone your repository.
 
-If you wish the exclude patterns to affect only certain repositories (instead of every repository for a given project), you may instead put them in a file in your repository named `.git/info/exclude`, or in any file specified by the `core.excludesFile` configuration variable. Some Git commands can also take exclude patterns directly on the command line. See [gitignore[5]](https://git-scm.com/docs/gitignore) for the details.
+If you wish the exclude patterns to affect only certain repositories (instead of every repository for a given project), you may instead put them in a file in your repository named `.git/info/exclude`, or in any file specified by the `core.excludesFile` configuration variable. Some Git commands can also take exclude patterns directly on the command line. See [gitignore[5]](../5/gitignore) for the details.
 
 ### How to merge
 
-You can rejoin two diverging branches of development using [git-merge[1]](https://git-scm.com/docs/git-merge):
+You can rejoin two diverging branches of development using [git-merge[1]](../1/git-merge):
 
 ```
 $ git merge branchname
@@ -871,7 +1016,7 @@ $ git merge branchname
 
 merges the development in the branch `branchname` into the current branch.
 
-A merge is made by combining the changes made in `branchname` and the changes made up to the latest commit in your current branch since their histories forked. The work tree is overwritten by the result of the merge when this combining is done cleanly, or overwritten by a half-merged results when this combining results in conflicts. Therefore, if you have uncommitted changes touching the same files as the ones impacted by the merge, Git will refuse to proceed. Most of the time, you will want to commit your changes before you can merge, and if you don’t, then [git-stash[1]](https://git-scm.com/docs/git-stash) can take these changes away while you’re doing the merge, and reapply them afterwards.
+A merge is made by combining the changes made in `branchname` and the changes made up to the latest commit in your current branch since their histories forked. The work tree is overwritten by the result of the merge when this combining is done cleanly, or overwritten by a half-merged results when this combining results in conflicts. Therefore, if you have uncommitted changes touching the same files as the ones impacted by the merge, Git will refuse to proceed. Most of the time, you will want to commit your changes before you can merge, and if you don’t, then [git-stash[1]](../1/git-stash) can take these changes away while you’re doing the merge, and reapply them afterwards.
 
 If the changes are independent enough, Git will automatically complete the merge and commit the result (or reuse an existing commit in case of [fast-forward](https://git-scm.com/docs/user-manual#fast-forwards), see below). On the other hand, if there are conflicts—for example, if the same file is modified in two different ways in the remote branch and the local branch—then you are warned; the output may look something like this:
 
@@ -891,14 +1036,14 @@ If you examine the resulting commit using gitk, you will see that it has two par
 
 When a merge isn’t resolved automatically, Git leaves the index and the working tree in a special state that gives you all the information you need to help resolve the merge.
 
-Files with conflicts are marked specially in the index, so until you resolve the problem and update the index, [git-commit[1]](https://git-scm.com/docs/git-commit) will fail:
+Files with conflicts are marked specially in the index, so until you resolve the problem and update the index, [git-commit[1]](../1/git-commit) will fail:
 
 ```
 $ git commit
 file.txt: needs merge
 ```
 
-Also, [git-status[1]](https://git-scm.com/docs/git-status) will list those files as "unmerged", and the files with conflicts will have conflict markers added, like this:
+Also, [git-status[1]](../1/git-status) will list those files as "unmerged", and the files with conflicts will have conflict markers added, like this:
 
 ```
 <<<<<<< HEAD:file.txt
@@ -921,7 +1066,7 @@ The above is all you need to know to resolve a simple merge. But Git also provid
 
 #### Getting conflict-resolution help during a merge
 
-All of the changes that Git was able to merge automatically are already added to the index file, so [git-diff[1]](https://git-scm.com/docs/git-diff) shows only the conflicts. It uses an unusual syntax:
+All of the changes that Git was able to merge automatically are already added to the index file, so [git-diff[1]](../1/git-diff) shows only the conflicts. It uses an unusual syntax:
 
 ```
 $ git diff
@@ -947,9 +1092,9 @@ $ git show :2:file.txt	# the version from HEAD.
 $ git show :3:file.txt	# the version from MERGE_HEAD.
 ```
 
-When you ask [git-diff[1]](https://git-scm.com/docs/git-diff) to show the conflicts, it runs a three-way diff between the conflicted merge results in the work tree with stages 2 and 3 to show only hunks whose contents come from both sides, mixed (in other words, when a hunk’s merge results come only from stage 2, that part is not conflicting and is not shown. Same for stage 3).
+When you ask [git-diff[1]](../1/git-diff) to show the conflicts, it runs a three-way diff between the conflicted merge results in the work tree with stages 2 and 3 to show only hunks whose contents come from both sides, mixed (in other words, when a hunk’s merge results come only from stage 2, that part is not conflicting and is not shown. Same for stage 3).
 
-The diff above shows the differences between the working-tree version of file.txt and the stage 2 and stage 3 versions. So instead of preceding each line by a single `+` or `-`, it now uses two columns: the first column is used for differences between the first parent and the working directory copy, and the second for differences between the second parent and the working directory copy. (See the "COMBINED DIFF FORMAT" section of [git-diff-files[1]](https://git-scm.com/docs/git-diff-files) for a details of the format.)
+The diff above shows the differences between the working-tree version of file.txt and the stage 2 and stage 3 versions. So instead of preceding each line by a single `+` or `-`, it now uses two columns: the first column is used for differences between the first parent and the working directory copy, and the second for differences between the second parent and the working directory copy. (See the "COMBINED DIFF FORMAT" section of [git-diff-files[1]](../1/git-diff-files) for a details of the format.)
 
 After resolving the conflict in the obvious way (but before updating the index), the diff will look like:
 
@@ -978,7 +1123,7 @@ $ git diff -3 file.txt		# diff against stage 3
 $ git diff --theirs file.txt	# same as the above.
 ```
 
-The [git-log[1]](https://git-scm.com/docs/git-log) and [gitk[1]](https://git-scm.com/docs/gitk) commands also provide special help for merges:
+The [git-log[1]](../1/git-log) and [gitk[1]](../1/gitk) commands also provide special help for merges:
 
 ```
 $ git log --merge
@@ -987,7 +1132,7 @@ $ gitk --merge
 
 These will display all commits which exist only on HEAD or on MERGE_HEAD, and which touch an unmerged file.
 
-You may also use [git-mergetool[1]](https://git-scm.com/docs/git-mergetool), which lets you merge the unmerged files using external tools such as Emacs or kdiff3.
+You may also use [git-mergetool[1]](../1/git-mergetool), which lets you merge the unmerged files using external tools such as Emacs or kdiff3.
 
 Each time you resolve the conflicts in a file and update the index:
 
@@ -1034,7 +1179,7 @@ If you make a commit that you later wish you hadn’t, there are two fundamental
 
 #### Fixing a mistake with a new commit
 
-Creating a new commit that reverts an earlier change is very easy; just pass the [git-revert[1]](https://git-scm.com/docs/git-revert) command a reference to the bad commit; for example, to revert the most recent commit:
+Creating a new commit that reverts an earlier change is very easy; just pass the [git-revert[1]](../1/git-revert) command a reference to the bad commit; for example, to revert the most recent commit:
 
 ```
 $ git revert HEAD
@@ -1062,13 +1207,13 @@ $ git commit --amend
 
 which will replace the old commit by a new commit incorporating your changes, giving you a chance to edit the old commit message first.
 
-Again, you should never do this to a commit that may already have been merged into another branch; use [git-revert[1]](https://git-scm.com/docs/git-revert) instead in that case.
+Again, you should never do this to a commit that may already have been merged into another branch; use [git-revert[1]](../1/git-revert) instead in that case.
 
 It is also possible to replace commits further back in the history, but this is an advanced topic to be left for [another chapter](https://git-scm.com/docs/user-manual#cleaning-up-history).
 
 #### Checking out an old version of a file
 
-In the process of undoing a previous bad change, you may find it useful to check out an older version of a particular file using [git-restore[1]](https://git-scm.com/docs/git-restore). The command
+In the process of undoing a previous bad change, you may find it useful to check out an older version of a particular file using [git-restore[1]](../1/git-restore). The command
 
 ```
 $ git restore --source=HEAD^ path/to/file
@@ -1076,7 +1221,7 @@ $ git restore --source=HEAD^ path/to/file
 
 replaces path/to/file by the contents it had in the commit HEAD^, and also updates the index to match. It does not change branches.
 
-If you just want to look at an old version of the file, without modifying the working directory, you can do that with [git-show[1]](https://git-scm.com/docs/git-show):
+If you just want to look at an old version of the file, without modifying the working directory, you can do that with [git-show[1]](../1/git-show):
 
 ```
 $ git show HEAD^:path/to/file
@@ -1086,7 +1231,7 @@ which will display the given version of the file.
 
 #### Temporarily setting aside work in progress
 
-While you are in the middle of working on something complicated, you find an unrelated but obvious and trivial bug. You would like to fix it before continuing. You can use [git-stash[1]](https://git-scm.com/docs/git-stash) to save the current state of your work, and after fixing the bug (or, optionally after doing so on a different branch and then coming back), unstash the work-in-progress changes.
+While you are in the middle of working on something complicated, you find an unrelated but obvious and trivial bug. You would like to fix it before continuing. You can use [git-stash[1]](../1/git-stash) to save the current state of your work, and after fixing the bug (or, optionally after doing so on a different branch and then coming back), unstash the work-in-progress changes.
 
 ```
 $ git stash push -m "work in progress for foo feature"
@@ -1107,13 +1252,13 @@ $ git stash pop
 
 ### Ensuring good performance
 
-On large repositories, Git depends on compression to keep the history information from taking up too much space on disk or in memory. Some Git commands may automatically run [git-gc[1]](https://git-scm.com/docs/git-gc), so you don’t have to worry about running it manually. However, compressing a large repository may take a while, so you may want to call `gc` explicitly to avoid automatic compression kicking in when it is not convenient.
+On large repositories, Git depends on compression to keep the history information from taking up too much space on disk or in memory. Some Git commands may automatically run [git-gc[1]](../1/git-gc), so you don’t have to worry about running it manually. However, compressing a large repository may take a while, so you may want to call `gc` explicitly to avoid automatic compression kicking in when it is not convenient.
 
 ### Ensuring reliability
 
 #### Checking the repository for corruption
 
-The [git-fsck[1]](https://git-scm.com/docs/git-fsck) command runs a number of self-consistency checks on the repository, and reports on any problems. This may take some time.
+The [git-fsck[1]](../1/git-fsck) command runs a number of self-consistency checks on the repository, and reports on any problems. This may take some time.
 
 ```
 $ git fsck
@@ -1160,7 +1305,7 @@ $ git show HEAD@{"1 week ago"}
 
 will show what HEAD pointed to one week ago, not what the current branch pointed to one week ago. This allows you to see the history of what you’ve checked out.
 
-The reflogs are kept by default for 30 days, after which they may be pruned. See [git-reflog[1]](https://git-scm.com/docs/git-reflog) and [git-gc[1]](https://git-scm.com/docs/git-gc) to learn how to control this pruning, and see the "SPECIFYING REVISIONS" section of [gitrevisions[7]](https://git-scm.com/docs/gitrevisions) for details.
+The reflogs are kept by default for 30 days, after which they may be pruned. See [git-reflog[1]](../1/git-reflog) and [git-gc[1]](../1/git-gc) to learn how to control this pruning, and see the "SPECIFYING REVISIONS" section of [gitrevisions[7]](../7/gitrevisions) for details.
 
 Note that the reflog history is very different from normal Git history. While normal history is shared by every repository that works on the same project, the reflog history is not shared: it tells you only about how the branches in your local repository have changed over time.
 
@@ -1198,14 +1343,14 @@ Other types of dangling objects (blobs and trees) are also possible, and danglin
 
 After you clone a repository and commit a few changes of your own, you may wish to check the original repository for updates and merge them into your own work.
 
-We have already seen [how to keep remote-tracking branches up to date](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch) with [git-fetch[1]](https://git-scm.com/docs/git-fetch), and how to merge two branches. So you can merge in changes from the original repository’s master branch with:
+We have already seen [how to keep remote-tracking branches up to date](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch) with [git-fetch[1]](../1/git-fetch), and how to merge two branches. So you can merge in changes from the original repository’s master branch with:
 
 ```
 $ git fetch
 $ git merge origin/master
 ```
 
-However, the [git-pull[1]](https://git-scm.com/docs/git-pull) command provides a way to do this in one step:
+However, the [git-pull[1]](../1/git-pull) command provides a way to do this in one step:
 
 ```
 $ git pull origin master
@@ -1219,7 +1364,7 @@ $ git pull
 
 This command will fetch changes from the remote branches to your remote-tracking branches `origin/*`, and merge the default branch into the current branch.
 
-More generally, a branch that is created from a remote-tracking branch will pull by default from that branch. See the descriptions of the `branch.<name>.remote` and `branch.<name>.merge` options in [git-config[1]](https://git-scm.com/docs/git-config), and the discussion of the `--track` option in [git-checkout[1]](https://git-scm.com/docs/git-checkout), to learn how to control these defaults.
+More generally, a branch that is created from a remote-tracking branch will pull by default from that branch. See the descriptions of the `branch.<name>.remote` and `branch.<name>.merge` options in [git-config[1]](../1/git-config), and the discussion of the `--track` option in [git-checkout[1]](../1/git-checkout), to learn how to control these defaults.
 
 In addition to saving you keystrokes, `git pull` also helps you by producing a default commit message documenting the branch and repository that you pulled from.
 
@@ -1238,7 +1383,7 @@ are roughly equivalent.
 
 If you just have a few changes, the simplest way to submit them may just be to send them as patches in email:
 
-First, use [git-format-patch[1]](https://git-scm.com/docs/git-format-patch); for example:
+First, use [git-format-patch[1]](../1/git-format-patch); for example:
 
 ```
 $ git format-patch origin
@@ -1248,11 +1393,11 @@ will produce a numbered series of files in the current directory, one for each p
 
 `git format-patch` can include an initial "cover letter". You can insert commentary on individual patches after the three dash line which `format-patch` places after the commit message but before the patch itself. If you use `git notes` to track your cover letter material, `git format-patch --notes` will include the commit’s notes in a similar manner.
 
-You can then import these into your mail client and send them by hand. However, if you have a lot to send at once, you may prefer to use the [git-send-email[1]](https://git-scm.com/docs/git-send-email) script to automate the process. Consult the mailing list for your project first to determine their requirements for submitting patches.
+You can then import these into your mail client and send them by hand. However, if you have a lot to send at once, you may prefer to use the [git-send-email[1]](../1/git-send-email) script to automate the process. Consult the mailing list for your project first to determine their requirements for submitting patches.
 
 ### Importing patches to a project
 
-Git also provides a tool called [git-am[1]](https://git-scm.com/docs/git-am) (am stands for "apply mailbox"), for importing such an emailed series of patches. Just save all of the patch-containing messages, in order, into a single mailbox file, say `patches.mbox`, then run
+Git also provides a tool called [git-am[1]](../1/git-am) (am stands for "apply mailbox"), for importing such an emailed series of patches. Just save all of the patch-containing messages, in order, into a single mailbox file, say `patches.mbox`, then run
 
 ```
 $ git am -3 patches.mbox
@@ -1272,7 +1417,7 @@ The final result will be a series of commits, one for each patch in the original
 
 ### Public Git repositories
 
-Another way to submit changes to a project is to tell the maintainer of that project to pull the changes from your repository using [git-pull[1]](https://git-scm.com/docs/git-pull). In the section "[Getting updates with `git pull`](https://git-scm.com/docs/user-manual#getting-updates-With-git-pull)" we described this as a way to get updates from the "main" repository, but it works just as well in the other direction.
+Another way to submit changes to a project is to tell the maintainer of that project to pull the changes from your repository using [git-pull[1]](../1/git-pull). In the section "[Getting updates with `git pull`](https://git-scm.com/docs/user-manual#getting-updates-With-git-pull)" we described this as a way to get updates from the "main" repository, but it works just as well in the other direction.
 
 If you and the maintainer both have accounts on the same machine, then you can just pull changes from each other’s repositories directly; commands that accept repository URLs as arguments will also accept a local directory name:
 
@@ -1326,9 +1471,9 @@ This is the preferred method.
 
 If someone else administers the server, they should tell you what directory to put the repository in, and what `git://` URL it will appear at. You can then skip to the section "[Pushing changes to a public repository](https://git-scm.com/docs/user-manual#pushing-changes-to-a-public-repository)", below.
 
-Otherwise, all you need to do is start [git-daemon[1]](https://git-scm.com/docs/git-daemon); it will listen on port 9418. By default, it will allow access to any directory that looks like a Git directory and contains the magic file git-daemon-export-ok. Passing some directory paths as `git daemon` arguments will further restrict the exports to those paths.
+Otherwise, all you need to do is start [git-daemon[1]](../1/git-daemon); it will listen on port 9418. By default, it will allow access to any directory that looks like a Git directory and contains the magic file git-daemon-export-ok. Passing some directory paths as `git daemon` arguments will further restrict the exports to those paths.
 
-You can also run `git daemon` as an inetd service; see the [git-daemon[1]](https://git-scm.com/docs/git-daemon) man page for details. (See especially the examples section.)
+You can also run `git daemon` as an inetd service; see the [git-daemon[1]](../1/git-daemon) man page for details. (See especially the examples section.)
 
 #### Exporting a git repository via HTTP
 
@@ -1343,7 +1488,7 @@ $ git --bare update-server-info
 $ mv hooks/post-update.sample hooks/post-update
 ```
 
-(For an explanation of the last two lines, see [git-update-server-info[1]](https://git-scm.com/docs/git-update-server-info) and [githooks[5]](https://git-scm.com/docs/githooks).)
+(For an explanation of the last two lines, see [git-update-server-info[1]](../1/git-update-server-info) and [githooks[5]](../5/githooks).)
 
 Advertise the URL of `proj.git`. Anybody else should then be able to clone or pull from that URL, for example with a command line like:
 
@@ -1357,7 +1502,7 @@ $ git clone http://yourserver.com/~you/proj.git
 
 Note that the two techniques outlined above (exporting via [http](https://git-scm.com/docs/user-manual#exporting-via-http) or [git](https://git-scm.com/docs/user-manual#exporting-via-git)) allow other maintainers to fetch your latest changes, but they do not allow write access, which you will need to update the public repository with the latest changes created in your private repository.
 
-The simplest way to do this is using [git-push[1]](https://git-scm.com/docs/git-push) and ssh; to update the remote branch named `master` with the latest state of your branch named `master`, run
+The simplest way to do this is using [git-push[1]](../1/git-push) and ssh; to update the remote branch named `master` with the latest state of your branch named `master`, run
 
 ```
 $ git push ssh://yourserver.com/~you/proj.git master:master
@@ -1371,7 +1516,7 @@ $ git push ssh://yourserver.com/~you/proj.git master
 
 As with `git fetch`, `git push` will complain if this does not result in a [fast-forward](https://git-scm.com/docs/user-manual#fast-forwards); see the following section for details on handling this case.
 
-Note that the target of a `push` is normally a [bare](https://git-scm.com/docs/user-manual#def_bare_repository) repository. You can also push to a repository that has a checked-out working tree, but a push to update the currently checked-out branch is denied by default to prevent confusion. See the description of the receive.denyCurrentBranch option in [git-config[1]](https://git-scm.com/docs/git-config) for details.
+Note that the target of a `push` is normally a [bare](https://git-scm.com/docs/user-manual#def_bare_repository) repository. You can also push to a repository that has a checked-out working tree, but a push to update the currently checked-out branch is denied by default to prevent confusion. See the description of the receive.denyCurrentBranch option in [git-config[1]](../1/git-config) for details.
 
 As with `git fetch`, you may also set up configuration options to save typing; so, for example:
 
@@ -1393,7 +1538,7 @@ which lets you do the same push with just
 $ git push public-repo master
 ```
 
-See the explanations of the `remote.<name>.url`, `branch.<name>.remote`, and `remote.<name>.push` options in [git-config[1]](https://git-scm.com/docs/git-config) for details.
+See the explanations of the `remote.<name>.url`, `branch.<name>.remote`, and `remote.<name>.push` options in [git-config[1]](../1/git-config) for details.
 
 #### What to do when a push fails
 
@@ -1430,11 +1575,11 @@ Normally whenever a branch head in a public repository is modified, it is modifi
 
 Nevertheless, this is a common practice for people that need a simple way to publish a work-in-progress patch series, and it is an acceptable compromise as long as you warn other developers that this is how you intend to manage the branch.
 
-It’s also possible for a push to fail in this way when other people have the right to push to the same repository. In that case, the correct solution is to retry the push after first updating your work: either by a pull, or by a fetch followed by a rebase; see the [next section](https://git-scm.com/docs/user-manual#setting-up-a-shared-repository) and [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration) for more.
+It’s also possible for a push to fail in this way when other people have the right to push to the same repository. In that case, the correct solution is to retry the push after first updating your work: either by a pull, or by a fetch followed by a rebase; see the [next section](https://git-scm.com/docs/user-manual#setting-up-a-shared-repository) and [gitcvs-migration[7]](../7/gitcvs-migration) for more.
 
 #### Setting up a shared repository
 
-Another way to collaborate is by using a model similar to that commonly used in CVS, where several developers with special rights all push to and pull from a single shared repository. See [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration) for instructions on how to set this up.
+Another way to collaborate is by using a model similar to that commonly used in CVS, where several developers with special rights all push to and pull from a single shared repository. See [gitcvs-migration[7]](../7/gitcvs-migration) for instructions on how to set this up.
 
 However, while there is nothing wrong with Git’s support for shared repositories, this mode of operation is not generally recommended, simply because the mode of collaboration that Git supports—by exchanging patches and pulling from public repositories—has so many advantages over the central shared repository:
 
@@ -1446,15 +1591,15 @@ However, while there is nothing wrong with Git’s support for shared repositori
 
 The gitweb cgi script provides users an easy way to browse your project’s revisions, file contents and logs without having to install Git. Features like RSS/Atom feeds and blame/annotation details may optionally be enabled.
 
-The [git-instaweb[1]](https://git-scm.com/docs/git-instaweb) command provides a simple way to start browsing the repository using gitweb. The default server when using instaweb is lighttpd.
+The [git-instaweb[1]](../1/git-instaweb) command provides a simple way to start browsing the repository using gitweb. The default server when using instaweb is lighttpd.
 
-See the file gitweb/INSTALL in the Git source tree and [gitweb[1]](https://git-scm.com/docs/gitweb) for instructions on details setting up a permanent installation with a CGI or Perl capable server.
+See the file gitweb/INSTALL in the Git source tree and [gitweb[1]](../1/gitweb) for instructions on details setting up a permanent installation with a CGI or Perl capable server.
 
 ### How to get a Git repository with minimal history
 
 A [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone), with its truncated history, is useful when one is interested only in recent history of a project and getting full history from the upstream is expensive.
 
-A [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone) is created by specifying the [git-clone[1]](https://git-scm.com/docs/git-clone) `--depth` switch. The depth can later be changed with the [git-fetch[1]](https://git-scm.com/docs/git-fetch) `--depth` switch, or full history restored with `--unshallow`.
+A [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone) is created by specifying the [git-clone[1]](../1/git-clone) `--depth` switch. The depth can later be changed with the [git-fetch[1]](../1/git-fetch) `--depth` switch, or full history restored with `--unshallow`.
 
 Merging inside a [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone) will work as long as a merge base is in the recent history. Otherwise, it will be like merging unrelated histories and may have to result in huge conflicts. This limitation may make such a repository unsuitable to be used in merge based workflows.
 
@@ -1478,16 +1623,16 @@ $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git wor
 $ cd work
 ```
 
-Linus’s tree will be stored in the remote-tracking branch named origin/master, and can be updated using [git-fetch[1]](https://git-scm.com/docs/git-fetch); you can track other public trees using [git-remote[1]](https://git-scm.com/docs/git-remote) to set up a "remote" and [git-fetch[1]](https://git-scm.com/docs/git-fetch) to keep them up to date; see [Repositories and Branches](https://git-scm.com/docs/user-manual#repositories-and-branches).
+Linus’s tree will be stored in the remote-tracking branch named origin/master, and can be updated using [git-fetch[1]](../1/git-fetch); you can track other public trees using [git-remote[1]](../1/git-remote) to set up a "remote" and [git-fetch[1]](../1/git-fetch) to keep them up to date; see [Repositories and Branches](https://git-scm.com/docs/user-manual#repositories-and-branches).
 
-Now create the branches in which you are going to work; these start out at the current tip of origin/master branch, and should be set up (using the `--track` option to [git-branch[1]](https://git-scm.com/docs/git-branch)) to merge changes in from Linus by default.
+Now create the branches in which you are going to work; these start out at the current tip of origin/master branch, and should be set up (using the `--track` option to [git-branch[1]](../1/git-branch)) to merge changes in from Linus by default.
 
 ```
 $ git branch --track test origin/master
 $ git branch --track release origin/master
 ```
 
-These can be easily kept up to date using [git-pull[1]](https://git-scm.com/docs/git-pull).
+These can be easily kept up to date using [git-pull[1]](../1/git-pull).
 
 ```
 $ git switch test && git pull
@@ -1496,7 +1641,7 @@ $ git switch release && git pull
 
 Important note! If you have any local changes in these branches, then this merge will create a commit object in the history (with no local changes Git will simply do a "fast-forward" merge). Many people dislike the "noise" that this creates in the Linux history, so you should avoid doing this capriciously in the `release` branch, as these noisy commits will become part of the permanent history when you ask Linus to pull from the release branch.
 
-A few configuration variables (see [git-config[1]](https://git-scm.com/docs/git-config)) can make it easy to push both branches to your public tree. (See [Setting up a public repository](https://git-scm.com/docs/user-manual#setting-up-a-public-repository).)
+A few configuration variables (see [git-config[1]](../1/git-config)) can make it easy to push both branches to your public tree. (See [Setting up a public repository](https://git-scm.com/docs/user-manual#setting-up-a-public-repository).)
 
 ```
 $ cat >> .git/config <<EOF
@@ -1507,7 +1652,7 @@ $ cat >> .git/config <<EOF
 EOF
 ```
 
-Then you can push both the test and release trees using [git-push[1]](https://git-scm.com/docs/git-push):
+Then you can push both the test and release trees using [git-push[1]](../1/git-push):
 
 ```
 $ git push mytree
@@ -1585,7 +1730,7 @@ $ git branch -d branchname
 
 Some changes are so trivial that it is not necessary to create a separate branch and then merge into each of the test and release branches. For these changes, just apply directly to the `release` branch, and then merge that into the `test` branch.
 
-After pushing your work to `mytree`, you can use [git-request-pull[1]](https://git-scm.com/docs/git-request-pull) to prepare a "please pull" request message to send to Linus:
+After pushing your work to `mytree`, you can use [git-request-pull[1]](../1/git-request-pull) to prepare a "please pull" request message to send to Linus:
 
 ```
 $ git push mytree
@@ -1757,7 +1902,7 @@ At this point, you could use `pull` to merge your changes back in; the result wo
          a--b--c--m <-- mywork
 ```
 
-However, if you prefer to keep the history in mywork a simple series of commits without any merges, you may instead choose to use [git-rebase[1]](https://git-scm.com/docs/git-rebase):
+However, if you prefer to keep the history in mywork a simple series of commits without any merges, you may instead choose to use [git-rebase[1]](../1/git-rebase):
 
 ```
 $ git switch mywork
@@ -1809,7 +1954,7 @@ $ git format-patch origin
 $ git reset --hard origin
 ```
 
-Then modify, reorder, or eliminate patches as needed before applying them again with [git-am[1]](https://git-scm.com/docs/git-am):
+Then modify, reorder, or eliminate patches as needed before applying them again with [git-am[1]](../1/git-am):
 
 ```
 $ git am *.patch
@@ -1855,7 +2000,7 @@ As explained in the comments, you can reorder commits, squash them together, edi
 
 The rebase will stop where `pick` has been replaced with `edit` or when a step in the list fails to mechanically resolve conflicts and needs your help. When you are done editing and/or resolving conflicts you can continue with `git rebase --continue`. If you decide that things are getting too hairy, you can always bail out with `git rebase --abort`. Even after the rebase is complete, you can still recover the original branch by using the [reflog](https://git-scm.com/docs/user-manual#reflogs).
 
-For a more detailed discussion of the procedure and additional tips, see the "INTERACTIVE MODE" section of [git-rebase[1]](https://git-scm.com/docs/git-rebase).
+For a more detailed discussion of the procedure and additional tips, see the "INTERACTIVE MODE" section of [git-rebase[1]](../1/git-rebase).
 
 ### Other tools
 
@@ -1897,7 +2042,7 @@ For true distributed development that supports proper merging, published branche
 
 ### Why bisecting merge commits can be harder than bisecting linear history
 
-The [git-bisect[1]](https://git-scm.com/docs/git-bisect) command correctly handles history that includes merge commits. However, when the commit that it finds is a merge commit, the user may need to work harder than usual to figure out why that commit introduced a problem.
+The [git-bisect[1]](../1/git-bisect) command correctly handles history that includes merge commits. However, when the commit that it finds is a merge commit, the user may need to work harder than usual to figure out why that commit introduced a problem.
 
 Imagine this history:
 
@@ -1913,7 +2058,7 @@ Suppose that in the meantime on the lower line of development somebody adds a ne
 
 Suppose further that the two development lines merge cleanly at C, so no conflict resolution is required.
 
-Nevertheless, the code at C is broken, because the callers added on the lower line of development have not been converted to the new semantics introduced on the upper line of development. So if all you know is that D is bad, that Z is good, and that [git-bisect[1]](https://git-scm.com/docs/git-bisect) identifies C as the culprit, how will you figure out that the problem is due to this change in semantics?
+Nevertheless, the code at C is broken, because the callers added on the lower line of development have not been converted to the new semantics introduced on the upper line of development. So if all you know is that D is bad, that Z is good, and that [git-bisect[1]](../1/git-bisect) identifies C as the culprit, how will you figure out that the problem is due to this change in semantics?
 
 When the result of a `git bisect` is a non-merge commit, you should normally be able to discover the problem by examining just that commit. Developers can make this easy by breaking their changes into small self-contained commits. That won’t help in the case above, however, because the problem isn’t obvious from examination of any single commit; instead, a global view of the development is required. To make matters worse, the change in semantics in the problematic function may be just one small part of the changes in the upper line of development.
 
@@ -1931,7 +2076,7 @@ Partly for this reason, many experienced Git users, even when working on an othe
 
 ### Fetching individual branches
 
-Instead of using [git-remote[1]](https://git-scm.com/docs/git-remote), you can also choose just to update one branch at a time, and to store it locally under an arbitrary name:
+Instead of using [git-remote[1]](../1/git-remote), you can also choose just to update one branch at a time, and to store it locally under an arbitrary name:
 
 ```
 $ git fetch origin todo:my-todo-work
@@ -1989,7 +2134,7 @@ Be aware that commits that the old version of example/master pointed at may be l
 
 ### Configuring remote-tracking branches
 
-We saw above that `origin` is just a shortcut to refer to the repository that you originally cloned from. This information is stored in Git configuration variables, which you can see using [git-config[1]](https://git-scm.com/docs/git-config):
+We saw above that `origin` is just a shortcut to refer to the repository that you originally cloned from. This information is stored in Git configuration variables, which you can see using [git-config[1]](../1/git-config):
 
 ```
 $ git config -l
@@ -2016,7 +2161,7 @@ adds the following to `.git/config`:
 	fetch = +refs/heads/*:refs/remotes/example/*
 ```
 
-Also note that the above configuration can be performed by directly editing the file `.git/config` instead of using [git-remote[1]](https://git-scm.com/docs/git-remote).
+Also note that the above configuration can be performed by directly editing the file `.git/config` instead of using [git-remote[1]](../1/git-remote).
 
 After configuring the remote, the following three commands will do the same thing:
 
@@ -2026,7 +2171,7 @@ $ git fetch example +refs/heads/*:refs/remotes/example/*
 $ git fetch example
 ```
 
-See [git-config[1]](https://git-scm.com/docs/git-config) for more details on the configuration options mentioned above and [git-fetch[1]](https://git-scm.com/docs/git-fetch) for more details on the refspec syntax.
+See [git-config[1]](../1/git-config) for more details on the configuration options mentioned above and [git-fetch[1]](../1/git-fetch) for more details on the refspec syntax.
 
 ## Git concepts
 
@@ -2055,7 +2200,7 @@ The object types in some more detail:
 
 #### Commit Object
 
-The "commit" object links a physical state of a tree with a description of how we got there and why. Use the `--pretty=raw` option to [git-show[1]](https://git-scm.com/docs/git-show) or [git-log[1]](https://git-scm.com/docs/git-log) to examine your favorite commit:
+The "commit" object links a physical state of a tree with a description of how we got there and why. Use the `--pretty=raw` option to [git-show[1]](../1/git-show) or [git-log[1]](../1/git-log) to examine your favorite commit:
 
 ```
 $ git show -s --pretty=raw 2be7fcb476
@@ -2078,13 +2223,13 @@ As you can see, a commit is defined by:
 - a committer: The name of the person who actually created the commit, with the date it was done. This may be different from the author, for example, if the author was someone who wrote a patch and emailed it to the person who used it to create the commit.
 - a comment describing this commit.
 
-Note that a commit does not itself contain any information about what actually changed; all changes are calculated by comparing the contents of the tree referred to by this commit with the trees associated with its parents. In particular, Git does not attempt to record file renames explicitly, though it can identify cases where the existence of the same file data at changing paths suggests a rename. (See, for example, the `-M` option to [git-diff[1]](https://git-scm.com/docs/git-diff)).
+Note that a commit does not itself contain any information about what actually changed; all changes are calculated by comparing the contents of the tree referred to by this commit with the trees associated with its parents. In particular, Git does not attempt to record file renames explicitly, though it can identify cases where the existence of the same file data at changing paths suggests a rename. (See, for example, the `-M` option to [git-diff[1]](../1/git-diff)).
 
-A commit is usually created by [git-commit[1]](https://git-scm.com/docs/git-commit), which creates a commit whose parent is normally the current HEAD, and whose tree is taken from the content currently stored in the index.
+A commit is usually created by [git-commit[1]](../1/git-commit), which creates a commit whose parent is normally the current HEAD, and whose tree is taken from the content currently stored in the index.
 
 #### Tree Object
 
-The ever-versatile [git-show[1]](https://git-scm.com/docs/git-show) command can also be used to examine tree objects, but [git-ls-tree[1]](https://git-scm.com/docs/git-ls-tree) will give you more details:
+The ever-versatile [git-show[1]](../1/git-show) command can also be used to examine tree objects, but [git-ls-tree[1]](../1/git-ls-tree) will give you more details:
 
 ```
 $ git ls-tree fb3a8bdd0ce
@@ -2109,7 +2254,7 @@ Note that the files all have mode 644 or 755: Git actually only pays attention t
 
 #### Blob Object
 
-You can use [git-show[1]](https://git-scm.com/docs/git-show) to examine the contents of a blob; take, for example, the blob in the entry for `COPYING` from the tree above:
+You can use [git-show[1]](../1/git-show) to examine the contents of a blob; take, for example, the blob in the entry for `COPYING` from the tree above:
 
 ```
 $ git show 6ff87c4664
@@ -2124,7 +2269,7 @@ A "blob" object is nothing but a binary blob of data. It doesn’t refer to anyt
 
 Since the blob is entirely defined by its data, if two files in a directory tree (or in multiple different versions of the repository) have the same contents, they will share the same blob object. The object is totally independent of its location in the directory tree, and renaming a file does not change the object that file is associated with.
 
-Note that any tree or blob object can be examined using [git-show[1]](https://git-scm.com/docs/git-show) with the <revision>:<path> syntax. This can sometimes be useful for browsing the contents of a tree that is not currently checked out.
+Note that any tree or blob object can be examined using [git-show[1]](../1/git-show) with the <revision>:<path> syntax. This can sometimes be useful for browsing the contents of a tree that is not currently checked out.
 
 #### Trust
 
@@ -2140,7 +2285,7 @@ To assist in this, Git also provides the tag object…
 
 #### Tag Object
 
-A tag object contains an object, object type, tag name, the name of the person ("tagger") who created the tag, and a message, which may contain a signature, as can be seen using [git-cat-file[1]](https://git-scm.com/docs/git-cat-file):
+A tag object contains an object, object type, tag name, the name of the person ("tagger") who created the tag, and a message, which may contain a signature, as can be seen using [git-cat-file[1]](../1/git-cat-file):
 
 ```
 $ git cat-file tag v1.5.0
@@ -2159,7 +2304,7 @@ nLE/L9aUXdWeTFPron96DLA=
 -----END PGP SIGNATURE-----
 ```
 
-See the [git-tag[1]](https://git-scm.com/docs/git-tag) command to learn how to create and verify tag objects. (Note that [git-tag[1]](https://git-scm.com/docs/git-tag) can also be used to create "lightweight tags", which are not tag objects at all, but just simple references whose names begin with `refs/tags/`).
+See the [git-tag[1]](../1/git-tag) command to learn how to create and verify tag objects. (Note that [git-tag[1]](../1/git-tag) can also be used to create "lightweight tags", which are not tag objects at all, but just simple references whose names begin with `refs/tags/`).
 
 #### How Git stores objects efficiently: pack files
 
@@ -2174,7 +2319,7 @@ $ git count-objects
 
 The first number is the number of objects which are kept in individual files. The second is the amount of space taken up by those "loose" objects.
 
-You can save space and make Git faster by moving these loose objects in to a "pack file", which stores a group of objects in an efficient compressed format; the details of how pack files are formatted can be found in [gitformat-pack[5]](https://git-scm.com/docs/gitformat-pack).
+You can save space and make Git faster by moving these loose objects in to a "pack file", which stores a group of objects in an efficient compressed format; the details of how pack files are formatted can be found in [gitformat-pack[5]](../5/gitformat-pack).
 
 To put the loose objects into a pack, just run git repack:
 
@@ -2202,11 +2347,11 @@ $ git count-objects
 
 Although the object files are gone, any commands that refer to those objects will work exactly as they did before.
 
-The [git-gc[1]](https://git-scm.com/docs/git-gc) command performs packing, pruning, and more for you, so is normally the only high-level command you need.
+The [git-gc[1]](../1/git-gc) command performs packing, pruning, and more for you, so is normally the only high-level command you need.
 
 #### Dangling objects
 
-The [git-fsck[1]](https://git-scm.com/docs/git-fsck) command will sometimes complain about dangling objects. They are not a problem.
+The [git-fsck[1]](../1/git-fsck) command will sometimes complain about dangling objects. They are not a problem.
 
 The most common cause of dangling objects is that you’ve rebased a branch, or you have pulled from somebody else who rebased a branch—see [Rewriting history and maintaining patch series](https://git-scm.com/docs/user-manual#cleaning-up-history). In that case, the old head of the original branch still exists, as does everything it pointed to. The branch pointer itself just doesn’t, since you replaced it with another one.
 
@@ -2256,7 +2401,7 @@ As a last resort, you can search for the corrupted objects and attempt to replac
 
 We’ll assume that the problem is a single missing or corrupted blob, which is sometimes a solvable problem. (Recovering missing trees and especially commits is **much** harder).
 
-Before starting, verify that there is corruption, and figure out where it is with [git-fsck[1]](https://git-scm.com/docs/git-fsck); this may be time-consuming.
+Before starting, verify that there is corruption, and figure out where it is with [git-fsck[1]](../1/git-fsck); this may be time-consuming.
 
 Assume the output looks like this:
 
@@ -2267,7 +2412,7 @@ broken link from    tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
 missing blob 4b9458b3786228369c63936db65827de3cc06200
 ```
 
-Now you know that blob 4b9458b3 is missing, and that the tree 2d9263c6 points to it. If you could find just one copy of that missing blob object, possibly in some other repository, you could move it into `.git/objects/4b/9458b3...` and be done. Suppose you can’t. You can still examine the tree that pointed to it with [git-ls-tree[1]](https://git-scm.com/docs/git-ls-tree), which might output something like:
+Now you know that blob 4b9458b3 is missing, and that the tree 2d9263c6 points to it. If you could find just one copy of that missing blob object, possibly in some other repository, you could move it into `.git/objects/4b/9458b3...` and be done. Suppose you can’t. You can still examine the tree that pointed to it with [git-ls-tree[1]](../1/git-ls-tree), which might output something like:
 
 ```
 $ git ls-tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
@@ -2279,7 +2424,7 @@ $ git ls-tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
 ...
 ```
 
-So now you know that the missing blob was the data for a file named `myfile`. And chances are you can also identify the directory—let’s say it’s in `somedirectory`. If you’re lucky the missing copy might be the same as the copy you have checked out in your working tree at `somedirectory/myfile`; you can test whether that’s right with [git-hash-object[1]](https://git-scm.com/docs/git-hash-object):
+So now you know that the missing blob was the data for a file named `myfile`. And chances are you can also identify the directory—let’s say it’s in `somedirectory`. If you’re lucky the missing copy might be the same as the copy you have checked out in your working tree at `somedirectory/myfile`; you can test whether that’s right with [git-hash-object[1]](../1/git-hash-object):
 
 ```
 $ git hash-object -w somedirectory/myfile
@@ -2335,7 +2480,7 @@ and just looked for the sha of the missing object (4b9458b) in that whole thing.
 
 ### The index
 
-The index is a binary file (generally kept in `.git/index`) containing a sorted list of path names, each with permissions and the SHA-1 of a blob object; [git-ls-files[1]](https://git-scm.com/docs/git-ls-files) can show you the contents of the index:
+The index is a binary file (generally kept in `.git/index`) containing a sorted list of path names, each with permissions and the SHA-1 of a blob object; [git-ls-files[1]](../1/git-ls-files) can show you the contents of the index:
 
 ```
 $ git ls-files --stage
@@ -2354,7 +2499,7 @@ Note that in older documentation you may see the index called the "current direc
 
 1. The index contains all the information necessary to generate a single (uniquely determined) tree object.
 
-   For example, running [git-commit[1]](https://git-scm.com/docs/git-commit) generates this tree object from the index, stores it in the object database, and uses it as the tree object associated with the new commit.
+   For example, running [git-commit[1]](../1/git-commit) generates this tree object from the index, stores it in the object database, and uses it as the tree object associated with the new commit.
 
 2. The index enables fast comparisons between the tree object it defines and the working tree.
 
@@ -2362,7 +2507,7 @@ Note that in older documentation you may see the index called the "current direc
 
 3. It can efficiently represent information about merge conflicts between different tree objects, allowing each pathname to be associated with sufficient information about the trees involved that you can create a three-way merge between them.
 
-   We saw in [Getting conflict-resolution help during a merge](https://git-scm.com/docs/user-manual#conflict-resolution) that during a merge the index can store multiple versions of a single file (called "stages"). The third column in the [git-ls-files[1]](https://git-scm.com/docs/git-ls-files) output above is the stage number, and will take on values other than 0 for files with merge conflicts.
+   We saw in [Getting conflict-resolution help during a merge](https://git-scm.com/docs/user-manual#conflict-resolution) that during a merge the index can store multiple versions of a single file (called "stages"). The third column in the [git-ls-files[1]](../1/git-ls-files) output above is the stage number, and will take on values other than 0 for files with merge conflicts.
 
 The index is thus a sort of temporary staging area, which is filled with a tree which you are in the process of working on.
 
@@ -2380,7 +2525,7 @@ On the plus side, distributed revision control systems can much better integrate
 
 Git’s submodule support allows a repository to contain, as a subdirectory, a checkout of an external project. Submodules maintain their own identity; the submodule support just stores the submodule repository location and commit ID, so other developers who clone the containing project ("superproject") can easily clone all the submodules at the same revision. Partial checkouts of the superproject are possible: you can tell Git to clone none, some or all of the submodules.
 
-The [git-submodule[1]](https://git-scm.com/docs/git-submodule) command is available since Git 1.5.3. Users with Git 1.5.2 can look up the submodule commits in the repository and manually check them out; earlier versions won’t recognize the submodules at all.
+The [git-submodule[1]](../1/git-submodule) command is available since Git 1.5.3. Users with Git 1.5.2 can look up the submodule commits in the repository and manually check them out; earlier versions won’t recognize the submodules at all.
 
 To see how submodule support works, create four example repositories that can be used later as a submodule:
 
@@ -2425,7 +2570,7 @@ $ ls -a
 The `git submodule add <repo> <path>` command does a couple of things:
 
 - It clones the submodule from `<repo>` to the given `<path>` under the current directory and by default checks out the master branch.
-- It adds the submodule’s clone path to the [gitmodules[5]](https://git-scm.com/docs/gitmodules) file and adds this file to the index, ready to be committed.
+- It adds the submodule’s clone path to the [gitmodules[5]](../5/gitmodules) file and adds this file to the index, ready to be committed.
 - It adds the submodule’s current commit ID to the index, ready to be committed.
 
 Commit the superproject:
@@ -2578,23 +2723,23 @@ Many of the higher-level commands were originally implemented as shell scripts u
 
 ### Object access and manipulation
 
-The [git-cat-file[1]](https://git-scm.com/docs/git-cat-file) command can show the contents of any object, though the higher-level [git-show[1]](https://git-scm.com/docs/git-show) is usually more useful.
+The [git-cat-file[1]](../1/git-cat-file) command can show the contents of any object, though the higher-level [git-show[1]](../1/git-show) is usually more useful.
 
-The [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree) command allows constructing commits with arbitrary parents and trees.
+The [git-commit-tree[1]](../1/git-commit-tree) command allows constructing commits with arbitrary parents and trees.
 
-A tree can be created with [git-write-tree[1]](https://git-scm.com/docs/git-write-tree) and its data can be accessed by [git-ls-tree[1]](https://git-scm.com/docs/git-ls-tree). Two trees can be compared with [git-diff-tree[1]](https://git-scm.com/docs/git-diff-tree).
+A tree can be created with [git-write-tree[1]](../1/git-write-tree) and its data can be accessed by [git-ls-tree[1]](../1/git-ls-tree). Two trees can be compared with [git-diff-tree[1]](../1/git-diff-tree).
 
-A tag is created with [git-mktag[1]](https://git-scm.com/docs/git-mktag), and the signature can be verified by [git-verify-tag[1]](https://git-scm.com/docs/git-verify-tag), though it is normally simpler to use [git-tag[1]](https://git-scm.com/docs/git-tag) for both.
+A tag is created with [git-mktag[1]](../1/git-mktag), and the signature can be verified by [git-verify-tag[1]](../1/git-verify-tag), though it is normally simpler to use [git-tag[1]](../1/git-tag) for both.
 
 ### The Workflow
 
-High-level operations such as [git-commit[1]](https://git-scm.com/docs/git-commit) and [git-restore[1]](https://git-scm.com/docs/git-restore) work by moving data between the working tree, the index, and the object database. Git provides low-level operations which perform each of these steps individually.
+High-level operations such as [git-commit[1]](../1/git-commit) and [git-restore[1]](../1/git-restore) work by moving data between the working tree, the index, and the object database. Git provides low-level operations which perform each of these steps individually.
 
 Generally, all Git operations work on the index file. Some operations work **purely** on the index file (showing the current state of the index), but most operations move data between the index file and either the database or the working directory. Thus there are four main combinations:
 
 #### working directory → index
 
-The [git-update-index[1]](https://git-scm.com/docs/git-update-index) command updates the index with information from the working directory. You generally update the index information by just specifying the filename you want to update, like so:
+The [git-update-index[1]](../1/git-update-index) command updates the index with information from the working directory. You generally update the index information by just specifying the filename you want to update, like so:
 
 ```
 $ git update-index filename
@@ -2608,7 +2753,7 @@ NOTE! A `--remove` flag does *not* mean that subsequent filenames will necessari
 
 As a special case, you can also do `git update-index --refresh`, which will refresh the "stat" information of each index to match the current stat information. It will *not* update the object status itself, and it will only update the fields that are used to quickly test whether an object still matches its old backing store object.
 
-The previously introduced [git-add[1]](https://git-scm.com/docs/git-add) is just a wrapper for [git-update-index[1]](https://git-scm.com/docs/git-update-index).
+The previously introduced [git-add[1]](../1/git-add) is just a wrapper for [git-update-index[1]](../1/git-update-index).
 
 #### index → object database
 
@@ -2702,7 +2847,7 @@ Here is a picture that illustrates how various pieces fit together:
 
 ### Examining the data
 
-You can examine the data represented in the object database and the index with various helper tools. For every object, you can use [git-cat-file[1]](https://git-scm.com/docs/git-cat-file) to examine details about the object:
+You can examine the data represented in the object database and the index with various helper tools. For every object, you can use [git-cat-file[1]](../1/git-cat-file) to examine details about the object:
 
 ```
 $ git cat-file -t <objectname>
@@ -3034,7 +3179,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - fetch
 
-  Fetching a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), to find out which objects are missing from the local [object database](https://git-scm.com/docs/user-manual#def_object_database), and to get them, too. See also [git-fetch[1]](https://git-scm.com/docs/git-fetch).
+  Fetching a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), to find out which objects are missing from the local [object database](https://git-scm.com/docs/user-manual#def_object_database), and to get them, too. See also [git-fetch[1]](../1/git-fetch).
 
 - file system
 
@@ -3050,7 +3195,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - grafts
 
-  Grafts enables two otherwise different lines of development to be joined together by recording fake ancestry information for commits. This way you can make Git pretend the set of [parents](https://git-scm.com/docs/user-manual#def_parent) a [commit](https://git-scm.com/docs/user-manual#def_commit) has is different from what was recorded when the commit was created. Configured via the `.git/info/grafts` file.Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](https://git-scm.com/docs/git-replace) for a more flexible and robust system to do the same thing.
+  Grafts enables two otherwise different lines of development to be joined together by recording fake ancestry information for commits. This way you can make Git pretend the set of [parents](https://git-scm.com/docs/user-manual#def_parent) a [commit](https://git-scm.com/docs/user-manual#def_commit) has is different from what was recorded when the commit was created. Configured via the `.git/info/grafts` file.Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](../1/git-replace) for a more flexible and robust system to do the same thing.
 
 - hash
 
@@ -3058,7 +3203,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - head
 
-  A [named reference](https://git-scm.com/docs/user-manual#def_ref) to the [commit](https://git-scm.com/docs/user-manual#def_commit) at the tip of a [branch](https://git-scm.com/docs/user-manual#def_branch). Heads are stored in a file in `$GIT_DIR/refs/heads/` directory, except when using packed refs. (See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs).)
+  A [named reference](https://git-scm.com/docs/user-manual#def_ref) to the [commit](https://git-scm.com/docs/user-manual#def_commit) at the tip of a [branch](https://git-scm.com/docs/user-manual#def_branch). Heads are stored in a file in `$GIT_DIR/refs/heads/` directory, except when using packed refs. (See [git-pack-refs[1]](../1/git-pack-refs).)
 
 - HEAD
 
@@ -3130,7 +3275,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - pathspec
 
-  Pattern used to limit paths in Git commands.Pathspecs are used on the command line of "git ls-files", "git ls-tree", "git add", "git grep", "git diff", "git checkout", and many other commands to limit the scope of operations to some subset of the tree or working tree. See the documentation of each command for whether paths are relative to the current directory or toplevel. The pathspec syntax is as follows:any path matches itselfthe pathspec up to the last slash represents a directory prefix. The scope of that pathspec is limited to that subtree.the rest of the pathspec is a pattern for the remainder of the pathname. Paths relative to the directory prefix will be matched against that pattern using fnmatch(3); in particular, *** and *?* *can* match directory separators.For example, Documentation/*.jpg will match all .jpg files in the Documentation subtree, including Documentation/chapter_1/figure_1.jpg.A pathspec that begins with a colon `:` has special meaning. In the short form, the leading colon `:` is followed by zero or more "magic signature" letters (which optionally is terminated by another colon `:`), and the remainder is the pattern to match against the path. The "magic signature" consists of ASCII symbols that are neither alphanumeric, glob, regex special characters nor colon. The optional colon that terminates the "magic signature" can be omitted if the pattern begins with a character that does not belong to "magic signature" symbol set and is not a colon.In the long form, the leading colon `:` is followed by an open parenthesis `(`, a comma-separated list of zero or more "magic words", and a close parentheses `)`, and the remainder is the pattern to match against the path.A pathspec with only a colon means "there is no pathspec". This form should not be combined with other pathspec.topThe magic word `top` (magic signature: `/`) makes the pattern match from the root of the working tree, even when you are running the command from inside a subdirectory.literalWildcards in the pattern such as `*` or `?` are treated as literal characters.icaseCase insensitive match.globGit treats the pattern as a shell glob suitable for consumption by fnmatch(3) with the FNM_PATHNAME flag: wildcards in the pattern will not match a / in the pathname. For example, "Documentation/*.html" matches "Documentation/git.html" but not "Documentation/ppc/ppc.html" or "tools/perf/Documentation/perf.html".Two consecutive asterisks ("`**`") in patterns matched against full pathname may have special meaning:A leading "`**`" followed by a slash means match in all directories. For example, "`**/foo`" matches file or directory "`foo`" anywhere, the same as pattern "`foo`". "`**/foo/bar`" matches file or directory "`bar`" anywhere that is directly under directory "`foo`".A trailing "`/**`" matches everything inside. For example, "`abc/**`" matches all files inside directory "abc", relative to the location of the `.gitignore` file, with infinite depth.A slash followed by two consecutive asterisks then a slash matches zero or more directories. For example, "`a/**/b`" matches "`a/b`", "`a/x/b`", "`a/x/y/b`" and so on.Other consecutive asterisks are considered invalid.Glob magic is incompatible with literal magic.attrAfter `attr:` comes a space separated list of "attribute requirements", all of which must be met in order for the path to be considered a match; this is in addition to the usual non-magic pathspec pattern matching. See [gitattributes[5]](https://git-scm.com/docs/gitattributes).Each of the attribute requirements for the path takes one of these forms:"`ATTR`" requires that the attribute `ATTR` be set."`-ATTR`" requires that the attribute `ATTR` be unset."`ATTR=VALUE`" requires that the attribute `ATTR` be set to the string `VALUE`."`!ATTR`" requires that the attribute `ATTR` be unspecified.Note that when matching against a tree object, attributes are still obtained from working tree, not from the given tree object.excludeAfter a path matches any non-exclude pathspec, it will be run through all exclude pathspecs (magic signature: `!` or its synonym `^`). If it matches, the path is ignored. When there is no non-exclude pathspec, the exclusion is applied to the result set as if invoked without any pathspec.
+  Pattern used to limit paths in Git commands.Pathspecs are used on the command line of "git ls-files", "git ls-tree", "git add", "git grep", "git diff", "git checkout", and many other commands to limit the scope of operations to some subset of the tree or working tree. See the documentation of each command for whether paths are relative to the current directory or toplevel. The pathspec syntax is as follows:any path matches itselfthe pathspec up to the last slash represents a directory prefix. The scope of that pathspec is limited to that subtree.the rest of the pathspec is a pattern for the remainder of the pathname. Paths relative to the directory prefix will be matched against that pattern using fnmatch(3); in particular, *** and *?* *can* match directory separators.For example, Documentation/*.jpg will match all .jpg files in the Documentation subtree, including Documentation/chapter_1/figure_1.jpg.A pathspec that begins with a colon `:` has special meaning. In the short form, the leading colon `:` is followed by zero or more "magic signature" letters (which optionally is terminated by another colon `:`), and the remainder is the pattern to match against the path. The "magic signature" consists of ASCII symbols that are neither alphanumeric, glob, regex special characters nor colon. The optional colon that terminates the "magic signature" can be omitted if the pattern begins with a character that does not belong to "magic signature" symbol set and is not a colon.In the long form, the leading colon `:` is followed by an open parenthesis `(`, a comma-separated list of zero or more "magic words", and a close parentheses `)`, and the remainder is the pattern to match against the path.A pathspec with only a colon means "there is no pathspec". This form should not be combined with other pathspec.topThe magic word `top` (magic signature: `/`) makes the pattern match from the root of the working tree, even when you are running the command from inside a subdirectory.literalWildcards in the pattern such as `*` or `?` are treated as literal characters.icaseCase insensitive match.globGit treats the pattern as a shell glob suitable for consumption by fnmatch(3) with the FNM_PATHNAME flag: wildcards in the pattern will not match a / in the pathname. For example, "Documentation/*.html" matches "Documentation/git.html" but not "Documentation/ppc/ppc.html" or "tools/perf/Documentation/perf.html".Two consecutive asterisks ("`**`") in patterns matched against full pathname may have special meaning:A leading "`**`" followed by a slash means match in all directories. For example, "`**/foo`" matches file or directory "`foo`" anywhere, the same as pattern "`foo`". "`**/foo/bar`" matches file or directory "`bar`" anywhere that is directly under directory "`foo`".A trailing "`/**`" matches everything inside. For example, "`abc/**`" matches all files inside directory "abc", relative to the location of the `.gitignore` file, with infinite depth.A slash followed by two consecutive asterisks then a slash matches zero or more directories. For example, "`a/**/b`" matches "`a/b`", "`a/x/b`", "`a/x/y/b`" and so on.Other consecutive asterisks are considered invalid.Glob magic is incompatible with literal magic.attrAfter `attr:` comes a space separated list of "attribute requirements", all of which must be met in order for the path to be considered a match; this is in addition to the usual non-magic pathspec pattern matching. See [gitattributes[5]](../5/gitattributes).Each of the attribute requirements for the path takes one of these forms:"`ATTR`" requires that the attribute `ATTR` be set."`-ATTR`" requires that the attribute `ATTR` be unset."`ATTR=VALUE`" requires that the attribute `ATTR` be set to the string `VALUE`."`!ATTR`" requires that the attribute `ATTR` be unspecified.Note that when matching against a tree object, attributes are still obtained from working tree, not from the given tree object.excludeAfter a path matches any non-exclude pathspec, it will be run through all exclude pathspecs (magic signature: `!` or its synonym `^`). If it matches, the path is ignored. When there is no non-exclude pathspec, the exclusion is applied to the result set as if invoked without any pathspec.
 
 - parent
 
@@ -3138,7 +3283,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - pickaxe
 
-  The term [pickaxe](https://git-scm.com/docs/user-manual#def_pickaxe) refers to an option to the diffcore routines that help select changes that add or delete a given text string. With the `--pickaxe-all` option, it can be used to view the full [changeset](https://git-scm.com/docs/user-manual#def_changeset) that introduced or removed, say, a particular line of text. See [git-diff[1]](https://git-scm.com/docs/git-diff).
+  The term [pickaxe](https://git-scm.com/docs/user-manual#def_pickaxe) refers to an option to the diffcore routines that help select changes that add or delete a given text string. With the `--pickaxe-all` option, it can be used to view the full [changeset](https://git-scm.com/docs/user-manual#def_changeset) that introduced or removed, say, a particular line of text. See [git-diff[1]](../1/git-diff).
 
 - plumbing
 
@@ -3158,7 +3303,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - pull
 
-  Pulling a [branch](https://git-scm.com/docs/user-manual#def_branch) means to [fetch](https://git-scm.com/docs/user-manual#def_fetch) it and [merge](https://git-scm.com/docs/user-manual#def_merge) it. See also [git-pull[1]](https://git-scm.com/docs/git-pull).
+  Pulling a [branch](https://git-scm.com/docs/user-manual#def_branch) means to [fetch](https://git-scm.com/docs/user-manual#def_fetch) it and [merge](https://git-scm.com/docs/user-manual#def_merge) it. See also [git-pull[1]](../1/git-pull).
 
 - push
 
@@ -3178,11 +3323,11 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - ref
 
-  A name that begins with `refs/` (e.g. `refs/heads/master`) that points to an [object name](https://git-scm.com/docs/user-manual#def_object_name) or another ref (the latter is called a [symbolic ref](https://git-scm.com/docs/user-manual#def_symref)). For convenience, a ref can sometimes be abbreviated when used as an argument to a Git command; see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions) for details. Refs are stored in the [repository](https://git-scm.com/docs/user-manual#def_repository).The ref namespace is hierarchical. Different subhierarchies are used for different purposes (e.g. the `refs/heads/` hierarchy is used to represent local branches).There are a few special-purpose refs that do not begin with `refs/`. The most notable example is `HEAD`.
+  A name that begins with `refs/` (e.g. `refs/heads/master`) that points to an [object name](https://git-scm.com/docs/user-manual#def_object_name) or another ref (the latter is called a [symbolic ref](https://git-scm.com/docs/user-manual#def_symref)). For convenience, a ref can sometimes be abbreviated when used as an argument to a Git command; see [gitrevisions[7]](../7/gitrevisions) for details. Refs are stored in the [repository](https://git-scm.com/docs/user-manual#def_repository).The ref namespace is hierarchical. Different subhierarchies are used for different purposes (e.g. the `refs/heads/` hierarchy is used to represent local branches).There are a few special-purpose refs that do not begin with `refs/`. The most notable example is `HEAD`.
 
 - reflog
 
-  A reflog shows the local "history" of a ref. In other words, it can tell you what the 3rd last revision in *this* repository was, and what was the current state in *this* repository, yesterday 9:14pm. See [git-reflog[1]](https://git-scm.com/docs/git-reflog) for details.
+  A reflog shows the local "history" of a ref. In other words, it can tell you what the 3rd last revision in *this* repository was, and what was the current state in *this* repository, yesterday 9:14pm. See [git-reflog[1]](../1/git-reflog) for details.
 
 - refspec
 
@@ -3226,7 +3371,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - shallow repository
 
-  A shallow [repository](https://git-scm.com/docs/user-manual#def_repository) has an incomplete history some of whose [commits](https://git-scm.com/docs/user-manual#def_commit) have [parents](https://git-scm.com/docs/user-manual#def_parent) cauterized away (in other words, Git is told to pretend that these commits do not have the parents, even though they are recorded in the [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). This is sometimes useful when you are interested only in the recent history of a project even though the real history recorded in the upstream is much larger. A shallow repository is created by giving the `--depth` option to [git-clone[1]](https://git-scm.com/docs/git-clone), and its history can be later deepened with [git-fetch[1]](https://git-scm.com/docs/git-fetch).
+  A shallow [repository](https://git-scm.com/docs/user-manual#def_repository) has an incomplete history some of whose [commits](https://git-scm.com/docs/user-manual#def_commit) have [parents](https://git-scm.com/docs/user-manual#def_parent) cauterized away (in other words, Git is told to pretend that these commits do not have the parents, even though they are recorded in the [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). This is sometimes useful when you are interested only in the recent history of a project even though the real history recorded in the upstream is much larger. A shallow repository is created by giving the `--depth` option to [git-clone[1]](../1/git-clone), and its history can be later deepened with [git-fetch[1]](../1/git-fetch).
 
 - stash entry
 
@@ -3242,7 +3387,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
 - symref
 
-  Symbolic reference: instead of containing the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id itself, it is of the format *ref: refs/some/thing* and when referenced, it recursively dereferences to this reference. *[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)* is a prime example of a symref. Symbolic references are manipulated with the [git-symbolic-ref[1]](https://git-scm.com/docs/git-symbolic-ref) command.
+  Symbolic reference: instead of containing the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id itself, it is of the format *ref: refs/some/thing* and when referenced, it recursively dereferences to this reference. *[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)* is a prime example of a symref. Symbolic references are manipulated with the [git-symbolic-ref[1]](../1/git-symbolic-ref) command.
 
 - tag
 
@@ -3517,7 +3662,7 @@ Scan `Documentation/` for other stuff left out; in particular:
 - howto’s
 - some of `technical/`?
 - hooks
-- list of commands in [git[1]](https://git-scm.com/docs/git)
+- list of commands in [git[1]](../1/git)
 
 Scan email archives for other stuff left out
 

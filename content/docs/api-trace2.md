@@ -1,3 +1,13 @@
++++
+title = "ApI Trace2"
+weight = 30
+type = "docs"
+date = 2023-07-26T09:47:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
++++
+
 https://git-scm.com/docs/api-trace2
 
 The Trace2 API can be used to print debug, performance, and telemetry information to stderr or a file. The Trace2 feature is inactive unless explicitly enabled by enabling one or more Trace2 Targets.
