@@ -30,21 +30,21 @@ Servers SHOULD handle all requests to locations matching `$GIT_URL`, as both the
 
 An example of a dumb client requesting for a loose object:
 
-```
+``` bash
 $GIT_URL:     http://example.com:8080/git/repo.git
 URL request:  http://example.com:8080/git/repo.git/objects/d0/49f6c27a2244e12041955e262a404c7faba355
 ```
 
 An example of a smart request to a catch-all gateway:
 
-```
+``` bash
 $GIT_URL:     http://example.com/daemon.cgi?svc=git&q=
 URL request:  http://example.com/daemon.cgi?svc=git&q=/info/refs&service=git-receive-pack
 ```
 
 An example of a request to a submodule:
 
-```
+``` bash
 $GIT_URL:     http://example.com/git/repo.git/path/submodule.git
 URL request:  http://example.com/git/repo.git/path/submodule.git/info/refs
 ```

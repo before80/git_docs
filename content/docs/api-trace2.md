@@ -32,7 +32,7 @@ The normal format target is a traditional `printf()` format and similar to the `
 
 For example
 
-```
+``` bash
 $ export GIT_TRACE2=~/log.normal
 $ git version
 git version 2.20.1.155.g426c96fcdb
@@ -40,7 +40,7 @@ git version 2.20.1.155.g426c96fcdb
 
 or
 
-```
+``` bash
 $ git config --global trace2.normalTarget ~/log.normal
 $ git version
 git version 2.20.1.155.g426c96fcdb
@@ -48,7 +48,7 @@ git version 2.20.1.155.g426c96fcdb
 
 yields
 
-```
+``` bash
 $ cat ~/log.normal
 12:28:42.620009 common-main.c:38                  version 2.20.1.155.g426c96fcdb
 12:28:42.620989 common-main.c:39                  start git version
@@ -63,7 +63,7 @@ The performance format target (PERF) is a column-based format to replace `GIT_TR
 
 For example
 
-```
+``` bash
 $ export GIT_TRACE2_PERF=~/log.perf
 $ git version
 git version 2.20.1.155.g426c96fcdb
@@ -71,7 +71,7 @@ git version 2.20.1.155.g426c96fcdb
 
 or
 
-```
+``` bash
 $ git config --global trace2.perfTarget ~/log.perf
 $ git version
 git version 2.20.1.155.g426c96fcdb
@@ -79,7 +79,7 @@ git version 2.20.1.155.g426c96fcdb
 
 yields
 
-```
+``` bash
 $ cat ~/log.perf
 12:28:42.620675 common-main.c:38                  | d0 | main                     | version      |     |           |           |            | 2.20.1.155.g426c96fcdb
 12:28:42.621001 common-main.c:39                  | d0 | main                     | start        |     |  0.001173 |           |            | git version
@@ -94,7 +94,7 @@ The event format target is a JSON-based format of event data suitable for teleme
 
 For example
 
-```
+``` bash
 $ export GIT_TRACE2_EVENT=~/log.event
 $ git version
 git version 2.20.1.155.g426c96fcdb
@@ -102,7 +102,7 @@ git version 2.20.1.155.g426c96fcdb
 
 or
 
-```
+``` bash
 $ git config --global trace2.eventTarget ~/log.event
 $ git version
 git version 2.20.1.155.g426c96fcdb
@@ -110,7 +110,7 @@ git version 2.20.1.155.g426c96fcdb
 
 yields
 
-```
+``` bash
 $ cat ~/log.event
 {"event":"version","sid":"20190408T191610.507018Z-H9b68c35f-P000059a8","thread":"main","time":"2019-01-16T17:28:42.620713Z","file":"common-main.c","line":38,"evt":"3","exe":"2.20.1.155.g426c96fcdb"}
 {"event":"start","sid":"20190408T191610.507018Z-H9b68c35f-P000059a8","thread":"main","time":"2019-01-16T17:28:42.621027Z","file":"common-main.c","line":39,"t_abs":0.001173,"argv":["git","version"]}

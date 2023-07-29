@@ -22,7 +22,7 @@ Prints a Git logical variable. Exits with code 1 if the variable has no value.
 
 ## 示例
 
-```
+``` bash
 $ git var GIT_AUTHOR_IDENT
 Eric W. Biederman <ebiederm@lnxi.com> 1121223278 -0600
 ```

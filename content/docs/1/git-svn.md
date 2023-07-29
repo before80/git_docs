@@ -424,7 +424,7 @@ Multiple fetch, branches, and tags keys are supported:
 
 Creating a branch in such a configuration requires disambiguating which location to use using the -d or --destination flag:
 
-```
+``` bash
 $ git svn branch -d branches/server release-2-3-0
 ```
 

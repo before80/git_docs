@@ -33,13 +33,13 @@ It is possible to disable use of replacement references for any command using th
 
 For example if commit *foo* has been replaced by commit *bar*:
 
-```
+``` bash
 $ git --no-replace-objects cat-file commit foo
 ```
 
 shows information about commit *foo*, while:
 
-```
+``` bash
 $ git cat-file commit foo
 ```
 

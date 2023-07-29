@@ -162,7 +162,7 @@ See [git-merge[1]](../git-merge) for some hints on resolving such conflicts.
 
 The following sequence attempts to backport a patch, bails out because the code the patch applies to has changed too much, and then tries again, this time exercising more care about matching up context lines.
 
-```
+``` bash
 $ git cherry-pick topic^             (1)
 $ git diff                           (2)
 $ git cherry-pick --abort            (3)

@@ -94,13 +94,13 @@ You can use it as a human-readable bundle replacement (see [git-bundle[1]](../gi
 
 ## 示例
 
-```
+``` bash
 $ git fast-export --all | (cd /empty/repository && git fast-import)
 ```
 
 This will export the whole repository and import it into the existing empty repository. Except for reencoding commits that are not in UTF-8, it would be a one-to-one mirror.
 
-```
+``` bash
 $ git fast-export master~5..master |
 	sed "s|refs/heads/master|refs/heads/other|" |
 	git fast-import
@@ -118,13 +118,13 @@ With this option, git will replace all refnames, paths, blob contents, commit an
 
 If you think you have found a git bug, you can start by exporting an anonymized stream of the whole repository:
 
-```
+``` bash
 $ git fast-export --anonymize --all >anon-stream
 ```
 
 Then confirm that the bug persists in a repository created from that stream (many bugs will not, as they really do depend on the exact repository contents):
 
-```
+``` bash
 $ git init anon-repo
 $ cd anon-repo
 $ git fast-import <../anon-stream
@@ -133,7 +133,7 @@ $ ... test your bug ...
 
 If the anonymized repository shows the bug, it may be worth sharing `anon-stream` along with a regular bug report. Note that the anonymized stream compresses very well, so gzipping it is encouraged. If you want to examine the stream to see that it does not contain any private data, you can peruse it directly before sending. You may also want to try:
 
-```
+``` bash
 $ perl -pe 's/\d+/X/g' <anon-stream | sort -u | less
 ```
 
@@ -141,7 +141,7 @@ which shows all of the unique lines (with numbers converted to "X", to collapse 
 
 Reproducing some bugs may require referencing particular commits or paths, which becomes challenging after refnames and paths have been anonymized. You can ask for a particular token to be left as-is or mapped to a new value. For example, if you have a bug which reproduces with `git rev-list sensitive -- secret.c`, you can run:
 
-```
+``` bash
 $ git fast-export --anonymize --all \
       --anonymize-map=sensitive:foo \
       --anonymize-map=secret.c:bar.c \

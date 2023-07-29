@@ -201,7 +201,7 @@ Some actions require or allow to specify two revisions, and sometimes even two p
 
 Each action is implemented as a subroutine, and must be present in %actions hash. Some actions are disabled by default, and must be turned on via feature mechanism. For example to enable *blame* view add the following to gitweb configuration file:
 
-```
+``` bash
 $feature{'blame'}{'default'} = [1];
 ```
 
@@ -436,7 +436,7 @@ The virtual host configuration (in Apache configuration file) should look like t
 
 Here actual project root is passed to gitweb via `GITWEB_PROJECT_ROOT` environment variable from a web server, so you need to put the following line in gitweb configuration file (`/etc/gitweb.conf` in above example):
 
-```
+``` bash
 $projectroot = $ENV{'GITWEB_PROJECTROOT'} || "/pub/git";
 ```
 
@@ -458,7 +458,7 @@ Second, repositories found in `/pub/scm/` and `/var/git/` will be accessible thr
 
 If you enable PATH_INFO usage in gitweb by putting
 
-```
+``` bash
 $feature{'pathinfo'}{'default'} = [1];
 ```
 

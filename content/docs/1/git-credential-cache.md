@@ -38,7 +38,7 @@ git credential-cache exit
 
 The point of this helper is to reduce the number of times you must type your username or password. For example:
 
-```
+``` bash
 $ git config credential.helper cache
 $ git push http://example.com/repo.git
 Username: <type your username>
@@ -51,7 +51,7 @@ $ git push http://example.com/repo.git
 
 You can provide options via the credential.helper configuration variable (this example increases the cache time to 1 hour):
 
-```
+``` bash
 $ git config credential.helper 'cache --timeout=3600'
 ```
 

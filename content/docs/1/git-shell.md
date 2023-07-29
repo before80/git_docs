@@ -48,7 +48,7 @@ If a `no-interactive-login` command exists, then it is run and the interactive s
 
 To disable interactive logins, displaying a greeting instead:
 
-```
+``` bash
 $ chsh -s /usr/bin/git-shell
 $ mkdir $HOME/git-shell-commands
 $ cat >$HOME/git-shell-commands/no-interactive-login <<\EOF
@@ -62,7 +62,7 @@ $ chmod +x $HOME/git-shell-commands/no-interactive-login
 
 To enable git-cvsserver access (which should generally have the `no-interactive-login` example above as a prerequisite, as creating the git-shell-commands directory allows interactive logins):
 
-```
+``` bash
 $ cat >$HOME/git-shell-commands/cvs <<\EOF
 if ! test $# = 1 && test "$1" = "server"
 then

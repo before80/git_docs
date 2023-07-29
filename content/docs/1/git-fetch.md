@@ -432,7 +432,7 @@ It’s reasonable to e.g. configure `fetch.pruneTags=true` in `~/.gitconfig` to 
 
 Pruning tags with `--prune-tags` also works when fetching a URL instead of a named remote. These will all prune tags not found on origin:
 
-```
+``` bash
 $ git fetch origin --prune --prune-tags
 $ git fetch origin --prune 'refs/tags/*:refs/tags/*'
 $ git fetch <url of origin> --prune --prune-tags

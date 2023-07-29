@@ -157,7 +157,7 @@ If you really want to use *konqueror*, then you can use something like the follo
 
 Note that all these configuration variables should probably be set using the `--global` flag, for example like this:
 
-```
+``` bash
 $ git config --global help.format web
 $ git config --global web.browser firefox
 ```

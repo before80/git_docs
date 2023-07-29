@@ -183,7 +183,7 @@ Users may select an automated merge strategy from among the following using eith
 
 You can use notes to add annotations with information that was not available at the time a commit was written.
 
-```
+``` bash
 $ git notes add -m 'Tested-by: Johannes Sixt <j6t@kdbg.org>' 72a144e2
 $ git show -s 72a144e
 [...]
@@ -195,7 +195,7 @@ Notes:
 
 In principle, a note is a regular Git blob, and any kind of (non-)format is accepted. You can binary-safely create notes from arbitrary files using *git hash-object*:
 
-```
+``` bash
 $ cc *.c
 $ blob=$(git hash-object -w a.out)
 $ git notes --ref=built add --allow-empty -C "$blob" HEAD

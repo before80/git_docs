@@ -20,14 +20,14 @@ Some basic familiarity with Git is required. Having gone through [gittutorial[7]
 
 Suppose a shared repository is set up in /pub/repo.git on the host foo.com. Then as an individual committer you can clone the shared repository over ssh with:
 
-```
+``` bash
 $ git clone foo.com:/pub/repo.git/ my-project
 $ cd my-project
 ```
 
 and hack away. The equivalent of *cvs update* is
 
-```
+``` bash
 $ git pull origin
 ```
 
@@ -39,7 +39,7 @@ which merges in any work that others might have done since the clone operation. 
 
 You can update the shared repository with your changes by first committing your changes, and then using the *git push* command:
 
-```
+``` bash
 $ git push origin master
 ```
 
@@ -47,7 +47,7 @@ to "push" those commits to the shared repository. If someone else has updated th
 
 In the *git push* command above we specify the name of the remote branch to update (`master`). If we leave that out, *git push* tries to update any branches in the remote repository that have the same name as a branch in the local repository. So the last *push* can be done with either of:
 
-```
+``` bash
 $ git push origin
 $ git push foo.com:/pub/project.git/
 ```
@@ -60,7 +60,7 @@ We assume you have already created a Git repository for your project, possibly c
 
 Assume your existing repo is at /home/alice/myproject. Create a new "bare" repository (a repository without a working tree) and fetch your project into it:
 
-```
+``` bash
 $ mkdir /pub/my-repo.git
 $ cd /pub/my-repo.git
 $ git --bare init --shared
@@ -71,7 +71,7 @@ Next, give every team member read/write access to this repository. One easy way 
 
 Put all the committers in the same group, and make the repository writable by that group:
 
-```
+``` bash
 $ chgrp -R $group /pub/my-repo.git
 ```
 
@@ -85,7 +85,7 @@ Make sure committers have a umask of at most 027, so that the directories they c
 
 First, install version 2.1 or higher of cvsps from https://github.com/andreyvit/cvsps and make sure it is in your path. Then cd to a checked out CVS working directory of the project you are interested in and run [git-cvsimport[1]](../../1/git-cvsimport):
 
-```
+``` bash
 $ git cvsimport -C <destination> <module>
 ```
 

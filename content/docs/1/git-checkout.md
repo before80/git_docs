@@ -198,7 +198,7 @@ a---b---c  branch 'master' (refers to commit 'c')
 
 When a commit is created in this state, the branch is updated to refer to the new commit. Specifically, *git commit* creates a new commit `d`, whose parent is commit `c`, and then updates branch `master` to refer to new commit `d`. `HEAD` still refers to branch `master` and so indirectly now refers to commit `d`:
 
-```
+``` bash
 $ edit; git add; git commit
 
                HEAD (refers to branch 'master')
@@ -212,7 +212,7 @@ a---b---c---d  branch 'master' (refers to commit 'd')
 
 It is sometimes useful to be able to checkout a commit that is not at the tip of any named branch, or even to create a new commit that is not referenced by a named branch. Let’s look at what happens when we checkout commit `b` (here we show two ways this may be done):
 
-```
+``` bash
 $ git checkout v2.0  # or
 $ git checkout master^^
 
@@ -227,7 +227,7 @@ a---b---c---d  branch 'master' (refers to commit 'd')
 
 Notice that regardless of which checkout command we use, `HEAD` now refers directly to commit `b`. This is known as being in detached `HEAD` state. It means simply that `HEAD` refers to a specific commit, as opposed to referring to a named branch. Let’s see what happens when we create a commit:
 
-```
+``` bash
 $ edit; git add; git commit
 
      HEAD (refers to commit 'e')
@@ -243,7 +243,7 @@ a---b---c---d  branch 'master' (refers to commit 'd')
 
 There is now a new commit `e`, but it is referenced only by `HEAD`. We can of course add yet another commit in this state:
 
-```
+``` bash
 $ edit; git add; git commit
 
 	 HEAD (refers to commit 'f')
@@ -259,7 +259,7 @@ a---b---c---d  branch 'master' (refers to commit 'd')
 
 In fact, we can perform all the normal Git operations. But, let’s look at what happens when we then checkout `master`:
 
-```
+``` bash
 $ git checkout master
 
                HEAD (refers to branch 'master')
@@ -273,7 +273,7 @@ a---b---c---d  branch 'master' (refers to commit 'd')
 
 It is important to realize that at this point nothing refers to commit `f`. Eventually commit `f` (and by extension commit `e`) will be deleted by the routine Git garbage collection process, unless we create a reference before that happens. If we have not yet moved away from commit `f`, any of these will create a reference to it:
 
-```
+``` bash
 $ git checkout -b foo  # or "git switch -c foo"  (1)
 $ git branch foo                                 (2)
 $ git tag foo                                    (3)
@@ -285,7 +285,7 @@ $ git tag foo                                    (3)
 
 If we have moved away from commit `f`, then we must first recover its object name (typically by using git reflog), and then we can create a reference to it. For example, to see the last two commits to which `HEAD` referred, we can use either of these commands:
 
-```
+``` bash
 $ git reflog -2 HEAD # or
 $ git log -g -2 HEAD
 ```

@@ -49,7 +49,7 @@ This command formats the lines of its standard input into a table with multiple 
 
 Format data by columns:
 
-```
+``` bash
 $ seq 1 24 | git column --mode=column --padding=5
 1      4      7      10     13     16     19     22
 2      5      8      11     14     17     20     23
@@ -58,7 +58,7 @@ $ seq 1 24 | git column --mode=column --padding=5
 
 Format data by rows:
 
-```
+``` bash
 $ seq 1 21 | git column --mode=row --padding=5
 1      2      3      4      5      6      7
 8      9      10     11     12     13     14
@@ -67,7 +67,7 @@ $ seq 1 21 | git column --mode=row --padding=5
 
 List some tags in a table with unequal column widths:
 
-```
+``` bash
 $ git tag --list 'v2.4.*' --column=row,dense
 v2.4.0  v2.4.0-rc0  v2.4.0-rc1  v2.4.0-rc2  v2.4.0-rc3
 v2.4.1  v2.4.10     v2.4.11     v2.4.12     v2.4.2

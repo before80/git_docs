@@ -80,7 +80,7 @@ See the notes on the quarantine environment below.
 
 Before each ref is updated, if $GIT_DIR/hooks/update file exists and is executable, it is invoked once per ref, with three parameters:
 
-```
+``` bash
 $GIT_DIR/hooks/update refname sha1-old sha1-new
 ```
 

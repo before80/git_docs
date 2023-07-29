@@ -113,7 +113,7 @@ Following these N lines, one-line log for each commit is displayed, indented N p
 
 The following example shows three branches, "master", "fixes" and "mhf":
 
-```
+``` bash
 $ git show-branch master fixes mhf
 * [master] Add 'git show-branch'.
  ! [fixes] Introduce "reset type" flag to "git reset"
@@ -146,7 +146,7 @@ If you keep your primary branches immediately under `refs/heads`, and topic bran
 
 With this, `git show-branch` without extra parameters would show only the primary branches. In addition, if you happen to be on your topic branch, it is shown as well.
 
-```
+``` bash
 $ git show-branch --reflog="10,1 hour ago" --list master
 ```
 

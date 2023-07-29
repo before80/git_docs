@@ -116,7 +116,7 @@ THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
 The following sequence switches to the `master` branch, reverts the `Makefile` to two revisions back, deletes hello.c by mistake, and gets it back from the index.
 
-```
+``` bash
 $ git switch master
 $ git restore --source master~2 Makefile  (1)
 $ rm -f hello.c
@@ -128,7 +128,7 @@ $ git restore hello.c                     (2)
 
 If you want to restore *all* C source files to match the version in the index, you can say
 
-```
+``` bash
 $ git restore '*.c'
 ```
 
@@ -136,31 +136,31 @@ Note the quotes around `*.c`. The file `hello.c` will also be restored, even tho
 
 To restore all files in the current directory
 
-```
+``` bash
 $ git restore .
 ```
 
 or to restore all working tree files with *top* pathspec magic (see [gitglossary[7]](../../7/gitglossary))
 
-```
+``` bash
 $ git restore :/
 ```
 
 To restore a file in the index to match the version in `HEAD` (this is the same as using [git-reset[1]](../git-reset))
 
-```
+``` bash
 $ git restore --staged hello.c
 ```
 
 or you can restore both the index and the working tree (this the same as using [git-checkout[1]](../git-checkout))
 
-```
+``` bash
 $ git restore --source=HEAD --staged --worktree hello.c
 ```
 
 or the short form which is more practical but less readable:
 
-```
+``` bash
 $ git restore -s@ -SW hello.c
 ```
 

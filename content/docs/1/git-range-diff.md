@@ -80,7 +80,7 @@ This command uses the `diff.color.*` and `pager.range-diff` settings (the latter
 
 When a rebase required merge conflicts to be resolved, compare the changes introduced by the rebase directly afterwards using:
 
-```
+``` bash
 $ git range-diff @{u} @{1} @
 ```
 

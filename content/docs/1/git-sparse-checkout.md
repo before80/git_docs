@@ -193,7 +193,7 @@ Unless `core.sparseCheckoutCone` is explicitly set to `false`, Git will parse th
 
 In the cone mode case, despite the fact that full patterns are written to the $GIT_DIR/info/sparse-checkout file, the `git sparse-checkout list` subcommand will list the directories that define the recursive patterns. For the example sparse-checkout file above, the output is as follows:
 
-```
+``` bash
 $ git sparse-checkout list
 A/B/C
 ```

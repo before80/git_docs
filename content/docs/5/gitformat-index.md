@@ -6,7 +6,7 @@ gitformat-index - Git index format
 
 ## 概述
 
-```
+``` bash
 $GIT_DIR/index
 ```
 

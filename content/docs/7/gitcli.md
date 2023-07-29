@@ -97,7 +97,7 @@ gitcli
 
 ​	您可以将必需的选项参数作为命令行上的单独单词编写。这意味着以下所有用法都有效：
 
-```
+``` bash
 $ git foo --long-opt=Arg
 $ git foo --long-opt Arg
 $ git foo -oArg
@@ -106,7 +106,7 @@ $ git foo -o Arg
 
 ​	但是，对于具有可选值的开关，这是不允许的，必须使用 stuck 格式：
 
-```
+``` bash
 $ git describe --abbrev HEAD     # correct
 $ git describe --abbrev=10 HEAD  # correct
 $ git describe --abbrev 10 HEAD  # NOT WHAT YOU MEANT

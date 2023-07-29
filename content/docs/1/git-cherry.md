@@ -42,7 +42,7 @@ Outputs the SHA1 of every commit in `<limit>..<head>`, prefixed with `-` for com
 
 git-cherry is frequently used in patch-based workflows (see [gitworkflows[7]](../../7/gitworkflows)) to determine if a series of patches has been applied by the upstream maintainer. In such a workflow you might create and send a topic branch like this:
 
-```
+``` bash
 $ git checkout -b topic origin/master
 # work and create some commits
 $ git format-patch origin/master
@@ -51,7 +51,7 @@ $ git send-email ... 00*
 
 Later, you can see whether your changes have been applied by saying (still on `topic`):
 
-```
+``` bash
 $ git fetch  # update your notion of origin/master
 $ git cherry -v
 ```
@@ -60,7 +60,7 @@ $ git cherry -v
 
 In a situation where topic consisted of three commits, and the maintainer applied two of them, the situation might look like:
 
-```
+``` bash
 $ git log --graph --oneline --decorate --boundary origin/master...topic
 * 7654321 (origin/master) upstream tip commit
 [... snip some other commits ...]
@@ -76,7 +76,7 @@ o 1234567 branch point
 
 In such cases, git-cherry shows a concise summary of what has yet to be applied:
 
-```
+``` bash
 $ git cherry origin/master topic
 - cccc000... commit C
 + bbbb000... commit B
@@ -89,7 +89,7 @@ Here, we see that the commits A and C (marked with `-`) can be dropped from your
 
 The optional <limit> is useful in cases where your topic is based on other work that is not in upstream. Expanding on the previous example, this might look like:
 
-```
+``` bash
 $ git log --graph --oneline --decorate --boundary origin/master...topic
 * 7654321 (origin/master) upstream tip commit
 [... snip some other commits ...]
@@ -108,7 +108,7 @@ o 1234567 merge-base between upstream and topic
 
 By specifying `base` as the limit, you can avoid listing commits between `base` and `topic`:
 
-```
+``` bash
 $ git cherry origin/master topic base
 - cccc000... commit C
 + bbbb000... commit B

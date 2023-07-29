@@ -37,7 +37,7 @@ In fact, `git bisect` can be used to find the commit that changed **any** proper
 
 As an example, suppose you are trying to find the commit that broke a feature that was known to work in version `v2.6.13-rc2` of your project. You start a bisect session as follows:
 
-```
+``` bash
 $ git bisect start
 $ git bisect bad                 # Current version is bad
 $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 is known to be good
@@ -51,13 +51,13 @@ Bisecting: 675 revisions left to test after this (roughly 10 steps)
 
 You should now compile the checked-out version and test it. If that version works correctly, type
 
-```
+``` bash
 $ git bisect good
 ```
 
 If that version is broken, type
 
-```
+``` bash
 $ git bisect bad
 ```
 
@@ -75,7 +75,7 @@ Eventually there will be no more revisions left to inspect, and the command will
 
 After a bisect session, to clean up the bisection state and return to the original HEAD, issue the following command:
 
-```
+``` bash
 $ git bisect reset
 ```
 
@@ -83,7 +83,7 @@ By default, this will return your tree to the commit that was checked out before
 
 With an optional argument, you can return to a different commit instead:
 
-```
+``` bash
 $ git bisect reset <commit>
 ```
 
@@ -143,13 +143,13 @@ Then, use `git bisect <term-old>` and `git bisect <term-new>` instead of `git bi
 
 To see the currently remaining suspects in *gitk*, issue the following command during the bisection process (the subcommand `view` can be used as an alternative to `visualize`):
 
-```
+``` bash
 $ git bisect visualize
 ```
 
 If the `DISPLAY` environment variable is not set, *git log* is used instead. You can also give command-line options such as `-p` and `--stat`.
 
-```
+``` bash
 $ git bisect visualize --stat
 ```
 
@@ -157,13 +157,13 @@ $ git bisect visualize --stat
 
 After having marked revisions as good or bad, issue the following command to show what has been done so far:
 
-```
+``` bash
 $ git bisect log
 ```
 
 If you discover that you made a mistake in specifying the status of a revision, you can save the output of this command to a file, edit it to remove the incorrect entries, and then issue the following commands to return to a corrected state:
 
-```
+``` bash
 $ git bisect reset
 $ git bisect replay that-file
 ```
@@ -174,7 +174,7 @@ If, in the middle of a bisect session, you know that the suggested revision is n
 
 For example:
 
-```
+``` bash
 $ git bisect good/bad			# previous round was good or bad.
 Bisecting: 337 revisions left to test after this (roughly 9 steps)
 $ git bisect visualize			# oops, that is uninteresting.
@@ -188,7 +188,7 @@ Then compile and test the chosen revision, and afterwards mark the revision as g
 
 Instead of choosing a nearby commit by yourself, you can ask Git to do it for you by issuing the command:
 
-```
+``` bash
 $ git bisect skip                 # Current version cannot be tested
 ```
 
@@ -196,7 +196,7 @@ However, if you skip a commit adjacent to the one you are looking for, Git will 
 
 You can also skip a range of commits, instead of just one commit, using range notation. For example:
 
-```
+``` bash
 $ git bisect skip v2.5..v2.6
 ```
 
@@ -204,7 +204,7 @@ This tells the bisect process that no commit after `v2.5`, up to and including `
 
 Note that if you also want to skip the first commit of the range you would issue the command:
 
-```
+``` bash
 $ git bisect skip v2.5 v2.5..v2.6
 ```
 
@@ -214,13 +214,13 @@ This tells the bisect process that the commits between `v2.5` and `v2.6` (inclus
 
 You can further cut down the number of trials, if you know what part of the tree is involved in the problem you are tracking down, by specifying path parameters when issuing the `bisect start` command:
 
-```
+``` bash
 $ git bisect start -- arch/i386 include/asm-i386
 ```
 
 If you know beforehand more than one good commit, you can narrow the bisect space down by specifying all of the good commits immediately after the bad commit when issuing the `bisect start` command:
 
-```
+``` bash
 $ git bisect start v2.6.20-rc6 v2.6.20-rc4 v2.6.20-rc1 --
                    # v2.6.20-rc6 is bad
                    # v2.6.20-rc4 and v2.6.20-rc1 are good
@@ -230,7 +230,7 @@ $ git bisect start v2.6.20-rc6 v2.6.20-rc4 v2.6.20-rc1 --
 
 If you have a script that can tell if the current source code is good or bad, you can bisect by issuing the command:
 
-```
+``` bash
 $ git bisect run my_script arguments
 ```
 
@@ -353,7 +353,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
   or:
 
-```
+``` bash
 $ git bisect start --term-old broken --term-new fixed
 $ git bisect fixed
 $ git bisect broken HEAD~10

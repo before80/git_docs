@@ -73,7 +73,7 @@ Use of this utility is encouraged in favor of directly accessing files under the
 
 The output is in the format: *<SHA-1 ID>* *<space>* *<reference name>*.
 
-```
+``` bash
 $ git show-ref --head --dereference
 832e76a9899f560a90ffd62ae2ce83bbeff58f54 HEAD
 832e76a9899f560a90ffd62ae2ce83bbeff58f54 refs/heads/master
@@ -87,7 +87,7 @@ $ git show-ref --head --dereference
 
 When using --hash (and not --dereference) the output format is: *<SHA-1 ID>*
 
-```
+``` bash
 $ git show-ref --heads --hash
 2e3ba0114a1f52b47df29743d6915d056be13278
 185008ae97960c8d551adcd9e23565194651b5d1

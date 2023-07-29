@@ -352,7 +352,7 @@ If you do not have multi-factor authentication set up on your Gmail account, you
 
 Once your commits are ready to be sent to the mailing list, run the following commands:
 
-```
+``` bash
 $ git format-patch --cover-letter -M origin/master -o outgoing/
 $ edit outgoing/0000-*
 $ git send-email outgoing/*

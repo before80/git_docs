@@ -74,7 +74,7 @@ Displays references available in a remote repository along with the associated c
 
 ## 示例
 
-```
+``` bash
 $ git ls-remote --tags .
 d6602ec5194c87b0fc87103ca4d67251c76f233a	refs/tags/v0.99
 f25a265a342aed6041ab0cc484224d9ca54b6f41	refs/tags/v0.99.1

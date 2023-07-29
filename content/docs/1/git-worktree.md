@@ -158,7 +158,7 @@ By default, the repository `config` file is shared across all worktrees. If the 
 
 In order to have worktree-specific configuration, you can turn on the `worktreeConfig` extension, e.g.:
 
-```
+``` bash
 $ git config extensions.worktreeConfig true
 ```
 
@@ -192,7 +192,7 @@ When `extensions.worktreeConfig` is enabled, the config file `.git/worktrees/<id
 
 The `worktree list` command has two output formats. The default format shows the details on a single line with columns. For example:
 
-```
+``` bash
 $ git worktree list
 /path/to/bare-source            (bare)
 /path/to/linked-worktree        abcd1234 [master]
@@ -204,7 +204,7 @@ The command also shows annotations for each worktree, according to its state. Th
 - `locked`, if the worktree is locked.
 - `prunable`, if the worktree can be pruned via `git worktree prune`.
 
-```
+``` bash
 $ git worktree list
 /path/to/linked-worktree    abcd1234 [master]
 /path/to/locked-worktree    acbd5678 (brancha) locked
@@ -213,7 +213,7 @@ $ git worktree list
 
 For these annotations, a reason might also be available and this can be seen using the verbose mode. The annotation is then moved to the next line indented followed by the additional information.
 
-```
+``` bash
 $ git worktree list --verbose
 /path/to/linked-worktree              abcd1234 [master]
 /path/to/locked-worktree-no-reason    abcd5678 (detached HEAD) locked
@@ -229,7 +229,7 @@ Note that the annotation is moved to the next line if the additional information
 
 The porcelain format has a line per attribute. If `-z` is given then the lines are terminated with NUL rather than a newline. Attributes are listed with a label and value separated by a single space. Boolean attributes (like `bare` and `detached`) are listed as a label only, and are present only if the value is true. Some attributes (like `locked`) can be listed as a label only or with a value depending upon whether a reason is available. The first attribute of a worktree is always `worktree`, an empty line indicates the end of the record. For example:
 
-```
+``` bash
 $ git worktree list --porcelain
 worktree /path/to/bare-source
 bare
@@ -260,7 +260,7 @@ prunable gitdir file points to non-existent location
 
 Unless `-z` is used any "unusual" characters in the lock reason such as newlines are escaped and the entire reason is quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). For Example:
 
-```
+``` bash
 $ git worktree list --porcelain
 ...
 locked "reason\nwhy is locked"
@@ -271,7 +271,7 @@ locked "reason\nwhy is locked"
 
 You are in the middle of a refactoring session and your boss comes in and demands that you fix something immediately. You might typically use [git-stash[1]](../git-stash) to store your changes away temporarily, however, your working tree is in such a state of disarray (with new, moved, and removed files, and other bits and pieces strewn around) that you don’t want to risk disturbing any of it. Instead, you create a temporary linked worktree to make the emergency fix, remove it when done, and then resume your earlier refactoring session.
 
-```
+``` bash
 $ git worktree add -b emergency-fix ../temp master
 $ pushd ../temp
 # ... hack hack hack ...

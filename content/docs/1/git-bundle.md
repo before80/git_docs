@@ -94,7 +94,7 @@ The *git bundle create* command resolves the reference names for you using the s
 
 All of these simple cases are OK (assuming we have a "master" and "next" branch):
 
-```
+``` bash
 $ git bundle create master.bundle master
 $ echo master | git bundle create master.bundle --stdin
 $ git bundle create master-and-next.bundle master next
@@ -103,14 +103,14 @@ $ (echo master; echo next) | git bundle create master-and-next.bundle --stdin
 
 And so are these (and the same but omitted `--stdin` examples):
 
-```
+``` bash
 $ git bundle create recent-master.bundle master~10..master
 $ git bundle create recent-updates.bundle master~10..master next~5..next
 ```
 
 A revision name or a range whose right-hand-side cannot be resolved to a reference is not accepted:
 
-```
+``` bash
 $ git bundle create HEAD.bundle $(git rev-parse HEAD)
 fatal: Refusing to create empty bundle.
 $ git bundle create master-yesterday.bundle master~10..master~5
@@ -123,13 +123,13 @@ When creating bundles it is possible to create a self-contained bundle that can 
 
 Feeding a revision such as `new` to `git bundle create` will create a bundle file that contains all the objects reachable from the revision `new`. That bundle can be unbundled in any repository to obtain a full history that leads to the revision `new`:
 
-```
+``` bash
 $ git bundle create full.bundle new
 ```
 
 A revision range such as `old..new` will produce a bundle file that will require the revision `old` (and any objects reachable from it) to exist for the bundle to be "unbundle"-able:
 
-```
+``` bash
 $ git bundle create full.bundle old..new
 ```
 
@@ -188,25 +188,25 @@ If you know up to what commit the intended recipient repository should have the 
 
 You can use a tag that is present in both:
 
-```
+``` bash
 $ git bundle create mybundle v1.0.0..master
 ```
 
 You can use a prerequisite based on time:
 
-```
+``` bash
 $ git bundle create mybundle --since=10.days master
 ```
 
 You can use the number of commits:
 
-```
+``` bash
 $ git bundle create mybundle -10 master
 ```
 
 You can run `git-bundle verify` to see if you can extract from a bundle that was created with a prerequisite:
 
-```
+``` bash
 $ git bundle verify mybundle
 ```
 
@@ -214,13 +214,13 @@ This will list what commits you must have in order to extract from the bundle an
 
 A bundle from a recipient repository’s point of view is just like a regular repository which it fetches or pulls from. You can, for example, map references when fetching:
 
-```
+``` bash
 $ git fetch mybundle master:localRef
 ```
 
 You can also see what references it offers:
 
-```
+``` bash
 $ git ls-remote mybundle
 ```
 

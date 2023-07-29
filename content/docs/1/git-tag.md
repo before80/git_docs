@@ -236,7 +236,7 @@ to get the following updates...
 
 becomes:
 
-```
+``` bash
 $ git pull git://git..../proj.git master
 ```
 
@@ -256,7 +256,7 @@ To set the date used in future tag objects, set the environment variable GIT_COM
 
 For example:
 
-```
+``` bash
 $ GIT_COMMITTER_DATE="2006-10-02 10:31" git tag -s v1.0.1
 ```
 

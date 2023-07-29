@@ -138,7 +138,7 @@ Using Gmail’s IMAP interface:
 
 Once the commits are ready to be sent, run the following command:
 
-```
+``` bash
 $ git format-patch --cover-letter -M --stdout origin/master | git imap-send
 ```
 

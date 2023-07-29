@@ -143,13 +143,13 @@ In such a case, `git merge-base origin/master topic` would return the parent of 
 
 Hence
 
-```
+``` bash
 $ fork_point=$(git merge-base --fork-point origin/master topic)
 ```
 
 will find B0, and
 
-```
+``` bash
 $ git rebase --onto origin/master $fork_point topic
 ```
 

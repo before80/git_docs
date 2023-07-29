@@ -137,7 +137,7 @@ If user systemd timers are available, they will be used as a replacement of `cro
 
 In this case, `git maintenance start` will create user systemd timer units and start the timers. The current list of user-scheduled tasks can be found by running `systemctl --user list-timers`. The timers written by `git maintenance start` are similar to this:
 
-```
+``` bash
 $ systemctl --user list-timers
 NEXT                         LEFT          LAST                         PASSED     UNIT                         ACTIVATES
 Thu 2021-04-29 19:00:00 CEST 42min left    Thu 2021-04-29 18:00:11 CEST 17min ago  git-maintenance@hourly.timer git-maintenance@hourly.service
@@ -171,7 +171,7 @@ Instead, `git maintenance start` interacts with the `launchctl` tool, which is t
 
 Your user-specific scheduled tasks are stored as XML-formatted `.plist` files in `~/Library/LaunchAgents/`. You can see the currently-registered tasks using the following command:
 
-```
+``` bash
 $ ls ~/Library/LaunchAgents/org.git-scm.git*
 org.git-scm.git.daily.plist
 org.git-scm.git.hourly.plist

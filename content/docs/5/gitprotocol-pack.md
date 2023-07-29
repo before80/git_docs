@@ -70,7 +70,7 @@ host-parameter is used for the git-daemon name based virtual hosting. See --inte
 
 Basically what the Git client is doing to connect to an *upload-pack* process on the server side over the Git protocol is this:
 
-```
+``` bash
 $ echo -e -n \
   "003agit-upload-pack /schacon/gitbook.git\0host=example.com\0" |
   nc -v example.com 9418
@@ -80,7 +80,7 @@ $ echo -e -n \
 
 Initiating the upload-pack or receive-pack processes over SSH is executing the binary on the server via SSH remote execution. It is basically equivalent to running this:
 
-```
+``` bash
 $ ssh git.example.com "git-upload-pack '/project.git'"
 ```
 

@@ -18,13 +18,13 @@ If you are instead primarily interested in using Git to fetch a project, for exa
 
 First, note that you can get documentation for a command such as `git log --graph` with:
 
-```
+``` bash
 $ man git-log
 ```
 
 or:
 
-```
+``` bash
 $ git help log
 ```
 
@@ -32,7 +32,7 @@ With the latter, you can use the manual viewer of your choice; see [git-help[1]]
 
 It is a good idea to introduce yourself to Git with your name and public email address before doing any operation. The easiest way to do so is:
 
-```
+``` bash
 $ git config --global user.name "Your Name Comes Here"
 $ git config --global user.email you@yourdomain.example.com
 ```
@@ -41,7 +41,7 @@ $ git config --global user.email you@yourdomain.example.com
 
 Assume you have a tarball project.tar.gz with your initial work. You can place it under Git revision control as follows.
 
-```
+``` bash
 $ tar xzf project.tar.gz
 $ cd project
 $ git init
@@ -57,13 +57,13 @@ You’ve now initialized the working directory—you may notice a new directory 
 
 Next, tell Git to take a snapshot of the contents of all files under the current directory (note the *.*), with *git add*:
 
-```
+``` bash
 $ git add .
 ```
 
 This snapshot is now stored in a temporary staging area which Git calls the "index". You can permanently store the contents of the index in the repository with *git commit*:
 
-```
+``` bash
 $ git commit
 ```
 
@@ -73,19 +73,19 @@ This will prompt you for a commit message. You’ve now stored the first version
 
 Modify some files, then add their updated contents to the index:
 
-```
+``` bash
 $ git add file1 file2 file3
 ```
 
 You are now ready to commit. You can see what is about to be committed using *git diff* with the --cached option:
 
-```
+``` bash
 $ git diff --cached
 ```
 
 (Without --cached, *git diff* will show you any changes that you’ve made but not yet added to the index.) You can also get a brief summary of the situation with *git status*:
 
-```
+``` bash
 $ git status
 On branch master
 Changes to be committed:
@@ -99,7 +99,7 @@ Your branch is up to date with 'origin/master'.
 
 If you need to make any further adjustments, do so now, and then add any newly modified content to the index. Finally, commit your changes with:
 
-```
+``` bash
 $ git commit
 ```
 
@@ -107,7 +107,7 @@ This will again prompt you for a message describing the change, and then record 
 
 Alternatively, instead of running *git add* beforehand, you can use
 
-```
+``` bash
 $ git commit -a
 ```
 
@@ -123,19 +123,19 @@ Many revision control systems provide an `add` command that tells the system to 
 
 At any point you can view the history of your changes using
 
-```
+``` bash
 $ git log
 ```
 
 If you also want to see complete diffs at each step, use
 
-```
+``` bash
 $ git log -p
 ```
 
 Often the overview of the change is useful to get a feel of each step
 
-```
+``` bash
 $ git log --stat --summary
 ```
 
@@ -143,13 +143,13 @@ $ git log --stat --summary
 
 A single Git repository can maintain multiple branches of development. To create a new branch named "experimental", use
 
-```
+``` bash
 $ git branch experimental
 ```
 
 If you now run
 
-```
+``` bash
 $ git branch
 ```
 
@@ -162,7 +162,7 @@ you’ll get a list of all existing branches:
 
 The "experimental" branch is the one you just created, and the "master" branch is a default branch that was created for you automatically. The asterisk marks the branch you are currently on; type
 
-```
+``` bash
 $ git switch experimental
 ```
 
@@ -185,25 +185,25 @@ $ git commit -a
 
 at this point the two branches have diverged, with different changes made in each. To merge the changes made in experimental into master, run
 
-```
+``` bash
 $ git merge experimental
 ```
 
 If the changes don’t conflict, you’re done. If there are conflicts, markers will be left in the problematic files showing the conflict;
 
-```
+``` bash
 $ git diff
 ```
 
 will show this. Once you’ve edited the files to resolve the conflicts,
 
-```
+``` bash
 $ git commit -a
 ```
 
 will commit the result of the merge. Finally,
 
-```
+``` bash
 $ gitk
 ```
 
@@ -211,7 +211,7 @@ will show a nice graphical representation of the resulting history.
 
 At this point you could delete the experimental branch with
 
-```
+``` bash
 $ git branch -d experimental
 ```
 
@@ -219,7 +219,7 @@ This command ensures that the changes in the experimental branch are already in 
 
 If you develop on a branch crazy-idea, then regret it, you can always delete the branch with
 
-```
+``` bash
 $ git branch -D crazy-idea
 ```
 
@@ -269,7 +269,7 @@ This operation is safe even if Alice has uncommitted local changes. The range no
 
 If Alice wants to visualize what Bob did since their histories forked she can issue the following command:
 
-```
+``` bash
 $ gitk HEAD..FETCH_HEAD
 ```
 
@@ -277,7 +277,7 @@ This uses the same two-dot range notation we saw earlier with *git log*.
 
 Alice may want to view what both of them did since they forked. She can use three-dot form instead of the two-dot form:
 
-```
+``` bash
 $ gitk HEAD...FETCH_HEAD
 ```
 
@@ -357,7 +357,7 @@ Git can also be used in a CVS-like mode, with a central repository that various 
 
 Git history is represented as a series of interrelated commits. We have already seen that the *git log* command can list those commits. Note that first line of each git log entry also gives a name for the commit:
 
-```
+``` bash
 $ git log
 commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
 Author: Junio C Hamano <junkio@cox.net>
@@ -368,13 +368,13 @@ Date:   Tue May 16 17:18:22 2006 -0700
 
 We can give this name to *git show* to see the details about this commit.
 
-```
+``` bash
 $ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
 ```
 
 But there are other ways to refer to commits. You can use any initial part of the name that is long enough to uniquely identify the commit:
 
-```
+``` bash
 $ git show c82a22c39c	# the first few characters of the name are
 			# usually enough
 $ git show HEAD		# the tip of the current branch
@@ -383,7 +383,7 @@ $ git show experimental	# the tip of the "experimental" branch
 
 Every commit usually has one "parent" commit which points to the previous state of the project:
 
-```
+``` bash
 $ git show HEAD^  # to see the parent of HEAD
 $ git show HEAD^^ # to see the grandparent of HEAD
 $ git show HEAD~4 # to see the great-great grandparent of HEAD
@@ -391,14 +391,14 @@ $ git show HEAD~4 # to see the great-great grandparent of HEAD
 
 Note that merge commits may have more than one parent:
 
-```
+``` bash
 $ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)
 $ git show HEAD^2 # show the second parent of HEAD
 ```
 
 You can also give commits names of your own; after running
 
-```
+``` bash
 $ git tag v2.5 1b2e1d63ff
 ```
 
@@ -406,7 +406,7 @@ you can refer to 1b2e1d63ff by the name "v2.5". If you intend to share this name
 
 Any Git command that needs to know a commit can take any of these names. For example:
 
-```
+``` bash
 $ git diff v2.5 HEAD	 # compare the current HEAD to v2.5
 $ git branch stable v2.5 # start a new branch named "stable" based
 			 # at v2.5
@@ -418,7 +418,7 @@ Be careful with that last command: in addition to losing any changes in the work
 
 The *git grep* command can search for strings in any version of your project, so
 
-```
+``` bash
 $ git grep "hello" v2.5
 ```
 
@@ -426,7 +426,7 @@ searches for all occurrences of "hello" in v2.5.
 
 If you leave out the commit name, *git grep* will search any of the files it manages in your current directory. So
 
-```
+``` bash
 $ git grep "hello"
 ```
 
@@ -434,7 +434,7 @@ is a quick way to search just the files that are tracked by Git.
 
 Many Git commands also take sets of commits, which can be specified in a number of ways. Here are some examples with *git log*:
 
-```
+``` bash
 $ git log v2.5..v2.6            # commits between v2.5 and v2.6
 $ git log v2.5..                # commits since v2.5
 $ git log --since="2 weeks ago" # commits from the last 2 weeks
@@ -444,13 +444,13 @@ $ git log v2.5.. Makefile       # commits since v2.5 which modify
 
 You can also give *git log* a "range" of commits where the first is not necessarily an ancestor of the second; for example, if the tips of the branches "stable" and "master" diverged from a common commit some time ago, then
 
-```
+``` bash
 $ git log stable..master
 ```
 
 will list commits made in the master branch but not in the stable branch, while
 
-```
+``` bash
 $ git log master..stable
 ```
 
@@ -460,7 +460,7 @@ The *git log* command has a weakness: it must present commits in a list. When th
 
 Most projects with multiple contributors (such as the Linux kernel, or Git itself) have frequent merges, and *gitk* does a better job of visualizing their history. For example,
 
-```
+``` bash
 $ gitk --since="2 weeks ago" drivers/
 ```
 
@@ -468,13 +468,13 @@ allows you to browse any commits from the last 2 weeks of commits that modified 
 
 Finally, most commands that take filenames will optionally allow you to precede any filename by a commit, to specify a particular version of the file:
 
-```
+``` bash
 $ git diff v2.5:Makefile HEAD:Makefile.in
 ```
 
 You can also use *git show* to see any such file:
 
-```
+``` bash
 $ git show v2.5:Makefile
 ```
 

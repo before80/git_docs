@@ -121,26 +121,26 @@ THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
 The following command switches to the "master" branch:
 
-```
+``` bash
 $ git switch master
 ```
 
 After working in the wrong branch, switching to the correct branch would be done using:
 
-```
+``` bash
 $ git switch mytopic
 ```
 
 However, your "wrong" branch and correct "mytopic" branch may differ in files that you have modified locally, in which case the above switch would fail like this:
 
-```
+``` bash
 $ git switch mytopic
 error: You have local changes to 'frotz'; not switching branches.
 ```
 
 You can give the `-m` flag to the command, which would try a three-way merge:
 
-```
+``` bash
 $ git switch -m mytopic
 Auto-merging frotz
 ```
@@ -149,20 +149,20 @@ After this three-way merge, the local modifications are *not* registered in your
 
 To switch back to the previous branch before we switched to mytopic (i.e. "master" branch):
 
-```
+``` bash
 $ git switch -
 ```
 
 You can grow a new branch from any commit. For example, switch to "HEAD~3" and create branch "fixup":
 
-```
+``` bash
 $ git switch -c fixup HEAD~3
 Switched to a new branch 'fixup'
 ```
 
 If you want to start a new branch from a remote branch of the same name:
 
-```
+``` bash
 $ git switch new-topic
 Branch 'new-topic' set up to track remote branch 'new-topic' from 'origin'
 Switched to a new branch 'new-topic'
@@ -170,14 +170,14 @@ Switched to a new branch 'new-topic'
 
 To check out commit `HEAD~3` for temporary inspection or experiment without creating a new branch:
 
-```
+``` bash
 $ git switch --detach HEAD~3
 HEAD is now at 9fc9555312 Merge branch 'cc/shared-index-permbits'
 ```
 
 If it turns out whatever you have done is worth keeping, you can always create a new name for it (without switching away):
 
-```
+``` bash
 $ git switch -c good-surprises
 ```
 

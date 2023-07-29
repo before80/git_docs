@@ -698,7 +698,7 @@ After writing a crash report fast-import will close the current packfile and exp
 
 An example crash:
 
-```
+``` bash
 $ cat >in <<END_OF_INPUT
 # my very first test commit
 commit refs/heads/master

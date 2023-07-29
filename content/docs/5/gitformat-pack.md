@@ -6,7 +6,7 @@ gitformat-pack - Git pack format
 
 ## 概述
 
-```
+``` bash
 $GIT_DIR/objects/pack/pack-.{pack,idx}
 $GIT_DIR/objects/pack/pack-.rev
 $GIT_DIR/objects/pack/pack-*.mtimes

@@ -237,7 +237,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 When recording your own work, the contents of modified files in your working tree are temporarily stored to a staging area called the "index" with *git add*. A file can be reverted back, only in the index but not in the working tree, to that of the last commit with `git restore --staged <file>`, which effectively reverts *git add* and prevents the changes to this file from participating in the next commit. After building the state to be committed incrementally with these commands, `git commit` (without any pathname parameter) is used to record what has been staged so far. This is the most basic form of the command. An example:
 
-```
+``` bash
 $ edit hello.c
 $ git rm goodbye.c
 $ git add hello.c
@@ -246,7 +246,7 @@ $ git commit
 
 Instead of staging files after each individual change, you can tell `git commit` to notice the changes to the files whose contents are tracked in your working tree and do corresponding `git add` and `git rm` for you. That is, this example does the same as the earlier example if there is no other change in your working tree:
 
-```
+``` bash
 $ edit hello.c
 $ rm goodbye.c
 $ git commit -a
@@ -256,7 +256,7 @@ The command `git commit -a` first looks at your working tree, notices that you h
 
 After staging changes to many files, you can alter the order the changes are recorded in, by giving pathnames to `git commit`. When pathnames are given, the command makes a commit that only records the changes made to the named paths:
 
-```
+``` bash
 $ edit hello.c hello.h
 $ git add hello.c hello.h
 $ edit Makefile
@@ -265,7 +265,7 @@ $ git commit Makefile
 
 This makes a commit that records the modification to `Makefile`. The changes staged for `hello.c` and `hello.h` are not included in the resulting commit. However, their changes are not lost — they are still staged and merely held back. After the above sequence, if you do:
 
-```
+``` bash
 $ git commit
 ```
 
@@ -273,7 +273,7 @@ this second commit would record the changes to `hello.c` and `hello.h` as expect
 
 After a merge (initiated by *git merge* or *git pull*) stops because of conflicts, cleanly merged paths are already staged to be committed for you, and paths that conflicted are left in unmerged state. You would have to first check which paths are conflicting with *git status* and after fixing them manually in your working tree, you would stage the result as usual with *git add*:
 
-```
+``` bash
 $ git status | grep unmerged
 unmerged: hello.c
 $ edit hello.c
@@ -282,7 +282,7 @@ $ git add hello.c
 
 After resolving conflicts and staging the result, `git ls-files -u` would stop mentioning the conflicted path. When you are done, run `git commit` to finally record the merge:
 
-```
+``` bash
 $ git commit
 ```
 

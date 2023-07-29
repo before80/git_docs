@@ -140,7 +140,7 @@ The attributes allow a fine-grained control, how the line endings are converted.
 
 From a clean working directory:
 
-```
+``` bash
 $ echo "* text=auto" >.gitattributes
 $ git add --renormalize .
 $ git status        # Show files that will be normalized

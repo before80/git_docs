@@ -67,7 +67,7 @@ This command is intended mostly for internal use by scripts automatically invoki
 
 ## 示例
 
-```
+``` bash
 $ git fetch origin master
 $ git fmt-merge-msg --log <$GIT_DIR/FETCH_HEAD
 ```

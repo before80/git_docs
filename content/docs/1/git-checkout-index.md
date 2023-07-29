@@ -85,13 +85,13 @@ Just doing `git checkout-index` does nothing. You probably meant `git checkout-i
 
 Intuitiveness is not the goal here. Repeatability is. The reason for the "no arguments means no work" behavior is that from scripts you are supposed to be able to do:
 
-```
+``` bash
 $ find . -name '*.h' -print0 | xargs -0 git checkout-index -f --
 ```
 
 which will force all existing `*.h` files to be replaced with their cached copies. If an empty command line implied "all", then this would force-refresh everything in the index, which was not the point. But since *git checkout-index* accepts --stdin it would be faster to use:
 
-```
+``` bash
 $ find . -name '*.h' -print0 | git checkout-index -f -z --stdin
 ```
 

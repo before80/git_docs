@@ -558,7 +558,7 @@ If you want to fold two or more commits into one, replace the command "pick" for
 
 For example, if you want to reorder the last 5 commits, such that what was `HEAD~4` becomes the new `HEAD`. To achieve that, you would call `git rebase` like this:
 
-```
+``` bash
 $ git rebase -i HEAD~5
 ```
 
@@ -576,7 +576,7 @@ You might want to recreate merge commits, e.g. if you have a history like this:
 
 Suppose you want to rebase the side branch starting at "A" to "Q". Make sure that the current `HEAD` is "B", and call
 
-```
+``` bash
 $ git rebase -i -r --onto Q O
 ```
 
@@ -596,7 +596,7 @@ The interactive rebase will stop when a command fails (i.e. exits with non-0 sta
 
 The "exec" command launches the command in a shell (the one specified in `$SHELL`, or the default shell if `$SHELL` is not set), so you can use shell features (like "cd", ">", ";" …). The command is run from the root of the working tree.
 
-```
+``` bash
 $ git rebase -i --exec "make test"
 ```
 

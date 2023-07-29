@@ -1,8 +1,25 @@
++++
+title = "Git核心教程"
+weight = 30
+type = "docs"
+date = 2023-07-26T09:47:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# Gitcore Tutorial - Git核心教程
+
 https://git-scm.com/docs/gitcore-tutorial
+
+
 
 ## 名称
 
 gitcore-tutorial - A Git core tutorial for developers
+
+gitcore-tutorial - 面向开发者的Git核心教程
 
 ## 概述
 
@@ -12,25 +29,39 @@ git *
 
 This tutorial explains how to use the "core" Git commands to set up and work with a Git repository.
 
+​	本教程解释了如何使用"core" Git命令来设置和使用Git仓库。
+
 If you just need to use Git as a revision control system you may prefer to start with "A Tutorial Introduction to Git" ([gittutorial[7]](../gittutorial)) or [the Git User Manual](https://git-scm.com/docs/user-manual).
+
+​	如果您只需要使用Git作为版本控制系统，您可能更喜欢从"A Tutorial Introduction to Git" ([gittutorial[7\]](https://chat.openai.com/gittutorial))或[Git用户手册](https://git-scm.com/docs/user-manual)开始。
 
 However, an understanding of these low-level tools can be helpful if you want to understand Git’s internals.
 
+​	然而，如果您想了解Git的内部工作原理，对这些低级工具的理解可能会很有帮助。
+
 The core Git is often called "plumbing", with the prettier user interfaces on top of it called "porcelain". You may not want to use the plumbing directly very often, but it can be good to know what the plumbing does when the porcelain isn’t flushing.
+
+​	核心Git通常被称为"plumbing"，而构建在其上的更美观的用户界面称为"porcelain"。您可能不经常直接使用plumbing，但当porcelain无法完成任务时，了解plumbing的工作原理可能很有用。
 
 Back when this document was originally written, many porcelain commands were shell scripts. For simplicity, it still uses them as examples to illustrate how plumbing is fit together to form the porcelain commands. The source tree includes some of these scripts in contrib/examples/ for reference. Although these are not implemented as shell scripts anymore, the description of what the plumbing layer commands do is still valid.
 
-| Note | Deeper technical details are often marked as Notes, which you can skip on your first reading. |
-| ---- | --------------------------------------------------------------------------------------------- |
-|      |                                                                                               |
+​	在撰写本文档时，许多porcelain命令仍然是shell脚本。出于简单起见，本文仍使用它们作为示例，以说明如何组合plumbing形成porcelain命令。源代码树中包含了一些这样的脚本，位于contrib/examples/目录下供参考。虽然这些脚本不再作为shell脚本实现，但对于plumbing命令的描述仍然有效。
 
-## Creating a Git repository
+| Note | Deeper technical details are often marked as Notes, which you can skip on your first reading. |
+| ---- | ------------------------------------------------------------ |
+| 注意 | 更深层次的技术细节通常标记为"注意"，您可以在第一次阅读时跳过。 |
+
+## 创建Git仓库
 
 Creating a new Git repository couldn’t be easier: all Git repositories start out empty, and the only thing you need to do is find yourself a subdirectory that you want to use as a working tree - either an empty one for a totally new project, or an existing working tree that you want to import into Git.
 
+​	创建一个新的Git仓库非常简单：所有的Git仓库都是空的，您唯一需要做的就是找到一个子目录，用它作为工作树——对于全新的项目，可以是一个空目录，或者是您希望导入到Git中的现有工作树。
+
 For our first example, we’re going to start a totally new repository from scratch, with no pre-existing files, and we’ll call it *git-tutorial*. To start up, create a subdirectory for it, change into that subdirectory, and initialize the Git infrastructure with *git init*:
 
-```
+​	作为我们的第一个示例，我们将从头开始创建一个全新的仓库，没有预先存在的文件，我们将其称为*git-tutorial*。首先创建一个子目录，进入该子目录，并使用*git init*初始化Git基础设施：
+
+``` bash
 $ mkdir git-tutorial
 $ cd git-tutorial
 $ git init
@@ -38,67 +69,102 @@ $ git init
 
 to which Git will reply
 
+Git会回复
+
 ```
 Initialized empty Git repository in .git/
 ```
 
 which is just Git’s way of saying that you haven’t been doing anything strange, and that it will have created a local `.git` directory setup for your new project. You will now have a `.git` directory, and you can inspect that with *ls*. For your new empty project, it should show you three entries, among other things:
 
+这表示Git告诉您没有进行任何奇怪的操作，并且已为您的新项目创建了一个本地的`.git`目录设置。现在，您将拥有一个`.git`目录，并可以使用*ls*查看其中的内容。对于您的新空项目，除其他内容外，应该显示三个条目：
+
 - a file called `HEAD`, that has `ref: refs/heads/master` in it. This is similar to a symbolic link and points at `refs/heads/master` relative to the `HEAD` file.
+- 一个名为`HEAD`的文件，其中包含`ref: refs/heads/master`。这类似于符号链接，并指向相对于`HEAD`文件的`refs/heads/master`。
 
   Don’t worry about the fact that the file that the `HEAD` link points to doesn’t even exist yet — you haven’t created the commit that will start your `HEAD` development branch yet.
+  
+  不用担心`HEAD`链接指向的文件尚不存在——您还没有创建开始`HEAD`开发分支的提交。
 - a subdirectory called `objects`, which will contain all the objects of your project. You should never have any real reason to look at the objects directly, but you might want to know that these objects are what contains all the real *data* in your repository.
+- 一个名为`objects`的子目录，其中包含您项目的所有对象。您通常不需要直接查看对象，但您可能想知道这些对象包含您的仓库中所有真实的*数据*。
 - a subdirectory called `refs`, which contains references to objects.
+- 一个名为`refs`的子目录，其中包含对象的引用。
 
 In particular, the `refs` subdirectory will contain two other subdirectories, named `heads` and `tags` respectively. They do exactly what their names imply: they contain references to any number of different *heads* of development (aka *branches*), and to any *tags* that you have created to name specific versions in your repository.
 
+​	特别是，`refs`子目录将包含两个其他子目录，分别命名为`heads`和`tags`。它们正如它们的名称所暗示的那样：它们包含对多个不同开发（也称为分支）的*heads*的引用，以及对您在仓库中创建的任何*tags*的引用。
+
 One note: the special `master` head is the default branch, which is why the `.git/HEAD` file was created points to it even if it doesn’t yet exist. Basically, the `HEAD` link is supposed to always point to the branch you are working on right now, and you always start out expecting to work on the `master` branch.
+
+​	一个注意：特殊的`master` head是默认分支，这就是为什么`.git/HEAD`文件被创建时指向它，即使它尚不存在。基本上，`HEAD`链接始终应该指向您当前正在工作的分支，而您始终希望开始工作时能够使用`master`分支。
 
 However, this is only a convention, and you can name your branches anything you want, and don’t have to ever even *have* a `master` branch. A number of the Git tools will assume that `.git/HEAD` is valid, though.
 
+​	但是，这只是一个约定，并且您可以使用任何您想要的名称来命名分支，甚至不必拥有`master`分支。一些Git工具会假定`.git/HEAD`是有效的，尽管如此。
+
 | Note | An*object* is identified by its 160-bit SHA-1 hash, aka *object name*, and a reference to an object is always the 40-byte hex representation of that SHA-1 name. The files in the `refs` subdirectory are expected to contain these hex references (usually with a final `\n` at the end), and you should thus expect to see a number of 41-byte files containing these references in these `refs` subdirectories when you actually start populating your tree. |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ---- | ------------------------------------------------------------ |
+| 注意 | *对象*通过其160位SHA-1哈希（也称为*对象名称*）来标识，对对象的引用始终是该SHA-1名称的40字节十六进制表示。`refs`子目录中的文件预期包含这些十六进制引用（通常在末尾有一个`\n`），因此当您开始填充您的树时，您应该期望在这些`refs`子目录中看到一些包含这些引用的41字节文件。 |
 
 | Note | An advanced user may want to take a look at [gitrepository-layout[5]](../../5/gitrepository-layout) after finishing this tutorial. |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      |                                                                                                                                                   |
+| ---- | ------------------------------------------------------------ |
+| 注意 | 在完成本教程后，高级用户可能希望查看[gitrepository-layout[5\]](https://chat.openai.com/5/gitrepository-layout)。 |
 
 You have now created your first Git repository. Of course, since it’s empty, that’s not very useful, so let’s start populating it with data.
 
-## Populating a Git repository
+​	您现在已经创建了您的第一个Git仓库。当然，由于它是空的，这并没有什么用，所以让我们开始向其中填充数据。
+
+## 填充Git仓库
 
 We’ll keep this simple and stupid, so we’ll start off with populating a few trivial files just to get a feel for it.
 
+​	我们将保持简单和愚蠢，所以我们首先将填充一些简单的文件，以便对此有所了解。
+
 Start off with just creating any random files that you want to maintain in your Git repository. We’ll start off with a few bad examples, just to get a feel for how this works:
 
-```
+​	首先，只需创建任何您希望在Git仓库中维护的随机文件。我们将从一些不好的示例开始，只是为了感受一下它是如何工作的：
+
+``` bash
 $ echo "Hello World" >hello
 $ echo "Silly example" >example
 ```
 
 you have now created two files in your working tree (aka *working directory*), but to actually check in your hard work, you will have to go through two steps:
 
+​	现在，您已经在您的工作树（也称为*工作目录*）中创建了两个文件，但要实际检入您的工作成果，您需要执行两个步骤：
+
 - fill in the *index* file (aka *cache*) with the information about your working tree state.
+- 填充*索引*文件（也称为*cache*），以包含有关您的工作树状态的信息。
 - commit that index file as an object.
+- 将该索引文件提交为一个对象。
 
 The first step is trivial: when you want to tell Git about any changes to your working tree, you use the *git update-index* program. That program normally just takes a list of filenames you want to update, but to avoid trivial mistakes, it refuses to add new entries to the index (or remove existing ones) unless you explicitly tell it that you’re adding a new entry with the `--add` flag (or removing an entry with the `--remove`) flag.
 
+​	第一步非常简单：当您想告诉Git有关工作树的任何更改时，您使用*git update-index*程序。该程序通常只接受您希望更新的文件名列表，但为了避免简单的错误，除非您使用`--add`标志（添加新条目）或`--remove`标志（删除条目），否则它会拒绝将新条目添加到索引中（或删除现有条目）。
+
 So to populate the index with the two files you just created, you can do
 
-```
+​	因此，要使用刚刚创建的两个文件填充索引，您可以执行以下操作：
+
+``` bash
 $ git update-index --add hello example
 ```
 
 and you have now told Git to track those two files.
 
+现在，您已经告诉Git跟踪这两个文件。
+
 In fact, as you did that, if you now look into your object directory, you’ll notice that Git will have added two new objects to the object database. If you did exactly the steps above, you should now be able to do
 
-```
+​	实际上，当您执行上面的操作时，如果现在查看对象目录，您会注意到Git已经将两个新对象添加到对象数据库中。如果您完全按照上面的步骤执行，现在可以执行以下操作：
+
+``` bash
 $ ls .git/objects/??/*
 ```
 
 and see two files:
+
+然后会看到两个文件：
 
 ```
 .git/objects/55/7db03de997c86a4a028e1ebd3a1ceb225be238
@@ -107,43 +173,57 @@ and see two files:
 
 which correspond with the objects with names of `557db...` and `f24c7...` respectively.
 
+这两个文件分别对应名称为`557db...`和`f24c7...`的对象。
+
 If you want to, you can use *git cat-file* to look at those objects, but you’ll have to use the object name, not the filename of the object:
 
-```
+​	如果您愿意，可以使用*git cat-file*查看这些对象，但您必须使用对象名称，而不是对象的文件名：
+
+``` bash
 $ git cat-file -t 557db03de997c86a4a028e1ebd3a1ceb225be238
 ```
 
 where the `-t` tells *git cat-file* to tell you what the "type" of the object is. Git will tell you that you have a "blob" object (i.e., just a regular file), and you can see the contents with
 
-```
+其中`-t`告诉*git cat-file*告诉您对象的"类型"。Git将告诉您您有一个"blob"对象（即，一个常规文件），您可以使用以下命令查看其内容：
+
+``` bash
 $ git cat-file blob 557db03
 ```
 
 which will print out "Hello World". The object `557db03` is nothing more than the contents of your file `hello`.
 
+这将输出"Hello World"。对象`557db03`其实就是文件`hello`的内容。
+
 | Note | Don’t confuse that object with the file `hello` itself. The object is literally just those specific **contents** of the file, and however much you later change the contents in file `hello`, the object we just looked at will never change. Objects are immutable. |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      |                                                                                                                                                                                                                                                                                 |
+| ---- | ------------------------------------------------------------ |
+| 注意 | 不要将该对象与文件`hello`本身混淆。该对象只是文件特定的**内容**，而无论您以后如何更改文件`hello`中的内容，我们刚刚查看的对象将永远不会改变。对象是不可变的。 |
 
 | Note | The second example demonstrates that you can abbreviate the object name to only the first several hexadecimal digits in most places. |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------ |
-|      |                                                                                                                                      |
+| ---- | ------------------------------------------------------------ |
+| 注意 | 第二个示例演示了在大多数地方可以缩写对象名称为只有前几个十六进制数字。 |
 
 Anyway, as we mentioned previously, you normally never actually take a look at the objects themselves, and typing long 40-character hex names is not something you’d normally want to do. The above digression was just to show that *git update-index* did something magical, and actually saved away the contents of your files into the Git object database.
 
+​	不过，正如我们之前提到的，您通常不会实际查看对象本身，并且键入长长的40个字符的十六进制名称不是您通常想要做的事情。上面的插曲只是为了显示*git update-index*做了一些魔术，实际上将文件的内容保存到了Git对象数据库中。
+
 Updating the index did something else too: it created a `.git/index` file. This is the index that describes your current working tree, and something you should be very aware of. Again, you normally never worry about the index file itself, but you should be aware of the fact that you have not actually really "checked in" your files into Git so far, you’ve only **told** Git about them.
+
+​	更新索引还做了其他事情：它创建了一个`.git/index`文件。这是描述您当前工作树的索引，您应该对此非常清楚。再次强调，您通常不需要担心索引文件本身，但您应该知道实际上您还没有真正地将文件"检入"到Git中，您只是**告诉**Git有关它们。
 
 However, since Git knows about them, you can now start using some of the most basic Git commands to manipulate the files or look at their status.
 
+​	但是，由于Git知道这些文件，因此现在您可以开始使用一些最基本的Git命令来操作这些文件或查看它们的状态。
+
 In particular, let’s not even check in the two files into Git yet, we’ll start off by adding another line to `hello` first:
 
-```
+``` bash
 $ echo "It's a new day for git" >>hello
 ```
 
 and you can now, since you told Git about the previous state of `hello`, ask Git what has changed in the tree compared to your old index, using the *git diff-files* command:
 
-```
+``` bash
 $ git diff-files
 ```
 
@@ -151,7 +231,7 @@ Oops. That wasn’t very readable. It just spit out its own internal version of 
 
 To make it readable, we can tell *git diff-files* to output the differences as a patch, using the `-p` flag:
 
-```
+``` bash
 $ git diff-files -p
 diff --git a/hello b/hello
 index 557db03..263414f 100644
@@ -168,7 +248,7 @@ In other words, *git diff-files* always shows us the difference between what is 
 
 A common shorthand for `git diff-files -p` is to just write `git diff`, which will do the same thing.
 
-```
+``` bash
 $ git diff
 diff --git a/hello b/hello
 index 557db03..263414f 100644
@@ -185,7 +265,7 @@ Now, we want to go to the next stage in Git, which is to take the files that Git
 
 Creating a tree object is trivial, and is done with *git write-tree*. There are no options or other input: `git write-tree` will take the current index state, and write an object that describes that whole index. In other words, we’re now tying together all the different filenames with their contents (and their permissions), and we’re creating the equivalent of a Git "directory" object:
 
-```
+``` bash
 $ git write-tree
 ```
 
@@ -203,7 +283,7 @@ However — normally you’d never use *git write-tree* on its own, because 
 
 And this is where we create the `.git/refs/heads/master` file which is pointed at by `HEAD`. This file is supposed to contain the reference to the top-of-tree of the master branch, and since that’s exactly what *git commit-tree* spits out, we can do this all with a sequence of simple shell commands:
 
-```
+``` bash
 $ tree=$(git write-tree)
 $ commit=$(echo 'Initial commit' | git commit-tree $tree)
 $ git update-ref HEAD $commit
@@ -225,7 +305,7 @@ Unlike *git diff-files*, which showed the difference between the index file and 
 
 But now we can do
 
-```
+``` bash
 $ git diff-index -p HEAD
 ```
 
@@ -233,7 +313,7 @@ $ git diff-index -p HEAD
 
 Again, because this is a common operation, you can also just shorthand it with
 
-```
+``` bash
 $ git diff HEAD
 ```
 
@@ -247,7 +327,7 @@ In other words, *git diff-index* normally compares a tree against the working tr
 
 However, our next step is to commit the **change** we did, and again, to understand what’s going on, keep in mind the difference between "working tree contents", "index file" and "committed tree". We have changes in the working tree that we want to commit, and we always have to work through the index file, so the first thing we need to do is to update the index cache:
 
-```
+``` bash
 $ git update-index hello
 ```
 
@@ -257,7 +337,7 @@ Note what happens to the different *git diff-** versions here. After we’ve upd
 
 Now, since we’ve updated `hello` in the index, we can commit the new version. We could do it by writing the tree by hand again, and committing the tree (this time we’d have to use the `-p HEAD` flag to tell commit that the HEAD was the **parent** of the new commit, and that this wasn’t an initial commit any more), but you’ve done that once already, so let’s just use the helpful script this time:
 
-```
+``` bash
 $ git commit
 ```
 
@@ -273,7 +353,7 @@ While creating changes is useful, it’s even more useful if you can tell later 
 
 *git diff-tree* can be given two arbitrary trees, and it will tell you the differences between them. Perhaps even more commonly, though, you can give it just a single commit object, and it will figure out the parent of that commit itself, and show the difference directly. Thus, to get the same diff that we’ve already seen several times, we can now do
 
-```
+``` bash
 $ git diff-tree -p HEAD
 ```
 
@@ -293,13 +373,13 @@ In Git, there are two kinds of tags, a "light" one, and an "annotated tag".
 
 A "light" tag is technically nothing more than a branch, except we put it in the `.git/refs/tags/` subdirectory instead of calling it a `head`. So the simplest form of tag involves nothing more than
 
-```
+``` bash
 $ git tag my-first-tag
 ```
 
 which just writes the current `HEAD` into the `.git/refs/tags/my-first-tag` file, after which point you can then use this symbolic name for that particular state. You can, for example, do
 
-```
+``` bash
 $ git diff my-first-tag
 ```
 
@@ -307,7 +387,7 @@ to diff your current state against that tag which at this point will obviously b
 
 An "annotated tag" is actually a real Git object, and contains not only a pointer to the state you want to tag, but also a small tag name and message, along with optionally a PGP signature that says that yes, you really did that tag. You create these annotated tags with either the `-a` or `-s` flag to *git tag*:
 
-```
+``` bash
 $ git tag -s <tagname>
 ```
 
@@ -346,7 +426,7 @@ Note that the second point is true even across machines. You can duplicate a rem
 
 When copying a remote repository, you’ll want to at a minimum update the index cache when you do this, and especially with other peoples' repositories you often want to make sure that the index cache is in some known state (you don’t know **what** they’ve done and not yet checked in), so usually you’ll precede the *git update-index* with a
 
-```
+``` bash
 $ git read-tree --reset HEAD
 $ git update-index --refresh
 ```
@@ -355,7 +435,7 @@ which will force a total index re-build from the tree pointed to by `HEAD`. It r
 
 The above can also be written as simply
 
-```
+``` bash
 $ git reset
 ```
 
@@ -365,7 +445,7 @@ Many (most?) public remote repositories will not contain any of the checked out 
 
 To create your own local live copy of such a "raw" Git repository, you’d first create your own subdirectory for the project, and then copy the raw repository contents into the `.git` directory. For example, to create your own copy of the Git repository, you’d do the following
 
-```
+``` bash
 $ mkdir my-git
 $ cd my-git
 $ rsync -rL rsync://rsync.kernel.org/pub/scm/git/git.git/ .git
@@ -373,13 +453,13 @@ $ rsync -rL rsync://rsync.kernel.org/pub/scm/git/git.git/ .git
 
 followed by
 
-```
+``` bash
 $ git read-tree HEAD
 ```
 
 to populate the index. However, now you have populated the index, and you have all the Git internal files, but you will notice that you don’t actually have any of the working tree files to work on. To get those, you’d check them out with
 
-```
+``` bash
 $ git checkout-index -u -a
 ```
 
@@ -387,7 +467,7 @@ where the `-u` flag means that you want the checkout to keep the index up to dat
 
 Again, this can all be simplified with
 
-```
+``` bash
 $ git clone git://git.kernel.org/pub/scm/git/git.git/ my-git
 $ cd my-git
 $ git checkout
@@ -405,7 +485,7 @@ You can at any time create a new branch by just picking an arbitrary point in th
 
 To show that as an example, let’s go back to the git-tutorial repository we used earlier, and create a branch in it. You do that by simply just saying that you want to check out a new branch:
 
-```
+``` bash
 $ git switch -c mybranch
 ```
 
@@ -417,19 +497,19 @@ will create a new branch based at the current `HEAD` position, and switch to it.
 
 You can always just jump back to your original `master` branch by doing
 
-```
+``` bash
 $ git switch master
 ```
 
 (or any other branch-name, for that matter) and if you forget which branch you happen to be on, a simple
 
-```
+``` bash
 $ cat .git/HEAD
 ```
 
 will tell you where it’s pointing. To get the list of branches you have, you can say
 
-```
+``` bash
 $ git branch
 ```
 
@@ -437,7 +517,7 @@ which used to be nothing more than a simple script around `ls .git/refs/heads`. 
 
 Sometimes you may wish to create a new branch *without* actually checking it out and switching to it. If so, just use the command
 
-```
+``` bash
 $ git branch <branchname> [startingpoint]
 ```
 
@@ -447,7 +527,7 @@ which will simply *create* the branch, but will not do anything further. You can
 
 One of the ideas of having a branch is that you do some (possibly experimental) work in it, and eventually merge it back to the main branch. So assuming you created the above `mybranch` that started out being the same as the original `master` branch, let’s make sure we’re in that branch, and do some work there.
 
-```
+``` bash
 $ git switch mybranch
 $ echo "Work, work, work" >>hello
 $ git commit -m "Some work." -i hello
@@ -457,13 +537,13 @@ Here, we just added another line to `hello`, and we used a shorthand for doing b
 
 Now, to make it a bit more interesting, let’s assume that somebody else does some work in the original branch, and simulate that by going back to the master branch, and editing the same file differently there:
 
-```
+``` bash
 $ git switch master
 ```
 
 Here, take a moment to look at the contents of `hello`, and notice how they don’t contain the work we just did in `mybranch` — because that work hasn’t happened in the `master` branch at all. Then do
 
-```
+``` bash
 $ echo "Play, play, play" >>hello
 $ echo "Lots of fun" >>example
 $ git commit -m "Some fun." -i hello example
@@ -473,7 +553,7 @@ since the master branch is obviously in a much better mood.
 
 Now, you’ve got two branches, and you decide that you want to merge the work done. Before we do that, let’s introduce a cool graphical tool that helps you view what’s going on:
 
-```
+``` bash
 $ gitk --all
 ```
 
@@ -481,7 +561,7 @@ will show you graphically both of your branches (that’s what the `--all` means
 
 Anyway, let’s exit *gitk* (`^Q` or the File menu), and decide that we want to merge the work we did on the `mybranch` branch into the `master` branch (which is currently our `HEAD` too). To do that, there’s a nice script called *git merge*, which wants to know which branches you want to resolve and what the merge is all about:
 
-```
+``` bash
 $ git merge -m "Merge work in mybranch" mybranch
 ```
 
@@ -508,7 +588,7 @@ Work, work, work
 
 and once you’re happy with your manual merge, just do a
 
-```
+``` bash
 $ git commit -i hello
 ```
 
@@ -518,7 +598,7 @@ After you’re done, start up `gitk --all` to see graphically what the history l
 
 Another useful tool, especially if you do not always work in X-Window environment, is `git show-branch`.
 
-```
+``` bash
 $ git show-branch --topo-order --more=1 master mybranch
 * [master] Merge work in mybranch
  ! [mybranch] Some work.
@@ -540,7 +620,7 @@ The first two lines indicate that it is showing the two branches with the titles
 
 Now, let’s pretend you are the one who did all the work in `mybranch`, and the fruit of your hard work has finally been merged to the `master` branch. Let’s go back to `mybranch`, and run *git merge* to get the "upstream changes" back to your branch.
 
-```
+``` bash
 $ git switch mybranch
 $ git merge -m "Merge upstream changes." master
 ```
@@ -559,7 +639,7 @@ Because your branch did not contain anything more than what had already been mer
 
 You can run `gitk --all` again to see how the commit ancestry looks like, or run *show-branch*, which tells you this.
 
-```
+``` bash
 $ git show-branch master mybranch
 ! [master] Merge work in mybranch
  * [mybranch] Merge work in mybranch
@@ -573,7 +653,7 @@ It’s usually much more common that you merge with somebody else than merging w
 
 Fetching from a remote repository is done by, unsurprisingly, *git fetch*:
 
-```
+``` bash
 $ git fetch <remote-repository>
 ```
 
@@ -596,7 +676,7 @@ Once you fetch from the remote repository, you `merge` that with your current br
 
 However — it’s such a common thing to `fetch` and then immediately `merge`, that it’s called `git pull`, and you can simply do
 
-```
+``` bash
 $ git pull <remote-repository>
 ```
 
@@ -608,7 +688,7 @@ and optionally give a branch-name for the remote end as a second argument.
 
 It is likely that you will be pulling from the same remote repository from time to time. As a short hand, you can store the remote repository URL in the local repository’s config file like this:
 
-```
+``` bash
 $ git config remote.linus.url http://www.kernel.org/pub/scm/git/git.git/
 ```
 
@@ -630,7 +710,7 @@ We said this tutorial shows what plumbing does to help you cope with the porcela
 
 OK, still with me? To give us an example to look at, let’s go back to the earlier repository with "hello" and "example" file, and bring ourselves back to the pre-merge state:
 
-```
+``` bash
 $ git show-branch --more=2 master mybranch
 ! [master] Merge work in mybranch
  * [mybranch] Merge work in mybranch
@@ -642,7 +722,7 @@ $ git show-branch --more=2 master mybranch
 
 Remember, before running *git merge*, our `master` head was at "Some fun." commit, while our `mybranch` head was at "Some work." commit.
 
-```
+``` bash
 $ git switch -C mybranch master^2
 $ git switch master
 $ git reset --hard master^
@@ -650,7 +730,7 @@ $ git reset --hard master^
 
 After rewinding, the commit structure should look like this:
 
-```
+``` bash
 $ git show-branch
 * [master] Some fun.
  ! [mybranch] Some work.
@@ -664,20 +744,20 @@ Now we are ready to experiment with the merge by hand.
 
 `git merge` command, when merging two branches, uses 3-way merge algorithm. First, it finds the common ancestor between them. The command it uses is *git merge-base*:
 
-```
+``` bash
 $ mb=$(git merge-base HEAD mybranch)
 ```
 
 The command writes the commit object name of the common ancestor to the standard output, so we captured its output to a variable, because we will be using it in the next step. By the way, the common ancestor commit is the "Initial commit" commit in this case. You can tell it by:
 
-```
+``` bash
 $ git name-rev --name-only --tags $mb
 my-first-tag
 ```
 
 After finding out a common ancestor commit, the second step is this:
 
-```
+``` bash
 $ git read-tree -m -u $mb HEAD mybranch
 ```
 
@@ -685,7 +765,7 @@ This is the same *git read-tree* command we have already seen, but it takes thre
 
 After *collapsing* operation, paths that are different in three trees are left in non-zero stages. At this point, you can inspect the index file with this command:
 
-```
+``` bash
 $ git ls-files --stage
 100644 7f8b141b65fdcee47321e399a2598a235a032422 0	example
 100644 557db03de997c86a4a028e1ebd3a1ceb225be238 1	hello
@@ -697,7 +777,7 @@ In our example of only two files, we did not have unchanged files so only *examp
 
 To look at only non-zero stages, use `--unmerged` flag:
 
-```
+``` bash
 $ git ls-files --unmerged
 100644 557db03de997c86a4a028e1ebd3a1ceb225be238 1	hello
 100644 ba42a2a96e3027f3333e13ede4ccf4498c3ae942 2	hello
@@ -706,7 +786,7 @@ $ git ls-files --unmerged
 
 The next step of merging is to merge these three versions of the file, using 3-way merge. This is done by giving *git merge-one-file* command as one of the arguments to *git merge-index* command:
 
-```
+``` bash
 $ git merge-index git-merge-one-file hello
 Auto-merging hello
 ERROR: Merge conflict in hello
@@ -715,7 +795,7 @@ fatal: merge program failed
 
 *git merge-one-file* script is called with parameters to describe those three versions, and is responsible to leave the merge results in the working tree. It is a fairly straightforward shell script, and eventually calls *merge* program from RCS suite to perform a file-level 3-way merge. In this case, *merge* detects conflicts, and the merge result with conflict marks is left in the working tree.. This can be seen if you run `ls-files --stage` again at this point:
 
-```
+``` bash
 $ git ls-files --stage
 100644 7f8b141b65fdcee47321e399a2598a235a032422 0	example
 100644 557db03de997c86a4a028e1ebd3a1ceb225be238 1	hello
@@ -745,13 +825,13 @@ First, you need to create an empty repository on the remote machine that will ho
 
 Your private repository’s Git directory is usually `.git`, but your public repository is often named after the project name, i.e. `<project>.git`. Let’s create such a public repository for project `my-git`. After logging into the remote machine, create an empty directory:
 
-```
+``` bash
 $ mkdir my-git.git
 ```
 
 Then, make that directory into a Git repository by running *git init*, but this time, since its name is not the usual `.git`, we do things slightly differently:
 
-```
+``` bash
 $ GIT_DIR=my-git.git git init
 ```
 
@@ -767,7 +847,7 @@ Make sure this directory is available for others you want your changes to be pul
 
 Your "public repository" is now ready to accept your changes. Come back to the machine you have your private repository. From there, run this command:
 
-```
+``` bash
 $ git push <public-host>:/path/to/my-git.git master
 ```
 
@@ -775,7 +855,7 @@ This synchronizes your public repository to match the named branch head (i.e. `m
 
 As a real example, this is how I update my public Git repository. Kernel.org mirror network takes care of the propagation to other publicly visible machines:
 
-```
+``` bash
 $ git push master.kernel.org:/pub/scm/git/git.git/
 ```
 
@@ -783,7 +863,7 @@ $ git push master.kernel.org:/pub/scm/git/git.git/
 
 Earlier, we saw that one file under `.git/objects/??/` directory is stored for each Git object you create. This representation is efficient to create atomically and safely, but not so convenient to transport over the network. Since Git objects are immutable once they are created, there is a way to optimize the storage by "packing them together". The command
 
-```
+``` bash
 $ git repack
 ```
 
@@ -797,7 +877,7 @@ If you are paranoid, running *git verify-pack* command would detect if you have 
 
 Once you have packed objects, you do not need to leave the unpacked objects that are contained in the pack file anymore.
 
-```
+``` bash
 $ git prune-packed
 ```
 
@@ -865,7 +945,7 @@ It is likely that you will be working on more than one thing at a time. It is ea
 
 We have already seen how branches work previously, with "fun and work" example using two branches. The idea is the same if there are more than two branches. Let’s say you started out from "master" head, and have some new code in the "master" branch, and two independent fixes in the "commit-fix" and "diff-fix" branches:
 
-```
+``` bash
 $ git show-branch
 ! [commit-fix] Fix commit message normalization.
  ! [diff-fix] Fix rename detection.
@@ -880,14 +960,14 @@ $ git show-branch
 
 Both fixes are tested well, and at this point, you want to merge in both of them. You could merge in *diff-fix* first and then *commit-fix* next, like this:
 
-```
+``` bash
 $ git merge -m "Merge fix in diff-fix" diff-fix
 $ git merge -m "Merge fix in commit-fix" commit-fix
 ```
 
 Which would result in:
 
-```
+``` bash
 $ git show-branch
 ! [commit-fix] Fix commit message normalization.
  ! [diff-fix] Fix rename detection.
@@ -904,13 +984,13 @@ $ git show-branch
 
 However, there is no particular reason to merge in one branch first and the other next, when what you have are a set of truly independent changes (if the order mattered, then they are not independent by definition). You could instead merge those two branches into the current branch at once. First let’s undo what we just did and start over. We would want to get the master branch before these two merges by resetting it to *master~2*:
 
-```
+``` bash
 $ git reset --hard master~2
 ```
 
 You can make sure `git show-branch` matches the state before those two *git merge* you just did. Then, instead of running two *git merge* commands in a row, you would merge these two branch heads (this is known as *making an Octopus*):
 
-```
+``` bash
 $ git merge commit-fix diff-fix
 $ git show-branch
 ! [commit-fix] Fix commit message normalization.

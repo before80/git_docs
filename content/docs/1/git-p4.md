@@ -53,7 +53,7 @@ Create a new Git repository from an existing p4 repository using *git p4 clone*,
 
 Generally, *git p4 clone* is used to create a new Git directory from an existing p4 repository:
 
-```
+``` bash
 $ git p4 clone //depot/path/project
 ```
 
@@ -65,7 +65,7 @@ This:
 
 To reproduce the entire p4 history in Git, use the *@all* modifier on the depot path:
 
-```
+``` bash
 $ git p4 clone //depot/path/project@all
 ```
 
@@ -73,7 +73,7 @@ $ git p4 clone //depot/path/project@all
 
 As development continues in the p4 repository, those changes can be included in the Git repository using:
 
-```
+``` bash
 $ git p4 sync
 ```
 
@@ -81,7 +81,7 @@ This command finds new changes in p4 and imports them as Git commits.
 
 P4 repositories can be added to an existing Git repository using *git p4 sync* too:
 
-```
+``` bash
 $ mkdir repo-git
 $ cd repo-git
 $ git init
@@ -98,7 +98,7 @@ If there are multiple branches, doing *git p4 sync* will automatically use the "
 
 A common working pattern is to fetch the latest changes from the p4 depot and merge them with local uncommitted changes. Often, the p4 repository is the ultimate location for all code, thus a rebase workflow makes sense. This command does *git p4 sync* followed by *git rebase* to move local commits on top of updated p4 changes.
 
-```
+``` bash
 $ git p4 rebase
 ```
 
@@ -108,19 +108,19 @@ Submitting changes from a Git repository back to the p4 repository requires a se
 
 To submit all changes that are in the current Git branch but not in the *p4/master* branch, use:
 
-```
+``` bash
 $ git p4 submit
 ```
 
 To specify a branch other than the current one, use:
 
-```
+``` bash
 $ git p4 submit topicbranch
 ```
 
 To specify a single commit or a range of commits, use:
 
-```
+``` bash
 $ git p4 submit --commit <sha1>
 $ git p4 submit --commit <sha1..sha1>
 ```
@@ -131,7 +131,7 @@ The p4 changes will be created as the user invoking *git p4 submit*. The `--pres
 
 To shelve changes instead of submitting, use `--shelve` and `--update-shelve`:
 
-```
+``` bash
 $ git p4 submit --shelve
 $ git p4 submit --update-shelve 1234 --update-shelve 2345
 ```
@@ -146,7 +146,7 @@ The origin revision can be changed with the "--origin" option.
 
 If the target branch in refs/remotes/p4-unshelved already exists, the old one will be renamed.
 
-```
+``` bash
 $ git p4 sync
 $ git p4 unshelve 12345
 $ git show p4-unshelved/12345

@@ -48,7 +48,7 @@ When erasing credentials, matching credentials will be erased from all files.
 
 The point of this helper is to reduce the number of times you must type your username or password. For example:
 
-```
+``` bash
 $ git config credential.helper store
 $ git push http://example.com/repo.git
 Username: <type your username>

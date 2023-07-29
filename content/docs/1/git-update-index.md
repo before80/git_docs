@@ -183,7 +183,7 @@ For example, you’d want to do this after doing a *git read-tree*, to link up t
 
 To pretend you have a file at path with mode and sha1, say:
 
-```
+``` bash
 $ git update-index --add --cacheinfo <mode>,<sha1>,<path>
 ```
 
@@ -211,14 +211,14 @@ To place a higher stage entry to the index, the path should first be removed by 
 
 For example, starting with this index:
 
-```
+``` bash
 $ git ls-files -s
 100644 8a1218a1024a212bb3db30becd860315f9f3ac52 0       frotz
 ```
 
 you can feed the following input to `--index-info`:
 
-```
+``` bash
 $ git update-index --index-info
 0 0000000000000000000000000000000000000000	frotz
 100644 8a1218a1024a212bb3db30becd860315f9f3ac52 1	frotz
@@ -227,7 +227,7 @@ $ git update-index --index-info
 
 The first line of the input feeds 0 as the mode to remove the path; the SHA-1 does not matter as long as it is well formatted. Then the second and third line feeds stage 1 and stage 2 entries for that path. After the above, we would end up with this:
 
-```
+``` bash
 $ git ls-files -s
 100644 8a1218a1024a212bb3db30becd860315f9f3ac52 1	frotz
 100755 8a1218a1024a212bb3db30becd860315f9f3ac52 2	frotz
@@ -247,7 +247,7 @@ Sometimes users confuse the assume-unchanged bit with the skip-worktree bit. See
 
 To update and refresh only the files already checked out:
 
-```
+``` bash
 $ git checkout-index -n -f -a && git update-index --ignore-missing --refresh
 ```
 
@@ -293,7 +293,7 @@ When the `core.untrackedCache` configuration variable is changed, the untracked 
 
 Before 2.17, the untracked cache had a bug where replacing a directory with a symlink to another directory could cause it to incorrectly show files tracked by git as untracked. See the "status: add a failing test showing a core.untrackedCache bug" commit to git.git. A workaround for that is (and this might work for other undiscovered bugs in the future):
 
-```
+``` bash
 $ git -c core.untrackedCache=false status
 ```
 

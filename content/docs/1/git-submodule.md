@@ -37,11 +37,11 @@ With no arguments, shows the status of existing submodules. Several subcommands 
 
   Add the given repository as a submodule at the given path to the changeset to be committed next to the current project: the current project is termed the "superproject".
 
-  将给定的存储库作为子模块添加到下一个要提交到当前项目旁边的更改集的给定路径中：当前项目称为“超级项目”。
+  将给定的仓库作为子模块添加到下一个要提交到当前项目旁边的更改集的给定路径中：当前项目称为“超级项目”。
 
   <repository> is the URL of the new submodule’s origin repository. This may be either an absolute URL, or (if it begins with ./ or ../), the location relative to the superproject’s default remote repository (Please note that to specify a repository *foo.git* which is located right next to a superproject *bar.git*, you’ll have to use `../foo.git` instead of `./foo.git` - as one might expect when following the rules for relative URLs - because the evaluation of relative URLs in Git is identical to that of relative directories).
 
-  <repository>是新子模块的起点存储库的URL。这可以是绝对URL，也可以是（如果以./或../开头）相对于超级项目的默认远程存储库的位置（请注意，要指定一个名为foo.git的存储库，它位于超级项目bar.git旁边，您必须使用../foo.git而不是./foo.git - 因为在Git中相对URL的计算与相对目录的计算相同）。
+  <repository>是新子模块的起点仓库的URL。这可以是绝对URL，也可以是（如果以./或../开头）相对于超级项目的默认远程仓库的位置（请注意，要指定一个名为foo.git的仓库，它位于超级项目bar.git旁边，您必须使用../foo.git而不是./foo.git - 因为在Git中相对URL的计算与相对目录的计算相同）。
 
   The default remote is the remote of the remote-tracking branch of the current branch. If no such remote-tracking branch exists or the HEAD is detached, "origin" is assumed to be the default remote. If the superproject doesn’t have a default remote configured the superproject is its own authoritative upstream and the current working directory is used instead.
 
@@ -49,17 +49,17 @@ With no arguments, shows the status of existing submodules. Several subcommands 
 
   The optional argument <path> is the relative location for the cloned submodule to exist in the superproject. If <path> is not given, the canonical part of the source repository is used ("repo" for "/path/to/repo.git" and "foo" for "host.xz:foo/.git"). If <path> exists and is already a valid Git repository, then it is staged for commit without cloning. The <path> is also used as the submodule’s logical name in its configuration entries unless `--name` is used to specify a logical name.
 
-  可选参数 <path> 是子模块在超级项目中的相对位置。如果未给出 <path>，则使用源存储库的规范部分（对于 "/path/to/repo.git" 使用 "repo"，对于 "host.xz:foo/.git" 使用 "foo"）。如果 <path> 存在且已经是有效的 Git 存储库，则它将被暂存以进行提交，而无需克隆。除非使用 --name 指定逻辑名称，否则 <path> 也用作子模块在其配置条目中的逻辑名称。
+  可选参数 <path> 是子模块在超级项目中的相对位置。如果未给出 <path>，则使用源仓库的规范部分（对于 "/path/to/repo.git" 使用 "repo"，对于 "host.xz:foo/.git" 使用 "foo"）。如果 <path> 存在且已经是有效的 Git 仓库，则它将被暂存以进行提交，而无需克隆。除非使用 --name 指定逻辑名称，否则 <path> 也用作子模块在其配置条目中的逻辑名称。
 
   The given URL is recorded into `.gitmodules` for use by subsequent users cloning the superproject. If the URL is given relative to the superproject’s repository, the presumption is the superproject and submodule repositories will be kept together in the same relative location, and only the superproject’s URL needs to be provided. git-submodule will correctly locate the submodule using the relative URL in `.gitmodules`.
 
-  给定的 URL 记录在 .gitmodules 中，供随后克隆超级项目的用户使用。如果 URL 相对于超级项目的存储库，则假定超级项目和子模块存储库将在相同的相对位置保持在一起，只需提供超级项目的 URL 即可。git-submodule 将使用 .gitmodules 中的相对 URL 正确地定位子模块。
+  给定的 URL 记录在 .gitmodules 中，供随后克隆超级项目的用户使用。如果 URL 相对于超级项目的仓库，则假定超级项目和子模块仓库将在相同的相对位置保持在一起，只需提供超级项目的 URL 即可。git-submodule 将使用 .gitmodules 中的相对 URL 正确地定位子模块。
 
 - status [--cached] [--recursive] [--] [<path>…]
 
   Show the status of the submodules. This will print the SHA-1 of the currently checked out commit for each submodule, along with the submodule path and the output of *git describe* for the SHA-1. Each SHA-1 will possibly be prefixed with `-` if the submodule is not initialized, `+` if the currently checked out submodule commit does not match the SHA-1 found in the index of the containing repository and `U` if the submodule has merge conflicts.
 
-  显示子模块的状态。这将打印每个子模块当前签出提交的 SHA-1，以及子模块路径和 SHA-1 的 git describe 输出。如果子模块未初始化，则每个 SHA-1 可能会带有前缀“-”，如果当前签出的子模块提交与包含存储库的索引中找到的 SHA-1 不匹配，则可能会带有前缀“+”，如果子模块存在合并冲突，则可能会带有前缀“U”。
+  显示子模块的状态。这将打印每个子模块当前签出提交的 SHA-1，以及子模块路径和 SHA-1 的 git describe 输出。如果子模块未初始化，则每个 SHA-1 可能会带有前缀“-”，如果当前签出的子模块提交与包含仓库的索引中找到的 SHA-1 不匹配，则可能会带有前缀“+”，如果子模块存在合并冲突，则可能会带有前缀“U”。
 
   If `--cached` is specified, this command will instead print the SHA-1 recorded in the superproject for each submodule.
 
@@ -77,7 +77,7 @@ With no arguments, shows the status of existing submodules. Several subcommands 
 
   Initialize the submodules recorded in the index (which were added and committed elsewhere) by setting `submodule.$name.url` in .git/config. It uses the same setting from `.gitmodules` as a template. If the URL is relative, it will be resolved using the default remote. If there is no default remote, the current repository will be assumed to be upstream.
 
-  通过在 .git/config 中设置 submodule.$name.url，初始化已在索引中记录的子模块（在其他地方添加并提交）。它使用 .gitmodules 中的相同设置作为模板。如果 URL 是相对的，则将使用默认远程解析它。如果没有默认远程，则假定当前存储库是上游。
+  通过在 .git/config 中设置 submodule.$name.url，初始化已在索引中记录的子模块（在其他地方添加并提交）。它使用 .gitmodules 中的相同设置作为模板。如果 URL 是相对的，则将使用默认远程解析它。如果没有默认远程，则假定当前仓库是上游。
 
   Optional <path> arguments limit which submodules will be initialized. If no path is specified and submodule.active has been configured, submodules configured to be active will be initialized, otherwise all submodules are initialized.
 
@@ -125,7 +125,7 @@ With no arguments, shows the status of existing submodules. Several subcommands 
 
   If `--force` is specified, the submodule will be checked out (using `git checkout --force`), even if the commit specified in the index of the containing repository already matches the commit checked out in the submodule.
 
-  如果指定了--force，则会强制检出子模块（使用git checkout --force），即使容纳存储库的索引中指定的提交已与子模块中检出的提交匹配。
+  如果指定了--force，则会强制检出子模块（使用git checkout --force），即使容纳仓库的索引中指定的提交已与子模块中检出的提交匹配。
 
   **rebase**
 

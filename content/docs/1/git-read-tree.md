@@ -164,7 +164,7 @@ However, when you do *git read-tree* with three trees, the "stage" starts out at
 
 This means that you can do
 
-```
+``` bash
 $ git read-tree -m <tree1> <tree2> <tree3>
 ```
 
@@ -195,21 +195,21 @@ When you start a 3-way merge with an index file that is already populated, it is
 
 This is done to prevent you from losing your work-in-progress changes, and mixing your random changes in an unrelated merge commit. To illustrate, suppose you start from what has been committed last to your repository:
 
-```
+``` bash
 $ JC=`git rev-parse --verify "HEAD^0"`
 $ git checkout-index -f -u -a $JC
 ```
 
 You do random edits, without running *git update-index*. And then you notice that the tip of your "upstream" tree has advanced since you pulled from him:
 
-```
+``` bash
 $ git fetch git://.... linus
 $ LT=`git rev-parse FETCH_HEAD`
 ```
 
 Your work tree is still based on your HEAD ($JC), but you have some edits since. Three-way merge makes sure that you have not added or modified index entries since $JC, and if you haven’t, then does the right thing. So with the following sequence:
 
-```
+``` bash
 $ git read-tree -m -u `git merge-base $JC $LT` $JC $LT
 $ git merge-index git-merge-one-file -a
 $ echo "Merge with Linus" | \

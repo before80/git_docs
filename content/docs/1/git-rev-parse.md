@@ -363,7 +363,7 @@ In these two shorthand notations, you can omit one end and let it default to HEA
 
 Commands that are specifically designed to take two distinct ranges (e.g. "git range-diff R1 R2" to compare two ranges) do exist, but they are exceptions. Unless otherwise noted, all "git" commands that operate on a set of commits work on a single revision range. In other words, writing two "two-dot range notation" next to each other, e.g.
 
-```
+``` bash
 $ git log A..B C..D
 ```
 
@@ -526,7 +526,7 @@ If you want command input to still be interpreted as usual by *git rev-parse* be
 
 ### Example
 
-```
+``` bash
 $ cat >your-git-script.sh <<\EOF
 #!/bin/sh
 args=$(git rev-parse --sq-quote "$@")   # quote user-supplied arguments

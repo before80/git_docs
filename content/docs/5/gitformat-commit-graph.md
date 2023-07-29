@@ -6,7 +6,7 @@ gitformat-commit-graph - Git commit-graph format
 
 ## 概述
 
-```
+``` bash
 $GIT_DIR/objects/info/commit-graph
 $GIT_DIR/objects/info/commit-graphs/*
 ```

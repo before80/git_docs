@@ -18,7 +18,7 @@ You can think of this as a set operation. Commits reachable from any of the comm
 
 Thus, the following command:
 
-```
+``` bash
 $ git rev-list foo bar ^baz
 ```
 
@@ -26,14 +26,14 @@ means "list all the commits which are reachable from *foo* or *bar*, but not fro
 
 A special notation "*<commit1>*..*<commit2>*" can be used as a short-hand for "^*<commit1>* *<commit2>*". For example, either of the following may be used interchangeably:
 
-```
+``` bash
 $ git rev-list origin..HEAD
 $ git rev-list HEAD ^origin
 ```
 
 Another special notation is "*<commit1>*…*<commit2>*" which is useful for merges. The resulting set of commits is the symmetric difference between the two operands. The following two commands are equivalent:
 
-```
+``` bash
 $ git rev-list A B --not $(git merge-base --all A B)
 $ git rev-list A...B
 ```

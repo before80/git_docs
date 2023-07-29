@@ -54,7 +54,7 @@ Note that unreachable, packed objects will remain. If this is not desired, see [
 
 To prune objects not used by your repository or another that borrows from your repository via its `.git/objects/info/alternates`:
 
-```
+``` bash
 $ git prune $(cd ../another && git rev-parse --all)
 ```
 

@@ -81,14 +81,14 @@ README caveat=unspecified
 
 - Listing a single attribute:
 
-```
+``` bash
 $ git check-attr diff org/example/MyClass.java
 org/example/MyClass.java: diff: java
 ```
 
 - Listing multiple attributes for a file:
 
-```
+``` bash
 $ git check-attr crlf diff myAttr -- org/example/MyClass.java
 org/example/MyClass.java: crlf: unset
 org/example/MyClass.java: diff: java
@@ -97,7 +97,7 @@ org/example/MyClass.java: myAttr: set
 
 - Listing all attributes for a file:
 
-```
+``` bash
 $ git check-attr --all -- org/example/MyClass.java
 org/example/MyClass.java: diff: java
 org/example/MyClass.java: myAttr: set
@@ -105,7 +105,7 @@ org/example/MyClass.java: myAttr: set
 
 - Listing an attribute for multiple files:
 
-```
+``` bash
 $ git check-attr myAttr -- org/example/MyClass.java org/example/NoMyAttr.java
 org/example/MyClass.java: myAttr: set
 org/example/NoMyAttr.java: myAttr: unspecified
@@ -113,7 +113,7 @@ org/example/NoMyAttr.java: myAttr: unspecified
 
 - Not all values are equally unambiguous:
 
-```
+``` bash
 $ git check-attr caveat README
 README: caveat: unspecified
 ```
