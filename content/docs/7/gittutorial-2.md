@@ -1,18 +1,31 @@
++++
+title = "gittutorial-2"
+weight = 30
+type = "docs"
+date = 2023-07-30T12:00:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# gittutorial-2
+
 https://git-scm.com/docs/gittutorial-2
 
-## 名称
+## NAME
 
 gittutorial-2 - A tutorial introduction to Git: part two
 
-## 概述
+## SYNOPSIS
 
 ```
 git *
 ```
 
-## 描述
+## DESCRIPTION
 
-You should work through [gittutorial[7]](../gittutorial) before reading this tutorial.
+You should work through [gittutorial[7\]](https://git-scm.com/docs/gittutorial) before reading this tutorial.
 
 The goal of this tutorial is to introduce two fundamental pieces of Git’s architecture—the object database and the index file—and to provide the reader with everything necessary to understand the rest of the Git documentation.
 
@@ -20,7 +33,7 @@ The goal of this tutorial is to introduce two fundamental pieces of Git’s arch
 
 Let’s start a new project and create a small amount of history:
 
-``` bash
+```
 $ mkdir test-project
 $ cd test-project
 $ git init
@@ -45,7 +58,7 @@ It is expected that the content of the commit object you created while following
 
 We can ask Git about this particular object with the `cat-file` command. Don’t copy the 40 hex digits from this example but use those from your own version. Note that you can shorten it to only a few characters to save yourself typing all 40 hex digits:
 
-``` bash
+```
 $ git cat-file -t 54196cc2
 commit
 $ git cat-file commit 54196cc2
@@ -58,21 +71,21 @@ initial commit
 
 A tree can refer to one or more "blob" objects, each corresponding to a file. In addition, a tree can also refer to other tree objects, thus creating a directory hierarchy. You can examine the contents of any tree using ls-tree (remember that a long enough initial portion of the SHA-1 will also work):
 
-``` bash
+```
 $ git ls-tree 92b8b694
 100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    file.txt
 ```
 
 Thus we see that this tree has one file in it. The SHA-1 hash is a reference to that file’s data:
 
-``` bash
+```
 $ git cat-file -t 3b18e512
 blob
 ```
 
 A "blob" is just file data, which we can also examine with cat-file:
 
-``` bash
+```
 $ git cat-file blob 3b18e512
 hello world
 ```
@@ -81,7 +94,7 @@ Note that this is the old file data; so the object that Git named in its respons
 
 All of these objects are stored under their SHA-1 names inside the Git directory:
 
-``` bash
+```
 $ find .git/objects/
 .git/objects/
 .git/objects/pack
@@ -104,14 +117,14 @@ and the contents of these files is just the compressed data plus a header identi
 
 The simplest commit to find is the HEAD commit, which we can find from .git/HEAD:
 
-``` bash
+```
 $ cat .git/HEAD
 ref: refs/heads/master
 ```
 
 As you can see, this tells us which branch we’re currently on, and it tells us this by naming a file under the .git directory, which itself contains a SHA-1 name referring to a commit object, which we can examine with cat-file:
 
-``` bash
+```
 $ cat .git/refs/heads/master
 c4d59f390b9cfd4318117afde11d601c1085f241
 $ git cat-file -t c4d59f39
@@ -127,7 +140,7 @@ add emphasis
 
 The "tree" object here refers to the new state of the tree:
 
-``` bash
+```
 $ git ls-tree d0492b36
 100644 blob a0423896973644771497bdc03eb99d5281615b51    file.txt
 $ git cat-file blob a0423896
@@ -136,7 +149,7 @@ hello world!
 
 and the "parent" object refers to the previous commit:
 
-``` bash
+```
 $ git cat-file commit 54196cc2
 tree 92b8b694ffb1675e5975148e1121810081dbdffe
 author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
@@ -149,7 +162,7 @@ The tree object is the tree we examined first, and this commit is unusual in tha
 
 Most commits have only one parent, but it is also common for a commit to have multiple parents. In that case the commit represents a merge, with the parent references pointing to the heads of the merged branches.
 
-Besides blobs, trees, and commits, the only remaining type of object is a "tag", which we won’t discuss here; refer to [git-tag[1]](../../1/git-tag) for details.
+Besides blobs, trees, and commits, the only remaining type of object is a "tag", which we won’t discuss here; refer to [git-tag[1\]](https://git-scm.com/docs/git-tag) for details.
 
 So now we know how Git uses the object database to represent a project’s history:
 
@@ -171,13 +184,13 @@ If we look at the way commits are created under the cover, we’ll see that ther
 
 Continuing with our test-project, let’s modify file.txt again:
 
-``` bash
+```
 $ echo "hello world, again" >>file.txt
 ```
 
 but this time instead of immediately making the commit, let’s take an intermediate step, and ask for diffs along the way to keep track of what’s happening:
 
-``` bash
+```
 $ git diff
 --- a/file.txt
 +++ b/file.txt
@@ -190,7 +203,7 @@ $ git diff
 
 The last diff is empty, but no new commits have been made, and the head still doesn’t contain the new line:
 
-``` bash
+```
 $ git diff HEAD
 diff --git a/file.txt b/file.txt
 index a042389..513feba 100644
@@ -203,7 +216,7 @@ index a042389..513feba 100644
 
 So *git diff* is comparing against something other than the head. The thing that it’s comparing against is actually the index file, which is stored in .git/index in a binary format, but whose contents we can examine with ls-files:
 
-``` bash
+```
 $ git ls-files --stage
 100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
 $ git cat-file -t 513feba2
@@ -215,7 +228,7 @@ hello world, again
 
 So what our *git add* did was store a new blob and then put a reference to it in the index file. If we modify the file again, we’ll see that the new modifications are reflected in the *git diff* output:
 
-``` bash
+```
 $ echo 'again?' >>file.txt
 $ git diff
 index 513feba..ba3da7b 100644
@@ -229,7 +242,7 @@ index 513feba..ba3da7b 100644
 
 With the right arguments, *git diff* can also show us the difference between the working directory and the last commit, or between the index and the last commit:
 
-``` bash
+```
 $ git diff HEAD
 diff --git a/file.txt b/file.txt
 index a042389..ba3da7b 100644
@@ -251,7 +264,7 @@ index a042389..513feba 100644
 
 At any time, we can create a new commit using *git commit* (without the "-a" option), and verify that the state committed only includes the changes stored in the index file, not the additional change that is still only in our working tree:
 
-``` bash
+```
 $ git commit -m "repeat"
 $ git diff HEAD
 diff --git a/file.txt b/file.txt
@@ -268,14 +281,14 @@ So by default *git commit* uses the index to create the commit, not the working 
 
 Finally, it’s worth looking at the effect of *git add* on the index file:
 
-``` bash
+```
 $ echo "goodbye, world" >closing.txt
 $ git add closing.txt
 ```
 
 The effect of the *git add* was to add one entry to the index file:
 
-``` bash
+```
 $ git ls-files --stage
 100644 8b9743b20d4b15be3955fc8d5cd2b09cd2336138 0       closing.txt
 100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
@@ -283,14 +296,14 @@ $ git ls-files --stage
 
 And, as you can see with cat-file, this new entry refers to the current contents of the file:
 
-``` bash
+```
 $ git cat-file blob 8b9743b2
 goodbye, world
 ```
 
 The "status" command is a useful way to get a quick summary of the situation:
 
-``` bash
+```
 $ git status
 On branch master
 Changes to be committed:
@@ -309,19 +322,19 @@ Since the current state of closing.txt is cached in the index file, it is listed
 
 Also, note that a bare `git diff` shows the changes to file.txt, but not the addition of closing.txt, because the version of closing.txt in the index file is identical to the one in the working directory.
 
-In addition to being the staging area for new commits, the index file is also populated from the object database when checking out a branch, and is used to hold the trees involved in a merge operation. See [gitcore-tutorial[7]](../gitcore-tutorial) and the relevant man pages for details.
+In addition to being the staging area for new commits, the index file is also populated from the object database when checking out a branch, and is used to hold the trees involved in a merge operation. See [gitcore-tutorial[7\]](https://git-scm.com/docs/gitcore-tutorial) and the relevant man pages for details.
 
 ## What next?
 
-At this point you should know everything necessary to read the man pages for any of the git commands; one good place to start would be with the commands mentioned in [giteveryday[7]](../giteveryday). You should be able to find any unknown jargon in [gitglossary[7]](../gitglossary).
+At this point you should know everything necessary to read the man pages for any of the git commands; one good place to start would be with the commands mentioned in [giteveryday[7\]](https://git-scm.com/docs/giteveryday). You should be able to find any unknown jargon in [gitglossary[7\]](https://git-scm.com/docs/gitglossary).
 
 The [Git User’s Manual](https://git-scm.com/docs/user-manual) provides a more comprehensive introduction to Git.
 
-[gitcvs-migration[7]](../gitcvs-migration) explains how to import a CVS repository into Git, and shows how to use Git in a CVS-like way.
+[gitcvs-migration[7\]](https://git-scm.com/docs/gitcvs-migration) explains how to import a CVS repository into Git, and shows how to use Git in a CVS-like way.
 
 For some interesting examples of Git use, see the [howtos](https://git-scm.com/docs/howto-index).
 
-For Git developers, [gitcore-tutorial[7]](../gitcore-tutorial) goes into detail on the lower-level Git mechanisms involved in, for example, creating a new commit.
+For Git developers, [gitcore-tutorial[7\]](https://git-scm.com/docs/gitcore-tutorial) goes into detail on the lower-level Git mechanisms involved in, for example, creating a new commit.
 
 ## 另请参阅
 

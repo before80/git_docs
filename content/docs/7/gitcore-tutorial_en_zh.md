@@ -1,5 +1,5 @@
 +++
-title = "Git核心教程"
+title = "Git核心教程——中英对照版"
 weight = 30
 type = "docs"
 date = 2023-07-26T09:47:23+08:00
