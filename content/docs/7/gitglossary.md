@@ -1,3 +1,13 @@
++++
+title = "gitglossary"
+weight = 30
+type = "docs"
+date = 2023-07-30T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
++++
+
 https://git-scm.com/docs/gitglossary
 
 ## 名称

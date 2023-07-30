@@ -13,6 +13,8 @@ draft = false
 
 [https://git-scm.com/docs/gittutorial](https://git-scm.com/docs/gittutorial)
 
+version 2.41.0
+
 ## 名称
 
 gittutorial - A tutorial introduction to Git

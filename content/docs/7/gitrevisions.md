@@ -1,26 +1,42 @@
++++
+title = "gitrevisions"
+weight = 30
+type = "docs"
+date = 2023-07-30T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
++++
+
+# gitrevisions 
+
 https://git-scm.com/docs/gitrevisions
+
+version 2.41.0
 
 ## 名称
 
 gitrevisions - Specifying revisions and ranges for Git
 
-## 概述
+​	gitrevisions - 指定 Git 中的修订版本和范围
+
+## SYNOPSIS
 
 gitrevisions
 
-## 描述
+## DESCRIPTION
 
-Many Git commands take revision parameters as arguments. Depending on the command, they denote a specific commit or, for commands which walk the revision graph (such as [git-log[1]](../../1/git-log)), all commits which are reachable from that commit. For commands that walk the revision graph one can also specify a range of revisions explicitly.
+Many Git commands take revision parameters as arguments. Depending on the command, they denote a specific commit or, for commands which walk the revision graph (such as [git-log[1\]](https://git-scm.com/docs/git-log)), all commits which are reachable from that commit. For commands that walk the revision graph one can also specify a range of revisions explicitly.
 
-In addition, some Git commands (such as [git-show[1]](../../1/git-show) and [git-push[1]](../../1/git-push)) can also take revision parameters which denote other objects than commits, e.g. blobs ("files") or trees ("directories of files").
+In addition, some Git commands (such as [git-show[1\]](https://git-scm.com/docs/git-show) and [git-push[1\]](https://git-scm.com/docs/git-push)) can also take revision parameters which denote other objects than commits, e.g. blobs ("files") or trees ("directories of files").
 
 ## SPECIFYING REVISIONS
 
 A revision parameter *<rev>* typically, but not necessarily, names a commit object. It uses what is called an *extended SHA-1* syntax. Here are various ways to spell object names. The ones listed near the end of this list name trees and blobs contained in a commit.
 
-| Note | This document shows the "raw" syntax as seen by git. The shell and other UIs might require additional quoting to protect special characters and to avoid word splitting. |
-| ---- | ------------------------------------------------------------ |
-|      |                                                              |
+> Note
+>
+> This document shows the "raw" syntax as seen by git. The shell and other UIs might require additional quoting to protect special characters and to avoid word splitting.
 
 - *<sha1>*, e.g. *dae86e1950b1277e545cee180551750029cfe735*, *dae86e*
 
@@ -60,7 +76,21 @@ A revision parameter *<rev>* typically, but not necessarily, names a commit obje
 
 - *[<branchname>]@{push}*, e.g. *master@{push}*, *@{push}*
 
-  The suffix *@{push}* reports the branch "where we would push to" if `git push` were run while `branchname` was checked out (or the current `HEAD` if no branchname is specified). Like for *@{upstream}*, we report the remote-tracking branch that corresponds to that branch at the remote.Here’s an example to make it more clear:`$ git config push.default current $ git config remote.pushdefault myfork $ git switch -c mybranch origin/master $ git rev-parse --symbolic-full-name @{upstream} refs/remotes/origin/master $ git rev-parse --symbolic-full-name @{push} refs/remotes/myfork/mybranch`Note in the example that we set up a triangular workflow, where we pull from one location and push to another. In a non-triangular workflow, *@{push}* is the same as *@{upstream}*, and there is no need for it.This suffix is also accepted when spelled in uppercase, and means the same thing no matter the case.
+  The suffix *@{push}* reports the branch "where we would push to" if `git push` were run while `branchname` was checked out (or the current `HEAD` if no branchname is specified). Like for *@{upstream}*, we report the remote-tracking branch that corresponds to that branch at the remote.Here’s an example to make it more clear:
+
+  ```
+  $ git config push.default current
+  $ git config remote.pushdefault myfork
+  $ git switch -c mybranch origin/master
+  
+  $ git rev-parse --symbolic-full-name @{upstream}
+  refs/remotes/origin/master
+  
+  $ git rev-parse --symbolic-full-name @{push}
+  refs/remotes/myfork/mybranch
+  ```
+
+  Note in the example that we set up a triangular workflow, where we pull from one location and push to another. In a non-triangular workflow, *@{push}* is the same as *@{upstream}*, and there is no need for it.This suffix is also accepted when spelled in uppercase, and means the same thing no matter the case.
 
 - *<rev>^[<n>]*, e.g. *HEAD^, v1.5.1^0*
 
@@ -151,7 +181,7 @@ In these two shorthand notations, you can omit one end and let it default to HEA
 
 Commands that are specifically designed to take two distinct ranges (e.g. "git range-diff R1 R2" to compare two ranges) do exist, but they are exceptions. Unless otherwise noted, all "git" commands that operate on a set of commits work on a single revision range. In other words, writing two "two-dot range notation" next to each other, e.g.
 
-``` bash
+```
 $ git log A..B C..D
 ```
 
@@ -206,6 +236,8 @@ While *<rev>^<n>* was about specifying a single commit parent, these three notat
   Equivalent to *<rev>^<n>..<rev>*, with *<n>* = 1 if not given.
 
 Here are a handful of examples using the Loeliger illustration above, with each step in the notation’s expansion and selection carefully spelt out:
+
+
 
 ```
    Args   Expanded arguments    Selected commits
