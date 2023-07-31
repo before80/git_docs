@@ -160,7 +160,7 @@ Please see [git-commit[1]](../git-commit) for alternative ways to add content to
   Override the executable bit of the added files. The executable bit is only changed in the index, the files on disk are left unchanged.
   
   覆盖已添加文件的可执行位。可执行位仅在索引中更改，磁盘上的文件保持不变。
-- `--pathspec-from-file=`<file>``
+- `--pathspec-from-file=<file>`
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
   

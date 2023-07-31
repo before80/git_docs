@@ -13,9 +13,11 @@ draft = false
 
 https://git-scm.com/docs/git-pull
 
+version 2.41.0
+
 ## 名称
 
-git-pull - Fetch from and integrate with another repository or a local branch
+​	git-pull - 从另一个存储库或本地分支获取并集成更改
 
 ## 概述
 
@@ -25,15 +27,15 @@ git pull [<options>] [<repository> [<refspec>…]]
 
 ## 描述
 
-Incorporates changes from a remote repository into the current branch. If the current branch is behind the remote, then by default it will fast-forward the current branch to match the remote. If the current branch and the remote have diverged, the user needs to specify how to reconcile the divergent branches with `--rebase` or `--no-rebase` (or the corresponding configuration option in `pull.rebase`).
+​	将远程存储库中的更改合并到当前分支。如果当前分支落后于远程分支，默认情况下会将当前分支快进以与远程分支匹配。如果当前分支和远程分支已分歧，则用户需要指定如何使用 `--rebase` 或 `--no-rebase`（或 `pull.rebase` 中的相应配置选项）来协调分歧的分支。
 
-More precisely, `git pull` runs `git fetch` with the given parameters and then depending on configuration options or command line flags, will call either `git rebase` or `git merge` to reconcile diverging branches.
+​	更确切地说，`git pull` 使用给定的参数运行 `git fetch`，然后根据配置选项或命令行标志调用 `git rebase` 或 `git merge` 来协调分歧的分支。
 
-<repository> should be the name of a remote repository as passed to [git-fetch[1]](../git-fetch). <refspec> can name an arbitrary remote ref (for example, the name of a tag) or even a collection of refs with corresponding remote-tracking branches (e.g., refs/heads/*:refs/remotes/origin/*), but usually it is the name of a branch in the remote repository.
+​	`<repository>` 应该是作为 [git-fetch[1]](../git-fetch) 传递的远程存储库的名称。`<refspec>` 可以指定任意远程引用（例如，标签的名称），甚至可以是具有相应的远程跟踪分支的引用集合（例如，refs/heads/*:refs/remotes/origin/*），但通常它是远程存储库中的一个分支的名称。
 
-Default values for <repository> and <branch> are read from the "remote" and "merge" configuration for the current branch as set by [git-branch[1]](../git-branch) `--track`.
+​	`<repository>` 和 `<branch>` 的默认值从当前分支的 "remote" 和 "merge" 配置中读取，这些配置由 [git-branch[1]](../git-branch) `--track` 设置。
 
-Assume the following history exists and the current branch is "`master`":
+​	假设存在以下历史记录，并且当前分支为 "`master`"：
 
 ```
 	  A---B---C master on origin
@@ -43,7 +45,7 @@ Assume the following history exists and the current branch is "`master`":
 	origin/master in your repository
 ```
 
-Then "`git pull`" will fetch and replay the changes from the remote `master` branch since it diverged from the local `master` (i.e., `E`) until its current commit (`C`) on top of `master` and record the result in a new commit along with the names of the two parent commits and a log message from the user describing the changes.
+​	然后 "`git pull`" 将获取并重新应用远程 `master` 分支的更改，自它从本地 `master` 分支（即 `E`）分叉后，直到当前提交（`C`）为止，并将结果记录在一个新提交中，同时记录两个父提交的名称和用户描述更改的日志消息。
 
 ```
 	  A---B---C origin/master
@@ -51,11 +53,11 @@ Then "`git pull`" will fetch and replay the changes from the remote `master` bra
     D---E---F---G---H master
 ```
 
-See [git-merge[1]](../git-merge) for details, including how conflicts are presented and handled.
+​	有关详情，请参阅 [git-merge[1]](../git-merge)，包括冲突的呈现和处理方式。
 
-In Git 1.7.0 or later, to cancel a conflicting merge, use `git reset --merge`. **Warning**: In older versions of Git, running *git pull* with uncommitted changes is discouraged: while possible, it leaves you in a state that may be hard to back out of in the case of a conflict.
+​	在 Git 1.7.0 或更高版本中，要取消冲突合并，请使用 `git reset --merge`。**警告**：在较旧版本的 Git 中，不建议在有未提交的更改时运行 *git pull*：虽然可能，但会使您处于一个可能很难解决冲突的状态。
 
-If any of the remote changes overlap with local uncommitted changes, the merge will be automatically canceled and the work tree untouched. It is generally best to get any local changes in working order before pulling or stash them away with [git-stash[1]](../git-stash).
+​	如果任何远程更改与本地未提交的更改重叠，则合并将自动取消，并保持工作树不变。通常最好在进行拉取之前让所有本地更改工作正常，或者使用 [git-stash[1]](../git-stash) 将它们保存起来。
 
 ## 选项
 
@@ -63,25 +65,29 @@ If any of the remote changes overlap with local uncommitted changes, the merge w
 
 - `--quiet`
 
-  This is passed to both underlying git-fetch to squelch reporting of during transfer, and underlying git-merge to squelch output during merging.
+  将此选项传递给底层的 git-fetch，以在传输过程中压制报告，以及底层的 git-merge，以在合并期间压制输出。
 
 - -v
 
 - `--verbose`
 
-  Pass --verbose to git-fetch and git-merge.
+  将 `--verbose` 传递给 git-fetch 和 git-merge。
 
 - `--[no-]recurse-submodules[=yes|on-demand|no]`
 
-  This option controls if new commits of populated submodules should be fetched, and if the working trees of active submodules should be updated, too (see [git-fetch[1]](../git-fetch), [git-config[1]](../git-config) and [gitmodules[5]](../../5/gitmodules)).If the checkout is done via rebase, local submodule commits are rebased as well.If the update is done via merge, the submodule conflicts are resolved and checked out.
+  此选项控制是否应该获取已填充子模块的新提交，并且是否应该更新活动子模块的工作树（参见 [git-fetch[1]](../git-fetch)、[git-config[1]](../git-config) 和 [gitmodules[5]](../5/gitmodules)）。如果使用 rebase 进行检出，本地子模块提交也将被 rebase。如果使用 merge 进行更新，则将解决子模块冲突并检出。
 
-### Options related to merging
+### 与merging相关的选项
 
 - `--commit`
 
 - `--no-commit`
 
-  Perform the merge and commit the result. This option can be used to override --no-commit. Only useful when merging.With --no-commit perform the merge and stop just before creating a merge commit, to give the user a chance to inspect and further tweak the merge result before committing.Note that fast-forward updates do not create a merge commit and therefore there is no way to stop those merges with --no-commit. Thus, if you want to ensure your branch is not changed or updated by the merge command, use --no-ff with --no-commit.
+  执行合并并提交结果。此选项可用于覆盖 --no-commit。仅在合并时有用。
+
+  使用 --no-commit 执行合并，并在创建合并提交之前停止，以便用户有机会检查和进一步调整合并结果后再提交。
+
+  注意，快进更新不会创建合并提交，因此没有办法使用 `--no-commit` 停止这些合并。因此，如果希望确保合并命令不更改或更新您的分支，请在 `--no-ff` 和 `--no-commit` 中使用 `--no-ff`。
 
 - `--edit`
 
@@ -89,21 +95,27 @@ If any of the remote changes overlap with local uncommitted changes, the merge w
 
 - `--no-edit`
 
-  Invoke an editor before committing successful mechanical merge to further edit the auto-generated merge message, so that the user can explain and justify the merge. The `--no-edit` option can be used to accept the auto-generated message (this is generally discouraged).Older scripts may depend on the historical behaviour of not allowing the user to edit the merge log message. They will see an editor opened when they run `git merge`. To make it easier to adjust such scripts to the updated behaviour, the environment variable `GIT_MERGE_AUTOEDIT` can be set to `no` at the beginning of them.
+  在将成功的机械合并提交前调用编辑器，以进一步编辑自动生成的合并消息，以便用户可以解释和证明合并。`--no-edit` 选项可用于接受自动生成的消息（这通常是不鼓励的）。
+
+  较旧的脚本可能依赖于不允许用户编辑合并日志消息的历史行为。当运行 `git merge` 时，它们将打开一个编辑器。为了更容易调整这些脚本以适应更新后的行为，可以在它们的开始处将环境变量 `GIT_MERGE_AUTOEDIT` 设置为 `no`。
 
 - `--cleanup=<mode>`
 
-  This option determines how the merge message will be cleaned up before committing. See [git-commit[1]](../git-commit) for more details. In addition, if the *<mode>* is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on to the commit machinery in the case of a merge conflict.
+  此选项确定合并消息在提交之前将如何清理。有关更多详情，请参阅 [git-commit[1]](../git-commit)。此外，如果 *<mode>* 的值是 `scissors`，则会在提交合并冲突时将 scissors 追加到 `MERGE_MSG`，然后传递给提交机制。
 
 - `--ff-only`
 
-  Only update to the new history if there is no divergent local history. This is the default when no method for reconciling divergent histories is provided (via the --rebase=* flags).
+  仅在没有分歧的本地历史时更新到新的历史。当未提供协调分歧历史的方法（通过 --rebase=* 标志）时，这是默认行为。
 
 - `--ff`
 
 - `--no-ff`
 
-  When merging rather than rebasing, specifies how a merge is handled when the merged-in history is already a descendant of the current history. If merging is requested, `--ff` is the default unless merging an annotated (and possibly signed) tag that is not stored in its natural place in the `refs/tags/` hierarchy, in which case `--no-ff` is assumed.With `--ff`, when possible resolve the merge as a fast-forward (only update the branch pointer to match the merged branch; do not create a merge commit). When not possible (when the merged-in history is not a descendant of the current history), create a merge commit.With `--no-ff`, create a merge commit in all cases, even when the merge could instead be resolved as a fast-forward.
+  当进行合并而不是变基时，指定合并处理合并历史已经是当前历史的后代时的方式。如果请求合并，则 `--ff` 是默认值，除非合并的是不存储在 `refs/tags/` 层次结构中的注释（可能带有签名）的标签，在这种情况下，默认假定为 `--no-ff`。
+
+  使用 `--ff` 时，如果可能，将合并解决为快进（仅更新分支指针以匹配合并的分支；不创建合并提交）。当不可能时（当合并的历史不是当前历史的后代时），将创建合并提交。
+
+  使用 `--no-ff` 时，在所有情况下都创建合并提交，即使合并可以解决为快进。
 
 - -S[<keyid>]
 
@@ -111,19 +123,23 @@ If any of the remote changes overlap with local uncommitted changes, the merge w
 
 - `--no-gpg-sign`
 
-  GPG-sign the resulting merge commit. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
+  PG 签名生成合并提交。`keyid` 参数是可选的，默认为提交者的身份；如果指定，必须将其粘贴到选项中而不加空格。`--no-gpg-sign` 用于撤消 `commit.gpgSign` 配置变量和之前的 `--gpg-sign`。
 
 - `--log[=<n>]`
 
 - `--no-log`
 
-  In addition to branch names, populate the log message with one-line descriptions from at most <n> actual commits that are being merged. See also [git-fmt-merge-msg[1]](../git-fmt-merge-msg). Only useful when merging.With --no-log do not list one-line descriptions from the actual commits being merged.
+  除了分支名称，还使用最多 <n> 个实际合并的一行描述填充日志消息。还请参阅 [git-fmt-merge-msg[1]](../git-fmt-merge-msg)。仅在合并时有用。
+
+  使用 `--no-log` 时，不列出实际合并的一行描述。
 
 - `--signoff`
 
 - `--no-signoff`
 
-  Add a `Signed-off-by` trailer by the committer at the end of the commit log message. The meaning of a signoff depends on the project to which you’re committing. For example, it may certify that the committer has the rights to submit the work under the project’s license or agrees to some contributor representation, such as a Developer Certificate of Origin. (See [http://developercertificate.org](http://developercertificate.org/) for the one used by the Linux kernel and Git projects.) Consult the documentation or leadership of the project to which you’re contributing to understand how the signoffs are used in that project.The --no-signoff option can be used to countermand an earlier --signoff option on the command line.
+  在提交日志消息的末尾添加一个提交者签名（Signed-off-by）尾注。签名的含义取决于您提交的项目。例如，它可以证明提交者有权在项目的许可下提交工作，或者同意某些贡献者声明，例如开发者原始证书。 （有关 Linux 内核和 Git 项目使用的签名，请参阅 [http://developercertificate.org](http://developercertificate.org/)）。请咨询您正在贡献的项目的文档或领导，了解这些签名在该项目中的用途。
+
+  `--no-signoff` 选项可用于撤消之前在命令行上使用的 --signoff 选项。
 
 - `--stat`
 
@@ -131,252 +147,322 @@ If any of the remote changes overlap with local uncommitted changes, the merge w
 
 - `--no-stat`
 
-  Show a diffstat at the end of the merge. The diffstat is also controlled by the configuration option merge.stat.With -n or --no-stat do not show a diffstat at the end of the merge.
+  在合并结束时显示一个 diffstat。diffstat 也由配置选项 merge.stat 控制。
+
+  使用 -n 或 `--no-stat`时，不显示合并结束时的 diffstat。
 
 - `--squash`
 
 - `--no-squash`
 
-  Produce the working tree and index state as if a real merge happened (except for the merge information), but do not actually make a commit, move the `HEAD`, or record `$GIT_DIR/MERGE_HEAD` (to cause the next `git commit` command to create a merge commit). This allows you to create a single commit on top of the current branch whose effect is the same as merging another branch (or more in case of an octopus).With --no-squash perform the merge and commit the result. This option can be used to override --squash.With --squash, --commit is not allowed, and will fail.Only useful when merging.
+  生成工作树和索引状态，就好像进行了真正的合并一样（除了合并信息），但实际上不会进行提交，移动 `HEAD`，或记录 `$GIT_DIR/MERGE_HEAD`（以使下一个 `git commit` 命令创建合并提交）。
+
+  这允许您在当前分支的顶部创建一个单独的提交，其效果与合并另一个分支相同（或者在八爪鱼的情况下更多）。
+
+  使用 --no-squash 时，执行合并并提交结果。此选项可用于覆盖 --squash。使用 --squash 时，不允许使用 --commit，并将失败。
+
+  仅在合并时有用。
 
 - `--[no-]verify`
 
-  By default, the pre-merge and commit-msg hooks are run. When `--no-verify` is given, these are bypassed. See also [githooks[5]](../../5/githooks). Only useful when merging.
+  默认情况下，会运行 pre-merge 和 commit-msg 钩子。使用 `--no-verify` 可以绕过这些钩子。另请参阅 [githooks[5]](../5/githooks)。
+
+  仅在合并时有用。
 
 - -s <strategy>
 
 - `--strategy=<strategy>`
 
-  Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no `-s` option, a built-in list of strategies is used instead (`ort` when merging a single head, `octopus` otherwise).
+  使用给定的合并策略；可以多次提供它们，以指定它们的尝试顺序。如果没有 `-s` 选项，则使用内置的合并策略列表（合并单一头时为 `ort`，否则为 `octopus`）。
 
 - -X <option>
 
 - `--strategy-option=<option>`
 
-  Pass merge strategy specific option through to the merge strategy.
+  将合并策略特定的选项传递给合并策略。
 
 - `--verify-signatures`
 
 - `--no-verify-signatures`
 
-  Verify that the tip commit of the side branch being merged is signed with a valid key, i.e. a key that has a valid uid: in the default trust model, this means the signing key has been signed by a trusted key. If the tip commit of the side branch is not signed with a valid key, the merge is aborted.Only useful when merging.
+  验证要合并的分支侧的尖端提交是否用有效的密钥签名，即具有有效 uid 的密钥：在默认的信任模型中，这意味着签名密钥已由受信任的密钥签名。如果分支侧的尖端提交没有用有效的密钥签名，合并将中止。
+
+  仅在合并时有用。
 
 - `--summary`
 
 - `--no-summary`
 
-  Synonyms to --stat and --no-stat; these are deprecated and will be removed in the future.
+  --stat 和 --no-stat 的同义词；它们已被弃用，并将在将来被删除。
 
 - `--autostash`
 
 - `--no-autostash`
 
-  Automatically create a temporary stash entry before the operation begins, record it in the special ref `MERGE_AUTOSTASH` and apply it after the operation ends. This means that you can run the operation on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts.
+  在操作开始之前自动创建一个临时存储项，并在操作结束后将其记录在特殊的 ref `MERGE_AUTOSTASH` 中。这意味着您可以在脏工作树上运行操作。但是，请小心使用：成功合并后的最终存储应用可能会导致非常复杂的冲突。
 
 - `--allow-unrelated-histories`
 
-  By default, `git merge` command refuses to merge histories that do not share a common ancestor. This option can be used to override this safety when merging histories of two projects that started their lives independently. As that is a very rare occasion, no configuration variable to enable this by default exists and will not be added.Only useful when merging.
+  默认情况下，`git merge` 命令拒绝合并不共享共同祖先的历史。当合并两个最初独立开始的项目的历史时，可以使用此选项来覆盖此安全性。由于这是非常罕见的情况，因此不存在启用此选项的配置变量，并且不会添加。
+
+  仅在合并时有用。
 
 - -r
 
 - `--rebase[=false|true|merges|interactive]`
 
-  When true, rebase the current branch on top of the upstream branch after fetching. If there is a remote-tracking branch corresponding to the upstream branch and the upstream branch was rebased since last fetched, the rebase uses that information to avoid rebasing non-local changes.When set to `merges`, rebase using `git rebase --rebase-merges` so that the local merge commits are included in the rebase (see [git-rebase[1]](../git-rebase) for details).When false, merge the upstream branch into the current branch.When `interactive`, enable the interactive mode of rebase.See `pull.rebase`, `branch.<name>.rebase` and `branch.autoSetupRebase` in [git-config[1]](../git-config) if you want to make `git pull` always use `--rebase` instead of merging.NoteThis is a potentially *dangerous* mode of operation. It rewrites history, which does not bode well when you published that history already. Do **not** use this option unless you have read [git-rebase[1]](../git-rebase) carefully.
+  当为 true 时，在获取后将当前分支变基到上游分支。如果有与上游分支相对应的远程跟踪分支，并且上游分支自上次获取以来已被变基，则变基将使用该信息避免变基非本地更改。
+
+  当设置为 merges 时，使用 `git rebase --rebase-merges` 进行变基，以便本地合并提交包含在变基中（有关详情，请参阅 [git-rebase[1]](../git-rebase)）。
+
+  当为 false 时，将上游分支合并到当前分支。
+
+  当为 interactive 时，启用交互模式的变基。
+
+  See `pull.rebase`, `branch.<name>.rebase` and `branch.autoSetupRebase` in [git-config[1]](../git-config) if you want to make `git pull` always use `--rebase` instead of merging.
+
+  如果要使 `git pull` 总是使用 `--rebase` 而不是合并，请参阅 [git-config[1]](../git-config) 中的 `pull.rebase`、`branch.<name>.rebase` 和 `branch.autoSetupRebase`。
+
+  > 注意
+>
+  > ​	这是一种潜在的*危险*操作模式。它会重写历史记录，这在您已经发布该历史记录时并不好。除非您已经仔细阅读 [git-rebase[1]](../git-rebase)，否则不要使用此选项。
 
 - `--no-rebase`
 
-  This is shorthand for --rebase=false.
+  This is shorthand for `--rebase=false`.
+  
+  这是 `--rebase=false` 的缩写形式。
 
-### Options related to fetching
+### 与fetching相关的选项
 
 - `--all`
 
-  Fetch all remotes.
+  获取所有远程存储库。
 
 - -a
 
 - `--append`
 
-  Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten.
+  将获取的引用的 ref 名称和对象名称追加到 `.git/FETCH_HEAD` 的现有内容中。如果没有此选项，`.git/FETCH_HEAD` 中的旧数据将被覆盖。
 
 - `--atomic`
 
-  Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated.
+  使用原子事务更新本地 ref。要么更新所有 ref，要么在出现错误时不更新任何 ref。
 
 - `--depth=<depth>`
 
-  Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a *shallow* repository created by `git clone` with `--depth=<depth>` option (see [git-clone[1]](../git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched.
+  将获取限制为每个远程分支历史的指定提交数。如果通过 `git clone` 选项 `--depth=<depth>` 创建了*浅* 存储库（请参阅 [git-clone[1]](../git-clone)），则将深化或缩短历史记录以指定的提交数。不获取深化提交的标签。
 
 - `--deepen=<depth>`
 
-  Similar to --depth, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history.
+  类似于 `--depth`，不过它是指定从当前浅边界开始的提交数，而不是从每个远程分支历史的尖端开始的提交数。
 
 - `--shallow-since=<date>`
 
-  Deepen or shorten the history of a shallow repository to include all reachable commits after <date>.
+  将浅存储库的历史记录深化或缩短，以包括 <date> 之后的所有可达提交。
 
 - `--shallow-exclude=<revision>`
 
-  Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times.
+  将浅存储库的历史深化或缩短，以排除从指定的远程分支或标签可达的提交。此选项可以多次指定。
 
 - `--unshallow`
 
-  If the source repository is complete, convert a shallow repository to a complete one, removing all the limitations imposed by shallow repositories.If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository.
+  如果源存储库是完整的，则将浅存储库转换为完整存储库，删除浅存储库所施加的所有限制。如果源存储库是浅存储库，则尽可能获取更多内容，以使当前存储库具有与源存储库相同的历史记录。
+
+  如果源存储库是完整的，则将浅存储库转换为完整的存储库，消除浅存储库 imposed limitations imposed by shallow repositories。如果源存储库是浅存储库，则尽可能获取数据，使当前存储库具有与源存储库相同的历史记录。
 
 - `--update-shallow`
 
-  By default when fetching from a shallow repository, `git fetch` refuses refs that require updating .git/shallow. This option updates .git/shallow and accept such refs.
+  默认情况下，当从浅存储库中获取时，`git fetch` 拒绝需要更新 `.git/shallow` 的引用。此选项更新 `.git/shallow` 并接受这样的引用。
 
 - `--negotiation-tip=<commit|glob>`
 
-  By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile. If specified, Git will only report commits reachable from the given tips. This is useful to speed up fetches when the user knows which local ref is likely to have commits in common with the upstream ref being fetched.This option may be specified more than once; if so, Git will report commits reachable from any of the given commits.The argument to this option may be a glob on ref names, a ref, or the (possibly abbreviated) SHA-1 of a commit. Specifying a glob is equivalent to specifying this option multiple times, one for each matching ref name.See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](../git-config), and the `--negotiate-only` option below.
+  默认情况下，Git 会报告到服务器上的所有本地引用可达的提交，以查找共同的提交，以减小待接收 packfile 的大小。如果指定，Git 只会报告从给定的引用点可达的提交。当用户知道哪个本地引用可能与正在获取的上游引用有共同提交时，这对于加快获取速度很有用。
+
+  可以多次指定此选项；如果是这样，Git 将按命令行上列出的顺序将所有提交报告给对方。
+
+  此选项的参数可以是 ref 名称的通配符、引用或（可能是缩写的）提交的 SHA-1。指定通配符等效于多次指定此选项，每次匹配一个引用名称。
+
+  另请参阅 [git-config[1]](../git-config) 中记录的 `fetch.negotiationAlgorithm` 和 `push.negotiate` 配置变量，以及下面的 `--negotiate-only` 选项。
 
 - `--negotiate-only`
 
-  Do not fetch anything from the server, and instead print the ancestors of the provided `--negotiation-tip=*` arguments, which we have in common with the server.This is incompatible with `--recurse-submodules=[yes|on-demand]`. Internally this is used to implement the `push.negotiate` option, see [git-config[1]](../git-config).
+  不从服务器获取任何内容，而是打印与服务器共有的提供的 `--negotiation-tip=*` 参数的祖先。这与 `--recurse-submodules=[yes|on-demand]` 不兼容。内部上使用此选项来实现 `push.negotiate` 选项，请参阅 [git-config[1]](../git-config)。
 
 - `--dry-run`
 
-  Show what would be done, without making any changes.
+  显示将执行的操作，但不进行任何更改。
 
 - -f
 
 - `--force`
 
-  When *git fetch* is used with `<src>:<dst>` refspec it may refuse to update the local branch as discussed in the `<refspec>` part of the [git-fetch[1]](../git-fetch) documentation. This option overrides that check.
+  当使用 `<src>:<dst>` refspec 时，*git fetch* 可能会拒绝更新本地分支，如 [git-fetch[1]](../git-fetch) 文档中的 `<refspec>` 部分所讨论的那样。此选项覆盖该检查。
 
 - -k
 
 - `--keep`
 
-  Keep downloaded pack.
+  保留下载的 pack。
 
 - `--prefetch`
 
-  Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](../git-maintenance).
+  修改配置的 refspec，将所有引用放入 `refs/prefetch/` 命名空间。请参阅 [git-maintenance[1]](../git-maintenance) 中的 `prefetch` 任务。
 
 - -p
 
 - `--prune`
 
-  Before fetching, remove any remote-tracking references that no longer exist on the remote. Tags are not subject to pruning if they are fetched only because of the default tag auto-following or due to a --tags option. However, if tags are fetched due to an explicit refspec (either on the command line or in the remote configuration, for example if the remote was cloned with the --mirror option), then they are also subject to pruning. Supplying `--prune-tags` is a shorthand for providing the tag refspec.
+  在获取之前，删除在远程不存在的任何远程跟踪引用。如果仅因默认的标签自动跟踪或由于 `--tags` 选项而获取标签，则不会对标签进行修剪。但是，如果标签是由于显式 refspec（无论是在命令行上还是在远程配置中，例如如果使用 `--mirror` 选项克隆了远程），则它们也会被修剪。提供 `--prune-tags` 等同于提供标签 refspec。
 
 - `--no-tags`
 
-  By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the remote.<name>.tagOpt setting. See [git-config[1]](../git-config).
+  默认情况下，从远程存储库下载的对象所指向的标签会被获取并存储在本地。此选项禁用此自动标签跟踪功能。可以使用 remote.<name>.tagOpt 设置来指定远程的默认行为。请参阅 [git-config[1]](../git-config)。
 
 - `--refmap=<refspec>`
 
-  When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.*.fetch` configuration variables for the remote repository. Providing an empty `<refspec>` to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details.
+  在获取命令行上列出的引用时，使用指定的 refspec（可以多次给出）将引用映射到远程跟踪分支，而不是使用配置变量 `remote.*.fetch` 的值。向 `--refmap` 选项提供一个空的 `<refspec>` 可以使 Git 忽略配置的 refspec，并完全依赖于作为命令行参数提供的 refspec。有关详细信息，请参阅 "已配置的远程跟踪分支" 部分。
 
 - -t
 
 - `--tags`
 
-  Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if --prune is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`).
+  从远程获取所有标签（即将远程标签 `refs/tags/*` 获取到具有相同名称的本地标签），以及其他可能获取的内容。仅使用此选项不会将标签暴露给修剪，即使使用了 --prune（尽管如果它们也是显式 refspec 的目标，则标签可能会被修剪；请参阅 `--prune`）。
 
 - -j
 
 - `--jobs=<n>`
 
-  Number of parallel children to be used for all forms of fetching.If the `--multiple` option was specified, the different remotes will be fetched in parallel. If multiple submodules are fetched, they will be fetched in parallel. To control them independently, use the config settings `fetch.parallel` and `submodule.fetchJobs` (see [git-config[1]](../git-config)).Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel.
+  用于所有形式的获取的并行子进程数。如果指定了 --multiple 选项，则不同的远程将并行获取。如果获取了多个子模块，则它们将并行获取。要单独控制它们，请使用配置设置 fetch.parallel 和 submodule.fetchJobs（请参阅 [git-config[1]](../git-config)）。通常，并行递归和多远程获取速度会更快。默认情况下，获取是顺序执行的，而不是并行的。
 
 - `--set-upstream`
 
   If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](../git-pull) and other commands. For more information, see `branch.<name>.merge` and `branch.<name>.remote` in [git-config[1]](../git-config).
 
+  如果成功获取远程，则添加上游（跟踪）引用，供无参数 [git-pull[1]](../git-pull) 和其他命令使用。有关更多信息，请参阅 [git-config[1]](../git-config) 中的 `branch.<name>.merge` 和 `branch.<name>.remote`。
+
 - --upload-pack <upload-pack>
 
-  When given, and the repository to fetch from is handled by *git fetch-pack*, `--exec=<upload-pack>` is passed to the command to specify non-default path for the command run on the other end.
+  如果给定，并且要获取的存储库由 *git fetch-pack* 处理，则会将 `--exec=<upload-pack>` 传递给该命令，以指定在对端运行命令的非默认路径。
 
 - `--progress`
 
-  Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
+  默认情况下，如果标准错误流连接到终端，则在标准错误流上报告进度状态（除非使用 -q）。此标志会强制在标准错误流未连接到终端时仍报告进度状态。
 
 - -o <option>
 
 - `--server-option=<option>`
 
-  Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=<option>` are given, they are all sent to the other side in the order listed on the command line.
+  使用协议版本 2 进行通信时，将给定的字符串传输到服务器。给定的字符串不得包含 NUL 或 LF 字符。服务器对服务器选项的处理（包括未知选项）与服务器特定。当给定多个 `--server-option=<option>` 时，它们将按照命令行上列出的顺序全部发送到对方。
 
 - `--show-forced-updates`
 
-  By default, git checks if a branch is force-updated during fetch. This can be disabled through fetch.showForcedUpdates, but the --show-forced-updates option guarantees this check occurs. See [git-config[1]](../git-config).
+  默认情况下，git 检查在获取期间是否进行了强制更新。这可以通过 fetch.showForcedUpdates 禁用，但 --show-forced-updates 选项确保进行此检查。请参阅 [git-config[1]](../git-config)。
 
 - `--no-show-forced-updates`
 
-  By default, git checks if a branch is force-updated during fetch. Pass --no-show-forced-updates or set fetch.showForcedUpdates to false to skip this check for performance reasons. If used during *git-pull* the --ff-only option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](../git-config).
+  默认情况下，git 检查在获取期间是否进行了强制更新。传递 --no-show-forced-updates 或将 fetch.showForcedUpdates 设置为 false，以跳过此检查以提高性能。如果在 *git-pull* 中使用，则 --ff-only 选项仍将在尝试进行快进更新之前检查强制更新。请参阅 [git-config[1]](../git-config)。
 
 - -4
 
 - `--ipv4`
 
-  Use IPv4 addresses only, ignoring IPv6 addresses.
+  仅使用 IPv4 地址，忽略 IPv6 地址。
 
 - -6
 
 - `--ipv6`
 
-  Use IPv6 addresses only, ignoring IPv4 addresses.
+  仅使用 IPv6 地址，忽略 IPv4 地址。
 
 - <repository>
 
-  The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-pull#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-pull#REMOTES) below).
+  执行获取或拉取操作的"远程"存储库。此参数可以是 URL（请参阅下面的 [GIT URLS](https://git-scm.com/docs/git-pull#URLS) 部分）或远程的名称（请参阅下面的 [REMOTES](https://git-scm.com/docs/git-pull#REMOTES) 部分）。
 
 - <refspec>
 
-  Specifies which refs to fetch and which local refs to update. When no <refspec>s appear on the command line, the refs to fetch are read from `remote.<repository>.fetch` variables instead (see the section "CONFIGURED REMOTE-TRACKING BRANCHES" in [git-fetch[1]](../git-fetch)).The format of a <refspec> parameter is an optional plus `+`, followed by the source <src>, followed by a colon `:`, followed by the destination ref <dst>. The colon can be omitted when <dst> is empty. <src> is typically a ref, but it can also be a fully spelled hex object name.A <refspec> may contain a `*` in its <src> to indicate a simple pattern match. Such a refspec functions like a glob that matches any ref with the same prefix. A pattern <refspec> must have a `*` in both the <src> and <dst>. It will map refs to the destination by replacing the `*` with the contents matched from the source.If a refspec is prefixed by `^`, it will be interpreted as a negative refspec. Rather than specifying which refs to fetch or which local refs to update, such a refspec will instead specify refs to exclude. A ref will be considered to match if it matches at least one positive refspec, and does not match any negative refspec. Negative refspecs can be useful to restrict the scope of a pattern refspec so that it will not include specific refs. Negative refspecs can themselves be pattern refspecs. However, they may only contain a <src> and do not specify a <dst>. Fully spelled out hex object names are also not supported.`tag <tag>` means the same as `refs/tags/<tag>:refs/tags/<tag>`; it requests fetching everything up to the given tag.The remote ref that matches <src> is fetched, and if <dst> is not an empty string, an attempt is made to update the local ref that matches it.Whether that update is allowed without `--force` depends on the ref namespace it’s being fetched to, the type of object being fetched, and whether the update is considered to be a fast-forward. Generally, the same rules apply for fetching as when pushing, see the `<refspec>...` section of [git-push[1]](../git-push) for what those are. Exceptions to those rules particular to *git fetch* are noted below.Until Git version 2.20, and unlike when pushing with [git-push[1]](../git-push), any updates to `refs/tags/*` would be accepted without `+` in the refspec (or `--force`). When fetching, we promiscuously considered all tag updates from a remote to be forced fetches. Since Git version 2.20, fetching to update `refs/tags/*` works the same way as when pushing. I.e. any updates will be rejected without `+` in the refspec (or `--force`).Unlike when pushing with [git-push[1]](../git-push), any updates outside of `refs/{tags,heads}/*` will be accepted without `+` in the refspec (or `--force`), whether that’s swapping e.g. a tree object for a blob, or a commit for another commit that’s doesn’t have the previous commit as an ancestor etc.Unlike when pushing with [git-push[1]](../git-push), there is no configuration which’ll amend these rules, and nothing like a `pre-fetch` hook analogous to the `pre-receive` hook.As with pushing with [git-push[1]](../git-push), all of the rules described above about what’s not allowed as an update can be overridden by adding an the optional leading `+` to a refspec (or using `--force` command line option). The only exception to this is that no amount of forcing will make the `refs/heads/*` namespace accept a non-commit object.NoteWhen the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.NoteThere is a difference between listing multiple <refspec> directly on *git pull* command line and having multiple `remote.<repository>.fetch` entries in your configuration for a <repository> and running a *git pull* command without any explicit <refspec> parameters. <refspec>s listed explicitly on the command line are always merged into the current branch after fetching. In other words, if you list more than one remote ref, *git pull* will create an Octopus merge. On the other hand, if you do not list any explicit <refspec> parameter on the command line, *git pull* will fetch all the <refspec>s it finds in the `remote.<repository>.fetch` configuration and merge only the first <refspec> found into the current branch. This is because making an Octopus from remote refs is rarely done, while keeping track of multiple remote heads in one-go by fetching more than one is often useful.
+  指定要获取的引用和要更新的本地引用。当命令行上没有出现 <refspec> 时，将从 `remote.<repository>.fetch` 变量中读取要获取的引用（请参阅 [git-fetch[1]](../git-fetch) 中的 "CONFIGURED REMOTE-TRACKING BRANCHES" 部分）。
+  
+  <refspec> 参数的格式是一个可选的加号 `+`，后跟源 <src>，后跟冒号 `:`，后跟目标引用 <dst>。当 <dst> 为空字符串时，可以省略冒号。通常，<src> 是一个引用，但也可以是完全拼写的十六进制对象名称。
+  
+  <refspec> 可以在其 <src> 中包含 `*`，以指示简单的模式匹配。这样的 refspec 的功能类似于使用相同前缀匹配任何引用的 glob。模式 <refspec> 必须在 <src> 和 <dst> 中都有一个 `*`。它将通过将 `*` 替换为从源匹配的内容来将引用映射到目标。
+  
+  如果 refspec 以 `^` 为前缀，则它将被解释为负 refspec。与指定要获取的引用或要更新的本地引用不同，这样的 refspec 将指定要排除的引用。如果一个引用与至少一个正 refspec 匹配，且不与任何负 refspec 匹配，则将视为匹配。负 refspec 对于限制模式 refspec 的范围非常有用，以便不包含特定引用。负 refspec 本身可以是模式 refspec。但是，它们只能包含一个 <src>，不指定 <dst>。也不支持完全拼写的十六进制对象名称。
+  
+  `tag <tag>` means the same as `refs/tags/<tag>:refs/tags/<tag>`; it requests fetching everything up to the given tag.
+  
+  `tag <tag>` 的含义与 `refs/tags/<tag>:refs/tags/<tag>` 相同；它请求获取直到给定标签的所有内容。
+  
+  匹配 <src> 的远程引用会被获取，并且如果 <dst> 不为空字符串，则会尝试更新与之匹配的本地引用。
+  
+  是否允许不带 `--force` 更新取决于它被获取到的 ref 命名空间、正在获取的对象类型以及该更新是否被视为快进。通常，与推送相同的规则适用于获取，有关这些规则的信息，请参阅 [git-push[1]](../git-push) 的 `<refspec>...` 部分。*git fetch* 的特定例外情况如下所示。
+  
+  在 Git 版本 2.20 之前，与使用 [git-push[1]](../git-push) 推送时不同，任何对 `refs/tags/*` 的更新都会在 refspec 中没有 `+`（或 `--force`）的情况下（或 `--force`）接受。在获取时，我们通常将所有标签更新从远程不加选择地视为强制获取。自 Git 版本 2.20 以来，获取以更新 `refs/tags/*` 的方式与推送时相同。即没有在 refspec 中（或使用 `--force` 命令行选项）时将拒绝任何更新。
+  
+  与使用 [git-push[1]](../git-push) 推送时不同，任何在 `refs/{tags,heads}/*` 之外的更新都将在 refspec 中没有 `+`（或 `--force`）的情况下接受，无论是交换例如树对象与 blob，还是提交与没有上一个提交作为祖先的另一个提交等。
+  
+  与使用 [git-push[1]](../git-push) 推送时不同，没有配置将修改这些规则的方法，也没有类似于 `pre-receive` 钩子的 `pre-fetch` 钩子。
+  
+  与使用 [git-push[1]](../git-push) 推送时一样，关于不允许作为更新的内容的所有规则都可以通过在 refspec 前添加可选的前导 `+`（或使用 `--force` 命令行选项）来覆盖。唯一的例外是无论如何强制也不会使 `refs/heads/*` 命名空间接受非提交对象。
+  
+  > 注意
+  >
+  > ​	当知道要获取的远程分支经常被回退和重新基于时，预计其新的 tip 不会是其上次获取时的祖先（存储在上次获取时的远程跟踪分支中）。对于这样的分支，您可能需要使用 `+` 符号来指示需要非快进更新。没有办法确定或声明分支将在具有此行为的存储库中可用；拉取用户只需知道这是分支的预期使用模式。
+  
+  > 注意
+  >
+  > ​	在 *git pull* 命令行上直接列出多个 <refspec> 与为 <repository> 在配置中有多个 `remote.<repository>.fetch` 条目并且在不带任何显式 <refspec> 参数的情况下运行 *git pull* 命令之间有区别。在命令行上明确列出的 <refspec> 始终会在获取后合并到当前分支。换句话说，如果列出多个远程引用，*git pull* 将创建一个 Octopus 合并。另一方面，如果在命令行上没有列出任何显式的 <refspec> 参数，则 *git pull* 将获取在 `remote.<repository>.fetch` 配置中找到的所有 <refspec> 并仅合并找到的第一个 <refspec> 到当前分支。这是因为很少做 Octopus 合并，而通过获取多个远程头来跟踪多个远程头经常很有用。
 
 ## GIT URLS
 
-In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.
+​	通常情况下，URL 包含有关传输协议、远程服务器地址和存储库路径的信息。根据传输协议，其中的一些信息可能不存在。
 
-Git supports ssh, git, http, and https protocols (in addition, ftp, and ftps can be used for fetching, but this is inefficient and deprecated; do not use it).
+​	Git 支持 ssh、git、http 和 https 协议（除此之外，还可以使用 ftp 和 ftps 进行获取，但这是效率低且已被弃用的，请不要使用）。
 
-The native transport (i.e. git:// URL) does no authentication and should be used with caution on unsecured networks.
+​	原生传输（即 git:// URL）不进行身份验证，应谨慎在不安全的网络上使用。
 
-The following syntaxes may be used with them:
+​	以下语法可与这些协议一起使用：
 
 - ssh://[user@]host.xz[:port]/path/to/repo.git/
 - git://host.xz[:port]/path/to/repo.git/
 - http[s]://host.xz[:port]/path/to/repo.git/
 - ftp[s]://host.xz[:port]/path/to/repo.git/
 
-An alternative scp-like syntax may also be used with the ssh protocol:
+​	ssh 协议还可以使用类似于 scp 的语法：
 
 - [user@]host.xz:path/to/repo.git/
 
-This syntax is only recognized if there are no slashes before the first colon. This helps differentiate a local path that contains a colon. For example the local path `foo:bar` could be specified as an absolute path or `./foo:bar` to avoid being misinterpreted as an ssh url.
+​	当冒号之前没有斜杠时，才会识别此语法。这有助于区分包含冒号的本地路径。例如，本地路径 `foo:bar` 可以被指定为绝对路径或 `./foo:bar`，以避免被误解为 ssh URL。
 
-The ssh and git protocols additionally support ~username expansion:
+​	ssh 和 git 协议还支持 `~username` 扩展：
 
 - ssh://[user@]host.xz[:port]/~[user]/path/to/repo.git/
 - git://host.xz[:port]/~[user]/path/to/repo.git/
 - [user@]host.xz:/~[user]/path/to/repo.git/
 
-For local repositories, also supported by Git natively, the following syntaxes may be used:
+​	对于本地存储库，Git 也原生支持以下语法：
 
 - /path/to/repo.git/
 - file:///path/to/repo.git/
 
-These two syntaxes are mostly equivalent, except when cloning, when the former implies --local option. See [git-clone[1]](../git-clone) for details.
+​	这两种语法在大多数情况下是等效的，但在克隆时，前者意味着使用 --local 选项。有关详细信息，请参阅 [git-clone[1]](../git-clone)。
 
-*git clone*, *git fetch* and *git pull*, but not *git push*, will also accept a suitable bundle file. See [git-bundle[1]](../git-bundle).
+​	*git clone*、*git fetch* 和 *git pull*（但不包括 *git push*）还可以接受适当的捆绑文件。请参阅 [git-bundle[1]](../git-bundle)。
 
-When Git doesn’t know how to handle a certain transport protocol, it attempts to use the *remote-<transport>* remote helper, if one exists. To explicitly request a remote helper, the following syntax may be used:
+​	当 Git 不知道如何处理特定的传输协议时，它会尝试使用远程辅助程序 *remote-<transport>*（如果存在）。为了显式请求远程辅助程序，可以使用以下语法：
 
 - <transport>::<address>
 
-where <address> may be a path, a server and path, or an arbitrary URL-like string recognized by the specific remote helper being invoked. See [gitremote-helpers[7]](../../7/gitremote-helpers) for details.
+其中，<address> 可以是路径、服务器和路径的组合，或者是特定远程辅助程序识别的任意类似于 URL 的字符串。有关详细信息，请参阅 [gitremote-helpers[7]](../7/gitremote-helpers)。
 
-If there are a large number of similarly-named remote repositories and you want to use a different format for them (such that the URLs you use will be rewritten into URLs that work), you can create a configuration section of the form:
+​	如果有大量同名的远程存储库，并且想要为它们使用不同的格式（以使您使用的URL将被重写为有效的URL），可以创建以下形式的配置节：
 
 ```
 	[url "<actual url base>"]
 		insteadOf = <other url base>
 ```
 
-For example, with this:
+​	例如，使用以下内容：
 
 ```
 	[url "git://git.host.xz/"]
@@ -384,37 +470,37 @@ For example, with this:
 		insteadOf = work:
 ```
 
-a URL like "work:repo.git" or like "host.xz:/path/to/repo.git" will be rewritten in any context that takes a URL to be "git://git.host.xz/repo.git".
+在任何需要URL的上下文中，类似于 "work:repo.git" 或 "host.xz:/path/to/repo.git" 的URL将被重写为 "git://git.host.xz/repo.git"。
 
-If you want to rewrite URLs for push only, you can create a configuration section of the form:
+​	如果只想重写推送的URL，可以创建以下形式的配置节：
 
 ```
 	[url "<actual url base>"]
 		pushInsteadOf = <other url base>
 ```
 
-For example, with this:
+​	例如，使用以下内容：
 
 ```
 	[url "ssh://example.org/"]
 		pushInsteadOf = git://example.org/
 ```
 
-a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://example.org/path/to/repo.git" for pushes, but pulls will still use the original URL.
+对于推送，类似于 "git://example.org/path/to/repo.git" 的URL将被重写为 "ssh://example.org/path/to/repo.git"，但是拉取仍将使用原始URL。
 
-## REMOTES
+## 远程
 
-The name of one of the following can be used instead of a URL as `<repository>` argument:
+​	在 `<repository>` 参数中，可以使用以下内容之一的名称，而不是使用 URL：
 
-- a remote in the Git configuration file: `$GIT_DIR/config`,
-- a file in the `$GIT_DIR/remotes` directory, or
-- a file in the `$GIT_DIR/branches` directory.
+- Git 配置文件（`$GIT_DIR/config`）中的远程。
+- `$GIT_DIR/remotes` 目录中的文件。
+- `$GIT_DIR/branches` 目录中的文件。
 
-All of these also allow you to omit the refspec from the command line because they each contain a refspec which git will use by default.
+所有这些都允许在命令行中省略 refspec，因为它们都包含 Git 默认会使用的 refspec。
 
-### Named remote in configuration file
+### 在配置文件中命名的远程
 
-You can choose to provide the name of a remote which you had previously configured using [git-remote[1]](../git-remote), [git-config[1]](../git-config) or even by a manual edit to the `$GIT_DIR/config` file. The URL of this remote will be used to access the repository. The refspec of this remote will be used by default when you do not provide a refspec on the command line. The entry in the config file would appear like this:
+​	您可以选择提供先前使用 [git-remote[1]](../git-remote)、[git-config[1]](../git-config) 或手动编辑 `$GIT_DIR/config` 文件配置的远程的名称。此远程的 URL 将用于访问存储库。当您未在命令行上提供 refspec 时，此远程的 refspec 将作为默认值使用。配置文件中的条目应如下所示：
 
 ```
 	[remote "<name>"]
@@ -424,11 +510,11 @@ You can choose to provide the name of a remote which you had previously configur
 		fetch = <refspec>
 ```
 
-The `<pushurl>` is used for pushes only. It is optional and defaults to `<URL>`. Pushing to a remote affects all defined pushurls or to all defined urls if no pushurls are defined. Fetch, however, will only fetch from the first defined url if muliple urls are defined.
+​	`<pushurl>` 仅用于推送。它是可选的，默认为 `<URL>`。向远程推送将影响所有已定义的推送 URL，或者如果未定义任何推送 URL，则影响所有已定义的 URL。但是，获取操作仅在定义多个 URL 时从第一个已定义的 URL 获取。
 
-### Named file in `$GIT_DIR/remotes`
+### `$GIT_DIR/remotes` 中的命名文件
 
-You can choose to provide the name of a file in `$GIT_DIR/remotes`. The URL in this file will be used to access the repository. The refspec in this file will be used as default when you do not provide a refspec on the command line. This file should have the following format:
+​	您可以选择提供 `$GIT_DIR/remotes` 中文件的名称。此文件中的 URL 将用于访问存储库。当您未在命令行上提供 refspec 时，此文件中的 refspec 将作为默认值使用。此文件应具有以下格式：
 
 ```
 	URL: one of the above URL format
@@ -436,124 +522,184 @@ You can choose to provide the name of a file in `$GIT_DIR/remotes`. The URL in t
 	Pull: <refspec>
 ```
 
-`Push:` lines are used by *git push* and `Pull:` lines are used by *git pull* and *git fetch*. Multiple `Push:` and `Pull:` lines may be specified for additional branch mappings.
+`Push:` 行用于 *git push*，`Pull:` 行用于 *git pull* 和 *git fetch*。可以为额外的分支映射指定多个 `Push:` 和 `Pull:` 行。
 
-### Named file in `$GIT_DIR/branches`
+### `$GIT_DIR/branches` 中的命名文件
 
-You can choose to provide the name of a file in `$GIT_DIR/branches`. The URL in this file will be used to access the repository. This file should have the following format:
+​	您可以选择提供 `$GIT_DIR/branches` 中文件的名称。此文件中的 URL 将用于访问存储库。此文件应具有以下格式：
 
 ```
 	<URL>#<head>
 ```
 
-`<URL>` is required; `#<head>` is optional.
+`<URL>` 是必需的，`#<head>` 是可选的。
 
-Depending on the operation, git will use one of the following refspecs, if you don’t provide one on the command line. `<branch>` is the name of this file in `$GIT_DIR/branches` and `<head>` defaults to `master`.
+​	根据操作，git 将使用以下 refspec 之一（如果在命令行上未提供 refspec）。`<branch>` 是 `$GIT_DIR/branches` 中的文件名，并且 `<head>` 默认为 `master`。
 
-git fetch uses:
+git fetch 使用：
 
 ```
 	refs/heads/<head>:refs/heads/<branch>
 ```
 
-git push uses:
+git push 使用：
 
 ```
 	HEAD:refs/heads/<head>
 ```
 
-## MERGE STRATEGIES
+## 合并策略
 
-The merge mechanism (`git merge` and `git pull` commands) allows the backend *merge strategies* to be chosen with `-s` option. Some strategies can also take their own options, which can be passed by giving `-X<option>` arguments to `git merge` and/or `git pull`.
+​	合并机制（`git merge` 和 `git pull` 命令）允许选择后端 *合并策略*，并通过 `-s` 选项进行选择。某些策略还可以接受它们自己的选项，可以通过给 `git merge` 和/或 `git pull` 传递 `-X<option>` 参数来传递这些选项。
 
 - ort
 
-  This is the default merge strategy when pulling or merging one branch. This strategy can only resolve two heads using a 3-way merge algorithm. When there is more than one common ancestor that can be used for 3-way merge, it creates a merged tree of the common ancestors and uses that as the reference tree for the 3-way merge. This has been reported to result in fewer merge conflicts without causing mismerges by tests done on actual merge commits taken from Linux 2.6 kernel development history. Additionally this strategy can detect and handle merges involving renames. It does not make use of detected copies. The name for this algorithm is an acronym ("Ostensibly Recursive’s Twin") and came from the fact that it was written as a replacement for the previous default algorithm, `recursive`.The *ort* strategy can take the following options:oursThis option forces conflicting hunks to be auto-resolved cleanly by favoring *our* version. Changes from the other tree that do not conflict with our side are reflected in the merge result. For a binary file, the entire contents are taken from our side.This should not be confused with the *ours* merge strategy, which does not even look at what the other tree contains at all. It discards everything the other tree did, declaring *our* history contains all that happened in it.theirsThis is the opposite of *ours*; note that, unlike *ours*, there is no *theirs* merge strategy to confuse this merge option with.ignore-space-changeignore-all-spaceignore-space-at-eolignore-cr-at-eolTreats lines with the indicated type of whitespace change as unchanged for the sake of a three-way merge. Whitespace changes mixed with other changes to a line are not ignored. See also [git-diff[1]](../git-diff) `-b`, `-w`, `--ignore-space-at-eol`, and `--ignore-cr-at-eol`.If *their* version only introduces whitespace changes to a line, *our* version is used;If *our* version introduces whitespace changes but *their* version includes a substantial change, *their* version is used;Otherwise, the merge proceeds in the usual way.renormalizeThis runs a virtual check-out and check-in of all three stages of a file when resolving a three-way merge. This option is meant to be used when merging branches with different clean filters or end-of-line normalization rules. See "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](../../5/gitattributes) for details.no-renormalizeDisables the `renormalize` option. This overrides the `merge.renormalize` configuration variable.find-renames[=<n>]Turn on rename detection, optionally setting the similarity threshold. This is the default. This overrides the *merge.renames* configuration variable. See also [git-diff[1]](../git-diff) `--find-renames`.rename-threshold=<n>Deprecated synonym for `find-renames=<n>`.subtree[=<path>]This option is a more advanced form of *subtree* strategy, where the strategy makes a guess on how two trees must be shifted to match with each other when merging. Instead, the specified path is prefixed (or stripped from the beginning) to make the shape of two trees to match.
+  这是拉取或合并一个分支时的默认合并策略。此策略只能使用三路合并算法解决两个分支的冲突。当存在多个可用于三路合并的共同祖先时，它会创建合并的共同祖先的树，并将其用作三路合并的参考树。据实际从 Linux 2.6 内核开发历史中获取的合并提交的测试显示，相比之前的默认算法 `recursive`，此策略可以减少合并冲突，同时不会导致错误的合并。此外，此策略可以检测和处理涉及重命名的合并。它不使用检测到的复制操作。该算法的名称是一个首字母缩写（“Ostensibly Recursive’s Twin”），它来源于它作为先前默认算法 `recursive` 的替代品而编写的事实。
+
+  *ort* 策略可以使用以下选项：
+
+  - ours
+
+    此选项强制将冲突的块自动与“我们”的版本解决干净。不与我们方冲突的来自其他分支的更改会反映在合并结果中。对于二进制文件，整个内容都将采用我们的版本。
+
+    请不要与 *ours* 合并策略混淆，后者根本不查看其他分支包含的内容。它丢弃其他分支的所有内容，声明我们的历史包含其中发生的一切。
+
+  - theirs
+
+    这与 *ours* 相反；请注意，与 *ours* 不同，没有 *theirs* 合并策略以混淆此合并选项。
+
+  - ignore-space-change
+
+  - ignore-all-space
+
+  - ignore-space-at-eol
+
+  - ignore-cr-at-eol
+
+    对于三路合并，将具有指定类型空格更改的行视为未更改。不会忽略包含其他更改的行中的空格更改。另请参阅 [git-diff[1]](../git-diff) 的 `-b`、`-w`、`--ignore-space-at-eol` 和 `--ignore-cr-at-eol` 选项。
+
+    - 如果 *their* 版本只对行进行空格更改，则使用 *our* 版本；
+
+    - 如果 *our* 版本对行进行空格更改，但 *their* 版本包含实质性更改，则使用 *their* 版本；
+- 否则，合并将按常规方式进行。
+  
+
+  
+- renormalize
+  
+  解决三路合并时，运行虚拟的检出和检入，以处理文件的所有三个阶段。此选项用于在合并具有不同干净筛选器或行尾标准化规则的分支时使用。有关详细信息，请参阅 [gitattributes[5]](../5/gitattributes) 中的“在具有不同签入/签出属性的分支上合并”部分。
+  
+- no-renormalize
+  
+  禁用 `renormalize` 选项。这将覆盖 `merge.renormalize` 配置变量。
+  
+- find-renames[=<n>]
+  
+    打开重命名检测，可选择设置相似性阈值。这是默认行为。这将覆盖 *merge.renames* 配置变量。另请参阅 [git-diff[1]](../git-diff) 的 `--find-renames` 选项。
+  
+  - subtree[=<path>]
+
+    此选项是 *subtree* 策略的更高级形式，当合并树 A 和 B 时，如果 B 对应于 A 的子树，则首先将 B 调整为与 A 的树结构匹配，而不是在同级读取树。这种调整也适用于共同祖先树。
 
 - recursive
 
-  This can only resolve two heads using a 3-way merge algorithm. When there is more than one common ancestor that can be used for 3-way merge, it creates a merged tree of the common ancestors and uses that as the reference tree for the 3-way merge. This has been reported to result in fewer merge conflicts without causing mismerges by tests done on actual merge commits taken from Linux 2.6 kernel development history. Additionally this can detect and handle merges involving renames. It does not make use of detected copies. This was the default strategy for resolving two heads from Git v0.99.9k until v2.33.0.The *recursive* strategy takes the same options as *ort*. However, there are three additional options that *ort* ignores (not documented above) that are potentially useful with the *recursive* strategy:patienceDeprecated synonym for `diff-algorithm=patience`.diff-algorithm=[patience|minimal|histogram|myers]Use a different diff algorithm while merging, which can help avoid mismerges that occur due to unimportant matching lines (such as braces from distinct functions). See also [git-diff[1]](../git-diff) `--diff-algorithm`. Note that `ort` specifically uses `diff-algorithm=histogram`, while `recursive` defaults to the `diff.algorithm` config setting.no-renamesTurn off rename detection. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](../git-diff) `--no-renames`.
+  此策略只能使用三路合并算法解决两个分支的冲突。当存在多个可用于三路合并的共同祖先时，它会创建合并的共同祖先的树，并将其用作三路合并的参考树。据实际从 Linux 2.6 内核开发历史中获取的合并提交的测试显示，相比之前的默认算法 `recursive`，此策略可以减少合并冲突，同时不会导致错误的合并。此外，此策略可以检测和处理涉及重命名的合并。它不使用检测到的复制操作。自 Git v0.99.9k 到 v2.33.0，这是解决两个分支的默认策略。
+
+  *recursive* 策略使用与 *ort* 相同的选项。但是，*recursive* 还有三个 *ort* 忽略的其他选项（未在上述文本中记录），这些选项可能与 *recursive* 策略一起使用：patienceDeprecated 代表 `diff-algorithm=patience` 的同义词。
+
+  - diff-algorithm=[patience|minimal|histogram|myers]
+
+    在合并时使用不同的 diff 算法，这可以帮助避免由于不重要的匹配行（例如不同函数中的大括号）导致的错误合并。另请参阅 [git-diff[1]](../git-diff) 的 `--diff-algorithm`。请注意，`ort` 特别使用 `diff-algorithm=histogram`，而 `recursive` 默认使用 `diff.algorithm` 配置设置。
+
+  - no-renames
+
+    关闭重命名检测。这将覆盖 `merge.renames` 配置变量。另请参阅 [git-diff[1]](../git-diff) 的 `--no-renames` 选项。
 
 - resolve
 
-  This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities. It does not handle renames.
+  此策略只能使用三路合并算法解决两个头（即当前分支和另一个从中拉取的分支）的冲突。它尝试仔细检测交叉合并的不明确性。它不处理重命名。
 
 - octopus
 
   This resolves cases with more than two heads, but refuses to do a complex merge that needs manual resolution. It is primarily meant to be used for bundling topic branch heads together. This is the default merge strategy when pulling or merging more than one branch.
 
+  此策略解决多于两个头的情况，但拒绝进行需要手动解决的复杂合并。它主要用于捆绑主题分支头。这是拉取或合并多个分支时的默认合并策略。
+
 - ours
 
-  This resolves any number of heads, but the resulting tree of the merge is always that of the current branch head, effectively ignoring all changes from all other branches. It is meant to be used to supersede old development history of side branches. Note that this is different from the -Xours option to the *recursive* merge strategy.
+  此策略解决任意数量的头，但合并的结果树始终是当前分支头的树，从而忽略所有其他分支的更改。它用于替代旧的侧分支开发历史。请注意，这与 *recursive* 合并策略的 `-Xours` 选项不同。
 
 - subtree
 
-  This is a modified `ort` strategy. When merging trees A and B, if B corresponds to a subtree of A, B is first adjusted to match the tree structure of A, instead of reading the trees at the same level. This adjustment is also done to the common ancestor tree.
+  这是一个修改版的 `ort` 策略。当合并树 A 和 B 时，如果 B 对应于 A 的子树，则首先将 B 调整为与 A 的树结构匹配，而不是在同级读取树。此调整也适用于共同祖先树。
 
-With the strategies that use 3-way merge (including the default, *ort*), if a change is made on both branches, but later reverted on one of the branches, that change will be present in the merged result; some people find this behavior confusing. It occurs because only the heads and the merge base are considered when performing a merge, not the individual commits. The merge algorithm therefore considers the reverted change as no change at all, and substitutes the changed version instead.
+​	对于使用三路合并的策略（包括默认的 *ort* 策略），如果在两个分支上进行了更改，但后来在其中一个分支上撤销了更改，那么该更改将出现在合并结果中；有些人可能会对这种行为感到困惑。这是因为在执行合并时，仅考虑头和合并基准，而不考虑个别提交。因此，合并算法认为撤销的更改实际上没有发生任何更改，并将其替换为已更改的版本。
 
-## DEFAULT BEHAVIOUR
+## 默认行为
 
-Often people use `git pull` without giving any parameter. Traditionally, this has been equivalent to saying `git pull origin`. However, when configuration `branch.<name>.remote` is present while on branch `<name>`, that value is used instead of `origin`.
+​	通常，人们在使用 `git pull` 时没有提供任何参数。传统上，这相当于执行 `git pull origin`。然而，如果分支 `<name>` 上存在配置 `branch.<name>.remote`，则使用该值代替 `origin`。
 
-In order to determine what URL to use to fetch from, the value of the configuration `remote.<origin>.url` is consulted and if there is not any such variable, the value on the `URL:` line in `$GIT_DIR/remotes/<origin>` is used.
+​	为了确定要从中获取数据的URL，首先查找配置 `remote.<origin>.url` 的值，如果没有这个变量，则使用 `$GIT_DIR/remotes/<origin>` 中的 `URL:` 行的值。
 
-In order to determine what remote branches to fetch (and optionally store in the remote-tracking branches) when the command is run without any refspec parameters on the command line, values of the configuration variable `remote.<origin>.fetch` are consulted, and if there aren’t any, `$GIT_DIR/remotes/<origin>` is consulted and its `Pull:` lines are used. In addition to the refspec formats described in the OPTIONS section, you can have a globbing refspec that looks like this:
+​	在不提供命令行上的任何 refspec 参数的情况下运行命令时，将查找配置变量 `remote.<origin>.fetch` 的值，并且如果没有，则查找 `$GIT_DIR/remotes/<origin>` 并使用其 `Pull:` 行。除了在选项部分描述的 refspec 格式之外，您还可以使用类似以下的 globbing refspec：
 
 ```
 refs/heads/*:refs/remotes/origin/*
 ```
 
-A globbing refspec must have a non-empty RHS (i.e. must store what were fetched in remote-tracking branches), and its LHS and RHS must end with `/*`. The above specifies that all remote branches are tracked using remote-tracking branches in `refs/remotes/origin/` hierarchy under the same name.
+​	在不提供命令行上的任何 refspec 参数的情况下运行命令时，将查找配置变量 `remote.<origin>.fetch` 的值，并且如果没有，则查找 `$GIT_DIR/remotes/<origin>` 并使用其 `Pull:` 行。除了在选项部分描述的 refspec 格式之外，您还可以使用类似以下的 globbing refspec：
 
-The rule to determine which remote branch to merge after fetching is a bit involved, in order not to break backward compatibility.
+​	
 
-If explicit refspecs were given on the command line of `git pull`, they are all merged.
+​	决定在获取后合并哪个远程分支的规则有点复杂，为了不破坏向后兼容性。
 
-When no refspec was given on the command line, then `git pull` uses the refspec from the configuration or `$GIT_DIR/remotes/<origin>`. In such cases, the following rules apply:
+​	如果在 `git pull` 命令行中提供了显式的 refspec，则会将所有这些 refspec 进行合并。
 
-1. If `branch.<name>.merge` configuration for the current branch `<name>` exists, that is the name of the branch at the remote site that is merged.
-2. If the refspec is a globbing one, nothing is merged.
-3. Otherwise the remote branch of the first refspec is merged.
+​	当命令行上没有提供 refspec 时，`git pull` 将使用配置或 `$GIT_DIR/remotes/<origin>` 中的 refspec。在这种情况下，以下规则适用：
+
+1. 如果当前分支 `<name>` 的 `branch.<name>.merge` 配置存在，则该配置指定了要合并的远程站点的分支名称。
+5. 如果 refspec 是一个 globbing refspec，则不进行合并操作。
+6. 否则，合并第一个 refspec 的远程分支。
 
 ## 示例
 
-- Update the remote-tracking branches for the repository you cloned from, then merge one of them into your current branch:
+- 更新从中克隆的仓库的远程跟踪分支，然后将其中一个分支合并到当前分支：
 
   ``` bash
   $ git pull
   $ git pull origin
   ```
 
-  Normally the branch merged in is the HEAD of the remote repository, but the choice is determined by the branch.<name>.remote and branch.<name>.merge options; see [git-config[1]](../git-config) for details.
+  通常合并的分支是远程仓库的 HEAD，但是选择是由 `branch.<name>.remote` 和 `branch.<name>.merge` 选项决定的；详情请参阅 [git-config[1]](../git-config)。
 
-- Merge into the current branch the remote branch `next`:
+- 合并远程分支 `next` 到当前分支：
 
   ``` bash
   $ git pull origin next
   ```
 
-  This leaves a copy of `next` temporarily in FETCH_HEAD, and updates the remote-tracking branch `origin/next`. The same can be done by invoking fetch and merge:
+  这将暂时将 `next` 复制到 FETCH_HEAD，并更新远程跟踪分支 `origin/next`。也可以通过执行 fetch 和 merge 完成相同的操作：
 
   ``` bash
   $ git fetch origin
   $ git merge origin/next
   ```
 
-If you tried a pull which resulted in complex conflicts and would want to start over, you can recover with *git reset*.
 
-## SECURITY
+​	如果您尝试的拉取操作导致复杂的冲突，并且想要重新开始，您可以使用 *git reset* 进行恢复。
 
-The fetch and push protocols are not designed to prevent one side from stealing data from the other repository that was not intended to be shared. If you have private data that you need to protect from a malicious peer, your best option is to store it in another repository. This applies to both clients and servers. In particular, namespaces on a server are not effective for read access control; you should only grant read access to a namespace to clients that you would trust with read access to the entire repository.
+## 安全性
 
-The known attack vectors are as follows:
+​	fetch 和 push 协议不是设计用于防止一方从另一个仓库窃取未经共享的数据。如果您有需要保护免受恶意对等方窃取的私有数据，最好的选择是将其存储在另一个仓库中。这适用于客户端和服务器。特别是服务器上的命名空间对于读取访问控制是无效的；应该仅向信任对整个仓库进行读取访问的客户端授予对命名空间的读取访问权限。
 
-1. The victim sends "have" lines advertising the IDs of objects it has that are not explicitly intended to be shared but can be used to optimize the transfer if the peer also has them. The attacker chooses an object ID X to steal and sends a ref to X, but isn’t required to send the content of X because the victim already has it. Now the victim believes that the attacker has X, and it sends the content of X back to the attacker later. (This attack is most straightforward for a client to perform on a server, by creating a ref to X in the namespace the client has access to and then fetching it. The most likely way for a server to perform it on a client is to "merge" X into a public branch and hope that the user does additional work on this branch and pushes it back to the server without noticing the merge.)
-2. As in #1, the attacker chooses an object ID X to steal. The victim sends an object Y that the attacker already has, and the attacker falsely claims to have X and not Y, so the victim sends Y as a delta against X. The delta reveals regions of X that are similar to Y to the attacker.
+​	已知的攻击向量如下：
+
+1. 受害者发送“have”行，广告其具有的对象 ID，这些对象 ID 并未明确共享，但可以用于优化传输（如果对等方也具有这些对象）。攻击者选择要窃取的对象 ID X，并发送对 X 的引用，但不需要发送 X 的内容，因为受害者已经拥有它。现在，受害者相信攻击者具有 X，并在稍后将 X 的内容发送回攻击者。（此攻击对于客户端在服务器上执行是最直接的，它在客户端具有访问权限的命名空间中为 X 创建一个引用，然后获取它。服务器对客户端执行此攻击的最可能方式是将 X 合并到公共分支中，并希望用户在此分支上进行其他工作，并将其推送回服务器，而不会注意到合并。）
+3. 与 #1 相似，攻击者选择要窃取的对象 ID X。受害者发送攻击者已经拥有的对象 Y，并且攻击者虚假声称拥有 X 而没有 Y，因此受害者将 Y 作为针对 X 的 delta 发送。该 delta 向攻击者显示了 X 的某些区域与 Y 相似。
 
 ## BUGS
 
-Using --recurse-submodules can only fetch new commits in already checked out submodules right now. When e.g. upstream added a new submodule in the just fetched commits of the superproject the submodule itself cannot be fetched, making it impossible to check out that submodule later without having to do a fetch again. This is expected to be fixed in a future Git version.
+​	目前，`--recurse-submodules` 只能在已经检出子模块的情况下获取新提交。例如，如果上游在刚刚获取的超级仓库的提交中添加了一个新的子模块，那么子模块本身无法被获取，这将使得以后无法检出该子模块而不必再次获取。这预计将在未来的 Git 版本中修复。
 
 ## 另请参阅
 

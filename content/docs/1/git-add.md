@@ -112,7 +112,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 - `--chmod=(+|-)x`
 
   覆盖已添加文件的可执行位。可执行位仅在索引中更改，磁盘上的文件保持不变。
-- `--pathspec-from-file=`<file>``
+- `--pathspec-from-file=<file>`
 
   将 pathspec 传递给 `<file>` 而不是命令行参数。如果 `<file>` 恰好是 `-`，则使用标准输入。pathspec 元素由 LF 或 CR/LF 分隔。pathspec 元素可以引用配置变量 `core.quotePath` 中解释的方式进行引用（参见 [git-config[1]](../git-config)）。另请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 - `--pathspec-file-nul`

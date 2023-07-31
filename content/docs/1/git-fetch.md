@@ -13,9 +13,11 @@ draft = false
 
 https://git-scm.com/docs/git-fetch
 
+version 2.41.0
+
 ## 名称
 
-git-fetch - Download objects and refs from another repository
+​	git-fetch - 从另一个仓库下载对象和引用
 
 ## 概述
 
@@ -28,175 +30,197 @@ git fetch --all [<options>]
 
 ## 描述
 
-Fetch branches and/or tags (collectively, "refs") from one or more other repositories, along with the objects necessary to complete their histories. Remote-tracking branches are updated (see the description of <refspec> below for ways to control this behavior).
+​	从一个或多个其他仓库中获取分支和/或标签（统称为“引用”），以及完成它们历史所需的对象。远程跟踪分支将被更新（有关控制此行为的<refspec>的描述，请参见下文）。
 
-By default, any tag that points into the histories being fetched is also fetched; the effect is to fetch tags that point at branches that you are interested in. This default behavior can be changed by using the --tags or --no-tags options or by configuring remote.<name>.tagOpt. By using a refspec that fetches tags explicitly, you can fetch tags that do not point into branches you are interested in as well.
+​	默认情况下，还会获取指向正在获取的历史记录的任何标签；其效果是获取指向您感兴趣的分支的标签。通过使用 --tags 或 --no-tags 选项，或者配置 remote.<name>.tagOpt，可以更改此默认行为。通过使用显式获取标签的 refspec，还可以获取不指向您感兴趣分支的标签。
 
-*git fetch* can fetch from either a single named repository or URL, or from several repositories at once if <group> is given and there is a remotes.<group> entry in the configuration file. (See [git-config[1]](../git-config)).
+​	*git fetch* 可以从单个命名仓库或URL中获取，或者如果提供了<group>并且在配置文件中存在 remotes.<group> 条目，则可以同时从多个仓库中获取（请参阅 [git-config[1]](../git-config)）。
 
-When no remote is specified, by default the `origin` remote will be used, unless there’s an upstream branch configured for the current branch.
+​	当未指定远程时，默认情况下将使用 `origin` 远程，除非为当前分支配置了上游分支。
 
-The names of refs that are fetched, together with the object names they point at, are written to `.git/FETCH_HEAD`. This information may be used by scripts or other git commands, such as [git-pull[1]](../git-pull).
+​	获取的引用名称及其指向的对象名称将被写入 `.git/FETCH_HEAD` 文件。此信息可由脚本或其他 git 命令（例如 [git-pull[1]](../git-pull)）使用。
 
 ## 选项
 
 - `--all`
 
-  Fetch all remotes.
+  获取所有远程。
 
 - -a
 
 - `--append`
 
-  Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten.
+  将获取的引用名称和对象名称追加到 `.git/FETCH_HEAD` 文件的现有内容中。如果没有此选项，则会覆盖 `.git/FETCH_HEAD` 文件中的旧数据。
 
 - `--atomic`
 
-  Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated.
+  使用原子事务来更新本地引用。要么全部更新引用，要么在出现错误时不更新引用。
 
 - `--depth=<depth>`
 
-  Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a *shallow* repository created by `git clone` with `--depth=<depth>` option (see [git-clone[1]](../git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched.
+  限制从每个远程分支历史的顶部获取指定数量的提交。如果在使用 `git clone` 命令创建的*shallow* 仓库上（使用 `--depth=<depth>` 选项，请参阅 [git-clone[1]](../git-clone)）进行获取，则会将历史深化或缩短到指定数量的提交。深化的提交的标签不会被获取。
 
 - `--deepen=<depth>`
 
-  Similar to --depth, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history.
+  类似于 --depth，但它指定从当前浅边界开始的提交数量，而不是从每个远程分支历史的顶部开始。
 
 - `--shallow-since=<date>`
 
-  Deepen or shorten the history of a shallow repository to include all reachable commits after <date>.
+  将浅仓库的历史深化或缩短到包括 <date> 之后的所有可达提交。
 
 - `--shallow-exclude=<revision>`
 
-  Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times.
+  将浅仓库的历史深化或缩短，以排除从指定的远程分支或标签可达的提交。此选项可以指定多次。
 
 - `--unshallow`
 
-  If the source repository is complete, convert a shallow repository to a complete one, removing all the limitations imposed by shallow repositories.If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository.
+  如果源仓库是完整的，则将浅仓库转换为完整仓库，去除浅仓库的所有限制。
+
+  如果源仓库是浅仓库，则尽可能地获取数据，使得当前仓库具有与源仓库相同的历史记录。
 
 - `--update-shallow`
 
-  By default when fetching from a shallow repository, `git fetch` refuses refs that require updating .git/shallow. This option updates .git/shallow and accept such refs.
+  默认情况下，在从浅仓库获取数据时，`git fetch` 将拒绝需要更新 .git/shallow 的引用。使用此选项会更新 .git/shallow 并接受这些引用。
 
 - `--negotiation-tip=<commit|glob>`
 
-  By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile. If specified, Git will only report commits reachable from the given tips. This is useful to speed up fetches when the user knows which local ref is likely to have commits in common with the upstream ref being fetched.This option may be specified more than once; if so, Git will report commits reachable from any of the given commits.The argument to this option may be a glob on ref names, a ref, or the (possibly abbreviated) SHA-1 of a commit. Specifying a glob is equivalent to specifying this option multiple times, one for each matching ref name.See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](../git-config), and the `--negotiate-only` option below.
+  默认情况下，Git 会向服务器报告从所有本地引用可达的提交，以查找共同的提交，从而尝试减少待接收的 packfile 的大小。如果指定，Git 将仅报告从给定提示可达的提交。当用户知道哪个本地引用可能与正在获取的上游引用有共同的提交时，这对于加快获取速度非常有用。
+
+  此选项可以多次指定；如果是这样，Git 将报告从给定的任何提交可达的提交。
+
+  此选项的参数可以是引用名称的 glob、引用或提交的（可能是缩写的）SHA-1 值。指定 glob 等效于多次指定此选项，每次指定一个匹配的引用名称。
+
+  请参阅 [git-config[1]](../git-config) 中记录的 `fetch.negotiationAlgorithm` 和 `push.negotiate` 配置变量，以及下面介绍的 `--negotiate-only` 选项。
 
 - `--negotiate-only`
 
-  Do not fetch anything from the server, and instead print the ancestors of the provided `--negotiation-tip=*` arguments, which we have in common with the server.This is incompatible with `--recurse-submodules=[yes|on-demand]`. Internally this is used to implement the `push.negotiate` option, see [git-config[1]](../git-config).
+  不从服务器获取任何内容，而是打印与提供的 `--negotiation-tip=*` 参数共有的祖先提交。
+
+  这与 `--recurse-submodules=[yes|on-demand]` 不兼容。在内部，它用于实现 `push.negotiate` 选项，请参阅 [git-config[1]](../git-config)。
 
 - `--dry-run`
 
-  Show what would be done, without making any changes.
+  显示将要执行的操作，而不进行任何更改。
 
 - `--[no-]write-fetch-head`
 
-  Write the list of remote refs fetched in the `FETCH_HEAD` file directly under `$GIT_DIR`. This is the default. Passing `--no-write-fetch-head` from the command line tells Git not to write the file. Under `--dry-run` option, the file is never written.
+  直接在 `$GIT_DIR` 下的 `.git/FETCH_HEAD` 文件中写入获取的远程引用列表。这是默认行为。从命令行传递 `--no-write-fetch-head` 选项会告诉 Git 不写入该文件。在 `--dry-run` 选项下，该文件永远不会被写入。
 
 - -f
 
 - `--force`
 
-  When *git fetch* is used with `<src>:<dst>` refspec it may refuse to update the local branch as discussed in the `<refspec>` part below. This option overrides that check.
+  当使用 `<src>:<dst>` refspec 执行 *git fetch* 时，它可能会拒绝更新本地分支，具体参见下文的 `<refspec>` 部分。此选项将覆盖该检查。
 
 - -k
 
 - `--keep`
 
-  Keep downloaded pack.
+  保留下载的 pack。
 
 - `--multiple`
 
-  Allow several <repository> and <group> arguments to be specified. No <refspec>s may be specified.
+  允许同时指定多个 <仓库> 和 <组> 参数。不能指定 <refspec>。
 
 - `--[no-]auto-maintenance`
 
 - `--[no-]auto-gc`
 
-  Run `git maintenance run --auto` at the end to perform automatic repository maintenance if needed. (`--[no-]auto-gc` is a synonym.) This is enabled by default.
+  在最后运行 `git maintenance run --auto` 以执行需要的自动仓库维护。（`--[no-]auto-gc` 是一个同义词。）默认启用此选项。
 
 - `--[no-]write-commit-graph`
 
-  Write a commit-graph after fetching. This overrides the config setting `fetch.writeCommitGraph`.
+  获取后写入提交图。这将覆盖配置设置 `fetch.writeCommitGraph`。
 
 - `--prefetch`
 
-  Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](../git-maintenance).
+  修改配置的 refspec，将所有引用放入 `refs/prefetch/` 命名空间。
+
+  参见 [git-maintenance[1]](../git-maintenance) 中的 `prefetch` 任务。
 
 - -p
 
 - `--prune`
 
-  Before fetching, remove any remote-tracking references that no longer exist on the remote. Tags are not subject to pruning if they are fetched only because of the default tag auto-following or due to a --tags option. However, if tags are fetched due to an explicit refspec (either on the command line or in the remote configuration, for example if the remote was cloned with the --mirror option), then they are also subject to pruning. Supplying `--prune-tags` is a shorthand for providing the tag refspec.See the PRUNING section below for more details.
+  获取前，删除不再存在于远程的任何远程跟踪引用。如果仅因为默认标签自动跟踪或使用 --tags 选项而获取标签，则标签不会被修剪。但是，如果标签是因为显式 refspec 被获取的（无论是在命令行上还是在远程配置中，例如如果使用 --mirror 选项克隆了远程），则它们也会被修剪。通过提供 `--prune-tags` 为提供 tag refspec 提供了一个快捷方式。
+
+  有关更多详细信息，请参见下面的 PRUNING 部分。
 
 - -P
 
 - `--prune-tags`
 
-  Before fetching, remove any local tags that no longer exist on the remote if `--prune` is enabled. This option should be used more carefully, unlike `--prune` it will remove any local references (local tags) that have been created. This option is a shorthand for providing the explicit tag refspec along with `--prune`, see the discussion about that in its documentation.See the PRUNING section below for more details.
+  获取前，如果启用了 `--prune`，则删除不再存在于远程的任何本地标签。与 `--prune` 一起使用时，请更加谨慎，因为它将删除已创建的任何本地引用（本地标签）。此选项是提供显式标签 refspec 以及 `--prune` 的简便方式，请参见有关其文档的讨论。有关更多详细信息，请参见下面的 PRUNING 部分。
 
 - -n
 
 - `--no-tags`
 
-  By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the remote.<name>.tagOpt setting. See [git-config[1]](../git-config).
+  默认情况下，会获取指向从远程仓库下载的对象的标签，并在本地存储。此选项禁用此自动标签跟踪。可使用 remote.<name>.tagOpt 设置指定远程的默认行为。请参阅 [git-config[1]](../git-config)。
 
 - `--refetch`
 
-  Instead of negotiating with the server to avoid transferring commits and associated objects that are already present locally, this option fetches all objects as a fresh clone would. Use this to reapply a partial clone filter from configuration or using `--filter=` when the filter definition has changed. Automatic post-fetch maintenance will perform object database pack consolidation to remove any duplicate objects.
+  与服务器协商以避免传输本地已经存在的提交和相关对象，此选项会像重新克隆一样获取所有对象。使用此选项重新应用配置中的部分克隆过滤器或使用 `--filter=` 更改过滤器定义。自动的后续获取维护将执行对象数据库的打包合并以删除任何重复的对象。
 
 - `--refmap=<refspec>`
 
-  When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.*.fetch` configuration variables for the remote repository. Providing an empty `<refspec>` to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details.
+  在命令行上列出的引用进行获取时，使用指定的 refspec（可以多次给出）将引用映射到远程跟踪分支，而不是为远程仓库的 `remote.*.fetch` 配置变量的值。将一个空的 `<refspec>` 提供给 `--refmap` 选项会导致 Git 忽略配置的 refspec，并完全依赖于作为命令行参数提供的 refspec。有关详细信息，请参见 "已配置的远程跟踪分支" 部分。
 
 - -t
 
 - `--tags`
 
-  Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if --prune is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`).
+  从远程获取所有标签（即将远程标签 `refs/tags/*` 获取为具有相同名称的本地标签），除了其他将被获取的内容。仅使用此选项不会使标签被修剪，即使使用了 --prune（尽管如果标签也是显式 refspec 的目标，则标签可能仍然会被修剪；请参阅 `--prune`）。
 
 - `--recurse-submodules[=yes|on-demand|no]`
 
-  This option controls if and under what conditions new commits of submodules should be fetched too. When recursing through submodules, `git fetch` always attempts to fetch "changed" submodules, that is, a submodule that has commits that are referenced by a newly fetched superproject commit but are missing in the local submodule clone. A changed submodule can be fetched as long as it is present locally e.g. in `$GIT_DIR/modules/` (see [gitsubmodules[7]](../../7/gitsubmodules)); if the upstream adds a new submodule, that submodule cannot be fetched until it is cloned e.g. by `git submodule update`.When set to *on-demand*, only changed submodules are fetched. When set to *yes*, all populated submodules are fetched and submodules that are both unpopulated and changed are fetched. When set to *no*, submodules are never fetched.When unspecified, this uses the value of `fetch.recurseSubmodules` if it is set (see [git-config[1]](../git-config)), defaulting to *on-demand* if unset. When this option is used without any value, it defaults to *yes*.
+  此选项控制是否以及在何种条件下还应获取子模块的新提交。在递归遍历子模块时，`git fetch` 总是尝试获取“更改”的子模块，即一个子模块具有提交，这些提交在新获取的超级仓库提交中被引用，但在本地子模块克隆中缺失。只要更改的子模块存在于本地，例如在 `$GIT_DIR/modules/` 中存在（请参阅 [gitsubmodules[7]](../7/gitsubmodules)）；如果上游添加了一个新的子模块，则该子模块不能被获取，直到它被克隆，例如通过 `git submodule update`。
+
+  当设置为 *on-demand* 时，只会获取更改的子模块。当设置为 *yes* 时，将获取所有已填充的子模块，并获取未填充但已更改的子模块。当设置为 *no* 时，将不获取子模块。
+
+  当未指定此选项时，如果设置了 `fetch.recurseSubmodules` 的值（请参阅 [git-config[1]](../git-config)），则使用该值，默认为 *on-demand*。当此选项在没有任何值的情况下使用时，默认值为 *yes*。
 
 - -j
 
 - `--jobs=<n>`
 
-  Number of parallel children to be used for all forms of fetching.If the `--multiple` option was specified, the different remotes will be fetched in parallel. If multiple submodules are fetched, they will be fetched in parallel. To control them independently, use the config settings `fetch.parallel` and `submodule.fetchJobs` (see [git-config[1]](../git-config)).Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel.
+  用于所有形式的获取的并行子任务数。
+
+  如果指定了 `--multiple` 选项，不同的远程将并行获取。如果获取多个子模块，则将并行获取它们。要独立控制它们，使用配置设置 `fetch.parallel` 和 `submodule.fetchJobs`（请参阅 [git-config[1]](../git-config)）。
+
+  通常，并行递归和多远程获取将更快。默认情况下，获取是顺序执行的，而不是并行执行。
 
 - `--no-recurse-submodules`
 
-  Disable recursive fetching of submodules (this has the same effect as using the `--recurse-submodules=no` option).
+  禁用子模块的递归获取（这与使用 `--recurse-submodules=no` 选项具有相同的效果）。
 
 - `--set-upstream`
 
-  If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](../git-pull) and other commands. For more information, see `branch.<name>.merge` and `branch.<name>.remote` in [git-config[1]](../git-config).
+  如果成功获取远程仓库，则添加上游（跟踪）引用，供不带参数的 [git-pull[1]](../git-pull) 和其他命令使用。有关详细信息，请参阅 [git-config[1]](../git-config) 中的 `branch.<name>.merge` 和 `branch.<name>.remote`。
 
 - `--submodule-prefix=<path>`
 
-  Prepend <path> to paths printed in informative messages such as "Fetching submodule foo". This option is used internally when recursing over submodules.
+  在信息性消息（如 "Fetching submodule foo"）中，将 `<path>` 前置到打印的路径。此选项在递归子模块时内部使用。
 
 - `--recurse-submodules-default=[yes|on-demand]`
 
-  This option is used internally to temporarily provide a non-negative default value for the --recurse-submodules option. All other methods of configuring fetch’s submodule recursion (such as settings in [gitmodules[5]](../../5/gitmodules) and [git-config[1]](../git-config)) override this option, as does specifying --[no-]recurse-submodules directly.
+  此选项在内部用于临时为 `--recurse-submodules` 选项提供非负默认值。所有其他配置 fetch 子模块递归的方法（例如 [gitmodules[5]](../5/gitmodules) 和 [git-config[1]](../git-config) 中的设置）会覆盖此选项，直接指定 `--[no-]recurse-submodules` 也会覆盖该选项。
 
 - -u
 
 - `--update-head-ok`
 
-  By default *git fetch* refuses to update the head which corresponds to the current branch. This flag disables the check. This is purely for the internal use for *git pull* to communicate with *git fetch*, and unless you are implementing your own Porcelain you are not supposed to use it.
+  默认情况下，*git fetch* 拒绝更新与当前分支对应的 head。此标志禁用此检查。这仅用于 *git pull* 与 *git fetch* 之间的内部通信，除非你正在实现自己的 Porcelain，否则不应使用它。
 
 - --upload-pack <upload-pack>
 
-  When given, and the repository to fetch from is handled by *git fetch-pack*, `--exec=<upload-pack>` is passed to the command to specify non-default path for the command run on the other end.
+  当给出并且要获取的仓库由 *git fetch-pack* 处理时，会将 `--exec=<upload-pack>` 传递给命令，以指定在另一端运行的命令的非默认路径。
 
 - -q
 
 - `--quiet`
 
-  Pass --quiet to git-fetch-pack and silence any other internally used git commands. Progress is not reported to the standard error stream.
+  将 --quiet 传递给 git-fetch-pack，并使任何其他内部使用的 git 命令静音。进度不会报告到标准错误流。
 
 - -v
 
@@ -204,102 +228,128 @@ The names of refs that are fetched, together with the object names they point at
 
   Be verbose.
 
+  显示详细信息。
+
 - `--progress`
 
-  Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
+  默认情况下，当附加到终端时，进度状态会在标准错误流上报告，除非指定了 -q。此标志强制进度状态，即使标准错误流未指向终端。
 
 - -o <option>
 
 - `--server-option=<option>`
 
-  Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=<option>` are given, they are all sent to the other side in the order listed on the command line.
+  在使用协议版本 2 进行通信时，将给定的字符串传递给服务器。给定的字符串不能包含 NUL 或 LF 字符。服务器对服务器选项的处理（包括未知选项）是特定于服务器的。当给出多个 `--server-option=<option>` 时，它们按照命令行上列出的顺序全部发送到对端。
 
 - `--show-forced-updates`
 
-  By default, git checks if a branch is force-updated during fetch. This can be disabled through fetch.showForcedUpdates, but the --show-forced-updates option guarantees this check occurs. See [git-config[1]](../git-config).
+  默认情况下，git 在获取时会检查分支是否被强制更新。可以通过 fetch.showForcedUpdates 禁用此功能，但 --show-forced-updates 选项保证执行此检查。请参阅 [git-config[1]](../git-config)。
 
 - `--no-show-forced-updates`
 
-  By default, git checks if a branch is force-updated during fetch. Pass --no-show-forced-updates or set fetch.showForcedUpdates to false to skip this check for performance reasons. If used during *git-pull* the --ff-only option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](../git-config).
+  默认情况下，git 在获取时会检查分支是否被强制更新。传递 --no-show-forced-updates 或将 fetch.showForcedUpdates 设置为 false 可以出于性能原因跳过此检查。如果在 *git-pull* 中使用，则 --ff-only 选项仍然会在尝试快进更新之前检查强制更新。请参阅 [git-config[1]](../git-config)。
 
 - -4
 
 - `--ipv4`
 
-  Use IPv4 addresses only, ignoring IPv6 addresses.
+  仅使用 IPv4 地址，忽略 IPv6 地址。
 
 - -6
 
 - `--ipv6`
 
-  Use IPv6 addresses only, ignoring IPv4 addresses.
+  仅使用 IPv6 地址，忽略 IPv4 地址。
 
 - <repository>
 
-  The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-fetch#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-fetch#REMOTES) below).
+  "远程" 仓库，是获取或拉取操作的源头。此参数可以是 URL（请参阅下文的 [GIT URLS](https://git-scm.com/docs/git-fetch#URLS) 部分）或远程的名称（请参阅下文的 [REMOTES](https://git-scm.com/docs/git-fetch#REMOTES) 部分）。
 
 - <group>
 
-  A name referring to a list of repositories as the value of remotes.<group> in the configuration file. (See [git-config[1]](../git-config)).
+  引用 remotes.<group> 配置文件中的仓库列表的名称。（请参阅 [git-config[1]](../git-config)。）
 
 - <refspec>
 
-  Specifies which refs to fetch and which local refs to update. When no <refspec>s appear on the command line, the refs to fetch are read from `remote.<repository>.fetch` variables instead (see [CONFIGURED REMOTE-TRACKING BRANCHES](https://git-scm.com/docs/git-fetch#CRTB) below).The format of a <refspec> parameter is an optional plus `+`, followed by the source <src>, followed by a colon `:`, followed by the destination ref <dst>. The colon can be omitted when <dst> is empty. <src> is typically a ref, but it can also be a fully spelled hex object name.A <refspec> may contain a `*` in its <src> to indicate a simple pattern match. Such a refspec functions like a glob that matches any ref with the same prefix. A pattern <refspec> must have a `*` in both the <src> and <dst>. It will map refs to the destination by replacing the `*` with the contents matched from the source.If a refspec is prefixed by `^`, it will be interpreted as a negative refspec. Rather than specifying which refs to fetch or which local refs to update, such a refspec will instead specify refs to exclude. A ref will be considered to match if it matches at least one positive refspec, and does not match any negative refspec. Negative refspecs can be useful to restrict the scope of a pattern refspec so that it will not include specific refs. Negative refspecs can themselves be pattern refspecs. However, they may only contain a <src> and do not specify a <dst>. Fully spelled out hex object names are also not supported.`tag <tag>` means the same as `refs/tags/<tag>:refs/tags/<tag>`; it requests fetching everything up to the given tag.The remote ref that matches <src> is fetched, and if <dst> is not an empty string, an attempt is made to update the local ref that matches it.Whether that update is allowed without `--force` depends on the ref namespace it’s being fetched to, the type of object being fetched, and whether the update is considered to be a fast-forward. Generally, the same rules apply for fetching as when pushing, see the `<refspec>...` section of [git-push[1]](../git-push) for what those are. Exceptions to those rules particular to *git fetch* are noted below.Until Git version 2.20, and unlike when pushing with [git-push[1]](../git-push), any updates to `refs/tags/*` would be accepted without `+` in the refspec (or `--force`). When fetching, we promiscuously considered all tag updates from a remote to be forced fetches. Since Git version 2.20, fetching to update `refs/tags/*` works the same way as when pushing. I.e. any updates will be rejected without `+` in the refspec (or `--force`).Unlike when pushing with [git-push[1]](../git-push), any updates outside of `refs/{tags,heads}/*` will be accepted without `+` in the refspec (or `--force`), whether that’s swapping e.g. a tree object for a blob, or a commit for another commit that’s doesn’t have the previous commit as an ancestor etc.Unlike when pushing with [git-push[1]](../git-push), there is no configuration which’ll amend these rules, and nothing like a `pre-fetch` hook analogous to the `pre-receive` hook.As with pushing with [git-push[1]](../git-push), all of the rules described above about what’s not allowed as an update can be overridden by adding an the optional leading `+` to a refspec (or using `--force` command line option). The only exception to this is that no amount of forcing will make the `refs/heads/*` namespace accept a non-commit object.NoteWhen the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.
+  ​	指定要获取的引用以及要更新的本地引用。当命令行上没有 <refspec> 时，要获取的引用将从 `remote.<repository>.fetch` 变量中读取，参见下文的 [CONFIGURED REMOTE-TRACKING BRANCHES](https://git-scm.com/docs/git-fetch#CRTB)部分。
+
+  <refspec> 参数的格式是一个可选的加号 `+`，后跟源 <src>，再后跟冒号 `:`，再后跟目标引用 <dst>。当 <dst> 为空时，可以省略冒号。通常，<src> 是一个引用，但也可以是完整的十六进制对象名称。
+
+  ​	<refspec> 可以在 <src> 中包含 `*`，表示简单模式匹配。这样的 refspec 的功能类似于匹配具有相同前缀的任何引用的 glob。模式 <refspec> 必须在 <src> 和 <dst> 中都有一个 `*`。它将引用映射到目标，通过用源匹配内容替换 `*`。
+
+  ​	如果 refspec 以 `^` 为前缀，则将其解释为负 refspec。这样的 refspec 不会指定要获取的引用或要更新的本地引用，而是指定要排除的引用。如果引用与至少一个正 refspec 匹配，并且不匹配任何负 refspec，则将被视为匹配引用。负 refspec 可以用于限制模式 refspec 的范围，使其不包括特定引用。负 refspec 本身可以是模式 refspec。但是，它们只能包含一个 <src>，不指定 <dst>。也不支持完整拼写的十六进制对象名称。
+
+  ​	`tag <tag>` 的意思与 `refs/tags/<tag>:refs/tags/<tag>` 相同；它请求获取直到给定的标签的所有内容。
+
+  ​	与 <src> 匹配的远程引用将被获取，如果 <dst> 不为空，则尝试更新与之匹配的本地引用。
+
+  ​	是否允许不使用 `--force` 进行此更新取决于它正在获取到的引用命名空间、正在获取的对象类型以及更新是否被视为快进。通常，在获取时应用与推送时相同的规则，请参阅 [git-push[1]](../git-push) 中的 `<refspec>...` 部分以了解这些规则。*git fetch* 的特定异常规则将在下面进行说明。
+
+  ​	在 Git 版本 2.20 之前，与使用 [git-push[1]](../git-push) 进行推送不同，将接受所有 `refs/tags/*` 的更新，而不需要在 refspec 中使用 `+`（或 `--force`）。当获取时，我们普遍地认为来自远程的所有标签更新都是强制获取。自 Git 版本 2.20 起，获取以更新 `refs/tags/*` 的方式与推送相同。即。任何更新将在 refspec 中没有 `+`（或 `--force`）的情况下被拒绝。
+
+  ​	与使用 [git-push[1]](../git-push) 进行推送不同，任何在 `refs/{tags,heads}/*` 之外的更新将在 refspec 中没有 `+`（或 `--force`）的情况下被接受，无论是将树对象换为 blob，还是将提交换为另一个没有前一个提交作为祖先的提交等。
+
+  ​	与使用 [git-push[1]](../git-push) 进行推送不同，没有配置可以修改这些规则，也没有类似 `pre-receive` 钩子的 `pre-fetch` 钩子。
+
+  ​	与使用 [git-push[1]](../git-push) 进行推送时一样，所有关于不允许的更新的规则都可以通过在 refspec 中添加可选的前导 `+`（或使用 `--force` 命令行选项）来覆盖。这唯一的例外是不可能使 `refs/heads/*` 命名空间接受非提交对象。
+
+  > 注意
+  >
+  > ​	当要获取的远程分支已知会经常被回退和重新提交时，预期其新的 tip 不会是其先前 tip 的后代（在上次获取时存储在您的 remote-tracking 分支中）。在这种情况下，您会想要使用 `+` 符号来指示需要对此类分支执行非快进更新。没有办法确定或声明分支将在具有此行为的仓库中可用；拉取用户必须简单地知道这是分支的预期用法模式。
 
 - `--stdin`
 
-  Read refspecs, one per line, from stdin in addition to those provided as arguments. The "tag <name>" format is not supported.
+  从标准输入读取每行一个 refspec，除了作为参数提供的 refspec 之外。不支持 "tag <name>" 格式。
 
 ## GIT URLS
 
-In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.
+​	一般来说，URL 包含有关传输协议、远程服务器地址和仓库路径的信息。根据传输协议，其中的某些信息可能不存在。
 
-Git supports ssh, git, http, and https protocols (in addition, ftp, and ftps can be used for fetching, but this is inefficient and deprecated; do not use it).
+​	Git 支持 ssh、git、http 和 https 协议（此外，ftp 和 ftps 可用于获取，但这是低效和不推荐的，请不要使用）。
 
-The native transport (i.e. git:// URL) does no authentication and should be used with caution on unsecured networks.
+​	原生传输（即 git:// URL）不进行身份验证，在不安全的网络上使用时需小心。
 
-The following syntaxes may be used with them:
+​	以下语法可以与它们一起使用：
 
 - ssh://[user@]host.xz[:port]/path/to/repo.git/
 - git://host.xz[:port]/path/to/repo.git/
 - http[s]://host.xz[:port]/path/to/repo.git/
 - ftp[s]://host.xz[:port]/path/to/repo.git/
 
-An alternative scp-like syntax may also be used with the ssh protocol:
+​	ssh 协议还可以使用类似 scp 的语法：
 
 - [user@]host.xz:path/to/repo.git/
 
-This syntax is only recognized if there are no slashes before the first colon. This helps differentiate a local path that contains a colon. For example the local path `foo:bar` could be specified as an absolute path or `./foo:bar` to avoid being misinterpreted as an ssh url.
+​	只有在第一个冒号之前没有斜杠时，才会识别此语法。这有助于区分包含冒号的本地路径。例如，本地路径 `foo:bar` 可以被指定为绝对路径或 `./foo:bar`，以避免被误解为 ssh URL。
 
-The ssh and git protocols additionally support ~username expansion:
+​	ssh 和 git 协议还支持 `~username` 扩展：
 
 - ssh://[user@]host.xz[:port]/~[user]/path/to/repo.git/
 - git://host.xz[:port]/~[user]/path/to/repo.git/
 - [user@]host.xz:/~[user]/path/to/repo.git/
 
-For local repositories, also supported by Git natively, the following syntaxes may be used:
+​	对于本地仓库，还支持由 Git 原生支持的以下语法： 
 
 - /path/to/repo.git/
 - file:///path/to/repo.git/
 
-These two syntaxes are mostly equivalent, except when cloning, when the former implies --local option. See [git-clone[1]](../git-clone) for details.
+​	这两种语法大部分情况下是等效的，除非在克隆时，前一种意味着使用 --local 选项。有关详细信息，请参阅 [git-clone[1]](../git-clone)。
 
-*git clone*, *git fetch* and *git pull*, but not *git push*, will also accept a suitable bundle file. See [git-bundle[1]](../git-bundle).
+​	*git clone*、*git fetch* 和 *git pull*，但不包括 *git push*，还可以接受适当的捆绑文件。请参阅 [git-bundle[1]](../git-bundle)。
 
-When Git doesn’t know how to handle a certain transport protocol, it attempts to use the *remote-<transport>* remote helper, if one exists. To explicitly request a remote helper, the following syntax may be used:
+​	当 Git 不知道如何处理特定的传输协议时，它会尝试使用 *remote-<transport>* 远程助手（如果存在）。要显式请求远程助手，可以使用以下语法：
 
 - <transport>::<address>
 
-where <address> may be a path, a server and path, or an arbitrary URL-like string recognized by the specific remote helper being invoked. See [gitremote-helpers[7]](../../7/gitremote-helpers) for details.
+​	其中 <address> 可以是路径、服务器和路径，或特定远程助手识别的任意 URL 类似字符串。有关详细信息，请参阅 [gitremote-helpers[7]](../7/gitremote-helpers)。
 
-If there are a large number of similarly-named remote repositories and you want to use a different format for them (such that the URLs you use will be rewritten into URLs that work), you can create a configuration section of the form:
+​	如果存在许多类似命名的远程仓库，并且希望对它们使用不同的格式（使您使用的 URL 将被重写为有效的 URL），可以创建以下形式的配置部分：
 
 ```
 	[url "<actual url base>"]
 		insteadOf = <other url base>
 ```
 
-For example, with this:
+​	例如，使用以下内容：
 
 ```
 	[url "git://git.host.xz/"]
@@ -307,37 +357,37 @@ For example, with this:
 		insteadOf = work:
 ```
 
-a URL like "work:repo.git" or like "host.xz:/path/to/repo.git" will be rewritten in any context that takes a URL to be "git://git.host.xz/repo.git".
+像 "work:repo.git" 或 "host.xz:/path/to/repo.git" 这样的 URL 将在任何接受 URL 的上下文中被重写为 "git://git.host.xz/repo.git"。
 
-If you want to rewrite URLs for push only, you can create a configuration section of the form:
+​	如果只想重写推送的 URL，可以创建以下形式的配置部分：
 
 ```
 	[url "<actual url base>"]
 		pushInsteadOf = <other url base>
 ```
 
-For example, with this:
+​	例如，使用以下内容：
 
 ```
 	[url "ssh://example.org/"]
 		pushInsteadOf = git://example.org/
 ```
 
-a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://example.org/path/to/repo.git" for pushes, but pulls will still use the original URL.
+像 "git://example.org/path/to/repo.git" 这样的 URL 将在推送时被重写为 "ssh://example.org/path/to/repo.git"，但拉取仍将使用原始 URL。
 
-## REMOTES
+## 远程
 
-The name of one of the following can be used instead of a URL as `<repository>` argument:
+​	作为 `<repository>` 参数，可以使用以下内容之一的名称：
 
-- a remote in the Git configuration file: `$GIT_DIR/config`,
-- a file in the `$GIT_DIR/remotes` directory, or
-- a file in the `$GIT_DIR/branches` directory.
+- Git 配置文件（`$GIT_DIR/config`）中的远程，
+- `$GIT_DIR/remotes` 目录中的文件，或
+- `$GIT_DIR/branches` 目录中的文件。
 
-All of these also allow you to omit the refspec from the command line because they each contain a refspec which git will use by default.
+​	所有这些都允许您省略命令行中的 refspec，因为它们各自包含一个 refspec，Git 默认会使用它。
 
-### Named remote in configuration file
+### 配置文件中的命名远程
 
-You can choose to provide the name of a remote which you had previously configured using [git-remote[1]](../git-remote), [git-config[1]](../git-config) or even by a manual edit to the `$GIT_DIR/config` file. The URL of this remote will be used to access the repository. The refspec of this remote will be used by default when you do not provide a refspec on the command line. The entry in the config file would appear like this:
+​	您可以选择提供之前使用 [git-remote[1]](../git-remote)、[git-config[1]](../git-config) 配置的远程的名称，甚至可以通过手动编辑 `$GIT_DIR/config` 文件进行配置。该远程的 URL 将用于访问仓库。当您在命令行上不提供 refspec 时，该远程的 refspec 将作为默认值。配置文件中的条目如下所示：
 
 ```
 	[remote "<name>"]
@@ -347,11 +397,11 @@ You can choose to provide the name of a remote which you had previously configur
 		fetch = <refspec>
 ```
 
-The `<pushurl>` is used for pushes only. It is optional and defaults to `<URL>`. Pushing to a remote affects all defined pushurls or to all defined urls if no pushurls are defined. Fetch, however, will only fetch from the first defined url if muliple urls are defined.
+​	`<pushurl>` 仅用于推送。它是可选的，默认为 `<URL>`。向远程推送会影响所有已定义的推送 URL，如果未定义推送 URL，则会影响所有已定义的 URL。然而，仅当定义了 fetch refspec 时，fetch 才会从第一个已定义的 URL 获取。
 
-### Named file in `$GIT_DIR/remotes`
+### `$GIT_DIR/remotes` 目录中的命名文件
 
-You can choose to provide the name of a file in `$GIT_DIR/remotes`. The URL in this file will be used to access the repository. The refspec in this file will be used as default when you do not provide a refspec on the command line. This file should have the following format:
+​	您可以选择提供 `$GIT_DIR/remotes` 目录中文件的名称。该文件中的 URL 将用于访问仓库。当您在命令行上不提供 refspec 时，该文件中的 refspec 将作为默认值。该文件应具有以下格式：
 
 ```
 	URL: one of the above URL format
@@ -359,57 +409,57 @@ You can choose to provide the name of a file in `$GIT_DIR/remotes`. The URL in t
 	Pull: <refspec>
 ```
 
-`Push:` lines are used by *git push* and `Pull:` lines are used by *git pull* and *git fetch*. Multiple `Push:` and `Pull:` lines may be specified for additional branch mappings.
+`Push:` 行用于 *git push*，`Pull:` 行用于 *git pull* 和 *git fetch*。可以为额外的分支映射指定多个 `Push:` 和 `Pull:` 行。
 
-### Named file in `$GIT_DIR/branches`
+### `$GIT_DIR/branches` 目录中的命名文件
 
-You can choose to provide the name of a file in `$GIT_DIR/branches`. The URL in this file will be used to access the repository. This file should have the following format:
+​	您可以选择提供 `$GIT_DIR/branches` 目录中文件的名称。该文件中的 URL 将用于访问仓库。该文件应具有以下格式：
 
 ```
 	<URL>#<head>
 ```
 
-`<URL>` is required; `#<head>` is optional.
+`<URL>` 是必需的；`#<head>` 是可选的。
 
-Depending on the operation, git will use one of the following refspecs, if you don’t provide one on the command line. `<branch>` is the name of this file in `$GIT_DIR/branches` and `<head>` defaults to `master`.
+​	根据操作，如果您在命令行上不提供 refspec，则 Git 将使用以下 refspec 之一。`<branch>` 是 `$GIT_DIR/branches` 中该文件的名称，默认为 `master`。
 
-git fetch uses:
+​	git fetch 使用：
 
 ```
 	refs/heads/<head>:refs/heads/<branch>
 ```
 
-git push uses:
+​	git push 使用：
 
 ```
 	HEAD:refs/heads/<head>
 ```
 
-## CONFIGURED REMOTE-TRACKING BRANCHES
+## 配置远程跟踪分支
 
-You often interact with the same remote repository by regularly and repeatedly fetching from it. In order to keep track of the progress of such a remote repository, `git fetch` allows you to configure `remote.<repository>.fetch` configuration variables.
+​	您经常通过定期和重复地从远程仓库获取内容来与其进行交互。为了跟踪这样的远程仓库的进展，`git fetch` 允许您配置 `remote.<repository>.fetch` 配置变量。
 
-Typically such a variable may look like this:
+​	通常，这样的变量可能如下所示：
 
 ```
 [remote "origin"]
 	fetch = +refs/heads/*:refs/remotes/origin/*
 ```
 
-This configuration is used in two ways:
+​	该配置有两种用法：
 
-- When `git fetch` is run without specifying what branches and/or tags to fetch on the command line, e.g. `git fetch origin` or `git fetch`, `remote.<repository>.fetch` values are used as the refspecs—they specify which refs to fetch and which local refs to update. The example above will fetch all branches that exist in the `origin` (i.e. any ref that matches the left-hand side of the value, `refs/heads/*`) and update the corresponding remote-tracking branches in the `refs/remotes/origin/*` hierarchy.
-- When `git fetch` is run with explicit branches and/or tags to fetch on the command line, e.g. `git fetch origin master`, the <refspec>s given on the command line determine what are to be fetched (e.g. `master` in the example, which is a short-hand for `master:`, which in turn means "fetch the *master* branch but I do not explicitly say what remote-tracking branch to update with it from the command line"), and the example command will fetch *only* the *master* branch. The `remote.<repository>.fetch` values determine which remote-tracking branch, if any, is updated. When used in this way, the `remote.<repository>.fetch` values do not have any effect in deciding *what* gets fetched (i.e. the values are not used as refspecs when the command-line lists refspecs); they are only used to decide *where* the refs that are fetched are stored by acting as a mapping.
+- 当运行 `git fetch` 时，没有在命令行上指定要获取的分支和/或标签，例如 `git fetch origin` 或 `git fetch`，则将使用 `remote.<repository>.fetch` 值作为 refspec，即它们指定要获取的引用和要更新的本地引用。上述示例将复制存在于 `origin` 中的所有分支（即与值的左侧匹配的任何引用 `refs/heads/*`）并将其存储到 `refs/remotes/origin/*` 层次结构中的相应远程跟踪分支。
+- 当使用显式的分支和/或标签运行 `git fetch`，例如 `git fetch origin master`，则命令行上给定的 `<refspec>` 决定要获取的内容（例如示例中的 `master`，它是 `master:` 的简写，这意味着“获取 *master* 分支，但不明确指定从命令行更新它的远程跟踪分支”），而配置文件中的 `remote.<repository>.fetch` 值确定要更新的远程跟踪分支（如果有）。当以这种方式使用时，`remote.<repository>.fetch` 值不会影响决定要获取的内容（即它们在命令行列出 refspec 时不会作为 refspec 使用），它们只用作映射，决定了将获取的引用存储在何处。
 
-The latter use of the `remote.<repository>.fetch` values can be overridden by giving the `--refmap=<refspec>` parameter(s) on the command line.
+​	您可以通过在命令行上提供 `--refmap=<refspec>` 参数来覆盖 `remote.<repository>.fetch` 值的后一种用法。
 
-## PRUNING
+## PRUNING（清理）
 
-Git has a default disposition of keeping data unless it’s explicitly thrown away; this extends to holding onto local references to branches on remotes that have themselves deleted those branches.
+​	Git 的默认处理方式是除非明确丢弃，否则将保留数据；这也适用于保留对已删除分支的远程本地引用。
 
-If left to accumulate, these stale references might make performance worse on big and busy repos that have a lot of branch churn, and e.g. make the output of commands like `git branch -a --contains <commit>` needlessly verbose, as well as impacting anything else that’ll work with the complete set of known references.
+​	如果允许这些过时的引用不断积累，可能会导致在具有大量和繁忙的分支变更的大型仓库上性能变差，比如 `git branch -a --contains <commit>` 这样的命令输出会变得冗长，以及影响其他使用完整已知引用集的操作。
 
-These remote-tracking references can be deleted as a one-off with either of:
+​	这些远程跟踪引用可以使用以下任意一种命令进行一次性删除：
 
 ```
 # While fetching
@@ -419,19 +469,19 @@ $ git fetch --prune <name>
 $ git remote prune <name>
 ```
 
-To prune references as part of your normal workflow without needing to remember to run that, set `fetch.prune` globally, or `remote.<name>.prune` per-remote in the config. See [git-config[1]](../git-config).
+​	要在正常工作流程中对引用进行清理，而无需记得运行这些命令，可以全局设置 `fetch.prune` 或在配置中为每个远程设置 `remote.<name>.prune`。有关详细信息，请参阅 [git-config[1]](../git-config)。
 
-Here’s where things get tricky and more specific. The pruning feature doesn’t actually care about branches, instead it’ll prune local ←→ remote-references as a function of the refspec of the remote (see `<refspec>` and [CONFIGURED REMOTE-TRACKING BRANCHES](https://git-scm.com/docs/git-fetch#CRTB) above).
+​	但是，这里有一点要注意，即清理功能实际上并不关心分支，而是根据远程的 refspec 进行本地 ←→ 远程引用的清理（请参阅上面的 `<refspec>` 和 PRUNING 部分）。
 
-Therefore if the refspec for the remote includes e.g. `refs/tags/*:refs/tags/*`, or you manually run e.g. `git fetch --prune <name> "refs/tags/*:refs/tags/*"` it won’t be stale remote tracking branches that are deleted, but any local tag that doesn’t exist on the remote.
+​	因此，如果远程的 refspec 包括 `refs/tags/*:refs/tags/*`，或者您手动运行了 `git fetch --prune <name> "refs/tags/*:refs/tags/*"` 这样的命令，将删除的不是过时的远程跟踪分支，而是本地不存在的任何标签。
 
-This might not be what you expect, i.e. you want to prune remote `<name>`, but also explicitly fetch tags from it, so when you fetch from it you delete all your local tags, most of which may not have come from the `<name>` remote in the first place.
+​	这可能不是您所期望的行为，例如，您想要清理远程 `<name>`，但同时也明确地从它获取标签，这样当您从它获取时，将删除您的所有本地标签，而其中大部分标签可能根本不是来自 `<name>` 远程。
 
-So be careful when using this with a refspec like `refs/tags/*:refs/tags/*`, or any other refspec which might map references from multiple remotes to the same local namespace.
+​	因此，在使用类似 `refs/tags/*:refs/tags/*` 或任何其他可能将多个远程的引用映射到相同本地命名空间的 refspec 时，要小心。
 
-Since keeping up-to-date with both branches and tags on the remote is a common use-case the `--prune-tags` option can be supplied along with `--prune` to prune local tags that don’t exist on the remote, and force-update those tags that differ. Tag pruning can also be enabled with `fetch.pruneTags` or `remote.<name>.pruneTags` in the config. See [git-config[1]](../git-config).
+​	由于保持与远程的分支和标签同步是常见的用例，`--prune-tags` 选项可以与 `--prune` 一起使用，以清理本地不存在于远程的标签，并强制更新那些有差异的标签。可以通过 `fetch.pruneTags` 或 `remote.<name>.pruneTags` 在配置中启用标签清理。有关详细信息，请参阅 [git-config[1]](../git-config)。
 
-The `--prune-tags` option is equivalent to having `refs/tags/*:refs/tags/*` declared in the refspecs of the remote. This can lead to some seemingly strange interactions:
+​	`--prune-tags` 选项等效于在远程的 refspecs 中声明 `refs/tags/*:refs/tags/*`。这可能会导致一些看似奇怪的交互：
 
 ```
 # These both fetch tags
@@ -439,11 +489,11 @@ $ git fetch --no-tags origin 'refs/tags/*:refs/tags/*'
 $ git fetch --no-tags --prune-tags origin
 ```
 
-The reason it doesn’t error out when provided without `--prune` or its config versions is for flexibility of the configured versions, and to maintain a 1=1 mapping between what the command line flags do, and what the configuration versions do.
+​	之所以在没有提供 `--prune` 或其配置版本的情况下不出错，是为了保持配置版本的灵活性，并在命令行标志和配置版本之间保持 1=1 的映射关系。
 
-It’s reasonable to e.g. configure `fetch.pruneTags=true` in `~/.gitconfig` to have tags pruned whenever `git fetch --prune` is run, without making every invocation of `git fetch` without `--prune` an error.
+​	例如，您可以在 `~/.gitconfig` 中配置 `fetch.pruneTags=true`，这样每次运行 `git fetch --prune` 时都会清理标签，而不会使每次在没有 `--prune` 的情况下运行 `git fetch` 出错。
 
-Pruning tags with `--prune-tags` also works when fetching a URL instead of a named remote. These will all prune tags not found on origin:
+​	使用 `--prune-tags` 清理标签也适用于从 URL 而不是命名远程获取的情况。这些命令都将清理未在 origin 上找到的标签：
 
 ``` bash
 $ git fetch origin --prune --prune-tags
@@ -452,141 +502,152 @@ $ git fetch <url of origin> --prune --prune-tags
 $ git fetch <url of origin> --prune 'refs/tags/*:refs/tags/*'
 ```
 
-## OUTPUT
+## 输出
 
-The output of "git fetch" depends on the transport method used; this section describes the output when fetching over the Git protocol (either locally or via ssh) and Smart HTTP protocol.
+​	"git fetch" 的输出取决于使用的传输方法；本节描述了通过 Git 协议（本地或通过 SSH）和 Smart HTTP 协议进行获取时的输出。
 
-The status of the fetch is output in tabular form, with each line representing the status of a single ref. Each line is of the form:
+​	获取状态以表格形式输出，每行表示单个引用的状态。每行的格式如下：
 
 ```
  <flag> <summary> <from> -> <to> [<reason>]
 ```
 
-The status of up-to-date refs is shown only if the --verbose option is used.
+​	只有在使用 --verbose 选项时，才显示已更新的引用的状态。
 
-In compact output mode, specified with configuration variable fetch.output, if either entire `<from>` or `<to>` is found in the other string, it will be substituted with `*` in the other string. For example, `master -> origin/master` becomes `master -> origin/*`.
+​	在紧凑输出模式下（通过配置变量 fetch.output 指定），如果在另一个字符串中找到整个 `<from>` 或 `<to>`，则将在另一个字符串中用 `*` 替换它。例如，`master -> origin/master` 变为 `master -> origin/*`。
 
 - flag
 
-  A single character indicating the status of the ref:(space)for a successfully fetched fast-forward;`+`for a successful forced update;`-`for a successfully pruned ref;`t`for a successful tag update;`*`for a successfully fetched new ref;`!`for a ref that was rejected or failed to update; and`=`for a ref that was up to date and did not need fetching.
+  表示引用状态的单个字符：(空格) 表示成功获取的快进引用；`+` 表示成功强制更新的引用；`-` 表示成功清理的引用；`t` 表示成功更新的标签；`*` 表示成功获取的新引用；`!` 表示被拒绝或更新失败的引用；`=` 表示已是最新的引用，不需要获取。
 
 - summary
 
-  For a successfully fetched ref, the summary shows the old and new values of the ref in a form suitable for using as an argument to `git log` (this is `<old>..<new>` in most cases, and `<old>...<new>` for forced non-fast-forward updates).
+  对于成功获取的引用，摘要显示了引用的旧值和新值，以便作为 `git log` 的参数使用（在大多数情况下是 `<old>..<new>`，对于强制非快进更新是 `<old>...<new>`）。
 
 - from
 
-  The name of the remote ref being fetched from, minus its `refs/<type>/` prefix. In the case of deletion, the name of the remote ref is "(none)".
+  对于成功获取的引用，摘要显示了引用的旧值和新值，以便作为 `git log` 的参数使用（在大多数情况下是 `<old>..<new>`，对于强制非快进更新是 `<old>...<new>`）。
 
 - to
 
-  The name of the local ref being updated, minus its `refs/<type>/` prefix.
+  正在更新的本地引用的名称，去除了其 `refs/<type>/` 前缀。
 
 - reason
 
-  A human-readable explanation. In the case of successfully fetched refs, no explanation is needed. For a failed ref, the reason for failure is described.
+  一个人类可读的解释。对于成功获取的引用，不需要解释。对于失败的引用，将描述失败原因。
 
 ## 示例
 
-- Update the remote-tracking branches:
+- 更新远程跟踪分支：
 
   ``` bash
   $ git fetch origin
   ```
 
-  The above command copies all branches from the remote `refs/heads/` namespace and stores them to the local `refs/remotes/origin/` namespace, unless the `remote.<repository>.fetch` option is used to specify a non-default refspec.
+  上述命令将复制所有分支从远程 `refs/heads/` 命名空间，并将它们存储到本地 `refs/remotes/origin/` 命名空间中，除非使用 `remote.<repository>.fetch` 选项来指定非默认的 refspec。
 
-- Using refspecs explicitly:
+- 显式使用 refspecs：
 
   ``` bash
   $ git fetch origin +seen:seen maint:tmp
   ```
 
-  This updates (or creates, as necessary) branches `seen` and `tmp` in the local repository by fetching from the branches (respectively) `seen` and `maint` from the remote repository.
+  这将通过从 `seen` 和 `maint` 分支（分别是 `seen` 和 `maint` 值）获取，更新（或创建，如果需要的话）本地仓库中的 `seen` 和 `tmp` 分支。
 
-  The `seen` branch will be updated even if it does not fast-forward, because it is prefixed with a plus sign; `tmp` will not be.
+  `seen` 分支将被更新，即使它不是快进，因为它以加号开头；`tmp` 不会被更新。
 
-- Peek at a remote’s branch, without configuring the remote in your local repository:
+- 查看远程分支，而无需在本地仓库中配置远程：
 
   ``` bash
   $ git fetch git://git.kernel.org/pub/scm/git/git.git maint
   $ git log FETCH_HEAD
   ```
 
-  The first command fetches the `maint` branch from the repository at `git://git.kernel.org/pub/scm/git/git.git` and the second command uses `FETCH_HEAD` to examine the branch with [git-log[1]](../git-log). The fetched objects will eventually be removed by git’s built-in housekeeping (see [git-gc[1]](../git-gc)).
+  第一个命令从 `git://git.kernel.org/pub/scm/git/git.git` 仓库获取 `maint` 分支，第二个命令使用 `FETCH_HEAD` 查看分支的提交历史。获取的对象最终将被 Git 的内置管理删除（请参阅 [git-gc[1]](../git-gc)）。
+  
 
-## SECURITY
+## 安全性
 
-The fetch and push protocols are not designed to prevent one side from stealing data from the other repository that was not intended to be shared. If you have private data that you need to protect from a malicious peer, your best option is to store it in another repository. This applies to both clients and servers. In particular, namespaces on a server are not effective for read access control; you should only grant read access to a namespace to clients that you would trust with read access to the entire repository.
+​	获取（fetch）和推送（push）协议并不设计用于防止一方从另一个仓库窃取不打算共享的数据。如果您有需要保护免受恶意同级的私有数据，最好的选择是将其存储在另一个仓库中。这适用于客户端和服务器端。特别是，服务器上的命名空间对于读取访问控制并不有效；应该只向信任能够读取整个仓库的客户端授予对命名空间的读取访问权限。
 
-The known attack vectors are as follows:
+​	已知的攻击向量如下：
 
-1. The victim sends "have" lines advertising the IDs of objects it has that are not explicitly intended to be shared but can be used to optimize the transfer if the peer also has them. The attacker chooses an object ID X to steal and sends a ref to X, but isn’t required to send the content of X because the victim already has it. Now the victim believes that the attacker has X, and it sends the content of X back to the attacker later. (This attack is most straightforward for a client to perform on a server, by creating a ref to X in the namespace the client has access to and then fetching it. The most likely way for a server to perform it on a client is to "merge" X into a public branch and hope that the user does additional work on this branch and pushes it back to the server without noticing the merge.)
-2. As in #1, the attacker chooses an object ID X to steal. The victim sends an object Y that the attacker already has, and the attacker falsely claims to have X and not Y, so the victim sends Y as a delta against X. The delta reveals regions of X that are similar to Y to the attacker.
+1. 受害者发送 "have" 行，广告它拥有的对象的 ID，这些对象不是明确打算共享的，但如果同级也有这些对象，则可以用于优化传输。攻击者选择一个对象 ID X 进行窃取，并发送指向 X 的引用，但不必发送 X 的内容，因为受害者已经有了它。现在，受害者认为攻击者拥有 X，并稍后将 X 的内容发送回给攻击者。（对于客户端对服务器执行这种攻击是最直接的方式，方法是在客户端有访问权限的命名空间中创建一个指向 X 的引用，然后获取它。服务器对客户端执行这种攻击的最可能方式是将 X "合并" 到公共分支中，并希望用户在此分支上进行额外的工作，并将其推送回服务器而不注意到合并。）
+2. 与 #1 类似，攻击者选择一个对象 ID X 进行窃取。受害者发送一个攻击者已经拥有的对象 Y，并且攻击者错误地声称拥有 X 而没有 Y，因此受害者将 Y 作为相对于 X 的增量发送。该增量向攻击者揭示了 X 的某些区域与 Y 相似的信息。
 
 ## 配置
 
-Everything below this line in this section is selectively included from the [git-config[1]](../git-config) documentation. The content is the same as what’s found there:
+​	以下是本节中包含的与配置有关的内容，内容与 [git-config[1]](../git-config) 中的内容相同：
 
 - fetch.recurseSubmodules
 
-  This option controls whether `git fetch` (and the underlying fetch in `git pull`) will recursively fetch into populated submodules. This option can be set either to a boolean value or to *on-demand*. Setting it to a boolean changes the behavior of fetch and pull to recurse unconditionally into submodules when set to true or to not recurse at all when set to false. When set to *on-demand*, fetch and pull will only recurse into a populated submodule when its superproject retrieves a commit that updates the submodule’s reference. Defaults to *on-demand*, or to the value of *submodule.recurse* if set.
+  此选项控制 `git fetch`（以及 `git pull` 中的底层获取）是否会递归获取已有内容的子模块。此选项可以设置为布尔值或 *on-demand*。将其设置为布尔值会更改 fetch 和 pull 的行为，当设置为 true 时，会无条件地递归进入子模块；当设置为 false 时，则不递归。当设置为 *on-demand* 时，只有在超级仓库检索更新子模块引用的提交时，fetch 和 pull 才会递归进入已有内容的子模块。默认值是 *on-demand*，或者如果设置了 *submodule.recurse*，则使用 *submodule.recurse* 的值。
 
 - fetch.fsckObjects
 
-  If it is set to true, git-fetch-pack will check all fetched objects. See `transfer.fsckObjects` for what’s checked. Defaults to false. If not set, the value of `transfer.fsckObjects` is used instead.
+  如果设置为 true，则 git-fetch-pack 将检查所有获取的对象。有关检查的内容，请参阅 `transfer.fsckObjects`。默认值为 false。如果未设置，则使用 `transfer.fsckObjects` 的值。
 
 - fetch.fsck.<msg-id>
 
-  Acts like `fsck.<msg-id>`, but is used by [git-fetch-pack[1]](../git-fetch-pack) instead of [git-fsck[1]](../git-fsck). See the `fsck.<msg-id>` documentation for details.
+  类似于 `fsck.<msg-id>`，但由 [git-fetch-pack[1]](../git-fetch-pack) 使用，而不是由 [git-fsck[1]](../git-fsck) 使用。有关详细信息，请参阅 `fsck.<msg-id>` 的文档。
 
 - fetch.fsck.skipList
 
-  Acts like `fsck.skipList`, but is used by [git-fetch-pack[1]](../git-fetch-pack) instead of [git-fsck[1]](../git-fsck). See the `fsck.skipList` documentation for details.
+  类似于 `fsck.skipList`，但由 [git-fetch-pack[1]](../git-fetch-pack) 使用，而不是由 [git-fsck[1]](../git-fsck) 使用。有关详细信息，请参阅 `fsck.skipList` 的文档。
 
 - fetch.unpackLimit
 
-  If the number of objects fetched over the Git native transfer is below this limit, then the objects will be unpacked into loose object files. However if the number of received objects equals or exceeds this limit then the received pack will be stored as a pack, after adding any missing delta bases. Storing the pack from a push can make the push operation complete faster, especially on slow filesystems. If not set, the value of `transfer.unpackLimit` is used instead.
+  如果通过 Git 原生传输获取的对象数量低于此限制，则对象将解包为松散的对象文件。但是，如果接收到的对象数量等于或超过此限制，则接收的 pack 将作为 pack 存储，同时添加任何丢失的增量基础。从推送中存储 pack 可以使推送操作更快地完成，尤其是在慢速文件系统上。如果未设置，则使用 `transfer.unpackLimit` 的值。
 
 - fetch.prune
 
-  If true, fetch will automatically behave as if the `--prune` option was given on the command line. See also `remote.<name>.prune` and the PRUNING section of [git-fetch[1]](../git-fetch).
+  如果为 true，则 fetch 将自动表现得好像在命令行上给出了 `--prune` 选项。另请参阅 `remote.<name>.prune` 和 [git-fetch[1]](../git-fetch) 的 PRUNING 部分。
 
 - fetch.pruneTags
 
-  If true, fetch will automatically behave as if the `refs/tags/*:refs/tags/*` refspec was provided when pruning, if not set already. This allows for setting both this option and `fetch.prune` to maintain a 1=1 mapping to upstream refs. See also `remote.<name>.pruneTags` and the PRUNING section of [git-fetch[1]](../git-fetch).
+  如果为 true，则 fetch 将自动表现得好像在修剪时提供了 `refs/tags/*:refs/tags/*` refspec。这允许同时设置此选项和 `fetch.prune`，以保持与上游引用的 1=1 映射关系。另请参阅 `remote.<name>.pruneTags` 和 [git-fetch[1]](../git-fetch) 的 PRUNING 部分。
 
 - fetch.output
 
-  Control how ref update status is printed. Valid values are `full` and `compact`. Default value is `full`. See section OUTPUT in [git-fetch[1]](../git-fetch) for detail.
+  控制如何打印引用更新状态。有效值为 `full` 和 `compact`。默认值是 `full`。有关详细信息，请参阅 [git-fetch[1]](../git-fetch) 中的 OUTPUT 部分。
 
 - fetch.negotiationAlgorithm
 
-  Control how information about the commits in the local repository is sent when negotiating the contents of the packfile to be sent by the server. Set to "consecutive" to use an algorithm that walks over consecutive commits checking each one. Set to "skipping" to use an algorithm that skips commits in an effort to converge faster, but may result in a larger-than-necessary packfile; or set to "noop" to not send any information at all, which will almost certainly result in a larger-than-necessary packfile, but will skip the negotiation step. Set to "default" to override settings made previously and use the default behaviour. The default is normally "consecutive", but if `feature.experimental` is true, then the default is "skipping". Unknown values will cause *git fetch* to error out.See also the `--negotiate-only` and `--negotiation-tip` options to [git-fetch[1]](../git-fetch).
+  在与服务器协商要发送的 packfile 内容时，控制发送本地仓库中提交信息的方式。设置为 "consecutive" 使用一种算法，遍历连续的提交并检查每个提交。设置为 "skipping" 使用一种跳过提交的算法，以便更快地收敛，但可能会导致比必要的 packfile 更大；或者设置为 "noop" 以根本不发送任何信息，这几乎肯定会导致比必要的 packfile 更大，但会跳过协商步骤。设置为 "default" 以覆盖先前的设置并使用默认行为。默认值通常为 "consecutive"，但如果 `feature.experimental` 为 true，则默认为 "skipping"。未知的值将导致 *git fetch* 报错。
+
+  另请参阅 [git-fetch[1]](../git-fetch) 中的 `--negotiate-only` 和 `--negotiation-tip` 选项。
 
 - fetch.showForcedUpdates
 
-  Set to false to enable `--no-show-forced-updates` in [git-fetch[1]](../git-fetch) and [git-pull[1]](../git-pull) commands. Defaults to true.
+  设置为 false，以启用 [git-fetch[1]](../git-fetch) 和 [git-pull[1]](../git-pull) 命令中的 `--no-show-forced-updates`。默认值为 true。
 
 - fetch.parallel
 
-  Specifies the maximal number of fetch operations to be run in parallel at a time (submodules, or remotes when the `--multiple` option of [git-fetch[1]](../git-fetch) is in effect).A value of 0 will give some reasonable default. If unset, it defaults to 1.For submodules, this setting can be overridden using the `submodule.fetchJobs` config setting.
+  指定并行运行的最大获取操作数量（子模块或在 [git-fetch[1]](../git-fetch) 中 `--multiple` 选项生效时的远程仓库）。
+
+  值为 0 将给出一些合理的默认值。如果未设置，默认值为 1。
+
+  对于子模块，可以使用 `submodule.fetchJobs` 配置设置来覆盖此设置。
 
 - fetch.writeCommitGraph
 
-  Set to true to write a commit-graph after every `git fetch` command that downloads a pack-file from a remote. Using the `--split` option, most executions will create a very small commit-graph file on top of the existing commit-graph file(s). Occasionally, these files will merge and the write may take longer. Having an updated commit-graph file helps performance of many Git commands, including `git merge-base`, `git push -f`, and `git log --graph`. Defaults to false.
+  设置为 true，以便在每个从远程下载 pack 文件的 `git fetch` 命令后写入提交图。使用 `--split` 选项，大多数执行将在现有的提交图文件之上创建一个非常小的提交图文件。偶尔，这些文件将合并，写入可能需要更长时间。更新的提交图文件有助于许多 Git 命令的性能，包括 `git merge-base`、`git push -f` 和 `git log --graph`。默认值为 false。
 
 - fetch.bundleURI
 
-  This value stores a URI for downloading Git object data from a bundle URI before performing an incremental fetch from the origin Git server. This is similar to how the `--bundle-uri` option behaves in [git-clone[1]](../git-clone). `git clone --bundle-uri` will set the `fetch.bundleURI` value if the supplied bundle URI contains a bundle list that is organized for incremental fetches.If you modify this value and your repository has a `fetch.bundleCreationToken` value, then remove that `fetch.bundleCreationToken` value before fetching from the new bundle URI.
+  此值存储用于从原始 Git 服务器进行增量获取之前，从 bundle URI 下载 Git 对象数据的 URI。这类似于 [git-clone[1]](../git-clone) 中的 `--bundle-uri` 选项的行为。如果 `git clone --bundle-uri` 使用了 `--bundle-uri` 选项，则会设置 `fetch.bundleURI` 值，如果提供的 bundle URI 包含用于增量获取组织的 bundle list。
+
+  如果修改了此值，并且您的仓库具有 `fetch.bundleCreationToken` 值，则在从新的 bundle URI 获取之前删除该 `fetch.bundleCreationToken` 值。
 
 - fetch.bundleCreationToken
 
-  When using `fetch.bundleURI` to fetch incrementally from a bundle list that uses the "creationToken" heuristic, this config value stores the maximum `creationToken` value of the downloaded bundles. This value is used to prevent downloading bundles in the future if the advertised `creationToken` is not strictly larger than this value.The creation token values are chosen by the provider serving the specific bundle URI. If you modify the URI at `fetch.bundleURI`, then be sure to remove the value for the `fetch.bundleCreationToken` value before fetching.
+  当使用 `fetch.bundleURI` 从使用 "creationToken" 启发式的 bundle list 进行增量获取时，此配置值存储下载的 bundle 的最大 `creationToken` 值。如果广告的 `creationToken` 不严格大于此值，则将使用此值阻止将来下载 bundle。
+  
+  创建 token 值由提供服务的特定 bundle URI 选择。如果修改了 `fetch.bundleURI` 中的 URI，则在获取之前确保删除 `fetch.bundleCreationToken` 的值。
 
 ## BUGS
 
-Using --recurse-submodules can only fetch new commits in submodules that are present locally e.g. in `$GIT_DIR/modules/`. If the upstream adds a new submodule, that submodule cannot be fetched until it is cloned e.g. by `git submodule update`. This is expected to be fixed in a future Git version.
+使用 --recurse-submodules 仅能获取在本地存在的子模块中的新提交，例如在 `$GIT_DIR/modules/` 中存在的子模块。如果上游添加了一个新的子模块，则在对其进行克隆（例如通过 `git submodule update`）之前，无法获取该子模块。这预计将在将来的 Git 版本中修复。
 
 ## 另请参阅
 
