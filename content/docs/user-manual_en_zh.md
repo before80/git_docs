@@ -41,7 +41,7 @@ Further chapters cover more specialized topics.
 
 Comprehensive reference documentation is available through the man pages, or [git-help[1]](../1/git-help) command. For example, for the command `git clone <repo>`, you can either use:
 
-​	完整的参考文档可通过man页或[git-help[1]](https://chat.openai.com/1/git-help)命令获得。例如，对于命令 `git clone <repo>`，您可以选择使用：
+​	完整的参考文档可通过man页或[git-help[1]](../1/git-help)命令获得。例如，对于命令 `git clone <repo>`，您可以选择使用：
 
 ``` bash
 $ man git-clone
@@ -55,7 +55,7 @@ $ git help clone
 
 With the latter, you can use the manual viewer of your choice; see [git-help[1]](../1/git-help) for more information.
 
-​	使用后者，您可以使用您选择的手册查看器；有关更多信息，请参见[git-help[1]](https://chat.openai.com/1/git-help)。
+​	使用后者，您可以使用您选择的手册查看器；有关更多信息，请参见[git-help[1]](../1/git-help)。
 
 See also [Git Quick Reference](https://git-scm.com/docs/user-manual#git-quick-start) for a brief overview of Git commands, without any explanation.
 
@@ -75,7 +75,7 @@ It will be useful to have a Git repository to experiment with as you read this m
 
 The best way to get one is by using the [git-clone[1]](../1/git-clone) command to download a copy of an existing repository. If you don’t already have a project in mind, here are some interesting examples:
 
-​	最佳方法是使用[git-clone[1]](https://chat.openai.com/1/git-clone)命令下载现有仓库的副本。如果您还没有项目的选择，请参考以下一些有趣的示例：
+​	最佳方法是使用[git-clone[1]](../1/git-clone)命令下载现有仓库的副本。如果您还没有项目的选择，请参考以下一些有趣的示例：
 
 ```
 	# Git itself (approx. 40MB download):
@@ -104,7 +104,7 @@ Those snapshots aren’t necessarily all arranged in a single line from oldest t
 
 A single Git repository can track development on multiple branches. It does this by keeping a list of [heads](https://git-scm.com/docs/user-manual#def_head) which reference the latest commit on each branch; the [git-branch[1]](../1/git-branch) command shows you the list of branch heads:
 
-​	单个Git仓库可以跟踪多个分支上的开发。它通过保持一个引用每个分支上最新提交的[头部](https://git-scm.com/docs/user-manual#def_head)列表来实现；[git-branch[1]](https://chat.openai.com/1/git-branch)命令显示分支头列表：
+​	单个Git仓库可以跟踪多个分支上的开发。它通过保持一个引用每个分支上最新提交的[头部](https://git-scm.com/docs/user-manual#def_head)列表来实现；[git-branch[1]](../1/git-branch)命令显示分支头列表：
 
 ``` bash
 $ git branch
@@ -117,7 +117,7 @@ A freshly cloned repository contains a single branch head, by default named "mas
 
 Most projects also use [tags](https://git-scm.com/docs/user-manual#def_tag). Tags, like heads, are references into the project’s history, and can be listed using the [git-tag[1]](../1/git-tag) command:
 
-​	大多数项目还使用[标签](https://git-scm.com/docs/user-manual#def_tag)。标签与分支一样，是对项目历史的引用，可以使用[git-tag[1]](https://chat.openai.com/1/git-tag)命令列出标签：
+​	大多数项目还使用[标签](https://git-scm.com/docs/user-manual#def_tag)。标签与分支一样，是对项目历史的引用，可以使用[git-tag[1]](../1/git-tag)命令列出标签：
 
 ``` bash
 $ git tag -l
@@ -139,7 +139,7 @@ Tags are expected to always point at the same version of a project, while heads 
 
 Create a new branch head pointing to one of these versions and check it out using [git-switch[1]](../1/git-switch):
 
-​	创建一个新的分支头，指向这些版本之一，并使用[git-switch[1]](https://chat.openai.com/1/git-switch)检出它：
+​	创建一个新的分支头，指向这些版本之一，并使用[git-switch[1]](../1/git-switch)检出它：
 
 ``` bash
 $ git switch -c new v2.6.13
@@ -147,7 +147,7 @@ $ git switch -c new v2.6.13
 
 The working directory then reflects the contents that the project had when it was tagged v2.6.13, and [git-branch[1]](../1/git-branch) shows two branches, with an asterisk marking the currently checked-out branch:
 
-​	工作目录将反映出项目在标记v2.6.13时的内容，并且[git-branch[1]](https://chat.openai.com/1/git-branch)显示两个分支，其中星号标记当前检出的分支：
+​	工作目录将反映出项目在标记v2.6.13时的内容，并且[git-branch[1]](../1/git-branch)显示两个分支，其中星号标记当前检出的分支：
 
 ``` bash
 $ git branch
@@ -171,7 +171,7 @@ Note that if the current branch head was your only reference to a particular poi
 
 Every change in the history of a project is represented by a commit. The [git-show[1]](../1/git-show) command shows the most recent commit on the current branch:
 
-​	项目历史中的每个更改都由一个commit表示。[git-show[1]](https://chat.openai.com/1/git-show)命令显示当前分支上最近的提交：
+​	项目历史中的每个更改都由一个commit表示。[git-show[1]](../1/git-show)命令显示当前分支上最近的提交：
 
 ``` bash
 $ git show
@@ -222,7 +222,7 @@ However, the commits do not form a simple list; Git allows lines of development 
 
 The best way to see how this works is using the [gitk[1]](../1/gitk) command; running gitk now on a Git repository and looking for merge commits will help understand how Git organizes history.
 
-​	最好的方法是使用[gitk[1]](https://chat.openai.com/1/gitk)命令来查看它是如何工作的；现在在Git仓库上运行gitk，并查找合并commit将有助于理解Git如何组织历史。
+​	最好的方法是使用[gitk[1]](../1/gitk)命令来查看它是如何工作的；现在在Git仓库上运行gitk，并查找合并commit将有助于理解Git如何组织历史。
 
 In the following, we say that commit X is "reachable" from commit Y if commit X is an ancestor of commit Y. Equivalently, you could say that Y is a descendant of X, or that there is a chain of parents leading from commit Y to commit X.
 
@@ -359,7 +359,7 @@ This is an easy way to check out a particular version without having to make up 
 
 The "master" branch that was created at the time you cloned is a copy of the HEAD in the repository that you cloned from. That repository may also have had other branches, though, and your local repository keeps branches which track each of those remote branches, called remote-tracking branches, which you can view using the `-r` option to [git-branch[1]](../1/git-branch):
 
-​	在克隆时创建的"master"分支是克隆源仓库中HEAD的副本。然而，该仓库可能还有其他分支，而您的本地仓库将保留每个远程分支的跟踪分支，称为远程跟踪分支，您可以使用`-r`选项查看它们，例如[git-branch[1]](https://chat.openai.com/1/git-branch)：
+​	在克隆时创建的"master"分支是克隆源仓库中HEAD的副本。然而，该仓库可能还有其他分支，而您的本地仓库将保留每个远程分支的跟踪分支，称为远程跟踪分支，您可以使用`-r`选项查看它们，例如[git-branch[1]](../1/git-branch)：
 
 ``` bash
 $ git branch -r
@@ -412,7 +412,7 @@ The full name is occasionally useful if, for example, there ever exists a tag an
 
 (Newly created refs are actually stored in the `.git/refs` directory, under the path given by their name. However, for efficiency reasons they may also be packed together in a single file; see [git-pack-refs[1]](../1/git-pack-refs)).
 
-（新创建的引用实际上存储在`.git/refs`目录中，路径是其名称给出的路径。但是，出于效率考虑，它们也可能被打包在一个单独的文件中；详情请参见[git-pack-refs[1]](https://chat.openai.com/1/git-pack-refs)）。
+（新创建的引用实际上存储在`.git/refs`目录中，路径是其名称给出的路径。但是，出于效率考虑，它们也可能被打包在一个单独的文件中；详情请参见[git-pack-refs[1]](../1/git-pack-refs)）。
 
 As another useful shortcut, the "HEAD" of a repository can be referred to just using the name of that repository. So, for example, "origin" is usually a shortcut for the HEAD branch in the repository "origin".
 
@@ -420,7 +420,7 @@ As another useful shortcut, the "HEAD" of a repository can be referred to just u
 
 For the complete list of paths which Git checks for references, and the order it uses to decide which to choose when there are multiple references with the same shorthand name, see the "SPECIFYING REVISIONS" section of [gitrevisions[7]](../7/gitrevisions).
 
-​	有关Git检查引用的完整路径列表，以及在有多个具有相同简写名称的引用时决定选择哪个的顺序，请参阅[gitrevisions[7]](https://chat.openai.com/7/gitrevisions)的"SPECIFYING REVISIONS"部分。
+​	有关Git检查引用的完整路径列表，以及在有多个具有相同简写名称的引用时决定选择哪个的顺序，请参阅[gitrevisions[7]](../7/gitrevisions)的"SPECIFYING REVISIONS"部分。
 
 
 
@@ -438,7 +438,7 @@ The `git-fetch` command, with no arguments, will update all of the remote-tracki
 
 You can also track branches from repositories other than the one you cloned from, using [git-remote[1]](../1/git-remote):
 
-​	您还可以使用[git-remote[1]](https://chat.openai.com/1/git-remote)从其他仓库跟踪分支，而不仅限于克隆的仓库：
+​	您还可以使用[git-remote[1]](../1/git-remote)从其他仓库跟踪分支，而不仅限于克隆的仓库：
 
 ``` bash
 $ git remote add staging git://git.kernel.org/.../gregkh/staging.git
@@ -482,7 +482,7 @@ $ cat .git/config
 
 This is what causes Git to track the remote’s branches; you may modify or delete these configuration options by editing `.git/config` with a text editor. (See the "CONFIGURATION FILE" section of [git-config[1]](../1/git-config) for details.)
 
-​	这会导致Git跟踪远程仓库的分支；您可以通过使用文本编辑器编辑`.git/config`来修改或删除这些配置选项（有关详细信息，请参见[git-config[1]](https://chat.openai.com/1/git-config)中的"CONFIGURATION FILE"部分）。
+​	这会导致Git跟踪远程仓库的分支；您可以通过使用文本编辑器编辑`.git/config`来修改或删除这些配置选项（有关详细信息，请参见[git-config[1]](../1/git-config)中的"CONFIGURATION FILE"部分）。
 
 ## 探索Git历史
 
@@ -502,7 +502,7 @@ We start with one specialized tool that is useful for finding the commit that in
 
 Suppose version 2.6.18 of your project worked, but the version at "master" crashes. Sometimes the best way to find the cause of such a regression is to perform a brute-force search through the project’s history to find the particular commit that caused the problem. The [git-bisect[1]](../1/git-bisect) command can help you do this:
 
-​	假设您的项目的2.6.18版本工作正常，但"master"分支的版本崩溃。有时找到这种回归的原因的最佳方法是通过对项目的历史进行蛮力搜索，以找到导致问题的特定提交。[git-bisect[1]](https://chat.openai.com/1/git-bisect)命令可以帮助您做到这一点：
+​	假设您的项目的2.6.18版本工作正常，但"master"分支的版本崩溃。有时找到这种回归的原因的最佳方法是通过对项目的历史进行蛮力搜索，以找到导致问题的特定提交。[git-bisect[1]](../1/git-bisect)命令可以帮助您做到这一点：
 
 ``` bash
 $ git bisect start
@@ -528,7 +528,7 @@ checks out an older version. Continue like this, telling Git at each stage wheth
 
 After about 13 tests (in this case), it will output the commit id of the guilty commit. You can then examine the commit with [git-show[1]](../1/git-show), find out who wrote it, and mail them your bug report with the commit id. Finally, run
 
-​	经过大约13次测试（在本例中），它将输出有问题提交的提交id。然后，您可以使用[git-show[1]](https://chat.openai.com/1/git-show)查看提交，找出是谁编写的，并将带有提交id的错误报告发送给他们。最后，运行
+​	经过大约13次测试（在本例中），它将输出有问题提交的提交id。然后，您可以使用[git-show[1]](../1/git-show)查看提交，找出是谁编写的，并将带有提交id的错误报告发送给他们。最后，运行
 
 ``` bash
 $ git bisect reset
@@ -572,7 +572,7 @@ In this case, though, Git may not eventually be able to tell the first bad one b
 
 There are also ways to automate the bisecting process if you have a test script that can tell a good from a bad commit. See [git-bisect[1]](../1/git-bisect) for more information about this and other `git bisect` features.
 
-​	如果您有一个测试脚本可以判断哪些提交是好的，哪些是有问题的，还可以自动化二分查找过程。有关此功能和其他`git bisect`功能的更多信息，请参阅[git-bisect[1]](https://chat.openai.com/1/git-bisect)。
+​	如果您有一个测试脚本可以判断哪些提交是好的，哪些是有问题的，还可以自动化二分查找过程。有关此功能和其他`git bisect`功能的更多信息，请参阅[git-bisect[1]](../1/git-bisect)。
 
 ### 命名提交
 
@@ -591,7 +591,7 @@ We have seen several ways of naming commits already:
 
 There are many more; see the "SPECIFYING REVISIONS" section of the [gitrevisions[7]](../7/gitrevisions) man page for the complete list of ways to name revisions. Some examples:
 
-​	还有许多其他命名方式，请参阅[gitrevisions[7]](https://chat.openai.com/7/gitrevisions)手册中的"SPECIFYING REVISIONS"部分，以获取完整的命名修订版本的方式列表。以下是一些示例：
+​	还有许多其他命名方式，请参阅[gitrevisions[7]](../7/gitrevisions)手册中的"SPECIFYING REVISIONS"部分，以获取完整的命名修订版本的方式列表。以下是一些示例：
 
 ``` bash
 $ git show fb47ddb2 # the first few characters of the object name
@@ -659,13 +659,13 @@ You can use `stable-1` to refer to the commit 1b2e1d63ff.
 
 This creates a "lightweight" tag. If you would also like to include a comment with the tag, and possibly sign it cryptographically, then you should create a tag object instead; see the [git-tag[1]](../1/git-tag) man page for details.
 
-​	这将创建一个"轻量级"标签。如果您还希望在标签中包含评论，并可能对其进行加密签名，则应该创建一个标签对象；有关详细信息，请参见[git-tag[1]](https://chat.openai.com/1/git-tag)手册。
+​	这将创建一个"轻量级"标签。如果您还希望在标签中包含评论，并可能对其进行加密签名，则应该创建一个标签对象；有关详细信息，请参见[git-tag[1]](../1/git-tag)手册。
 
 ### 浏览修订版本 Browsing revisions
 
 The [git-log[1]](../1/git-log) command can show lists of commits. On its own, it shows all commits reachable from the parent commit; but you can also make more specific requests:
 
-​	[git-log[1]](https://chat.openai.com/1/git-log)命令可以显示提交列表。默认情况下，它显示从父提交可达的所有提交；但您也可以提出更具体的要求：
+​	[git-log[1]](../1/git-log)命令可以显示提交列表。默认情况下，它显示从父提交可达的所有提交；但您也可以提出更具体的要求：
 
 ``` bash
 $ git log v2.5..	# commits since (not reachable from) v2.5
@@ -698,7 +698,7 @@ $ git log -p
 
 See the `--pretty` option in the [git-log[1]](../1/git-log) man page for more display options.
 
-​	有关更多显示选项，请参阅[git-log[1]](https://chat.openai.com/1/git-log)手册中的`--pretty`选项。
+​	有关更多显示选项，请参阅[git-log[1]](../1/git-log)手册中的`--pretty`选项。
 
 Note that git log starts with the most recent commit and works backwards through the parents; however, since Git history can contain multiple independent lines of development, the particular order that commits are listed in may be somewhat arbitrary.
 
@@ -708,7 +708,7 @@ Note that git log starts with the most recent commit and works backwards through
 
 You can generate diffs between any two versions using [git-diff[1]](../1/git-diff):
 
-​	您可以使用[git-diff[1]](https://chat.openai.com/1/git-diff)在任何两个版本之间生成差异：
+​	您可以使用[git-diff[1]](../1/git-diff)在任何两个版本之间生成差异：
 
 ``` bash
 $ git diff master..test
@@ -724,7 +724,7 @@ $ git diff master...test
 
 Sometimes what you want instead is a set of patches; for this you can use [git-format-patch[1]](../1/git-format-patch):
 
-​	有时您需要的是一组补丁；为此，您可以使用[git-format-patch[1]](https://chat.openai.com/1/git-format-patch)：
+​	有时您需要的是一组补丁；为此，您可以使用[git-format-patch[1]](../1/git-format-patch)：
 
 ``` bash
 $ git format-patch master..test
@@ -821,7 +821,7 @@ $ gitk e05db0fd..
 
 or you can use [git-name-rev[1]](../1/git-name-rev), which will give the commit a name based on any tag it finds pointing to one of the commit’s descendants:
 
-或者您可以使用[git-name-rev[1]](https://chat.openai.com/1/git-name-rev)，它将根据找到的任何标签为提交赋予名称，该标签指向提交的后代之一：
+或者您可以使用[git-name-rev[1]](../1/git-name-rev)，它将根据找到的任何标签为提交赋予名称，该标签指向提交的后代之一：
 
 ``` bash
 $ git name-rev --tags e05db0fd
@@ -830,7 +830,7 @@ e05db0fd tags/v1.5.0-rc1^0~23
 
 The [git-describe[1]](../1/git-describe) command does the opposite, naming the revision using a tag on which the given commit is based:
 
-而[git-describe[1]](https://chat.openai.com/1/git-describe)命令则相反，使用提交所基于的标签来命名修订版本：
+而[git-describe[1]](../1/git-describe)命令则相反，使用提交所基于的标签来命名修订版本：
 
 ``` bash
 $ git describe e05db0fd
@@ -843,7 +843,7 @@ but that may sometimes help you guess which tags might come after the given comm
 
 If you just want to verify whether a given tagged version contains a given commit, you could use [git-merge-base[1]](../1/git-merge-base):
 
-​	如果您只想验证给定的已打标签版本是否包含给定的提交，可以使用[git-merge-base[1]](https://chat.openai.com/1/git-merge-base)：
+​	如果您只想验证给定的已打标签版本是否包含给定的提交，可以使用[git-merge-base[1]](../1/git-merge-base)：
 
 ``` bash
 $ git merge-base e05db0fd v1.5.0-rc1
@@ -868,7 +868,7 @@ will produce empty output if and only if v1.5.0-rc1 includes e05db0fd, because i
 
 As yet another alternative, the [git-show-branch[1]](../1/git-show-branch) command lists the commits reachable from its arguments with a display on the left-hand side that indicates which arguments that commit is reachable from. So, if you run something like
 
-​	作为另一种选择，[git-show-branch[1]](https://chat.openai.com/1/git-show-branch)命令会列出可从其参数到达的提交，并在左侧显示显示指示该提交可从哪个参数到达的内容。因此，如果您运行类似于：
+​	作为另一种选择，[git-show-branch[1]](../1/git-show-branch)命令会列出可从其参数到达的提交，并在左侧显示显示指示该提交可从哪个参数到达的内容。因此，如果您运行类似于：
 
 ``` bash
 $ git show-branch e05db0fd v1.5.0-rc0 v1.5.0-rc1 v1.5.0-rc2
@@ -901,7 +901,7 @@ Suppose you would like to see all the commits reachable from the branch head nam
 
 We can list all the heads in this repository with [git-show-ref[1]](../1/git-show-ref):
 
-​	我们可以使用[git-show-ref[1]](https://chat.openai.com/1/git-show-ref)列出此仓库中的所有分支头部：
+​	我们可以使用[git-show-ref[1]](../1/git-show-ref)列出此仓库中的所有分支头部：
 
 ``` bash
 $ git show-ref --heads
@@ -943,13 +943,13 @@ $ gitk $( git show-ref --heads ) --not  $( git show-ref --tags )
 
 (See [gitrevisions[7]](../7/gitrevisions) for explanations of commit-selecting syntax such as `--not`.)
 
-（有关诸如`--not`等提交选择语法的解释，请参阅[gitrevisions[7]](https://chat.openai.com/7/gitrevisions)。）
+（有关诸如`--not`等提交选择语法的解释，请参阅[gitrevisions[7]](../7/gitrevisions)。）
 
 #### 为软件发布创建更改日志和tarball  - Creating a changelog and tarball for a software release
 
 The [git-archive[1]](../1/git-archive) command can create a tar or zip archive from any version of a project; for example:
 
-​	[git-archive[1]](https://chat.openai.com/1/git-archive)命令可以从项目的任何版本创建tar或zip存档；例如：
+​	[git-archive[1]](../1/git-archive)命令可以从项目的任何版本创建tar或zip存档；例如：
 
 ``` bash
 $ git archive -o latest.tar.gz --prefix=project/ HEAD
@@ -957,7 +957,7 @@ $ git archive -o latest.tar.gz --prefix=project/ HEAD
 
 will use HEAD to produce a gzipped tar archive in which each filename is preceded by `project/`. The output file format is inferred from the output file extension if possible, see [git-archive[1]](../1/git-archive) for details.
 
-将使用HEAD创建一个gzipped的tar存档，其中每个文件名前面都有`project/`。如果可能，输出文件格式将根据输出文件扩展名进行推断，请参阅[git-archive[1]](https://chat.openai.com/1/git-archive)了解详情。
+将使用HEAD创建一个gzipped的tar存档，其中每个文件名前面都有`project/`。如果可能，输出文件格式将根据输出文件扩展名进行推断，请参阅[git-archive[1]](../1/git-archive)了解详情。
 
 Versions of Git older than 1.7.7 don’t know about the `tar.gz` format, you’ll need to use gzip explicitly:
 
@@ -1013,7 +1013,7 @@ $  git log --raw --abbrev=40 --pretty=oneline |
 
 Figuring out why this works is left as an exercise to the (advanced) student. The [git-log[1]](../1/git-log), [git-diff-tree[1]](../1/git-diff-tree), and [git-hash-object[1]](../1/git-hash-object) man pages may prove helpful.
 
-​	为什么这能工作的原因留给（高级）学生作为练习。[git-log[1]](https://chat.openai.com/1/git-log)、[git-diff-tree[1]](https://chat.openai.com/1/git-diff-tree)和[git-hash-object[1]](https://chat.openai.com/1/git-hash-object)的手册可能会对您有所帮助。
+​	为什么这能工作的原因留给（高级）学生作为练习。[git-log[1]](../1/git-log)、[git-diff-tree[1]](../1/git-diff-tree)和[git-hash-object[1]](../1/git-hash-object)的手册可能会对您有所帮助。
 
 ## 使用Git进行开发
 
@@ -1021,7 +1021,7 @@ Figuring out why this works is left as an exercise to the (advanced) student. Th
 
 Before creating any commits, you should introduce yourself to Git. The easiest way to do so is to use [git-config[1]](../1/git-config):
 
-​	在创建任何提交之前，您应该向Git介绍自己。最简单的方法是使用[git-config[1]](https://chat.openai.com/1/git-config)：
+​	在创建任何提交之前，您应该向Git介绍自己。最简单的方法是使用[git-config[1]](../1/git-config)：
 
 ``` bash
 $ git config --global user.name 'Your Name Comes Here'
@@ -1040,7 +1040,7 @@ Which will add the following to a file named `.gitconfig` in your home directory
 
 See the "CONFIGURATION FILE" section of [git-config[1]](../1/git-config) for details on the configuration file. The file is plain text, so you can also edit it with your favorite editor.
 
-​	有关配置文件的详细信息，请参阅[git-config[1]](https://chat.openai.com/1/git-config)中的“CONFIGURATION FILE”部分。该文件是纯文本，因此您也可以使用您喜欢的编辑器进行编辑。
+​	有关配置文件的详细信息，请参阅[git-config[1]](../1/git-config)中的“CONFIGURATION FILE”部分。该文件是纯文本，因此您也可以使用您喜欢的编辑器进行编辑。
 
 ### 创建一个新的仓库
 
@@ -1176,13 +1176,13 @@ $ git status	    # a brief per-file summary of the above.
 
 You can also use [git-gui[1]](../1/git-gui) to create commits, view changes in the index and the working tree files, and individually select diff hunks for inclusion in the index (by right-clicking on the diff hunk and choosing "Stage Hunk For Commit").
 
-​	您还可以使用[git-gui[1]](https://chat.openai.com/1/git-gui)来创建提交，查看索引和工作目录文件的更改，并在索引中单独选择要包含在提交中的差异块（右键单击差异块并选择“Stage Hunk For Commit”）。
+​	您还可以使用[git-gui[1]](../1/git-gui)来创建提交，查看索引和工作目录文件的更改，并在索引中单独选择要包含在提交中的差异块（右键单击差异块并选择“Stage Hunk For Commit”）。
 
 ### 创建良好的提交消息
 
 Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](../1/git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
 
-​	虽然不是必需的，但最好的做法是在提交消息的开头用一行简短（少于50个字符）的摘要总结更改，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并且该标题在整个Git中都被使用。例如，[git-format-patch[1]](https://chat.openai.com/1/git-format-patch)将提交转换为电子邮件，并在主题行中使用标题，在正文中使用提交的其余部分。
+​	虽然不是必需的，但最好的做法是在提交消息的开头用一行简短（少于50个字符）的摘要总结更改，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并且该标题在整个Git中都被使用。例如，[git-format-patch[1]](../1/git-format-patch)将提交转换为电子邮件，并在主题行中使用标题，在正文中使用提交的其余部分。
 
 ### 忽略文件
 
@@ -1208,17 +1208,17 @@ foo.txt
 
 See [gitignore[5]](../5/gitignore) for a detailed explanation of the syntax. You can also place .gitignore files in other directories in your working tree, and they will apply to those directories and their subdirectories. The `.gitignore` files can be added to your repository like any other files (just run `git add .gitignore` and `git commit`, as usual), which is convenient when the exclude patterns (such as patterns matching build output files) would also make sense for other users who clone your repository.
 
-​	有关语法的详细解释，请参阅[gitignore[5]](https://chat.openai.com/5/gitignore)。您还可以将`.gitignore`文件放置在工作树的其他目录中，它们将适用于这些目录及其子目录。可以像添加其他文件一样将`.gitignore`文件添加到仓库中（只需运行`git add .gitignore`和`git commit`，和通常一样），这对于排除模式（例如与构建输出文件匹配的模式）对于克隆您的仓库的其他用户也是有意义的。
+​	有关语法的详细解释，请参阅[gitignore[5]](../5/gitignore)。您还可以将`.gitignore`文件放置在工作树的其他目录中，它们将适用于这些目录及其子目录。可以像添加其他文件一样将`.gitignore`文件添加到仓库中（只需运行`git add .gitignore`和`git commit`，和通常一样），这对于排除模式（例如与构建输出文件匹配的模式）对于克隆您的仓库的其他用户也是有意义的。
 
 If you wish the exclude patterns to affect only certain repositories (instead of every repository for a given project), you may instead put them in a file in your repository named `.git/info/exclude`, or in any file specified by the `core.excludesFile` configuration variable. Some Git commands can also take exclude patterns directly on the command line. See [gitignore[5]](../5/gitignore) for the details.
 
-​	如果希望排除模式仅影响某些仓库（而不是给定项目的每个仓库），则可以将它们放入仓库中的文件`.git/info/exclude`，或者放入`core.excludesFile`配置变量指定的任何文件中。一些Git命令还可以直接在命令行上接受排除模式。有关详细信息，请参阅[gitignore[5]](https://chat.openai.com/5/gitignore)。
+​	如果希望排除模式仅影响某些仓库（而不是给定项目的每个仓库），则可以将它们放入仓库中的文件`.git/info/exclude`，或者放入`core.excludesFile`配置变量指定的任何文件中。一些Git命令还可以直接在命令行上接受排除模式。有关详细信息，请参阅[gitignore[5]](../5/gitignore)。
 
 ### 如何合并
 
 You can rejoin two diverging branches of development using [git-merge[1]](../1/git-merge):
 
-​	您可以使用[git-merge[1]](https://chat.openai.com/1/git-merge)将两个分支的开发合并在一起：
+​	您可以使用[git-merge[1]](../1/git-merge)将两个分支的开发合并在一起：
 
 ``` bash
 $ git merge branchname
@@ -1230,7 +1230,7 @@ merges the development in the branch `branchname` into the current branch.
 
 A merge is made by combining the changes made in `branchname` and the changes made up to the latest commit in your current branch since their histories forked. The work tree is overwritten by the result of the merge when this combining is done cleanly, or overwritten by a half-merged results when this combining results in conflicts. Therefore, if you have uncommitted changes touching the same files as the ones impacted by the merge, Git will refuse to proceed. Most of the time, you will want to commit your changes before you can merge, and if you don’t, then [git-stash[1]](../1/git-stash) can take these changes away while you’re doing the merge, and reapply them afterwards.
 
-​	合并是通过将`branchname`中的更改与从它们的历史分叉以来在当前分支中的最新提交之前进行的更改进行组合而完成的。当此组合干净地完成时，工作树将被组合结果覆盖，或者当此组合导致冲突时，工作树将被部分合并的结果覆盖。因此，如果您对与合并受影响的文件相同的文件有未提交的更改，Git将拒绝继续执行。大多数情况下，您将在合并之前提交您的更改；如果您不这样做，那么[git-stash[1]](https://chat.openai.com/1/git-stash)可以在您进行合并时拿走这些更改，并在合并后重新应用它们。
+​	合并是通过将`branchname`中的更改与从它们的历史分叉以来在当前分支中的最新提交之前进行的更改进行组合而完成的。当此组合干净地完成时，工作树将被组合结果覆盖，或者当此组合导致冲突时，工作树将被部分合并的结果覆盖。因此，如果您对与合并受影响的文件相同的文件有未提交的更改，Git将拒绝继续执行。大多数情况下，您将在合并之前提交您的更改；如果您不这样做，那么[git-stash[1]](../1/git-stash)可以在您进行合并时拿走这些更改，并在合并后重新应用它们。
 
 If the changes are independent enough, Git will automatically complete the merge and commit the result (or reuse an existing commit in case of [fast-forward](https://git-scm.com/docs/user-manual#fast-forwards), see below). On the other hand, if there are conflicts—for example, if the same file is modified in two different ways in the remote branch and the local branch—then you are warned; the output may look something like this:
 
@@ -1260,7 +1260,7 @@ When a merge isn’t resolved automatically, Git leaves the index and the workin
 
 Files with conflicts are marked specially in the index, so until you resolve the problem and update the index, [git-commit[1]](../1/git-commit) will fail:
 
-​	具有冲突的文件在索引中被特别标记，因此在您解决问题并更新索引之前，[git-commit[1]](https://chat.openai.com/1/git-commit)将失败：
+​	具有冲突的文件在索引中被特别标记，因此在您解决问题并更新索引之前，[git-commit[1]](../1/git-commit)将失败：
 
 ``` bash
 $ git commit
@@ -1269,7 +1269,7 @@ file.txt: needs merge
 
 Also, [git-status[1]](../1/git-status) will list those files as "unmerged", and the files with conflicts will have conflict markers added, like this:
 
-​	此外，[git-status[1]](https://chat.openai.com/1/git-status)将把这些文件列为“unmerged”，并且具有冲突的文件将添加冲突标记，例如：
+​	此外，[git-status[1]](../1/git-status)将把这些文件列为“unmerged”，并且具有冲突的文件将添加冲突标记，例如：
 
 ```
 <<<<<<< HEAD:file.txt
@@ -1300,7 +1300,7 @@ The above is all you need to know to resolve a simple merge. But Git also provid
 
 All of the changes that Git was able to merge automatically are already added to the index file, so [git-diff[1]](../1/git-diff) shows only the conflicts. It uses an unusual syntax:
 
-​	所有Git能够自动合并的更改已经添加到索引文件中，因此[git-diff[1]](https://chat.openai.com/1/git-diff)仅显示冲突。它使用一种不寻常的语法：
+​	所有Git能够自动合并的更改已经添加到索引文件中，因此[git-diff[1]](../1/git-diff)仅显示冲突。它使用一种不寻常的语法：
 
 ``` bash
 $ git diff
@@ -1332,11 +1332,11 @@ $ git show :3:file.txt	# the version from MERGE_HEAD.
 
 When you ask [git-diff[1]](../1/git-diff) to show the conflicts, it runs a three-way diff between the conflicted merge results in the work tree with stages 2 and 3 to show only hunks whose contents come from both sides, mixed (in other words, when a hunk’s merge results come only from stage 2, that part is not conflicting and is not shown. Same for stage 3).
 
-​	当您要求[git-diff[1]](https://chat.openai.com/1/git-diff)显示冲突时，它会在工作树中运行三方差异，使用第2个和第3个阶段来显示仅来自双方的内容的块（换句话说，当块的合并结果仅来自第2个阶段时，该部分不会产生冲突，也不会显示。与第3个阶段相同）。
+​	当您要求[git-diff[1]](../1/git-diff)显示冲突时，它会在工作树中运行三方差异，使用第2个和第3个阶段来显示仅来自双方的内容的块（换句话说，当块的合并结果仅来自第2个阶段时，该部分不会产生冲突，也不会显示。与第3个阶段相同）。
 
 The diff above shows the differences between the working-tree version of file.txt and the stage 2 and stage 3 versions. So instead of preceding each line by a single `+` or `-`, it now uses two columns: the first column is used for differences between the first parent and the working directory copy, and the second for differences between the second parent and the working directory copy. (See the "COMBINED DIFF FORMAT" section of [git-diff-files[1]](../1/git-diff-files) for a details of the format.)
 
-​	上面的差异显示了file.txt的工作树版本与第2个和第3个阶段版本之间的差异。因此，不是在每一行前面用单个`+`或`-`表示，它现在使用两列：第一列用于第一个父提交和工作目录副本之间的差异，第二列用于第二个父提交和工作目录副本之间的差异。有关格式的详细信息，请参阅[git-diff-files[1]](https://chat.openai.com/1/git-diff-files)中的“COMBINED DIFF FORMAT”部分。
+​	上面的差异显示了file.txt的工作树版本与第2个和第3个阶段版本之间的差异。因此，不是在每一行前面用单个`+`或`-`表示，它现在使用两列：第一列用于第一个父提交和工作目录副本之间的差异，第二列用于第二个父提交和工作目录副本之间的差异。有关格式的详细信息，请参阅[git-diff-files[1]](../1/git-diff-files)中的“COMBINED DIFF FORMAT”部分。
 
 After resolving the conflict in the obvious way (but before updating the index), the diff will look like:
 
@@ -1373,7 +1373,7 @@ $ git diff --theirs file.txt	# same as the above.
 
 The [git-log[1]](../1/git-log) and [gitk[1]](../1/gitk) commands also provide special help for merges:
 
-​	[git-log[1]](https://chat.openai.com/1/git-log)和[gitk[1]](https://chat.openai.com/1/gitk)命令还为合并提供特殊帮助：
+​	[git-log[1]](../1/git-log)和[gitk[1]](../1/gitk)命令还为合并提供特殊帮助：
 
 ``` bash
 $ git log --merge
@@ -1386,7 +1386,7 @@ These will display all commits which exist only on HEAD or on MERGE_HEAD, and wh
 
 You may also use [git-mergetool[1]](../1/git-mergetool), which lets you merge the unmerged files using external tools such as Emacs or kdiff3.
 
-​	您还可以使用[git-mergetool[1]](https://chat.openai.com/1/git-mergetool)，它允许您使用外部工具（如Emacs或kdiff3）合并未合并的文件。
+​	您还可以使用[git-mergetool[1]](../1/git-mergetool)，它允许您使用外部工具（如Emacs或kdiff3）合并未合并的文件。
 
 Each time you resolve the conflicts in a file and update the index:
 
@@ -1455,7 +1455,7 @@ If you make a commit that you later wish you hadn’t, there are two fundamental
 
 Creating a new commit that reverts an earlier change is very easy; just pass the [git-revert[1]](../1/git-revert) command a reference to the bad commit; for example, to revert the most recent commit:
 
-​	创建一个新提交以撤消先前的更改非常简单；只需将[git-revert[1]](https://chat.openai.com/1/git-revert)命令传递给不良提交的引用。例如，要撤消最近的提交：
+​	创建一个新提交以撤消先前的更改非常简单；只需将[git-revert[1]](../1/git-revert)命令传递给不良提交的引用。例如，要撤消最近的提交：
 
 ``` bash
 $ git revert HEAD
@@ -1497,7 +1497,7 @@ which will replace the old commit by a new commit incorporating your changes, gi
 
 Again, you should never do this to a commit that may already have been merged into another branch; use [git-revert[1]](../1/git-revert) instead in that case.
 
-​	再次强调，在可能已经合并到另一个分支中的提交上永远不要执行此操作；在这种情况下，请改用[git-revert[1]](https://chat.openai.com/1/git-revert)。
+​	再次强调，在可能已经合并到另一个分支中的提交上永远不要执行此操作；在这种情况下，请改用[git-revert[1]](../1/git-revert)。
 
 It is also possible to replace commits further back in the history, but this is an advanced topic to be left for [another chapter](https://git-scm.com/docs/user-manual#cleaning-up-history).
 
@@ -1507,7 +1507,7 @@ It is also possible to replace commits further back in the history, but this is 
 
 In the process of undoing a previous bad change, you may find it useful to check out an older version of a particular file using [git-restore[1]](../1/git-restore). The command
 
-​	在撤消之前的错误更改的过程中，您可能会发现使用[git-restore[1]](https://chat.openai.com/1/git-restore)来检出特定文件的旧版本很有用。该命令如下：
+​	在撤消之前的错误更改的过程中，您可能会发现使用[git-restore[1]](../1/git-restore)来检出特定文件的旧版本很有用。该命令如下：
 
 ``` bash
 $ git restore --source=HEAD^ path/to/file
@@ -1519,7 +1519,7 @@ replaces path/to/file by the contents it had in the commit HEAD^, and also updat
 
 If you just want to look at an old version of the file, without modifying the working directory, you can do that with [git-show[1]](../1/git-show):
 
-​	如果您只是想查看文件的旧版本，而不修改工作目录，可以使用[git-show[1]](https://chat.openai.com/1/git-show)实现：
+​	如果您只是想查看文件的旧版本，而不修改工作目录，可以使用[git-show[1]](../1/git-show)实现：
 
 ``` bash
 $ git show HEAD^:path/to/file
@@ -1533,7 +1533,7 @@ which will display the given version of the file.
 
 While you are in the middle of working on something complicated, you find an unrelated but obvious and trivial bug. You would like to fix it before continuing. You can use [git-stash[1]](../1/git-stash) to save the current state of your work, and after fixing the bug (or, optionally after doing so on a different branch and then coming back), unstash the work-in-progress changes.
 
-​	当您正在处理一些复杂的工作时，您可能会发现一个无关但显而易见和琐碎的错误。您希望在继续工作之前先修复它。您可以使用[git-stash[1]](https://chat.openai.com/1/git-stash)来保存当前工作状态，在修复错误后（或者在不同的分支上进行修复，然后再返回），恢复进行中的工作更改。
+​	当您正在处理一些复杂的工作时，您可能会发现一个无关但显而易见和琐碎的错误。您希望在继续工作之前先修复它。您可以使用[git-stash[1]](../1/git-stash)来保存当前工作状态，在修复错误后（或者在不同的分支上进行修复，然后再返回），恢复进行中的工作更改。
 
 ``` bash
 $ git stash push -m "work in progress for foo feature"
@@ -1560,7 +1560,7 @@ $ git stash pop
 
 On large repositories, Git depends on compression to keep the history information from taking up too much space on disk or in memory. Some Git commands may automatically run [git-gc[1]](../1/git-gc), so you don’t have to worry about running it manually. However, compressing a large repository may take a while, so you may want to call `gc` explicitly to avoid automatic compression kicking in when it is not convenient.
 
-​	在大型仓库中，Git依赖压缩来确保历史信息在磁盘或内存中不占用太多空间。一些Git命令可能会自动运行[git-gc[1]](https://chat.openai.com/1/git-gc)，因此您不必手动运行它。但是，压缩大型仓库可能需要一些时间，因此您可能希望显式调用`gc`，以避免在不方便的时候自动触发压缩。
+​	在大型仓库中，Git依赖压缩来确保历史信息在磁盘或内存中不占用太多空间。一些Git命令可能会自动运行[git-gc[1]](../1/git-gc)，因此您不必手动运行它。但是，压缩大型仓库可能需要一些时间，因此您可能希望显式调用`gc`，以避免在不方便的时候自动触发压缩。
 
 ### 确保可靠性
 
@@ -1568,7 +1568,7 @@ On large repositories, Git depends on compression to keep the history informatio
 
 The [git-fsck[1]](../1/git-fsck) command runs a number of self-consistency checks on the repository, and reports on any problems. This may take some time.
 
-​	[git-fsck[1]](https://chat.openai.com/1/git-fsck)命令对仓库运行多个自一致性检查，并报告任何问题。这可能需要一些时间。
+​	[git-fsck[1]](../1/git-fsck)命令对仓库运行多个自一致性检查，并报告任何问题。这可能需要一些时间。
 
 ``` bash
 $ git fsck
@@ -1629,7 +1629,7 @@ will show what HEAD pointed to one week ago, not what the current branch pointed
 
 The reflogs are kept by default for 30 days, after which they may be pruned. See [git-reflog[1]](../1/git-reflog) and [git-gc[1]](../1/git-gc) to learn how to control this pruning, and see the "SPECIFYING REVISIONS" section of [gitrevisions[7]](../7/gitrevisions) for details.
 
-​	默认情况下，reflogs保留30天，之后它们可能会被修剪。查看[git-reflog[1]](https://chat.openai.com/1/git-reflog)和[git-gc[1]](https://chat.openai.com/1/git-gc)以了解如何控制此修剪，以及在[gitrevisions[7]](https://chat.openai.com/7/gitrevisions)的“指定修订”部分中了解详情。
+​	默认情况下，reflogs保留30天，之后它们可能会被修剪。查看[git-reflog[1]](../1/git-reflog)和[git-gc[1]](../1/git-gc)以了解如何控制此修剪，以及在[gitrevisions[7]](../7/gitrevisions)的“指定修订”部分中了解详情。
 
 Note that the reflog history is very different from normal Git history. While normal history is shared by every repository that works on the same project, the reflog history is not shared: it tells you only about how the branches in your local repository have changed over time.
 
@@ -1683,7 +1683,7 @@ After you clone a repository and commit a few changes of your own, you may wish 
 
 We have already seen [how to keep remote-tracking branches up to date](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch) with [git-fetch[1]](../1/git-fetch), and how to merge two branches. So you can merge in changes from the original repository’s master branch with:
 
-​	我们已经了解了[如何保持远程跟踪分支更新](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch)（使用[git-fetch[1]](https://chat.openai.com/1/git-fetch)）以及如何合并两个分支。因此，您可以将来自原始仓库的更改合并到您的仓库的主分支中：
+​	我们已经了解了[如何保持远程跟踪分支更新](https://git-scm.com/docs/user-manual#Updating-a-repository-With-git-fetch)（使用[git-fetch[1]](../1/git-fetch)）以及如何合并两个分支。因此，您可以将来自原始仓库的更改合并到您的仓库的主分支中：
 
 ``` bash
 $ git fetch
@@ -1692,7 +1692,7 @@ $ git merge origin/master
 
 However, the [git-pull[1]](../1/git-pull) command provides a way to do this in one step:
 
-​	然而，[git-pull[1]](https://chat.openai.com/1/git-pull)命令提供了一种一步完成此操作的方法：
+​	然而，[git-pull[1]](../1/git-pull)命令提供了一种一步完成此操作的方法：
 
 ``` bash
 $ git pull origin master
@@ -1712,7 +1712,7 @@ This command will fetch changes from the remote branches to your remote-tracking
 
 More generally, a branch that is created from a remote-tracking branch will pull by default from that branch. See the descriptions of the `branch.<name>.remote` and `branch.<name>.merge` options in [git-config[1]](../1/git-config), and the discussion of the `--track` option in [git-checkout[1]](../1/git-checkout), to learn how to control these defaults.
 
-​	更一般地，从远程跟踪分支创建的分支将默认从该分支进行拉取。请参阅[git-config[1]](https://chat.openai.com/1/git-config)中`branch.<name>.remote`和`branch.<name>.merge`选项的描述，以及[git-checkout[1]](https://chat.openai.com/1/git-checkout)中关于`--track`选项的讨论，以了解如何控制这些默认设置。
+​	更一般地，从远程跟踪分支创建的分支将默认从该分支进行拉取。请参阅[git-config[1]](../1/git-config)中`branch.<name>.remote`和`branch.<name>.merge`选项的描述，以及[git-checkout[1]](../1/git-checkout)中关于`--track`选项的讨论，以了解如何控制这些默认设置。
 
 In addition to saving you keystrokes, `git pull` also helps you by producing a default commit message documenting the branch and repository that you pulled from.
 
@@ -1741,7 +1741,7 @@ If you just have a few changes, the simplest way to submit them may just be to s
 
 First, use [git-format-patch[1]](../1/git-format-patch); for example:
 
-​	首先，使用[git-format-patch[1]](https://chat.openai.com/1/git-format-patch)命令；例如：
+​	首先，使用[git-format-patch[1]](../1/git-format-patch)命令；例如：
 
 ``` bash
 $ git format-patch origin
@@ -1757,13 +1757,13 @@ will produce a numbered series of files in the current directory, one for each p
 
 You can then import these into your mail client and send them by hand. However, if you have a lot to send at once, you may prefer to use the [git-send-email[1]](../1/git-send-email) script to automate the process. Consult the mailing list for your project first to determine their requirements for submitting patches.
 
-​	然后，您可以将这些补丁导入到您的邮件客户端中，并手动发送它们。然而，如果您需要一次发送大量补丁，您可能更喜欢使用[git-send-email[1]](https://chat.openai.com/1/git-send-email)脚本来自动化此过程。首先请咨询您的项目邮件列表，以确定他们提交补丁的要求。
+​	然后，您可以将这些补丁导入到您的邮件客户端中，并手动发送它们。然而，如果您需要一次发送大量补丁，您可能更喜欢使用[git-send-email[1]](../1/git-send-email)脚本来自动化此过程。首先请咨询您的项目邮件列表，以确定他们提交补丁的要求。
 
 ### 导入补丁到项目
 
 Git also provides a tool called [git-am[1]](../1/git-am) (am stands for "apply mailbox"), for importing such an emailed series of patches. Just save all of the patch-containing messages, in order, into a single mailbox file, say `patches.mbox`, then run
 
-​	Git还提供了一个名为[git-am[1]](https://chat.openai.com/1/git-am)（am代表"apply mailbox"）的工具，用于导入这样一系列通过电子邮件发送的补丁。只需将所有包含补丁的消息按顺序保存到一个单独的邮箱文件中，例如`patches.mbox`，然后运行：
+​	Git还提供了一个名为[git-am[1]](../1/git-am)（am代表"apply mailbox"）的工具，用于导入这样一系列通过电子邮件发送的补丁。只需将所有包含补丁的消息按顺序保存到一个单独的邮箱文件中，例如`patches.mbox`，然后运行：
 
 ``` bash
 $ git am -3 patches.mbox
@@ -1793,7 +1793,7 @@ The final result will be a series of commits, one for each patch in the original
 
 Another way to submit changes to a project is to tell the maintainer of that project to pull the changes from your repository using [git-pull[1]](../1/git-pull). In the section "[Getting updates with `git pull`](https://git-scm.com/docs/user-manual#getting-updates-With-git-pull)" we described this as a way to get updates from the "main" repository, but it works just as well in the other direction.
 
-​	另一种向项目提交更改的方法是告诉该项目的维护者从您的仓库中拉取更改，使用[git-pull[1]](https://chat.openai.com/1/git-pull)。在"[使用`git pull`获取更新](https://git-scm.com/docs/user-manual#getting-updates-With-git-pull)"一节中，我们将其描述为从“主”仓库获取更新的方法，但在另一个方向上同样有效。
+​	另一种向项目提交更改的方法是告诉该项目的维护者从您的仓库中拉取更改，使用[git-pull[1]](../1/git-pull)。在"[使用`git pull`获取更新](https://git-scm.com/docs/user-manual#getting-updates-With-git-pull)"一节中，我们将其描述为从“主”仓库获取更新的方法，但在另一个方向上同样有效。
 
 If you and the maintainer both have accounts on the same machine, then you can just pull changes from each other’s repositories directly; commands that accept repository URLs as arguments will also accept a local directory name:
 
@@ -1871,11 +1871,11 @@ If someone else administers the server, they should tell you what directory to p
 
 Otherwise, all you need to do is start [git-daemon[1]](../1/git-daemon); it will listen on port 9418. By default, it will allow access to any directory that looks like a Git directory and contains the magic file git-daemon-export-ok. Passing some directory paths as `git daemon` arguments will further restrict the exports to those paths.
 
-​	否则，您只需要启动[git-daemon[1]](https://chat.openai.com/1/git-daemon)；它将监听9418端口。默认情况下，它允许访问任何看起来像Git仓库并包含魔法文件`git-daemon-export-ok`的目录。通过将一些目录路径作为`git daemon`的参数，可以进一步限制导出到这些路径。
+​	否则，您只需要启动[git-daemon[1]](../1/git-daemon)；它将监听9418端口。默认情况下，它允许访问任何看起来像Git仓库并包含魔法文件`git-daemon-export-ok`的目录。通过将一些目录路径作为`git daemon`的参数，可以进一步限制导出到这些路径。
 
 You can also run `git daemon` as an inetd service; see the [git-daemon[1]](../1/git-daemon) man page for details. (See especially the examples section.)
 
-​	您也可以将`git daemon`作为inetd服务运行；请参阅[git-daemon[1]](https://chat.openai.com/1/git-daemon)手册中的详细信息。（尤其是例子部分。）
+​	您也可以将`git daemon`作为inetd服务运行；请参阅[git-daemon[1]](../1/git-daemon)手册中的详细信息。（尤其是例子部分。）
 
 ### 通过HTTP导出Git仓库 
 
@@ -1896,7 +1896,7 @@ $ mv hooks/post-update.sample hooks/post-update
 
 (For an explanation of the last two lines, see [git-update-server-info[1]](../1/git-update-server-info) and [githooks[5]](../5/githooks).)
 
-（有关最后两行的解释，请参阅[git-update-server-info[1]](https://chat.openai.com/1/git-update-server-info)和[githooks[5]](https://chat.openai.com/5/githooks)。）
+（有关最后两行的解释，请参阅[git-update-server-info[1]](../1/git-update-server-info)和[githooks[5]](../5/githooks)。）
 
 Advertise the URL of `proj.git`. Anybody else should then be able to clone or pull from that URL, for example with a command line like:
 
@@ -1918,7 +1918,7 @@ Note that the two techniques outlined above (exporting via [http](https://git-sc
 
 The simplest way to do this is using [git-push[1]](../1/git-push) and ssh; to update the remote branch named `master` with the latest state of your branch named `master`, run
 
-​	最简单的方法是使用[git-push[1]](https://chat.openai.com/1/git-push)和SSH来实现；要更新远程分支`master`为您的`master`分支的最新状态，请运行：
+​	最简单的方法是使用[git-push[1]](../1/git-push)和SSH来实现；要更新远程分支`master`为您的`master`分支的最新状态，请运行：
 
 ``` bash
 $ git push ssh://yourserver.com/~you/proj.git master:master
@@ -1936,7 +1936,7 @@ As with `git fetch`, `git push` will complain if this does not result in a [fast
 
 Note that the target of a `push` is normally a [bare](https://git-scm.com/docs/user-manual#def_bare_repository) repository. You can also push to a repository that has a checked-out working tree, but a push to update the currently checked-out branch is denied by default to prevent confusion. See the description of the receive.denyCurrentBranch option in [git-config[1]](../1/git-config) for details.
 
-​	请注意，`push`的目标通常是[裸仓库](https://git-scm.com/docs/user-manual#def_bare_repository)。您也可以推送到一个已检出工作树的仓库，但默认情况下，不允许推送更新当前已检出分支，以防止混淆。有关详细信息，请参阅[git-config[1]](https://chat.openai.com/1/git-config)中`receive.denyCurrentBranch`选项的描述。
+​	请注意，`push`的目标通常是[裸仓库](https://git-scm.com/docs/user-manual#def_bare_repository)。您也可以推送到一个已检出工作树的仓库，但默认情况下，不允许推送更新当前已检出分支，以防止混淆。有关详细信息，请参阅[git-config[1]](../1/git-config)中`receive.denyCurrentBranch`选项的描述。
 
 As with `git fetch`, you may also set up configuration options to save typing; so, for example:
 
@@ -1966,7 +1966,7 @@ $ git push public-repo master
 
 See the explanations of the `remote.<name>.url`, `branch.<name>.remote`, and `remote.<name>.push` options in [git-config[1]](../1/git-config) for details.
 
-​	有关详细信息，请参见[git-config[1]](https://chat.openai.com/1/git-config)中`remote.<name>.url`、`branch.<name>.remote`和`remote.<name>.push`选项的解释。
+​	有关详细信息，请参见[git-config[1]](../1/git-config)中`remote.<name>.url`、`branch.<name>.remote`和`remote.<name>.push`选项的解释。
 
 ### 当推送失败时怎么办
 
@@ -2020,13 +2020,13 @@ Nevertheless, this is a common practice for people that need a simple way to pub
 
 It’s also possible for a push to fail in this way when other people have the right to push to the same repository. In that case, the correct solution is to retry the push after first updating your work: either by a pull, or by a fetch followed by a rebase; see the [next section](https://git-scm.com/docs/user-manual#setting-up-a-shared-repository) and [gitcvs-migration[7]](../7/gitcvs-migration) for more.
 
-​	当多个人有权推送到同一仓库时，推送可能以这种方式失败。在这种情况下，正确的解决方法是在尝试推送之前先更新您的工作：通过拉取或通过获取和变基。有关更多信息，请参见[下一节](https://git-scm.com/docs/user-manual#setting-up-a-shared-repository)和[gitcvs-migration[7]](https://chat.openai.com/7/gitcvs-migration)。
+​	当多个人有权推送到同一仓库时，推送可能以这种方式失败。在这种情况下，正确的解决方法是在尝试推送之前先更新您的工作：通过拉取或通过获取和变基。有关更多信息，请参见[下一节](https://git-scm.com/docs/user-manual#setting-up-a-shared-repository)和[gitcvs-migration[7]](../7/gitcvs-migration)。
 
 ### 设置共享仓库 Setting up a shared repository
 
 Another way to collaborate is by using a model similar to that commonly used in CVS, where several developers with special rights all push to and pull from a single shared repository. See [gitcvs-migration[7]](../7/gitcvs-migration) for instructions on how to set this up.
 
-​	另一种合作的方式是使用与CVS中常用的模型类似的模型，其中拥有特殊权限的几个开发者都推送和拉取共享的单一仓库。有关如何设置这样的模型，请参阅[gitcvs-migration[7]](https://chat.openai.com/7/gitcvs-migration)。
+​	另一种合作的方式是使用与CVS中常用的模型类似的模型，其中拥有特殊权限的几个开发者都推送和拉取共享的单一仓库。有关如何设置这样的模型，请参阅[gitcvs-migration[7]](../7/gitcvs-migration)。
 
 However, while there is nothing wrong with Git’s support for shared repositories, this mode of operation is not generally recommended, simply because the mode of collaboration that Git supports—by exchanging patches and pulling from public repositories—has so many advantages over the central shared repository:
 
@@ -2047,11 +2047,11 @@ The gitweb cgi script provides users an easy way to browse your project’s revi
 
 The [git-instaweb[1]](../1/git-instaweb) command provides a simple way to start browsing the repository using gitweb. The default server when using instaweb is lighttpd.
 
-​	使用[git-instaweb[1]](https://chat.openai.com/1/git-instaweb)命令可以简单地启动使用gitweb浏览仓库。使用instaweb时，默认服务器是lighttpd。
+​	使用[git-instaweb[1]](../1/git-instaweb)命令可以简单地启动使用gitweb浏览仓库。使用instaweb时，默认服务器是lighttpd。
 
 See the file gitweb/INSTALL in the Git source tree and [gitweb[1]](../1/gitweb) for instructions on details setting up a permanent installation with a CGI or Perl capable server.
 
-​	有关在Git源代码树中设置永久安装与CGI或Perl可用服务器的详细说明，请参阅gitweb/INSTALL文件和[gitweb[1]](https://chat.openai.com/1/gitweb)。
+​	有关在Git源代码树中设置永久安装与CGI或Perl可用服务器的详细说明，请参阅gitweb/INSTALL文件和[gitweb[1]](../1/gitweb)。
 
 ### 如何获取一个最小历史记录的Git仓库 
 
@@ -2061,7 +2061,7 @@ A [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone), with 
 
 A [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone) is created by specifying the [git-clone[1]](../1/git-clone) `--depth` switch. The depth can later be changed with the [git-fetch[1]](../1/git-fetch) `--depth` switch, or full history restored with `--unshallow`.
 
-​	通过指定[git-clone[1]](https://chat.openai.com/1/git-clone)的`--depth`开关来创建[shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone)。深度可以在后续使用[git-fetch[1]](https://chat.openai.com/1/git-fetch)的`--depth`开关进行更改，或者通过`--unshallow`恢复完整历史。
+​	通过指定[git-clone[1]](../1/git-clone)的`--depth`开关来创建[shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone)。深度可以在后续使用[git-fetch[1]](../1/git-fetch)的`--depth`开关进行更改，或者通过`--unshallow`恢复完整历史。
 
 Merging inside a [shallow clone](https://git-scm.com/docs/user-manual#def_shallow_clone) will work as long as a merge base is in the recent history. Otherwise, it will be like merging unrelated histories and may have to result in huge conflicts. This limitation may make such a repository unsuitable to be used in merge based workflows.
 
@@ -2099,11 +2099,11 @@ $ cd work
 
 Linus’s tree will be stored in the remote-tracking branch named origin/master, and can be updated using [git-fetch[1]](../1/git-fetch); you can track other public trees using [git-remote[1]](../1/git-remote) to set up a "remote" and [git-fetch[1]](../1/git-fetch) to keep them up to date; see [Repositories and Branches](https://git-scm.com/docs/user-manual#repositories-and-branches).
 
-​	Linus的树将存储在名为origin/master的远程跟踪分支中，并且可以使用[git-fetch[1]](https://chat.openai.com/1/git-fetch)进行更新；您可以使用[git-remote[1]](https://chat.openai.com/1/git-remote)跟踪其他公共树来设置一个“remote”，并且使用[git-fetch[1]](https://chat.openai.com/1/git-fetch)来保持它们最新。有关详细信息，请参阅[仓库和分支](https://git-scm.com/docs/user-manual#repositories-and-branches)。
+​	Linus的树将存储在名为origin/master的远程跟踪分支中，并且可以使用[git-fetch[1]](../1/git-fetch)进行更新；您可以使用[git-remote[1]](../1/git-remote)跟踪其他公共树来设置一个“remote”，并且使用[git-fetch[1]](../1/git-fetch)来保持它们最新。有关详细信息，请参阅[仓库和分支](https://git-scm.com/docs/user-manual#repositories-and-branches)。
 
 Now create the branches in which you are going to work; these start out at the current tip of origin/master branch, and should be set up (using the `--track` option to [git-branch[1]](../1/git-branch)) to merge changes in from Linus by default.
 
-​	现在创建要使用的分支；这些分支从origin/master分支的当前尖端开始，并且应该设置为默认合并Linus的更改（使用[git-branch[1]](https://chat.openai.com/1/git-branch)的`--track`选项）。
+​	现在创建要使用的分支；这些分支从origin/master分支的当前尖端开始，并且应该设置为默认合并Linus的更改（使用[git-branch[1]](../1/git-branch)的`--track`选项）。
 
 ``` bash
 $ git branch --track test origin/master
@@ -2112,7 +2112,7 @@ $ git branch --track release origin/master
 
 These can be easily kept up to date using [git-pull[1]](../1/git-pull).
 
-​	这些可以通过[git-pull[1]](https://chat.openai.com/1/git-pull)轻松保持更新。
+​	这些可以通过[git-pull[1]](../1/git-pull)轻松保持更新。
 
 ``` bash
 $ git switch test && git pull
@@ -2125,7 +2125,7 @@ Important note! If you have any local changes in these branches, then this merge
 
 A few configuration variables (see [git-config[1]](../1/git-config)) can make it easy to push both branches to your public tree. (See [Setting up a public repository](https://git-scm.com/docs/user-manual#setting-up-a-public-repository).)
 
-​	一些配置变量（请参阅[git-config[1]](https://chat.openai.com/1/git-config)）可以使将这两个分支都推送到您的公共树变得容易。（请参阅[设置公共仓库](https://git-scm.com/docs/user-manual#setting-up-a-public-repository)。）
+​	一些配置变量（请参阅[git-config[1]](../1/git-config)）可以使将这两个分支都推送到您的公共树变得容易。（请参阅[设置公共仓库](https://git-scm.com/docs/user-manual#setting-up-a-public-repository)。）
 
 ``` bash
 $ cat >> .git/config <<EOF
@@ -2138,7 +2138,7 @@ EOF
 
 Then you can push both the test and release trees using [git-push[1]](../1/git-push):
 
-​	然后，您可以使用[git-push[1]](https://chat.openai.com/1/git-push)推送测试和发布树：
+​	然后，您可以使用[git-push[1]](../1/git-push)推送测试和发布树：
 
 ``` bash
 $ git push mytree
@@ -2246,7 +2246,7 @@ Some changes are so trivial that it is not necessary to create a separate branch
 
 After pushing your work to `mytree`, you can use [git-request-pull[1]](../1/git-request-pull) to prepare a "please pull" request message to send to Linus:
 
-​	在将您的工作推送到“mytree”之后，您可以使用[git-request-pull[1]](https://chat.openai.com/1/git-request-pull)准备一个“请拉取”请求消息，然后发送给Linus：
+​	在将您的工作推送到“mytree”之后，您可以使用[git-request-pull[1]](../1/git-request-pull)准备一个“请拉取”请求消息，然后发送给Linus：
 
 ``` bash
 $ git push mytree
@@ -2448,7 +2448,7 @@ At this point, you could use `pull` to merge your changes back in; the result wo
 
 However, if you prefer to keep the history in mywork a simple series of commits without any merges, you may instead choose to use [git-rebase[1]](../1/git-rebase):
 
-​	但是，如果您更喜欢在mywork中保持历史记录为一系列简单的提交而没有合并，您可以选择使用[git-rebase[1]](https://chat.openai.com/1/git-rebase)：
+​	但是，如果您更喜欢在mywork中保持历史记录为一系列简单的提交而没有合并，您可以选择使用[git-rebase[1]](../1/git-rebase)：
 
 ``` bash
 $ git switch mywork
@@ -2520,7 +2520,7 @@ $ git reset --hard origin
 
 Then modify, reorder, or eliminate patches as needed before applying them again with [git-am[1]](../1/git-am):
 
-​	然后根据需要修改、重新排序或删除补丁，再使用[git-am[1]](https://chat.openai.com/1/git-am)将其再次应用：
+​	然后根据需要修改、重新排序或删除补丁，再使用[git-am[1]](../1/git-am)将其再次应用：
 
 ``` bash
 $ git am *.patch
@@ -2578,7 +2578,7 @@ The rebase will stop where `pick` has been replaced with `edit` or when a step i
 
 For a more detailed discussion of the procedure and additional tips, see the "INTERACTIVE MODE" section of [git-rebase[1]](../1/git-rebase).
 
-​	有关该过程和其他提示的更详细讨论，请参阅[git-rebase[1]](https://chat.openai.com/1/git-rebase)的“INTERACTIVE MODE”部分。
+​	有关该过程和其他提示的更详细讨论，请参阅[git-rebase[1]](../1/git-rebase)的“INTERACTIVE MODE”部分。
 
 ### 其他工具
 
@@ -2636,7 +2636,7 @@ For true distributed development that supports proper merging, published branche
 
 The [git-bisect[1]](../1/git-bisect) command correctly handles history that includes merge commits. However, when the commit that it finds is a merge commit, the user may need to work harder than usual to figure out why that commit introduced a problem.
 
-​	[git-bisect[1]](https://chat.openai.com/1/git-bisect)命令可以正确处理包含合并提交的历史。然而，当它找到的提交是一个合并提交时，用户可能需要比通常更努力地弄清楚为什么该提交引入了问题。
+​	[git-bisect[1]](../1/git-bisect)命令可以正确处理包含合并提交的历史。然而，当它找到的提交是一个合并提交时，用户可能需要比通常更努力地弄清楚为什么该提交引入了问题。
 
 Imagine this history:
 
@@ -2662,7 +2662,7 @@ Suppose further that the two development lines merge cleanly at C, so no conflic
 
 Nevertheless, the code at C is broken, because the callers added on the lower line of development have not been converted to the new semantics introduced on the upper line of development. So if all you know is that D is bad, that Z is good, and that [git-bisect[1]](../1/git-bisect) identifies C as the culprit, how will you figure out that the problem is due to this change in semantics?
 
-​	然而，C处的代码是有问题的，因为在下行开发的调用者尚未转换为上行开发引入的新语义。所以如果您只知道D是有问题的，Z是正常的，并且[git-bisect[1]](https://chat.openai.com/1/git-bisect)标识C为罪魁祸首，您将如何找出问题是由这种语义变化引起的呢？
+​	然而，C处的代码是有问题的，因为在下行开发的调用者尚未转换为上行开发引入的新语义。所以如果您只知道D是有问题的，Z是正常的，并且[git-bisect[1]](../1/git-bisect)标识C为罪魁祸首，您将如何找出问题是由这种语义变化引起的呢？
 
 When the result of a `git bisect` is a non-merge commit, you should normally be able to discover the problem by examining just that commit. Developers can make this easy by breaking their changes into small self-contained commits. That won’t help in the case above, however, because the problem isn’t obvious from examination of any single commit; instead, a global view of the development is required. To make matters worse, the change in semantics in the problematic function may be just one small part of the changes in the upper line of development.
 
@@ -2690,7 +2690,7 @@ Partly for this reason, many experienced Git users, even when working on an othe
 
 Instead of using [git-remote[1]](../1/git-remote), you can also choose just to update one branch at a time, and to store it locally under an arbitrary name:
 
-​	除了使用[git-remote[1]](https://chat.openai.com/1/git-remote)，您还可以选择一次只更新一个分支，并将其存储在本地以任意名称命名：
+​	除了使用[git-remote[1]](../1/git-remote)，您还可以选择一次只更新一个分支，并将其存储在本地以任意名称命名：
 
 ``` bash
 $ git fetch origin todo:my-todo-work
@@ -2772,7 +2772,7 @@ Be aware that commits that the old version of example/master pointed at may be l
 
 We saw above that `origin` is just a shortcut to refer to the repository that you originally cloned from. This information is stored in Git configuration variables, which you can see using [git-config[1]](../1/git-config):
 
-​	我们之前看到`origin`只是一个指向最初克隆的仓库的快捷方式。这些信息存储在Git配置变量中，您可以使用[git-config[1]](https://chat.openai.com/1/git-config)查看：
+​	我们之前看到`origin`只是一个指向最初克隆的仓库的快捷方式。这些信息存储在Git配置变量中，您可以使用[git-config[1]](../1/git-config)查看：
 
 ``` bash
 $ git config -l
@@ -2805,7 +2805,7 @@ adds the following to `.git/config`:
 
 Also note that the above configuration can be performed by directly editing the file `.git/config` instead of using [git-remote[1]](../1/git-remote).
 
-​	另请注意，上述配置也可以通过直接编辑文件`.git/config`来完成，而不是使用[git-remote[1]](https://chat.openai.com/1/git-remote)。
+​	另请注意，上述配置也可以通过直接编辑文件`.git/config`来完成，而不是使用[git-remote[1]](../1/git-remote)。
 
 After configuring the remote, the following three commands will do the same thing:
 
@@ -2819,7 +2819,7 @@ $ git fetch example
 
 See [git-config[1]](../1/git-config) for more details on the configuration options mentioned above and [git-fetch[1]](../1/git-fetch) for more details on the refspec syntax.
 
-​	有关上述配置选项的更多详细信息，请参阅[git-config[1]](https://chat.openai.com/1/git-config)，有关refspec语法的更多详细信息，请参阅[git-fetch[1]](https://chat.openai.com/1/git-fetch)。
+​	有关上述配置选项的更多详细信息，请参阅[git-config[1]](../1/git-config)，有关refspec语法的更多详细信息，请参阅[git-fetch[1]](../1/git-fetch)。
 
 ## Git 概念
 
@@ -2869,7 +2869,7 @@ The object types in some more detail:
 
 The "commit" object links a physical state of a tree with a description of how we got there and why. Use the `--pretty=raw` option to [git-show[1]](../1/git-show) or [git-log[1]](../1/git-log) to examine your favorite commit:
 
-​	"commit" 对象将一个树的物理状态与我们是如何到达该状态以及原因的描述相结合。使用`--pretty=raw`选项查看您喜欢的提交，例如[git-show[1]](https://chat.openai.com/1/git-show)或[git-log[1]](https://chat.openai.com/1/git-log)：
+​	"commit" 对象将一个树的物理状态与我们是如何到达该状态以及原因的描述相结合。使用`--pretty=raw`选项查看您喜欢的提交，例如[git-show[1]](../1/git-show)或[git-log[1]](../1/git-log)：
 
 ```bash
 $ git show -s --pretty=raw 2be7fcb476
@@ -2901,17 +2901,17 @@ As you can see, a commit is defined by:
 
 Note that a commit does not itself contain any information about what actually changed; all changes are calculated by comparing the contents of the tree referred to by this commit with the trees associated with its parents. In particular, Git does not attempt to record file renames explicitly, though it can identify cases where the existence of the same file data at changing paths suggests a rename. (See, for example, the `-M` option to [git-diff[1]](../1/git-diff)).
 
-​	请注意，提交本身不包含有关实际更改的任何信息；所有更改是通过比较由此提交引用的树的内容与其父项关联的树来计算的。特别地，Git不尝试显式记录文件重命名，尽管它可以识别存在相同文件数据在不同路径上发生更改的情况，这暗示了重命名（请参阅[git-diff[1]](https://chat.openai.com/1/git-diff)中的`-M`选项）。提交通常由[git-commit[1]](https://chat.openai.com/1/git-commit)创建，它创建一个提交，其父项通常是当前的HEAD，其树来自当前存储在索引中的内容。
+​	请注意，提交本身不包含有关实际更改的任何信息；所有更改是通过比较由此提交引用的树的内容与其父项关联的树来计算的。特别地，Git不尝试显式记录文件重命名，尽管它可以识别存在相同文件数据在不同路径上发生更改的情况，这暗示了重命名（请参阅[git-diff[1]](../1/git-diff)中的`-M`选项）。提交通常由[git-commit[1]](../1/git-commit)创建，它创建一个提交，其父项通常是当前的HEAD，其树来自当前存储在索引中的内容。
 
 A commit is usually created by [git-commit[1]](../1/git-commit), which creates a commit whose parent is normally the current HEAD, and whose tree is taken from the content currently stored in the index.
 
-​	一般情况下，使用[git-commit[1]](https://chat.openai.com/1/git-commit)创建提交。该命令创建一个提交，其父提交通常是当前的HEAD，而树是从当前索引中的内容中获取的。
+​	一般情况下，使用[git-commit[1]](../1/git-commit)创建提交。该命令创建一个提交，其父提交通常是当前的HEAD，而树是从当前索引中的内容中获取的。
 
 #### Tree 对象
 
 The ever-versatile [git-show[1]](../1/git-show) command can also be used to examine tree objects, but [git-ls-tree[1]](../1/git-ls-tree) will give you more details:
 
-​	多功能的[git-show[1]](https://chat.openai.com/1/git-show)命令也可用于查看树对象，但[git-ls-tree[1]](https://chat.openai.com/1/git-ls-tree)将提供更多详细信息：
+​	多功能的[git-show[1]](../1/git-show)命令也可用于查看树对象，但[git-ls-tree[1]](../1/git-ls-tree)将提供更多详细信息：
 
 ``` bash
 $ git ls-tree fb3a8bdd0ce
@@ -2946,7 +2946,7 @@ Note that the files all have mode 644 or 755: Git actually only pays attention t
 
 You can use [git-show[1]](../1/git-show) to examine the contents of a blob; take, for example, the blob in the entry for `COPYING` from the tree above:
 
-​	您可以使用[git-show[1]](https://chat.openai.com/1/git-show)查看blob的内容；例如，从上面的树中`COPYING`的条目中获取的blob如下：
+​	您可以使用[git-show[1]](../1/git-show)查看blob的内容；例如，从上面的树中`COPYING`的条目中获取的blob如下：
 
 ``` bash
 $ git show 6ff87c4664
@@ -2967,7 +2967,7 @@ Since the blob is entirely defined by its data, if two files in a directory tree
 
 Note that any tree or blob object can be examined using [git-show[1]](../1/git-show) with the `<revision>:<path>` syntax. This can sometimes be useful for browsing the contents of a tree that is not currently checked out.
 
-​	请注意，可以使用[git-show[1]](https://chat.openai.com/1/git-show)命令的`<revision>:<path>`语法来查看任何树或blob对象。这有时对于浏览当前未检出的树的内容很有用。
+​	请注意，可以使用[git-show[1]](../1/git-show)命令的`<revision>:<path>`语法来查看任何树或blob对象。这有时对于浏览当前未检出的树的内容很有用。
 
 #### Trust
 
@@ -2995,7 +2995,7 @@ To assist in this, Git also provides the tag object…
 
 A tag object contains an object, object type, tag name, the name of the person ("tagger") who created the tag, and a message, which may contain a signature, as can be seen using [git-cat-file[1]](../1/git-cat-file):
 
-​	标签对象包含一个对象、对象类型、标签名称、创建标签的人（“tagger”）的姓名和一条消息，该消息可能包含签名，如[git-cat-file[1]](https://chat.openai.com/1/git-cat-file)所示：
+​	标签对象包含一个对象、对象类型、标签名称、创建标签的人（“tagger”）的姓名和一条消息，该消息可能包含签名，如[git-cat-file[1]](../1/git-cat-file)所示：
 
 ``` bash
 $ git cat-file tag v1.5.0
@@ -3016,7 +3016,7 @@ nLE/L9aUXdWeTFPron96DLA=
 
 See the [git-tag[1]](../1/git-tag) command to learn how to create and verify tag objects. (Note that [git-tag[1]](../1/git-tag) can also be used to create "lightweight tags", which are not tag objects at all, but just simple references whose names begin with `refs/tags/`).
 
-​	有关如何创建和验证标签对象的详细信息，请参阅[git-tag[1]](https://chat.openai.com/1/git-tag)命令。（请注意，[git-tag[1]](https://chat.openai.com/1/git-tag)还可用于创建“轻量级标签”，这根本不是标签对象，而只是以`refs/tags/`开头的简单引用。）
+​	有关如何创建和验证标签对象的详细信息，请参阅[git-tag[1]](../1/git-tag)命令。（请注意，[git-tag[1]](../1/git-tag)还可用于创建“轻量级标签”，这根本不是标签对象，而只是以`refs/tags/`开头的简单引用。）
 
 #### Git如何高效地存储对象：pack文件
 
@@ -3039,7 +3039,7 @@ The first number is the number of objects which are kept in individual files. Th
 
 You can save space and make Git faster by moving these loose objects in to a "pack file", which stores a group of objects in an efficient compressed format; the details of how pack files are formatted can be found in [gitformat-pack[5]](../5/gitformat-pack).
 
-​	通过将这些松散对象移入“pack文件”可以节省空间并使Git更快。pack文件以高效压缩的格式存储一组对象；有关pack文件格式的详细信息，请参阅[gitformat-pack[5]](https://chat.openai.com/5/gitformat-pack)。
+​	通过将这些松散对象移入“pack文件”可以节省空间并使Git更快。pack文件以高效压缩的格式存储一组对象；有关pack文件格式的详细信息，请参阅[gitformat-pack[5]](../5/gitformat-pack)。
 
 To put the loose objects into a pack, just run git repack:
 
@@ -3079,13 +3079,13 @@ Although the object files are gone, any commands that refer to those objects wil
 
 The [git-gc[1]](../1/git-gc) command performs packing, pruning, and more for you, so is normally the only high-level command you need.
 
-​	[git-gc[1]](https://chat.openai.com/1/git-gc)命令可以为您执行打包、修剪等操作，因此通常是您唯一需要的高级命令。
+​	[git-gc[1]](../1/git-gc)命令可以为您执行打包、修剪等操作，因此通常是您唯一需要的高级命令。
 
 #### 悬空对象 Dangling objects
 
 The [git-fsck[1]](../1/git-fsck) command will sometimes complain about dangling objects. They are not a problem.
 
-​	[git-fsck[1]](https://chat.openai.com/1/git-fsck)命令有时会报告悬空对象的问题。但这并不是问题。
+​	[git-fsck[1]](../1/git-fsck)命令有时会报告悬空对象的问题。但这并不是问题。
 
 The most common cause of dangling objects is that you’ve rebased a branch, or you have pulled from somebody else who rebased a branch—see [Rewriting history and maintaining patch series](https://git-scm.com/docs/user-manual#cleaning-up-history). In that case, the old head of the original branch still exists, as does everything it pointed to. The branch pointer itself just doesn’t, since you replaced it with another one.
 
@@ -3167,7 +3167,7 @@ We’ll assume that the problem is a single missing or corrupted blob, which is 
 
 Before starting, verify that there is corruption, and figure out where it is with [git-fsck[1]](../1/git-fsck); this may be time-consuming.
 
-​	在开始之前，使用[git-fsck[1]](https://chat.openai.com/1/git-fsck)验证是否存在损坏，并确定损坏的位置；这可能会耗费一些时间。
+​	在开始之前，使用[git-fsck[1]](../1/git-fsck)验证是否存在损坏，并确定损坏的位置；这可能会耗费一些时间。
 
 Assume the output looks like this:
 
@@ -3182,7 +3182,7 @@ missing blob 4b9458b3786228369c63936db65827de3cc06200
 
 Now you know that blob 4b9458b3 is missing, and that the tree 2d9263c6 points to it. If you could find just one copy of that missing blob object, possibly in some other repository, you could move it into `.git/objects/4b/9458b3...` and be done. Suppose you can’t. You can still examine the tree that pointed to it with [git-ls-tree[1]](../1/git-ls-tree), which might output something like:
 
-​	现在您知道blob 4b9458b3丢失了，并且树2d9263c6指向它。如果您能在其他仓库中找到该丢失的blob对象的一个副本，您可以将它移动到`.git/objects/4b/9458b3...`并完成。假设您找不到。您仍然可以使用[git-ls-tree[1]](https://chat.openai.com/1/git-ls-tree)检查指向它的树，它可能输出类似于：
+​	现在您知道blob 4b9458b3丢失了，并且树2d9263c6指向它。如果您能在其他仓库中找到该丢失的blob对象的一个副本，您可以将它移动到`.git/objects/4b/9458b3...`并完成。假设您找不到。您仍然可以使用[git-ls-tree[1]](../1/git-ls-tree)检查指向它的树，它可能输出类似于：
 
 ``` bash
 $ git ls-tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
@@ -3196,7 +3196,7 @@ $ git ls-tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
 
 So now you know that the missing blob was the data for a file named `myfile`. And chances are you can also identify the directory—let’s say it’s in `somedirectory`. If you’re lucky the missing copy might be the same as the copy you have checked out in your working tree at `somedirectory/myfile`; you can test whether that’s right with [git-hash-object[1]](../1/git-hash-object):
 
-​	现在您知道缺失的blob是名为`myfile`的文件的数据。很有可能您也可以识别出目录——假设它在`somedirectory`中。如果您很幸运，丢失的副本可能与您的工作树中的`somedirectory/myfile`处检出的副本相同；您可以使用[git-hash-object[1]](https://chat.openai.com/1/git-hash-object)来测试是否正确：
+​	现在您知道缺失的blob是名为`myfile`的文件的数据。很有可能您也可以识别出目录——假设它在`somedirectory`中。如果您很幸运，丢失的副本可能与您的工作树中的`somedirectory/myfile`处检出的副本相同；您可以使用[git-hash-object[1]](../1/git-hash-object)来测试是否正确：
 
 ``` bash
 $ git hash-object -w somedirectory/myfile
@@ -3274,7 +3274,7 @@ and just looked for the sha of the missing object (4b9458b) in that whole thing.
 
 The index is a binary file (generally kept in `.git/index`) containing a sorted list of path names, each with permissions and the SHA-1 of a blob object; [git-ls-files[1]](../1/git-ls-files) can show you the contents of the index:
 
-​	索引是一个二进制文件（通常保存在`.git/index`），其中包含一个经过排序的路径名列表，每个路径名都带有权限和对应的blob对象的SHA-1值；[git-ls-files[1]](https://chat.openai.com/1/git-ls-files)可以显示索引的内容：
+​	索引是一个二进制文件（通常保存在`.git/index`），其中包含一个经过排序的路径名列表，每个路径名都带有权限和对应的blob对象的SHA-1值；[git-ls-files[1]](../1/git-ls-files)可以显示索引的内容：
 
 ``` bash
 $ git ls-files --stage
@@ -3299,7 +3299,7 @@ Note that in older documentation you may see the index called the "current direc
 
    For example, running [git-commit[1]](../1/git-commit) generates this tree object from the index, stores it in the object database, and uses it as the tree object associated with the new commit.
 
-   例如，运行[git-commit[1]](https://chat.openai.com/1/git-commit)会根据索引生成这个树对象，将其存储在对象数据库中，并将其用作与新提交相关联的树对象。
+   例如，运行[git-commit[1]](../1/git-commit)会根据索引生成这个树对象，将其存储在对象数据库中，并将其用作与新提交相关联的树对象。
 
 3. The index enables fast comparisons between the tree object it defines and the working tree.
 
@@ -3315,7 +3315,7 @@ Note that in older documentation you may see the index called the "current direc
 
    We saw in [Getting conflict-resolution help during a merge](https://git-scm.com/docs/user-manual#conflict-resolution) that during a merge the index can store multiple versions of a single file (called "stages"). The third column in the [git-ls-files[1]](../1/git-ls-files) output above is the stage number, and will take on values other than 0 for files with merge conflicts.
 
-   我们在[在合并过程中获取冲突解决帮助](https://git-scm.com/docs/user-manual#conflict-resolution)中看到，在合并过程中，索引可以存储单个文件的多个版本（称为"stage"）。上面[git-ls-files[1]](https://chat.openai.com/1/git-ls-files)输出中的第三列是stage编号，对于存在合并冲突的文件，其值将为0以外的值。
+   我们在[在合并过程中获取冲突解决帮助](https://git-scm.com/docs/user-manual#conflict-resolution)中看到，在合并过程中，索引可以存储单个文件的多个版本（称为"stage"）。上面[git-ls-files[1]](../1/git-ls-files)输出中的第三列是stage编号，对于存在合并冲突的文件，其值将为0以外的值。
 
 The index is thus a sort of temporary staging area, which is filled with a tree which you are in the process of working on.
 
@@ -3349,7 +3349,7 @@ Git’s submodule support allows a repository to contain, as a subdirectory, a c
 
 The [git-submodule[1]](../1/git-submodule) command is available since Git 1.5.3. Users with Git 1.5.2 can look up the submodule commits in the repository and manually check them out; earlier versions won’t recognize the submodules at all.
 
-​	[git-submodule[1]](https://chat.openai.com/1/git-submodule)命令自Git 1.5.3版本起可用。使用Git 1.5.2版本的用户可以在仓库中查找子模块提交并手动检出它们；更早版本不会识别子模块。
+​	[git-submodule[1]](../1/git-submodule)命令自Git 1.5.3版本起可用。使用Git 1.5.2版本的用户可以在仓库中查找子模块提交并手动检出它们；更早版本不会识别子模块。
 
 To see how submodule support works, create four example repositories that can be used later as a submodule:
 
@@ -3404,7 +3404,7 @@ The `git submodule add <repo> <path>` command does a couple of things:
 - It clones the submodule from `<repo>` to the given `<path>` under the current directory and by default checks out the master branch.
 - 它从`<repo>`克隆子模块到当前目录下给定的`<path>`，默认情况下会检出主分支。
 - It adds the submodule’s clone path to the [gitmodules[5]](../5/gitmodules) file and adds this file to the index, ready to be committed.
-- 它将子模块的克隆路径添加到[gitmodules[5]](https://chat.openai.com/5/gitmodules)文件，并将此文件添加到索引中，准备提交。
+- 它将子模块的克隆路径添加到[gitmodules[5]](../5/gitmodules)文件，并将此文件添加到索引中，准备提交。
 - It adds the submodule’s current commit ID to the index, ready to be committed.
 - 它将子模块的当前提交ID添加到索引中，准备提交。
 
@@ -3592,25 +3592,25 @@ Many of the higher-level commands were originally implemented as shell scripts u
 
 The [git-cat-file[1]](../1/git-cat-file) command can show the contents of any object, though the higher-level [git-show[1]](../1/git-show) is usually more useful.
 
-​	[git-cat-file[1]](https://chat.openai.com/1/git-cat-file) 命令可以显示任何对象的内容，尽管高级命令 [git-show[1]](https://chat.openai.com/1/git-show) 通常更有用。
+​	[git-cat-file[1]](../1/git-cat-file) 命令可以显示任何对象的内容，尽管高级命令 [git-show[1]](../1/git-show) 通常更有用。
 
 The [git-commit-tree[1]](../1/git-commit-tree) command allows constructing commits with arbitrary parents and trees.
 
-​	[git-commit-tree[1]](https://chat.openai.com/1/git-commit-tree) 命令允许构建具有任意父对象和树对象的提交。
+​	[git-commit-tree[1]](../1/git-commit-tree) 命令允许构建具有任意父对象和树对象的提交。
 
 A tree can be created with [git-write-tree[1]](../1/git-write-tree) and its data can be accessed by [git-ls-tree[1]](../1/git-ls-tree). Two trees can be compared with [git-diff-tree[1]](../1/git-diff-tree).
 
-​	可以使用 [git-write-tree[1]](https://chat.openai.com/1/git-write-tree) 创建树对象，并且可以通过 [git-ls-tree[1]](https://chat.openai.com/1/git-ls-tree) 访问其数据。两个树对象可以使用 [git-diff-tree[1]](https://chat.openai.com/1/git-diff-tree) 进行比较。
+​	可以使用 [git-write-tree[1]](../1/git-write-tree) 创建树对象，并且可以通过 [git-ls-tree[1]](../1/git-ls-tree) 访问其数据。两个树对象可以使用 [git-diff-tree[1]](../1/git-diff-tree) 进行比较。
 
 A tag is created with [git-mktag[1]](../1/git-mktag), and the signature can be verified by [git-verify-tag[1]](../1/git-verify-tag), though it is normally simpler to use [git-tag[1]](../1/git-tag) for both.
 
-​	可以使用 [git-mktag[1]](https://chat.openai.com/1/git-mktag) 创建标签，并且签名可以使用 [git-verify-tag[1]](https://chat.openai.com/1/git-verify-tag) 进行验证，尽管通常使用 [git-tag[1]](https://chat.openai.com/1/git-tag) 更简单。
+​	可以使用 [git-mktag[1]](../1/git-mktag) 创建标签，并且签名可以使用 [git-verify-tag[1]](../1/git-verify-tag) 进行验证，尽管通常使用 [git-tag[1]](../1/git-tag) 更简单。
 
 ### 工作流程
 
 High-level operations such as [git-commit[1]](../1/git-commit) and [git-restore[1]](../1/git-restore) work by moving data between the working tree, the index, and the object database. Git provides low-level operations which perform each of these steps individually.
 
-​	高级操作，如 [git-commit[1]](https://chat.openai.com/1/git-commit) 和 [git-restore[1]](https://chat.openai.com/1/git-restore) 通过在工作树、索引和对象数据库之间移动数据来工作。Git提供了执行这些步骤的低级操作。
+​	高级操作，如 [git-commit[1]](../1/git-commit) 和 [git-restore[1]](../1/git-restore) 通过在工作树、索引和对象数据库之间移动数据来工作。Git提供了执行这些步骤的低级操作。
 
 Generally, all Git operations work on the index file. Some operations work **purely** on the index file (showing the current state of the index), but most operations move data between the index file and either the database or the working directory. Thus there are four main combinations:
 
@@ -3620,7 +3620,7 @@ Generally, all Git operations work on the index file. Some operations work **pur
 
 The [git-update-index[1]](../1/git-update-index) command updates the index with information from the working directory. You generally update the index information by just specifying the filename you want to update, like so:
 
-​	[git-update-index[1]](https://chat.openai.com/1/git-update-index) 命令将工作目录中的信息更新到索引中。您通常通过指定要更新的文件名来更新索引信息，例如：
+​	[git-update-index[1]](../1/git-update-index) 命令将工作目录中的信息更新到索引中。您通常通过指定要更新的文件名来更新索引信息，例如：
 
 ``` bash
 $ git update-index filename
@@ -3644,7 +3644,7 @@ As a special case, you can also do `git update-index --refresh`, which will refr
 
 The previously introduced [git-add[1]](../1/git-add) is just a wrapper for [git-update-index[1]](../1/git-update-index).
 
-​	之前介绍的 [git-add[1]](https://chat.openai.com/1/git-add) 只是 [git-update-index[1]](https://chat.openai.com/1/git-update-index) 的一个包装器。
+​	之前介绍的 [git-add[1]](../1/git-add) 只是 [git-update-index[1]](../1/git-update-index) 的一个包装器。
 
 #### 索引 → 对象数据库
 
@@ -3772,7 +3772,7 @@ Here is a picture that illustrates how various pieces fit together:
 
 You can examine the data represented in the object database and the index with various helper tools. For every object, you can use [git-cat-file[1]](../1/git-cat-file) to examine details about the object:
 
-​	您可以使用各种辅助工具检查对象数据库和索引中表示的数据。对于每个对象，您可以使用 [git-cat-file[1]](https://chat.openai.com/1/git-cat-file) 查看有关对象的详细信息：
+​	您可以使用各种辅助工具检查对象数据库和索引中表示的数据。对于每个对象，您可以使用 [git-cat-file[1]](../1/git-cat-file) 查看有关对象的详细信息：
 
 ``` bash
 $ git cat-file -t <objectname>
@@ -4285,7 +4285,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   Fetching a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), to find out which objects are missing from the local [object database](https://git-scm.com/docs/user-manual#def_object_database), and to get them, too. See also [git-fetch[1]](../1/git-fetch).
 
-  拉取一个[分支](https://git-scm.com/docs/user-manual#def_branch)意味着从远程[仓库](https://git-scm.com/docs/user-manual#def_repository)获取该分支的[头引用](https://git-scm.com/docs/user-manual#def_head_ref)，找出本地[对象数据库](https://git-scm.com/docs/user-manual#def_object_database)中缺少的对象，并获取它们。另请参阅 [git-fetch[1]](https://chat.openai.com/1/git-fetch)。
+  拉取一个[分支](https://git-scm.com/docs/user-manual#def_branch)意味着从远程[仓库](https://git-scm.com/docs/user-manual#def_repository)获取该分支的[头引用](https://git-scm.com/docs/user-manual#def_head_ref)，找出本地[对象数据库](https://git-scm.com/docs/user-manual#def_object_database)中缺少的对象，并获取它们。另请参阅 [git-fetch[1]](../1/git-fetch)。
 
 - file system - 文件系统
 
@@ -4309,7 +4309,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   Grafts enables two otherwise different lines of development to be joined together by recording fake ancestry information for commits. This way you can make Git pretend the set of [parents](https://git-scm.com/docs/user-manual#def_parent) a [commit](https://git-scm.com/docs/user-manual#def_commit) has is different from what was recorded when the commit was created. Configured via the `.git/info/grafts` file.Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](../1/git-replace) for a more flexible and robust system to do the same thing.
 
-  grafts允许将两个本来不同的开发线连接起来，通过为提交记录虚假的祖先信息。这样，您可以让 Git 假装 [提交](https://git-scm.com/docs/user-manual#def_commit) 的[父提交](https://git-scm.com/docs/user-manual#def_parent)与创建提交时记录的不同。通过 `.git/info/grafts` 文件进行配置。请注意，种植机制已过时，并可能导致在仓库之间传输对象时出现问题；参阅 [git-replace[1]](https://chat.openai.com/1/git-replace) 使用更灵活、更可靠的系统完成相同的工作。
+  grafts允许将两个本来不同的开发线连接起来，通过为提交记录虚假的祖先信息。这样，您可以让 Git 假装 [提交](https://git-scm.com/docs/user-manual#def_commit) 的[父提交](https://git-scm.com/docs/user-manual#def_parent)与创建提交时记录的不同。通过 `.git/info/grafts` 文件进行配置。请注意，种植机制已过时，并可能导致在仓库之间传输对象时出现问题；参阅 [git-replace[1]](../1/git-replace) 使用更灵活、更可靠的系统完成相同的工作。
 
 - hash
 
@@ -4321,7 +4321,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   A [named reference](https://git-scm.com/docs/user-manual#def_ref) to the [commit](https://git-scm.com/docs/user-manual#def_commit) at the tip of a [branch](https://git-scm.com/docs/user-manual#def_branch). Heads are stored in a file in `$GIT_DIR/refs/heads/` directory, except when using packed refs. (See [git-pack-refs[1]](../1/git-pack-refs).)
 
-  [分支](https://git-scm.com/docs/user-manual#def_branch) 顶部的[命名引用](https://git-scm.com/docs/user-manual#def_ref)。HEAD 存储在 `$GIT_DIR/refs/heads/` 目录中的文件中，除非使用了 packed refs（参阅 [git-pack-refs[1]](https://chat.openai.com/1/git-pack-refs)）。
+  [分支](https://git-scm.com/docs/user-manual#def_branch) 顶部的[命名引用](https://git-scm.com/docs/user-manual#def_ref)。HEAD 存储在 `$GIT_DIR/refs/heads/` 目录中的文件中，除非使用了 packed refs（参阅 [git-pack-refs[1]](../1/git-pack-refs)）。
 
 - HEAD
 
@@ -4504,7 +4504,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   The term [pickaxe](https://git-scm.com/docs/user-manual#def_pickaxe) refers to an option to the diffcore routines that help select changes that add or delete a given text string. With the `--pickaxe-all` option, it can be used to view the full [changeset](https://git-scm.com/docs/user-manual#def_changeset) that introduced or removed, say, a particular line of text. See [git-diff[1]](../1/git-diff).
 
-  术语 "pickaxe" 是 diffcore 程序的一个选项，它帮助选择添加或删除给定文本字符串的更改。通过 `--pickaxe-all` 选项，它可以用于查看引入或删除特定文本行的完整 [changeset](https://git-scm.com/docs/user-manual#def_changeset)。参见 [git-diff[1]](https://chat.openai.com/1/git-diff)。
+  术语 "pickaxe" 是 diffcore 程序的一个选项，它帮助选择添加或删除给定文本字符串的更改。通过 `--pickaxe-all` 选项，它可以用于查看引入或删除特定文本行的完整 [changeset](https://git-scm.com/docs/user-manual#def_changeset)。参见 [git-diff[1]](../1/git-diff)。
 
 - plumbing
 
@@ -4534,7 +4534,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   Pulling a [branch](https://git-scm.com/docs/user-manual#def_branch) means to [fetch](https://git-scm.com/docs/user-manual#def_fetch) it and [merge](https://git-scm.com/docs/user-manual#def_merge) it. See also [git-pull[1]](../1/git-pull).
 
-  "pull" 一个 [分支](https://git-scm.com/docs/user-manual#def_branch) 意味着将其 [fetch](https://git-scm.com/docs/user-manual#def_fetch) 并 [merge](https://git-scm.com/docs/user-manual#def_merge)。参见 [git-pull[1]](https://chat.openai.com/1/git-pull)。
+  "pull" 一个 [分支](https://git-scm.com/docs/user-manual#def_branch) 意味着将其 [fetch](https://git-scm.com/docs/user-manual#def_fetch) 并 [merge](https://git-scm.com/docs/user-manual#def_merge)。参见 [git-pull[1]](../1/git-pull)。
 
 - push
 
@@ -4564,13 +4564,13 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   A name that begins with `refs/` (e.g. `refs/heads/master`) that points to an [object name](https://git-scm.com/docs/user-manual#def_object_name) or another ref (the latter is called a [symbolic ref](https://git-scm.com/docs/user-manual#def_symref)). For convenience, a ref can sometimes be abbreviated when used as an argument to a Git command; see [gitrevisions[7]](../7/gitrevisions) for details. Refs are stored in the [repository](https://git-scm.com/docs/user-manual#def_repository).The ref namespace is hierarchical. Different subhierarchies are used for different purposes (e.g. the `refs/heads/` hierarchy is used to represent local branches).There are a few special-purpose refs that do not begin with `refs/`. The most notable example is `HEAD`.
 
-  以 `refs/` 开头的名称（例如 `refs/heads/master`），指向对象名称或另一个引用（后者称为 [symbolic ref](https://git-scm.com/docs/user-manual#def_symref)）。为了方便起见，在 Git 命令的参数中使用引用时，有时可以缩写；有关详情，请参阅 [gitrevisions[7]](https://chat.openai.com/7/gitrevisions)。引用存储在 [仓库](https://git-scm.com/docs/user-manual#def_repository) 中。引用命名空间是分层的。不同的子层次结构用于不同的目的（例如，`refs/heads/` 层次结构用于表示本地分支）。有一些特殊用途的引用不以 `refs/` 开头。最显著的例子是 `HEAD`。
+  以 `refs/` 开头的名称（例如 `refs/heads/master`），指向对象名称或另一个引用（后者称为 [symbolic ref](https://git-scm.com/docs/user-manual#def_symref)）。为了方便起见，在 Git 命令的参数中使用引用时，有时可以缩写；有关详情，请参阅 [gitrevisions[7]](../7/gitrevisions)。引用存储在 [仓库](https://git-scm.com/docs/user-manual#def_repository) 中。引用命名空间是分层的。不同的子层次结构用于不同的目的（例如，`refs/heads/` 层次结构用于表示本地分支）。有一些特殊用途的引用不以 `refs/` 开头。最显著的例子是 `HEAD`。
 
 - reflog
 
   A reflog shows the local "history" of a ref. In other words, it can tell you what the 3rd last revision in *this* repository was, and what was the current state in *this* repository, yesterday 9:14pm. See [git-reflog[1]](../1/git-reflog) for details.
 
-  引用日志显示引用的本地历史。换句话说，它可以告诉您在 *此* 仓库中的倒数第三个修订是什么，以及昨天下午9:14的当前状态是什么。有关详情，请参阅 [git-reflog[1]](https://chat.openai.com/1/git-reflog)。
+  引用日志显示引用的本地历史。换句话说，它可以告诉您在 *此* 仓库中的倒数第三个修订是什么，以及昨天下午9:14的当前状态是什么。有关详情，请参阅 [git-reflog[1]](../1/git-reflog)。
 
 - refspec
 
@@ -4636,7 +4636,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   A shallow [repository](https://git-scm.com/docs/user-manual#def_repository) has an incomplete history some of whose [commits](https://git-scm.com/docs/user-manual#def_commit) have [parents](https://git-scm.com/docs/user-manual#def_parent) cauterized away (in other words, Git is told to pretend that these commits do not have the parents, even though they are recorded in the [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). This is sometimes useful when you are interested only in the recent history of a project even though the real history recorded in the upstream is much larger. A shallow repository is created by giving the `--depth` option to [git-clone[1]](../1/git-clone), and its history can be later deepened with [git-fetch[1]](../1/git-fetch).
 
-  浅 [仓库](https://git-scm.com/docs/user-manual#def_repository) 具有不完整的历史，其中部分 [提交](https://git-scm.com/docs/user-manual#def_commit) 的 [parents](https://git-scm.com/docs/user-manual#def_parent) 被切断了（换句话说，Git 被告知这些提交没有父提交，即使它们在 [commit object](https://git-scm.com/docs/user-manual#def_commit_object) 中记录）。这在您仅对项目的最近历史感兴趣时很有用，即使上游记录的真实历史要大得多。通过给 [git-clone[1]](https://chat.openai.com/1/git-clone) 提供 `--depth` 选项可以创建浅仓库，其历史可以在之后使用 [git-fetch[1]](https://chat.openai.com/1/git-fetch) 扩展。
+  浅 [仓库](https://git-scm.com/docs/user-manual#def_repository) 具有不完整的历史，其中部分 [提交](https://git-scm.com/docs/user-manual#def_commit) 的 [parents](https://git-scm.com/docs/user-manual#def_parent) 被切断了（换句话说，Git 被告知这些提交没有父提交，即使它们在 [commit object](https://git-scm.com/docs/user-manual#def_commit_object) 中记录）。这在您仅对项目的最近历史感兴趣时很有用，即使上游记录的真实历史要大得多。通过给 [git-clone[1]](../1/git-clone) 提供 `--depth` 选项可以创建浅仓库，其历史可以在之后使用 [git-fetch[1]](../1/git-fetch) 扩展。
 
 - stash entry
 
@@ -4660,7 +4660,7 @@ You see, Git is actually the best tool to find out about the source of Git itsel
 
   Symbolic reference: instead of containing the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id itself, it is of the format *ref: refs/some/thing* and when referenced, it recursively dereferences to this reference. *[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)* is a prime example of a symref. Symbolic references are manipulated with the [git-symbolic-ref[1]](../1/git-symbolic-ref) command.
 
-  符号引用：它不包含 [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id 本身，而是具有 *ref: refs/some/thing* 格式，并且在引用时递归地解引用到该引用。*[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)* 就是符号引用的一个典型例子。符号引用可以使用 [git-symbolic-ref[1]](https://chat.openai.com/1/git-symbolic-ref) 命令来操作。
+  符号引用：它不包含 [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id 本身，而是具有 *ref: refs/some/thing* 格式，并且在引用时递归地解引用到该引用。*[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)* 就是符号引用的一个典型例子。符号引用可以使用 [git-symbolic-ref[1]](../1/git-symbolic-ref) 命令来操作。
 
 - tag
 

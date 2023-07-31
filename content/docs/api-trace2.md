@@ -1329,9 +1329,9 @@ Dump "interesting" config values to trace2 log.
 
 ​	将“有趣的”配置值转储到 trace2 日志。
 
-We can optionally emit configuration events, see `trace2.configparams` in [git-config[1\]](https://git-scm.com/docs/git-config) for how to enable it.
+We can optionally emit configuration events, see `trace2.configparams` in [git-config[1]](https://git-scm.com/docs/git-config) for how to enable it.
 
-​	我们可以选择发出配置事件，参考 `git-config[1\]` 中的 `trace2.configparams`，了解如何启用它。
+​	我们可以选择发出配置事件，参考 `git-config[1]` 中的 `trace2.configparams`，了解如何启用它。
 
 ```bash
 $ git config --system color.ui never

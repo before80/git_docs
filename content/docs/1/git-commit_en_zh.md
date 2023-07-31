@@ -38,22 +38,22 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 Create a new commit containing the current contents of the index and the given log message describing the changes. The new commit is a direct child of HEAD, usually the tip of the current branch, and the branch is updated to point to it (unless no branch is associated with the working tree, in which case HEAD is "detached" as described in [git-checkout[1]](../git-checkout)).
 
-​	创建一个新的提交，包含当前索引（即暂存区）的内容以及给定的日志消息，用于描述这些更改。新的提交是 HEAD 的直接子提交，通常是当前分支的最新提交点，并且分支会更新为指向该提交（除非工作树没有关联的分支，此时 HEAD 将会“分离”，如 [git-checkout[1\]](https://chat.openai.com/git-checkout) 中所述）。
+​	创建一个新的提交，包含当前索引（即暂存区）的内容以及给定的日志消息，用于描述这些更改。新的提交是 HEAD 的直接子提交，通常是当前分支的最新提交点，并且分支会更新为指向该提交（除非工作树没有关联的分支，此时 HEAD 将会“分离”，如 [git-checkout[1]](../git-checkout) 中所述）。
 
 The content to be committed can be specified in several ways:
 
 ​	要提交的内容可以通过多种方式指定：
 
 1. by using [git-add[1]](../git-add) to incrementally "add" changes to the index before using the *commit* command (Note: even modified files must be "added");
-2. 使用 [git-add[1\]](https://chat.openai.com/git-add) 逐步地在使用 *commit* 命令之前“添加”更改到索引中（注意：即使修改文件也必须“添加”）；
+2. 使用 [git-add[1]](../git-add) 逐步地在使用 *commit* 命令之前“添加”更改到索引中（注意：即使修改文件也必须“添加”）；
 3. by using [git-rm[1]](../git-rm) to remove files from the working tree and the index, again before using the *commit* command;
-4. 使用 [git-rm[1\]](https://chat.openai.com/git-rm) 在使用 *commit* 命令之前从工作树和索引中移除文件；
+4. 使用 [git-rm[1]](../git-rm) 在使用 *commit* 命令之前从工作树和索引中移除文件；
 5. by listing files as arguments to the *commit* command (without --interactive or --patch switch), in which case the commit will ignore changes staged in the index, and instead record the current content of the listed files (which must already be known to Git);
 6. 将文件列为 *commit* 命令的参数（不带 --interactive 或 --patch 开关），在这种情况下，提交将忽略索引中暂存的更改，并记录列出文件的当前内容（这些文件必须已经被 Git 知道）；
 7. by using the -a switch with the *commit* command to automatically "add" changes from all known files (i.e. all files that are already listed in the index) and to automatically "rm" files in the index that have been removed from the working tree, and then perform the actual commit;
 8. 使用 *commit* 命令的 -a 开关，自动地“添加”所有已知文件的更改（即索引中已经列出的所有文件），并自动地“删除”索引中已从工作树中删除的文件，然后执行实际的提交；
 9. by using the --interactive or --patch switches with the *commit* command to decide one by one which files or hunks should be part of the commit in addition to contents in the index, before finalizing the operation. See the “Interactive Mode” section of [git-add[1]](../git-add) to learn how to operate these modes.
-10. 使用 *commit* 命令的 --interactive 或 --patch 开关，逐个决定哪些文件或文件块应该作为提交的一部分，除了索引中的内容，然后完成操作。有关如何操作这些模式，请参阅 [git-add[1\]](https://chat.openai.com/git-add) 中的“交互模式”部分。
+10. 使用 *commit* 命令的 --interactive 或 --patch 开关，逐个决定哪些文件或文件块应该作为提交的一部分，除了索引中的内容，然后完成操作。有关如何操作这些模式，请参阅 [git-add[1]](../git-add) 中的“交互模式”部分。
 
 The `--dry-run` option can be used to obtain a summary of what is included by any of the above for the next commit by giving the same set of parameters (options and paths).
 
@@ -79,7 +79,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Use the interactive patch selection interface to choose which changes to commit. See [git-add[1]](../git-add) for details.
 
-  使用交互式补丁选择界面来选择要提交的更改。有关详情，请参阅 [git-add[1\]](https://chat.openai.com/git-add)。
+  使用交互式补丁选择界面来选择要提交的更改。有关详情，请参阅 [git-add[1]](../git-add)。
 
 - -C <commit>
 
@@ -117,13 +117,13 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Neither "fixup!" nor "amend!" commits change authorship of `<commit>` when applied by `git rebase --autosquash`. See [git-rebase[1]](../git-rebase) for details.
 
-  当通过 `git rebase --autosquash` 应用时，“fixup!” 和 “amend!” 提交不会更改 `<commit>` 的作者信息。有关详情，请参阅 [git-rebase[1\]](https://chat.openai.com/git-rebase)。
+  当通过 `git rebase --autosquash` 应用时，“fixup!” 和 “amend!” 提交不会更改 `<commit>` 的作者信息。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
 - --squash=<commit>
 
   Construct a commit message for use with `rebase --autosquash`. The commit message subject line is taken from the specified commit with a prefix of "squash! ". Can be used with additional commit message options (`-m`/`-c`/`-C`/`-F`). See [git-rebase[1]](../git-rebase) for details.
 
-  为 `rebase --autosquash` 构造提交消息。提交消息的主题行来自指定的提交，并带有 "squash! " 前缀。可以与其他提交消息选项 (`-m`/`-c`/`-C`/`-F`) 一起使用。有关详情，请参阅 [git-rebase[1\]](https://chat.openai.com/git-rebase)。
+  为 `rebase --autosquash` 构造提交消息。提交消息的主题行来自指定的提交，并带有 "squash! " 前缀。可以与其他提交消息选项 (`-m`/`-c`/`-C`/`-F`) 一起使用。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
 - --reset-author
 
@@ -135,7 +135,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   When doing a dry-run, give the output in the short-format. See [git-status[1]](../git-status) for details. Implies `--dry-run`.
 
-  在进行干运行时，以简短格式输出。有关详情，请参阅 [git-status[1\]](https://chat.openai.com/git-status)。隐含了 `--dry-run`。
+  在进行干运行时，以简短格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
 - --branch
 
@@ -147,7 +147,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   When doing a dry-run, give the output in a porcelain-ready format. See [git-status[1]](../git-status) for details. Implies `--dry-run`.
 
-  在进行干运行时，以瓷器格式输出。有关详情，请参阅 [git-status[1\]](https://chat.openai.com/git-status)。隐含了 `--dry-run`。
+  在进行干运行时，以瓷器格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
 - --long
 
@@ -161,7 +161,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   When showing `short` or `porcelain` status output, print the filename verbatim and terminate the entries with NUL, instead of LF. If no format is given, implies the `--porcelain` output format. Without the `-z` option, filenames with "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)).
 
-  在显示 `short` 或 `porcelain` 状态输出时，直接打印文件名，并以 NUL 终止条目，而不是 LF。如果没有给定格式，则隐含了 `--porcelain` 输出格式。如果没有使用 `-z` 选项，则对于包含 "非常规" 字符的文件名，将对其进行引用，如配置变量 `core.quotePath`（参见 [git-config[1\]](https://chat.openai.com/git-config)）中所解释的。
+  在显示 `short` 或 `porcelain` 状态输出时，直接打印文件名，并以 NUL 终止条目，而不是 LF。如果没有给定格式，则隐含了 `--porcelain` 输出格式。如果没有使用 `-z` 选项，则对于包含 "非常规" 字符的文件名，将对其进行引用，如配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的。
 
 - -F <file>
 
@@ -213,7 +213,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Specify a (<token>, <value>) pair that should be applied as a trailer. (e.g. `git commit --trailer "Signed-off-by:C O Mitter \ <committer@example.com>" --trailer "Helped-by:C O Mitter \ <committer@example.com>"` will add the "Signed-off-by" trailer and the "Helped-by" trailer to the commit message.) The `trailer.*` configuration variables ([git-interpret-trailers[1]](../git-interpret-trailers)) can be used to define if a duplicated trailer is omitted, where in the run of trailers each trailer would appear, and other details.
 
-  指定应作为尾注应用的（<token>，<value>）对。 （例如，`git commit --trailer "Signed-off-by:C O Mitter \ <committer@example.com>" --trailer "Helped-by:C O Mitter \ <committer@example.com>"` 将向提交消息添加 "Signed-off-by" 尾注和 "Helped-by" 尾注）。 `trailer.*` 配置变量（参见 [git-interpret-trailers[1\]](https://chat.openai.com/git-interpret-trailers)）可用于定义是否省略重复的尾注，每个尾注在尾注运行中出现的位置，以及其他详细信息。
+  指定应作为尾注应用的（<token>，<value>）对。 （例如，`git commit --trailer "Signed-off-by:C O Mitter \ <committer@example.com>" --trailer "Helped-by:C O Mitter \ <committer@example.com>"` 将向提交消息添加 "Signed-off-by" 尾注和 "Helped-by" 尾注）。 `trailer.*` 配置变量（参见 [git-interpret-trailers[1]](../git-interpret-trailers)）可用于定义是否省略重复的尾注，每个尾注在尾注运行中出现的位置，以及其他详细信息。
 
 - -n
 
@@ -221,7 +221,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   By default, the pre-commit and commit-msg hooks are run. When any of `--no-verify` or `-n` is given, these are bypassed. See also [githooks[5]](../../5/githooks).
 
-  默认情况下，会运行预提交和提交消息挂钩。给出 `--no-verify` 或 `-n` 中的任何选项时，这些挂钩将被绕过。另请参阅 [githooks[5\]](https://chat.openai.com/5/githooks)。
+  默认情况下，会运行预提交和提交消息挂钩。给出 `--no-verify` 或 `-n` 中的任何选项时，这些挂钩将被绕过。另请参阅 [githooks[5]](../5/githooks)。
 
 - --allow-empty
 
@@ -233,7 +233,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Like --allow-empty this command is primarily for use by foreign SCM interface scripts. It allows you to create a commit with an empty commit message without using plumbing commands like [git-commit-tree[1]](../git-commit-tree).
 
-  与 --allow-empty 一样，此命令主要供外部 SCM 接口脚本使用。它允许您创建一个没有使用像 [git-commit-tree[1\]](https://chat.openai.com/git-commit-tree) 等工具的空提交消息的提交。
+  与 --allow-empty 一样，此命令主要供外部 SCM 接口脚本使用。它允许您创建一个没有使用像 [git-commit-tree[1]](../git-commit-tree) 等工具的空提交消息的提交。
 
 - --cleanup=<mode>
 
@@ -279,7 +279,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   The default can be changed by the `commit.cleanup` configuration variable (see [git-config[1]](../git-config)).
 
-  默认值可以通过 `commit.cleanup` 配置变量更改（参见 [git-config[1\]](https://chat.openai.com/git-config)）。
+  默认值可以通过 `commit.cleanup` 配置变量更改（参见 [git-config[1]](../git-config)）。
 
 - -e
 
@@ -309,7 +309,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   but can be used to amend a merge commit.You should understand the implications of rewriting history if you amend a commit that has already been published. (See the "RECOVERING FROM UPSTREAM REBASE" section in [git-rebase[1]](../git-rebase).)
 
-  但是可以用于修改合并提交。如果修改已经发布的提交，请理解重写历史的影响（参见 [git-rebase[1\]](https://chat.openai.com/git-rebase) 中的 "RECOVERING FROM UPSTREAM REBASE" 部分）。
+  但是可以用于修改合并提交。如果修改已经发布的提交，请理解重写历史的影响（参见 [git-rebase[1]](../git-rebase) 中的 "RECOVERING FROM UPSTREAM REBASE" 部分）。
 
 - --no-post-rewrite
 
@@ -337,7 +337,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
-  将路径规范传递给 `<file>`，而不是命令行参数。如果 `<file>` 正好是 `-`，则使用标准输入。路径规范元素由 LF 或 CR/LF 分隔。路径规范元素可以像配置变量 `core.quotePath`（参见 [git-config[1\]](https://chat.openai.com/git-config)）中所解释的那样进行引用。还请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
+  将路径规范传递给 `<file>`，而不是命令行参数。如果 `<file>` 正好是 `-`，则使用标准输入。路径规范元素由 LF 或 CR/LF 分隔。路径规范元素可以像配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的那样进行引用。还请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 
 - --pathspec-file-nul
 
@@ -370,7 +370,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   The default can be changed using the status.showUntrackedFiles configuration variable documented in [git-config[1]](../git-config).
 
-  默认值可以通过 status.showUntrackedFiles 配置变量（参见 [git-config[1\]](https://chat.openai.com/git-config)）进行更改。
+  默认值可以通过 status.showUntrackedFiles 配置变量（参见 [git-config[1]](../git-config)）进行更改。
 
 - -v
 
@@ -378,7 +378,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Show unified diff between the HEAD commit and what would be committed at the bottom of the commit message template to help the user describe the commit by reminding what changes the commit has. Note that this diff output doesn’t have its lines prefixed with *#*. This diff will not be a part of the commit message. See the `commit.verbose` configuration variable in [git-config[1]](../git-config).If specified twice, show in addition the unified diff between what would be committed and the worktree files, i.e. the unstaged changes to tracked files.
 
-  在提交消息模板底部显示 HEAD 提交与将要提交的内容之间的统一差异，以帮助用户描述提交，提醒提交所做的更改。请注意，此差异输出不会在每行前面添加 *#* 字符。此差异不会成为提交消息的一部分。有关详细信息，请参阅 [git-config[1\]](https://chat.openai.com/git-config) 中的 commit.verbose 配置变量。如果指定两次，还会显示将要提交的内容与工作树文件之间的统一差异，即已跟踪文件的未暂存更改。
+  在提交消息模板底部显示 HEAD 提交与将要提交的内容之间的统一差异，以帮助用户描述提交，提醒提交所做的更改。请注意，此差异输出不会在每行前面添加 *#* 字符。此差异不会成为提交消息的一部分。有关详细信息，请参阅 [git-config[1]](../git-config) 中的 commit.verbose 配置变量。如果指定两次，还会显示将要提交的内容与工作树文件之间的统一差异，即已跟踪文件的未暂存更改。
 
 - -q
 
@@ -398,13 +398,13 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   Include the output of [git-status[1]](../git-status) in the commit message template when using an editor to prepare the commit message. Defaults to on, but can be used to override configuration variable commit.status.
 
-  在使用编辑器准备提交消息时，将 [git-status[1\]](https://chat.openai.com/git-status) 的输出包含在提交消息模板中。默认为开启，但可以用于覆盖配置变量 commit.status。
+  在使用编辑器准备提交消息时，将 [git-status[1]](../git-status) 的输出包含在提交消息模板中。默认为开启，但可以用于覆盖配置变量 commit.status。
 
 - --no-status
 
   Do not include the output of [git-status[1]](../git-status) in the commit message template when using an editor to prepare the default commit message.
 
-  在使用编辑器准备默认提交消息时，不包含 [git-status[1\]](https://chat.openai.com/git-status) 的输出。
+  在使用编辑器准备默认提交消息时，不包含 [git-status[1]](../git-status) 的输出。
 
 - `-S[<keyid>]`
 
@@ -426,7 +426,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   When pathspec is given on the command line, commit the contents of the files that match the pathspec without recording the changes already added to the index. The contents of these files are also staged for the next commit on top of what have been staged before.For more details, see the *pathspec* entry in [gitglossary[7]](../../7/gitglossary).
   
-  当在命令行上给出路径规范时，提交匹配路径规范的文件内容，而不记录已添加到索引中的更改。这些文件的内容也将在已暂存的内容之上为下一次提交暂存。有关详细信息，请参阅 [gitglossary[7\]](https://chat.openai.com/7/gitglossary) 中的 *pathspec* 条目。
+  当在命令行上给出路径规范时，提交匹配路径规范的文件内容，而不记录已添加到索引中的更改。这些文件的内容也将在已暂存的内容之上为下一次提交暂存。有关详细信息，请参阅 [gitglossary[7]](../7/gitglossary) 中的 *pathspec* 条目。
 
 ## 示例
 
@@ -522,7 +522,7 @@ GIT_COMMITTER_DATE
 
 The author and committer names are by convention some form of a personal name (that is, the name by which other humans refer to you), although Git does not enforce or require any particular form. Arbitrary Unicode may be used, subject to the constraints listed above. This name has no effect on authentication; for that, see the `credential.username` variable in [git-config[1]](../git-config).
 
-​	作者和提交者的名称通常是某种形式的个人名称（即其他人用来称呼您的名称），尽管 Git 不强制或要求任何特定的形式。可以使用任意 Unicode，但要遵守上述约束。该名称对身份验证没有影响；有关此问题，请参见 [git-config[1\]](https://chat.openai.com/git-config) 中的 `credential.username` 变量。
+​	作者和提交者的名称通常是某种形式的个人名称（即其他人用来称呼您的名称），尽管 Git 不强制或要求任何特定的形式。可以使用任意 Unicode，但要遵守上述约束。该名称对身份验证没有影响；有关此问题，请参见 [git-config[1]](../git-config) 中的 `credential.username` 变量。
 
 In case (some of) these environment variables are not set, the information is taken from the configuration items `user.name` and `user.email`, or, if not present, the environment variable EMAIL, or, if that is not set, system user name and the hostname used for outgoing mail (taken from `/etc/mailname` and falling back to the fully qualified hostname when that file does not exist).
 
@@ -570,7 +570,7 @@ In addition to recognizing all date formats above, the `--date` option will also
 
 Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](../git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
 
-​	虽然不是必需的，但最好以一个单独的简短（少于 50 个字符）的行开始提交消息，概述更改内容，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并在 Git 中使用此标题。例如，[git-format-patch[1\]](https://chat.openai.com/git-format-patch) 将提交转换为电子邮件时，将使用标题作为主题行，将提交的其余部分作为正文。
+​	虽然不是必需的，但最好以一个单独的简短（少于 50 个字符）的行开始提交消息，概述更改内容，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并在 Git 中使用此标题。例如，[git-format-patch[1]](../git-format-patch) 将提交转换为电子邮件时，将使用标题作为主题行，将提交的其余部分作为正文。
 
 Git is to some extent character encoding agnostic.
 
@@ -582,7 +582,7 @@ Git is to some extent character encoding agnostic.
 
 - Path names are encoded in UTF-8 normalization form C. This applies to tree objects, the index file, ref names, as well as path names in command line arguments, environment variables and config files (`.git/config` (see [git-config[1]](../git-config)), [gitignore[5]](../../5/gitignore), [gitattributes[5]](../../5/gitattributes) and [gitmodules[5]](../../5/gitmodules)).
 
-- 路径名以 UTF-8 归一化形式 C 进行编码。这适用于树对象、索引文件、引用名称以及命令行参数、环境变量和配置文件（`.git/config`，参见 [git-config[1\]](https://chat.openai.com/git-config)，[gitignore[5\]](https://chat.openai.com/5/gitignore)，[gitattributes[5\]](https://chat.openai.com/5/gitattributes) 和 [gitmodules[5\]](https://chat.openai.com/5/gitmodules)）中的路径名。
+- 路径名以 UTF-8 归一化形式 C 进行编码。这适用于树对象、索引文件、引用名称以及命令行参数、环境变量和配置文件（`.git/config`，参见 [git-config[1]](../git-config)，[gitignore[5]](../5/gitignore)，[gitattributes[5]](../5/gitattributes) 和 [gitmodules[5]](../5/gitmodules)）中的路径名。
 
   Note that Git at the core level treats path names simply as sequences of non-NUL bytes, there are no path name encoding conversions (except on Mac and Windows). Therefore, using non-ASCII path names will mostly work even on platforms and file systems that use legacy extended ASCII encodings. However, repositories created on such systems will not work properly on UTF-8-based systems (e.g. Linux, Mac, Windows) and vice versa. Additionally, many Git-based tools simply assume path names to be UTF-8 and will fail to display other encodings correctly.
 
@@ -630,17 +630,17 @@ Note that we deliberately chose not to re-code the commit log message when a com
 
 The editor used to edit the commit log message will be chosen from the `GIT_EDITOR` environment variable, the core.editor configuration variable, the `VISUAL` environment variable, or the `EDITOR` environment variable (in that order). See [git-var[1]](../git-var) for details.
 
-​	用于编辑提交日志消息的编辑器将按以下顺序选择：`GIT_EDITOR` 环境变量、core.editor 配置变量、`VISUAL` 环境变量或 `EDITOR` 环境变量。有关详细信息，请参见 [git-var[1\]](https://chat.openai.com/git-var)。
+​	用于编辑提交日志消息的编辑器将按以下顺序选择：`GIT_EDITOR` 环境变量、core.editor 配置变量、`VISUAL` 环境变量或 `EDITOR` 环境变量。有关详细信息，请参见 [git-var[1]](../git-var)。
 
 Everything above this line in this section isn’t included from the [git-config[1]](../git-config) documentation. The content that follows is the same as what’s found there:
 
-​	在本节的此行上方的所有内容不包括在 [git-config[1\]](https://chat.openai.com/git-config) 文档中。接下来的内容与该文档中的内容相同：
+​	在本节的此行上方的所有内容不包括在 [git-config[1]](../git-config) 文档中。接下来的内容与该文档中的内容相同：
 
 - commit.cleanup
 
   This setting overrides the default of the `--cleanup` option in `git commit`. See [git-commit[1]](../git-commit) for details. Changing the default can be useful when you always want to keep lines that begin with comment character `#` in your log message, in which case you would do `git config commit.cleanup whitespace` (note that you will have to remove the help lines that begin with `#` in the commit log template yourself, if you do this).
 
-  此设置覆盖 `git commit` 的 `--cleanup` 选项的默认值。有关详细信息，请参见 [git-commit[1\]](https://chat.openai.com/git-commit)。更改默认值在您始终希望保留提交日志消息中以 `#` 字符开头的行时很有用，如果是这样，您可以执行 `git config commit.cleanup whitespace`（请注意，如果您这样做，您将需要自行删除提交日志模板中以 `#` 开头的帮助行）。
+  此设置覆盖 `git commit` 的 `--cleanup` 选项的默认值。有关详细信息，请参见 [git-commit[1]](../git-commit)。更改默认值在您始终希望保留提交日志消息中以 `#` 字符开头的行时很有用，如果是这样，您可以执行 `git config commit.cleanup whitespace`（请注意，如果您这样做，您将需要自行删除提交日志模板中以 `#` 开头的帮助行）。
 
 - commit.gpgSign
 
@@ -664,13 +664,13 @@ Everything above this line in this section isn’t included from the [git-config
 
   A boolean or int to specify the level of verbose with `git commit`. See [git-commit[1]](../git-commit).
   
-  一个布尔值或整数，用于指定 `git commit` 的详细级别。请参阅 [git-commit[1\]](https://chat.openai.com/git-commit)。
+  一个布尔值或整数，用于指定 `git commit` 的详细级别。请参阅 [git-commit[1]](../git-commit)。
 
 ## 钩子
 
 This command can run `commit-msg`, `prepare-commit-msg`, `pre-commit`, `post-commit` and `post-rewrite` hooks. See [githooks[5]](../../5/githooks) for more information.
 
-​	此命令可以运行 `commit-msg`、`prepare-commit-msg`、`pre-commit`、`post-commit` 和 `post-rewrite` 钩子。有关更多信息，请参见 [githooks[5\]](https://chat.openai.com/5/githooks)。
+​	此命令可以运行 `commit-msg`、`prepare-commit-msg`、`pre-commit`、`post-commit` 和 `post-rewrite` 钩子。有关更多信息，请参见 [githooks[5]](../5/githooks)。
 
 ## 文件
 

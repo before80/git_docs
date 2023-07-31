@@ -41,13 +41,13 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 
 ​	默认情况下，`git add` 命令不会添加被忽略的文件。如果命令行上明确指定了任何被忽略的文件，`git add` 将失败并显示被忽略的文件列表。由 Git 执行的目录递归或文件名模式匹配（在 shell 中引用模式）所达到的被忽略的文件将被静默忽略。您可以使用 `-f`（force）选项来强制使用 `git add` 命令添加被忽略的文件。
 
-​	有关将内容添加到提交的其他方式，请参阅 [git-commit[1\]](https://chat.openai.com/git-commit)。
+​	有关将内容添加到提交的其他方式，请参阅 [git-commit[1]](../git-commit)。
 
 ## 选项
 
 - `<pathspec>`…
 
-  要添加内容的文件。可以使用文件通配符（例如 `*.c`）来添加所有匹配的文件。也可以给出前导目录名（例如 `dir`，以更新索引以与整个目录的当前状态相匹配）。例如，指定 `dir` 将记录不仅在工作树中修改的文件 `dir/file1`，在工作树中添加的文件 `dir/file2`，还会从工作树中删除的文件 `dir/file3`。注意，旧版本的 Git 会忽略已删除的文件；如果您想添加已修改或新建的文件但忽略已删除的文件，请使用 `--no-all` 选项。有关 `<pathspec>` 语法的更多详细信息，请参阅 [gitglossary[7\]](https://chat.openai.com/7/gitglossary) 中的“pathspec”条目。
+  要添加内容的文件。可以使用文件通配符（例如 `*.c`）来添加所有匹配的文件。也可以给出前导目录名（例如 `dir`，以更新索引以与整个目录的当前状态相匹配）。例如，指定 `dir` 将记录不仅在工作树中修改的文件 `dir/file1`，在工作树中添加的文件 `dir/file2`，还会从工作树中删除的文件 `dir/file3`。注意，旧版本的 Git 会忽略已删除的文件；如果您想添加已修改或新建的文件但忽略已删除的文件，请使用 `--no-all` 选项。有关 `<pathspec>` 语法的更多详细信息，请参阅 [gitglossary[7]](../7/gitglossary) 中的“pathspec”条目。
 - -n
 - --dry-run
 
@@ -64,7 +64,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
   允许添加被忽略的文件。
 - --sparse
 
-  允许更新超出 sparse-checkout 范围的索引条目。通常，`git add` 拒绝更新不符合 sparse-checkout 范围的索引条目，因为这些文件可能在工作树中被删除而没有警告。有关更多详细信息，请参阅 [git-sparse-checkout[1\]](https://chat.openai.com/git-sparse-checkout)。
+  允许更新超出 sparse-checkout 范围的索引条目。通常，`git add` 拒绝更新不符合 sparse-checkout 范围的索引条目，因为这些文件可能在工作树中被删除而没有警告。有关更多详细信息，请参阅 [git-sparse-checkout[1]](../git-sparse-checkout)。
 - -i
 - --interactive
 
@@ -114,7 +114,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
   覆盖已添加文件的可执行位。可执行位仅在索引中更改，磁盘上的文件保持不变。
 - --pathspec-from-file=`<file>`
 
-  将 pathspec 传递给 `<file>` 而不是命令行参数。如果 `<file>` 恰好是 `-`，则使用标准输入。pathspec 元素由 LF 或 CR/LF 分隔。pathspec 元素可以引用配置变量 `core.quotePath` 中解释的方式进行引用（参见 [git-config[1\]](https://chat.openai.com/git-config)）。另请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
+  将 pathspec 传递给 `<file>` 而不是命令行参数。如果 `<file>` 恰好是 `-`，则使用标准输入。pathspec 元素由 LF 或 CR/LF 分隔。pathspec 元素可以引用配置变量 `core.quotePath` 中解释的方式进行引用（参见 [git-config[1]](../git-config)）。另请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 - --pathspec-file-nul
 
   仅与 `--pathspec-from-file` 一起使用时才有意义。pathspec 元素以 NUL 字符分隔，所有其他字符都被视为字面值（包括换行符和引号）。
@@ -252,15 +252,15 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 
 ## 配置
 
-​	以下部分中的所有内容均来自 [git-config[1\]](https://chat.openai.com/git-config) 文档的选择性包含。其内容与那里找到的内容相同：
+​	以下部分中的所有内容均来自 [git-config[1]](../git-config) 文档的选择性包含。其内容与那里找到的内容相同：
 
 - add.ignoreErrors
 - add.ignore-errors（已弃用）
 
-  告诉 *git add* 在由于索引错误而无法添加某些文件时继续添加文件。相当于 [git-add[1\]](https://chat.openai.com/git-add) 的 `--ignore-errors` 选项。`add.ignore-errors` 已弃用，因为它不符合常规的配置变量命名约定。
+  告诉 *git add* 在由于索引错误而无法添加某些文件时继续添加文件。相当于 [git-add[1]](../git-add) 的 `--ignore-errors` 选项。`add.ignore-errors` 已弃用，因为它不符合常规的配置变量命名约定。
 - add.interactive.useBuiltin
 
-  未使用的配置变量。在 Git 版本 v2.25.0 到 v2.36.0 中用于启用 [git-add[1\]](https://chat.openai.com/git-add) 的内置交互模式，然后在 Git 版本 v2.37.0 到 v2.39.0 中成为默认设置。
+  未使用的配置变量。在 Git 版本 v2.25.0 到 v2.36.0 中用于启用 [git-add[1]](../git-add) 的内置交互模式，然后在 Git 版本 v2.37.0 到 v2.39.0 中成为默认设置。
 
 ## 另请参阅
 

@@ -34,15 +34,15 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 ## 描述
 
-​	创建一个新的提交，包含当前索引（即暂存区）的内容以及给定的日志消息，用于描述这些更改。新的提交是 HEAD 的直接子提交，通常是当前分支的最新提交点，并且分支会更新为指向该提交（除非工作树没有关联的分支，此时 HEAD 将会“分离”，如 [git-checkout[1\]](https://chat.openai.com/git-checkout) 中所述）。
+​	创建一个新的提交，包含当前索引（即暂存区）的内容以及给定的日志消息，用于描述这些更改。新的提交是 HEAD 的直接子提交，通常是当前分支的最新提交点，并且分支会更新为指向该提交（除非工作树没有关联的分支，此时 HEAD 将会“分离”，如 [git-checkout[1]](../git-checkout) 中所述）。
 
 ​	要提交的内容可以通过多种方式指定：
 
-1. 使用 [git-add[1\]](https://chat.openai.com/git-add) 逐步地在使用 *commit* 命令之前“添加”更改到索引中（注意：即使修改文件也必须“添加”）；
-2. 使用 [git-rm[1\]](https://chat.openai.com/git-rm) 在使用 *commit* 命令之前从工作树和索引中移除文件；
+1. 使用 [git-add[1]](../git-add) 逐步地在使用 *commit* 命令之前“添加”更改到索引中（注意：即使修改文件也必须“添加”）；
+2. 使用 [git-rm[1]](../git-rm) 在使用 *commit* 命令之前从工作树和索引中移除文件；
 3. 将文件列为 *commit* 命令的参数（不带 --interactive 或 --patch 开关），在这种情况下，提交将忽略索引中暂存的更改，并记录列出文件的当前内容（这些文件必须已经被 Git 知道）；
 4. 使用 *commit* 命令的 -a 开关，自动地“添加”所有已知文件的更改（即索引中已经列出的所有文件），并自动地“删除”索引中已从工作树中删除的文件，然后执行实际的提交；
-5. 使用 *commit* 命令的 --interactive 或 --patch 开关，逐个决定哪些文件或文件块应该作为提交的一部分，除了索引中的内容，然后完成操作。有关如何操作这些模式，请参阅 [git-add[1\]](https://chat.openai.com/git-add) 中的“交互模式”部分。
+5. 使用 *commit* 命令的 --interactive 或 --patch 开关，逐个决定哪些文件或文件块应该作为提交的一部分，除了索引中的内容，然后完成操作。有关如何操作这些模式，请参阅 [git-add[1]](../git-add) 中的“交互模式”部分。
 
 ​	`--dry-run` 选项可以用于通过使用相同的一组参数（选项和路径）获得下一次提交要包含的内容的摘要。
 
@@ -60,7 +60,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --patch
 
-  使用交互式补丁选择界面来选择要提交的更改。有关详情，请参阅 [git-add[1\]](https://chat.openai.com/git-add)。
+  使用交互式补丁选择界面来选择要提交的更改。有关详情，请参阅 [git-add[1]](../git-add)。
 
 - -C <commit>
 
@@ -84,11 +84,11 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
   `--fixup=reword:<commit>` 是 `--fixup=amend:<commit> --only` 的简写形式。它创建一个 "amend!" 提交，只有日志消息（忽略索引中的任何更改）。当通过 `git rebase --autosquash` 进行合并时，它将替换 `<commit>` 的日志消息，而不会做其他更改。
 
-  当通过 `git rebase --autosquash` 应用时，“fixup!” 和 “amend!” 提交不会更改 `<commit>` 的作者信息。有关详情，请参阅 [git-rebase[1\]](https://chat.openai.com/git-rebase)。
+  当通过 `git rebase --autosquash` 应用时，“fixup!” 和 “amend!” 提交不会更改 `<commit>` 的作者信息。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
 - --squash=<commit>
 
-  为 `rebase --autosquash` 构造提交消息。提交消息的主题行来自指定的提交，并带有 "squash! " 前缀。可以与其他提交消息选项 (`-m`/`-c`/`-C`/`-F`) 一起使用。有关详情，请参阅 [git-rebase[1\]](https://chat.openai.com/git-rebase)。
+  为 `rebase --autosquash` 构造提交消息。提交消息的主题行来自指定的提交，并带有 "squash! " 前缀。可以与其他提交消息选项 (`-m`/`-c`/`-C`/`-F`) 一起使用。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
 - --reset-author
 
@@ -96,7 +96,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --short
 
-  在进行干运行时，以简短格式输出。有关详情，请参阅 [git-status[1\]](https://chat.openai.com/git-status)。隐含了 `--dry-run`。
+  在进行干运行时，以简短格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
 - --branch
 
@@ -104,7 +104,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --porcelain
 
-  在进行干运行时，以瓷器格式输出。有关详情，请参阅 [git-status[1\]](https://chat.openai.com/git-status)。隐含了 `--dry-run`。
+  在进行干运行时，以瓷器格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
 - --long
 
@@ -114,7 +114,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --null
 
-  在显示 `short` 或 `porcelain` 状态输出时，直接打印文件名，并以 NUL 终止条目，而不是 LF。如果没有给定格式，则隐含了 `--porcelain` 输出格式。如果没有使用 `-z` 选项，则对于包含 "非常规" 字符的文件名，将对其进行引用，如配置变量 `core.quotePath`（参见 [git-config[1\]](https://chat.openai.com/git-config)）中所解释的。
+  在显示 `short` 或 `porcelain` 状态输出时，直接打印文件名，并以 NUL 终止条目，而不是 LF。如果没有给定格式，则隐含了 `--porcelain` 输出格式。如果没有使用 `-z` 选项，则对于包含 "非常规" 字符的文件名，将对其进行引用，如配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的。
 
 - -F <file>
 
@@ -152,13 +152,13 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --trailer <token>[(=|:)<value>]
 
-  指定应作为尾注应用的（<token>，<value>）对。 （例如，`git commit --trailer "Signed-off-by:C O Mitter \ <committer@example.com>" --trailer "Helped-by:C O Mitter \ <committer@example.com>"` 将向提交消息添加 "Signed-off-by" 尾注和 "Helped-by" 尾注）。 `trailer.*` 配置变量（参见 [git-interpret-trailers[1\]](https://chat.openai.com/git-interpret-trailers)）可用于定义是否省略重复的尾注，每个尾注在尾注运行中出现的位置，以及其他详细信息。
+  指定应作为尾注应用的（<token>，<value>）对。 （例如，`git commit --trailer "Signed-off-by:C O Mitter \ <committer@example.com>" --trailer "Helped-by:C O Mitter \ <committer@example.com>"` 将向提交消息添加 "Signed-off-by" 尾注和 "Helped-by" 尾注）。 `trailer.*` 配置变量（参见 [git-interpret-trailers[1]](../git-interpret-trailers)）可用于定义是否省略重复的尾注，每个尾注在尾注运行中出现的位置，以及其他详细信息。
 
 - -n
 
 - --[no-]verify
 
-  默认情况下，会运行预提交和提交消息挂钩。给出 `--no-verify` 或 `-n` 中的任何选项时，这些挂钩将被绕过。另请参阅 [githooks[5\]](https://chat.openai.com/5/githooks)。
+  默认情况下，会运行预提交和提交消息挂钩。给出 `--no-verify` 或 `-n` 中的任何选项时，这些挂钩将被绕过。另请参阅 [githooks[5]](../5/githooks)。
 
 - --allow-empty
 
@@ -166,7 +166,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --allow-empty-message
 
-  与 --allow-empty 一样，此命令主要供外部 SCM 接口脚本使用。它允许您创建一个没有使用像 [git-commit-tree[1\]](https://chat.openai.com/git-commit-tree) 等工具的空提交消息的提交。
+  与 --allow-empty 一样，此命令主要供外部 SCM 接口脚本使用。它允许您创建一个没有使用像 [git-commit-tree[1]](../git-commit-tree) 等工具的空提交消息的提交。
 
 - --cleanup=<mode>
 
@@ -198,7 +198,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
     如果消息要进行编辑，则与 `strip` 相同。否则与 `whitespace` 相同。
 
-  默认值可以通过 `commit.cleanup` 配置变量更改（参见 [git-config[1\]](https://chat.openai.com/git-config)）。
+  默认值可以通过 `commit.cleanup` 配置变量更改（参见 [git-config[1]](../git-config)）。
 
 - -e
 
@@ -220,7 +220,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
   $ git commit -c ORIG_HEAD
   ```
 
-  但是可以用于修改合并提交。如果修改已经发布的提交，请理解重写历史的影响（参见 [git-rebase[1\]](https://chat.openai.com/git-rebase) 中的 "RECOVERING FROM UPSTREAM REBASE" 部分）。
+  但是可以用于修改合并提交。如果修改已经发布的提交，请理解重写历史的影响（参见 [git-rebase[1]](../git-rebase) 中的 "RECOVERING FROM UPSTREAM REBASE" 部分）。
 
 - --no-post-rewrite
 
@@ -240,7 +240,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --pathspec-from-file=<file>
 
-  将路径规范传递给 `<file>`，而不是命令行参数。如果 `<file>` 正好是 `-`，则使用标准输入。路径规范元素由 LF 或 CR/LF 分隔。路径规范元素可以像配置变量 `core.quotePath`（参见 [git-config[1\]](https://chat.openai.com/git-config)）中所解释的那样进行引用。还请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
+  将路径规范传递给 `<file>`，而不是命令行参数。如果 `<file>` 正好是 `-`，则使用标准输入。路径规范元素由 LF 或 CR/LF 分隔。路径规范元素可以像配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的那样进行引用。还请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 
 - --pathspec-file-nul
 
@@ -260,13 +260,13 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
   - `normal` - 显示未跟踪的文件和目录
   - `all` - 还显示未跟踪目录中的各个文件。
 
-  默认值可以通过 status.showUntrackedFiles 配置变量（参见 [git-config[1\]](https://chat.openai.com/git-config)）进行更改。
+  默认值可以通过 status.showUntrackedFiles 配置变量（参见 [git-config[1]](../git-config)）进行更改。
 
 - -v
 
 - --verbose
 
-  在提交消息模板底部显示 HEAD 提交与将要提交的内容之间的统一差异，以帮助用户描述提交，提醒提交所做的更改。请注意，此差异输出不会在每行前面添加 *#* 字符。此差异不会成为提交消息的一部分。有关详细信息，请参阅 [git-config[1\]](https://chat.openai.com/git-config) 中的 commit.verbose 配置变量。如果指定两次，还会显示将要提交的内容与工作树文件之间的统一差异，即已跟踪文件的未暂存更改。
+  在提交消息模板底部显示 HEAD 提交与将要提交的内容之间的统一差异，以帮助用户描述提交，提醒提交所做的更改。请注意，此差异输出不会在每行前面添加 *#* 字符。此差异不会成为提交消息的一部分。有关详细信息，请参阅 [git-config[1]](../git-config) 中的 commit.verbose 配置变量。如果指定两次，还会显示将要提交的内容与工作树文件之间的统一差异，即已跟踪文件的未暂存更改。
 
 - -q
 
@@ -280,11 +280,11 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - --status
 
-  在使用编辑器准备提交消息时，将 [git-status[1\]](https://chat.openai.com/git-status) 的输出包含在提交消息模板中。默认为开启，但可以用于覆盖配置变量 commit.status。
+  在使用编辑器准备提交消息时，将 [git-status[1]](../git-status) 的输出包含在提交消息模板中。默认为开启，但可以用于覆盖配置变量 commit.status。
 
 - --no-status
 
-  在使用编辑器准备默认提交消息时，不包含 [git-status[1\]](https://chat.openai.com/git-status) 的输出。
+  在使用编辑器准备默认提交消息时，不包含 [git-status[1]](../git-status) 的输出。
 
 - `-S[<keyid>]`
 
@@ -300,7 +300,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - `<pathspec>…`
 
-  当在命令行上给出路径规范时，提交匹配路径规范的文件内容，而不记录已添加到索引中的更改。这些文件的内容也将在已暂存的内容之上为下一次提交暂存。有关详细信息，请参阅 [gitglossary[7\]](https://chat.openai.com/7/gitglossary) 中的 *pathspec* 条目。
+  当在命令行上给出路径规范时，提交匹配路径规范的文件内容，而不记录已添加到索引中的更改。这些文件的内容也将在已暂存的内容之上为下一次提交暂存。有关详细信息，请参阅 [gitglossary[7]](../7/gitglossary) 中的 *pathspec* 条目。
 
 ## 示例
 
@@ -372,7 +372,7 @@ GIT_COMMITTER_DATE
 
 （nb "<"、">" 和 "\n" 被删除）
 
-​	作者和提交者的名称通常是某种形式的个人名称（即其他人用来称呼您的名称），尽管 Git 不强制或要求任何特定的形式。可以使用任意 Unicode，但要遵守上述约束。该名称对身份验证没有影响；有关此问题，请参见 [git-config[1\]](https://chat.openai.com/git-config) 中的 `credential.username` 变量。
+​	作者和提交者的名称通常是某种形式的个人名称（即其他人用来称呼您的名称），尽管 Git 不强制或要求任何特定的形式。可以使用任意 Unicode，但要遵守上述约束。该名称对身份验证没有影响；有关此问题，请参见 [git-config[1]](../git-config) 中的 `credential.username` 变量。
 
 ​	如果（其中一些）这些环境变量没有设置，信息将取自配置项 `user.name` 和 `user.email`，或者如果没有设置，则使用环境变量 EMAIL，或者如果未设置该变量，则使用系统用户名和用于传出邮件的主机名（从 `/etc/mailname` 获取，并在该文件不存在时回退到完全限定的主机名）。
 
@@ -402,7 +402,7 @@ GIT_COMMITTER_DATE
 
 ## 讨论
 
-​	虽然不是必需的，但最好以一个单独的简短（少于 50 个字符）的行开始提交消息，概述更改内容，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并在 Git 中使用此标题。例如，[git-format-patch[1\]](https://chat.openai.com/git-format-patch) 将提交转换为电子邮件时，将使用标题作为主题行，将提交的其余部分作为正文。
+​	虽然不是必需的，但最好以一个单独的简短（少于 50 个字符）的行开始提交消息，概述更改内容，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并在 Git 中使用此标题。例如，[git-format-patch[1]](../git-format-patch) 将提交转换为电子邮件时，将使用标题作为主题行，将提交的其余部分作为正文。
 
 Git is to some extent character encoding agnostic.
 
@@ -410,7 +410,7 @@ Git is to some extent character encoding agnostic.
 
 - 对象 blob 的内容是未经解释的字节序列。在核心级别没有编码转换。
 
-- 路径名以 UTF-8 归一化形式 C 进行编码。这适用于树对象、索引文件、引用名称以及命令行参数、环境变量和配置文件（`.git/config`，参见 [git-config[1\]](https://chat.openai.com/git-config)，[gitignore[5\]](https://chat.openai.com/5/gitignore)，[gitattributes[5\]](https://chat.openai.com/5/gitattributes) 和 [gitmodules[5\]](https://chat.openai.com/5/gitmodules)）中的路径名。
+- 路径名以 UTF-8 归一化形式 C 进行编码。这适用于树对象、索引文件、引用名称以及命令行参数、环境变量和配置文件（`.git/config`，参见 [git-config[1]](../git-config)，[gitignore[5]](../5/gitignore)，[gitattributes[5]](../5/gitattributes) 和 [gitmodules[5]](../5/gitmodules)）中的路径名。
 
   请注意，Git 在核心级别将路径名简单地视为非 NUL 字节的序列，没有路径名编码转换（在 Mac 和 Windows 上除外）。因此，即使在使用遗留扩展 ASCII 编码的平台和文件系统上使用非 ASCII 路径名也基本上能正常工作。然而，在这些系统上创建的存储库将在基于 UTF-8 的系统上（如 Linux、Mac、Windows）和反之亦然上无法正常工作。此外，许多基于 Git 的工具简单地假设路径名是 UTF-8 编码，并且不能正确显示其他编码。
 
@@ -442,13 +442,13 @@ Git is to some extent character encoding agnostic.
 
 ## 环境变量和配置变量
 
-​	用于编辑提交日志消息的编辑器将按以下顺序选择：`GIT_EDITOR` 环境变量、core.editor 配置变量、`VISUAL` 环境变量或 `EDITOR` 环境变量。有关详细信息，请参见 [git-var[1\]](https://chat.openai.com/git-var)。
+​	用于编辑提交日志消息的编辑器将按以下顺序选择：`GIT_EDITOR` 环境变量、core.editor 配置变量、`VISUAL` 环境变量或 `EDITOR` 环境变量。有关详细信息，请参见 [git-var[1]](../git-var)。
 
-​	在本节的此行上方的所有内容不包括在 [git-config[1\]](https://chat.openai.com/git-config) 文档中。接下来的内容与该文档中的内容相同：
+​	在本节的此行上方的所有内容不包括在 [git-config[1]](../git-config) 文档中。接下来的内容与该文档中的内容相同：
 
 - commit.cleanup
 
-  此设置覆盖 `git commit` 的 `--cleanup` 选项的默认值。有关详细信息，请参见 [git-commit[1\]](https://chat.openai.com/git-commit)。更改默认值在您始终希望保留提交日志消息中以 `#` 字符开头的行时很有用，如果是这样，您可以执行 `git config commit.cleanup whitespace`（请注意，如果您这样做，您将需要自行删除提交日志模板中以 `#` 开头的帮助行）。
+  此设置覆盖 `git commit` 的 `--cleanup` 选项的默认值。有关详细信息，请参见 [git-commit[1]](../git-commit)。更改默认值在您始终希望保留提交日志消息中以 `#` 字符开头的行时很有用，如果是这样，您可以执行 `git config commit.cleanup whitespace`（请注意，如果您这样做，您将需要自行删除提交日志模板中以 `#` 开头的帮助行）。
 
 - commit.gpgSign
 
@@ -464,11 +464,11 @@ Git is to some extent character encoding agnostic.
 
 - commit.verbose
 
-  一个布尔值或整数，用于指定 `git commit` 的详细级别。请参阅 [git-commit[1\]](https://chat.openai.com/git-commit)。
+  一个布尔值或整数，用于指定 `git commit` 的详细级别。请参阅 [git-commit[1]](../git-commit)。
 
 ## 钩子
 
-​	此命令可以运行 `commit-msg`、`prepare-commit-msg`、`pre-commit`、`post-commit` 和 `post-rewrite` 钩子。有关更多信息，请参见 [githooks[5\]](https://chat.openai.com/5/githooks)。
+​	此命令可以运行 `commit-msg`、`prepare-commit-msg`、`pre-commit`、`post-commit` 和 `post-rewrite` 钩子。有关更多信息，请参见 [githooks[5]](../5/githooks)。
 
 ## 文件
 

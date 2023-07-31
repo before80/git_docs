@@ -55,7 +55,7 @@ The `git add` command will not add ignored files by default. If any ignored file
 
 Please see [git-commit[1]](../git-commit) for alternative ways to add content to a commit.
 
-​	有关将内容添加到提交的其他方式，请参阅 [git-commit[1\]](https://chat.openai.com/git-commit)。
+​	有关将内容添加到提交的其他方式，请参阅 [git-commit[1]](../git-commit)。
 
 ## 选项
 
@@ -63,7 +63,7 @@ Please see [git-commit[1]](../git-commit) for alternative ways to add content to
 
   Files to add content from. Fileglobs (e.g. `*.c`) can be given to add all matching files. Also a leading directory name (e.g. `dir` to add `dir/file1` and `dir/file2`) can be given to update the index to match the current state of the directory as a whole (e.g. specifying `dir` will record not just a file `dir/file1` modified in the working tree, a file `dir/file2` added to the working tree, but also a file `dir/file3` removed from the working tree). Note that older versions of Git used to ignore removed files; use `--no-all` option if you want to add modified or new files but ignore removed ones.For more details about the `<pathspec>` syntax, see the *pathspec* entry in [gitglossary[7]](../../7/gitglossary).
   
-  要添加内容的文件。可以使用文件通配符（例如 `*.c`）来添加所有匹配的文件。也可以给出前导目录名（例如 `dir`，以更新索引以与整个目录的当前状态相匹配）。例如，指定 `dir` 将记录不仅在工作树中修改的文件 `dir/file1`，在工作树中添加的文件 `dir/file2`，还会从工作树中删除的文件 `dir/file3`。注意，旧版本的 Git 会忽略已删除的文件；如果您想添加已修改或新建的文件但忽略已删除的文件，请使用 `--no-all` 选项。有关 `<pathspec>` 语法的更多详细信息，请参阅 [gitglossary[7\]](https://chat.openai.com/7/gitglossary) 中的“pathspec”条目。
+  要添加内容的文件。可以使用文件通配符（例如 `*.c`）来添加所有匹配的文件。也可以给出前导目录名（例如 `dir`，以更新索引以与整个目录的当前状态相匹配）。例如，指定 `dir` 将记录不仅在工作树中修改的文件 `dir/file1`，在工作树中添加的文件 `dir/file2`，还会从工作树中删除的文件 `dir/file3`。注意，旧版本的 Git 会忽略已删除的文件；如果您想添加已修改或新建的文件但忽略已删除的文件，请使用 `--no-all` 选项。有关 `<pathspec>` 语法的更多详细信息，请参阅 [gitglossary[7]](../7/gitglossary) 中的“pathspec”条目。
 - -n
 - --dry-run
 
@@ -86,7 +86,7 @@ Please see [git-commit[1]](../git-commit) for alternative ways to add content to
 
   Allow updating index entries outside of the sparse-checkout cone. Normally, `git add` refuses to update index entries whose paths do not fit within the sparse-checkout cone, since those files might be removed from the working tree without warning. See [git-sparse-checkout[1]](../git-sparse-checkout) for more details.
   
-  允许更新超出 sparse-checkout 范围的索引条目。通常，`git add` 拒绝更新不符合 sparse-checkout 范围的索引条目，因为这些文件可能在工作树中被删除而没有警告。有关更多详细信息，请参阅 [git-sparse-checkout[1\]](https://chat.openai.com/git-sparse-checkout)。
+  允许更新超出 sparse-checkout 范围的索引条目。通常，`git add` 拒绝更新不符合 sparse-checkout 范围的索引条目，因为这些文件可能在工作树中被删除而没有警告。有关更多详细信息，请参阅 [git-sparse-checkout[1]](../git-sparse-checkout)。
 - -i
 - --interactive
 
@@ -164,7 +164,7 @@ Please see [git-commit[1]](../git-commit) for alternative ways to add content to
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
   
-  将 pathspec 传递给 `<file>` 而不是命令行参数。如果 `<file>` 恰好是 `-`，则使用标准输入。pathspec 元素由 LF 或 CR/LF 分隔。pathspec 元素可以引用配置变量 `core.quotePath` 中解释的方式进行引用（参见 [git-config[1\]](https://chat.openai.com/git-config)）。另请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
+  将 pathspec 传递给 `<file>` 而不是命令行参数。如果 `<file>` 恰好是 `-`，则使用标准输入。pathspec 元素由 LF 或 CR/LF 分隔。pathspec 元素可以引用配置变量 `core.quotePath` 中解释的方式进行引用（参见 [git-config[1]](../git-config)）。另请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 - --pathspec-file-nul
 
   Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
@@ -382,7 +382,7 @@ There are also several operations which should be avoided entirely, as they will
 
 Everything below this line in this section is selectively included from the [git-config[1]](../git-config) documentation. The content is the same as what’s found there:
 
-​	以下部分中的所有内容均来自 [git-config[1\]](https://chat.openai.com/git-config) 文档的选择性包含。其内容与那里找到的内容相同：
+​	以下部分中的所有内容均来自 [git-config[1]](../git-config) 文档的选择性包含。其内容与那里找到的内容相同：
 
 - add.ignoreErrors
 - add.ignore-errors (deprecated)
@@ -390,12 +390,12 @@ Everything below this line in this section is selectively included from the [git
 
   Tells *git add* to continue adding files when some files cannot be added due to indexing errors. Equivalent to the `--ignore-errors` option of [git-add[1]](../git-add). `add.ignore-errors` is deprecated, as it does not follow the usual naming convention for configuration variables.
   
-  告诉 *git add* 在由于索引错误而无法添加某些文件时继续添加文件。相当于 [git-add[1\]](https://chat.openai.com/git-add) 的 `--ignore-errors` 选项。`add.ignore-errors` 已弃用，因为它不符合常规的配置变量命名约定。
+  告诉 *git add* 在由于索引错误而无法添加某些文件时继续添加文件。相当于 [git-add[1]](../git-add) 的 `--ignore-errors` 选项。`add.ignore-errors` 已弃用，因为它不符合常规的配置变量命名约定。
 - add.interactive.useBuiltin
 
   Unused configuration variable. Used in Git versions v2.25.0 to v2.36.0 to enable the built-in version of [git-add[1]](../git-add)'s interactive mode, which then became the default in Git versions v2.37.0 to v2.39.0.
   
-  未使用的配置变量。在 Git 版本 v2.25.0 到 v2.36.0 中用于启用 [git-add[1\]](https://chat.openai.com/git-add) 的内置交互模式，然后在 Git 版本 v2.37.0 到 v2.39.0 中成为默认设置。
+  未使用的配置变量。在 Git 版本 v2.25.0 到 v2.36.0 中用于启用 [git-add[1]](../git-add) 的内置交互模式，然后在 Git 版本 v2.37.0 到 v2.39.0 中成为默认设置。
 
 ## 另请参阅
 

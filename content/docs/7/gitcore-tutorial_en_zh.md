@@ -33,7 +33,7 @@ This tutorial explains how to use the "core" Git commands to set up and work wit
 
 If you just need to use Git as a revision control system you may prefer to start with "A Tutorial Introduction to Git" ([gittutorial[7]](../gittutorial)) or [the Git User Manual](https://git-scm.com/docs/user-manual).
 
-​	如果您只需要使用Git作为版本控制系统，您可能更喜欢从"A Tutorial Introduction to Git" ([gittutorial[7]](https://chat.openai.com/gittutorial))或[Git用户手册](https://git-scm.com/docs/user-manual)开始。
+​	如果您只需要使用Git作为版本控制系统，您可能更喜欢从"A Tutorial Introduction to Git" ([gittutorial[7]](../gittutorial))或[Git用户手册](https://git-scm.com/docs/user-manual)开始。
 
 However, an understanding of these low-level tools can be helpful if you want to understand Git’s internals.
 
@@ -108,7 +108,7 @@ However, this is only a convention, and you can name your branches anything you 
 
 | Note | An advanced user may want to take a look at [gitrepository-layout[5]](../../5/gitrepository-layout) after finishing this tutorial. |
 | ---- | ------------------------------------------------------------ |
-| 注意 | 在完成本教程后，高级用户可能希望查看[gitrepository-layout[5]](https://chat.openai.com/5/gitrepository-layout)。 |
+| 注意 | 在完成本教程后，高级用户可能希望查看[gitrepository-layout[5]](../5/gitrepository-layout)。 |
 
 You have now created your first Git repository. Of course, since it’s empty, that’s not very useful, so let’s start populating it with data.
 
@@ -837,7 +837,7 @@ $ git show-branch --topo-order --more=1 master mybranch
 
 The first two lines indicate that it is showing the two branches with the titles of their top-of-the-tree commits, you are currently on `master` branch (notice the asterisk `*` character), and the first column for the later output lines is used to show commits contained in the `master` branch, and the second column for the `mybranch` branch. Three commits are shown along with their titles. All of them have non blank characters in the first column (`*` shows an ordinary commit on the current branch, `-` is a merge commit), which means they are now part of the `master` branch. Only the "Some work" commit has the plus `+` character in the second column, because `mybranch` has not been merged to incorporate these commits from the master branch. The string inside brackets before the commit log message is a short name you can use to name the commit. In the above example, *master* and *mybranch* are branch heads. *master^* is the first parent of *master* branch head. Please see [gitrevisions[7]](../gitrevisions) if you want to see more complex cases.
 
-​	前两行表示它显示两个分支以及它们的顶部提交的标题，你当前在 `master` 分支上（注意星号 `*` 字符），稍后的输出行的第一列用于显示包含在 `master` 分支中的提交，第二列用于 `mybranch` 分支。显示了三个提交以及它们的标题。所有这些提交在第一列都有非空字符（`*` 表示当前分支上的普通提交，`-` 是合并提交），这意味着它们现在是 `master` 分支的一部分。只有 "Some work" 提交在第二列中带有加号 `+` 字符，因为 `mybranch` 尚未合并以将这些提交从主分支中并入。括号内的字符串是你可以用来命名提交的短名称。在上面的示例中，*master* 和 *mybranch* 是分支的头部。`master^` 是 *master* 分支头部的第一个父提交。如果你想看到更复杂的情况，请参阅 [gitrevisions[7]](https://chat.openai.com/gitrevisions)。
+​	前两行表示它显示两个分支以及它们的顶部提交的标题，你当前在 `master` 分支上（注意星号 `*` 字符），稍后的输出行的第一列用于显示包含在 `master` 分支中的提交，第二列用于 `mybranch` 分支。显示了三个提交以及它们的标题。所有这些提交在第一列都有非空字符（`*` 表示当前分支上的普通提交，`-` 是合并提交），这意味着它们现在是 `master` 分支的一部分。只有 "Some work" 提交在第二列中带有加号 `+` 字符，因为 `mybranch` 尚未合并以将这些提交从主分支中并入。括号内的字符串是你可以用来命名提交的短名称。在上面的示例中，*master* 和 *mybranch* 是分支的头部。`master^` 是 *master* 分支头部的第一个父提交。如果你想看到更复杂的情况，请参阅 [gitrevisions[7]](../gitrevisions)。
 
 > Note
 >
@@ -845,7 +845,7 @@ The first two lines indicate that it is showing the two branches with the titles
 >
 > 注意
 >
-> ​	如果没有使用 *--more=1* 选项，*git show-branch* 将不会输出 *[master^]* 提交，因为 *[mybranch]* 提交是 *master* 和 *mybranch* 两个分支末端的共同祖先。详情请参见 [git-show-branch[1]](https://chat.openai.com/1/git-show-branch)。
+> ​	如果没有使用 *--more=1* 选项，*git show-branch* 将不会输出 *[master^]* 提交，因为 *[mybranch]* 提交是 *master* 和 *mybranch* 两个分支末端的共同祖先。详情请参见 [git-show-branch[1]](../1/git-show-branch)。
 
 > Note
 >
@@ -1343,7 +1343,7 @@ If you are coming from a CVS background, the style of cooperation suggested in t
 
 See [gitcvs-migration[7]](../gitcvs-migration) for the details.
 
-​	详情请查看 [gitcvs-migration[7]](https://chat.openai.com/gitcvs-migration)。
+​	详情请查看 [gitcvs-migration[7]](../gitcvs-migration)。
 
 ## 将你的工作打包在一起
 

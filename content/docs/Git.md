@@ -31,9 +31,9 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 ​	Git是一个快速、可扩展、分布式的版本控制系统，具有异常丰富的命令集，提供高级操作和完全访问内部的能力。
 
-​	查看[gittutorial[7]](https://chat.openai.com/7/gittutorial)来开始使用，然后查看[giteveryday[7]](https://chat.openai.com/7/giteveryday)获取一个有用的最小命令集。[Git用户手册](https://git-scm.com/docs/user-manual)提供了更详细的介绍。
+​	查看[gittutorial[7]](../7/gittutorial)来开始使用，然后查看[giteveryday[7]](../7/giteveryday)获取一个有用的最小命令集。[Git用户手册](https://git-scm.com/docs/user-manual)提供了更详细的介绍。
 
-​	在掌握了基本概念后，您可以回到这个页面了解Git提供了哪些命令。您可以使用 "git help command" 命令了解有关单个Git命令的更多信息。[gitcli[7]](https://chat.openai.com/7/gitcli) 手册页面提供了有关命令行命令语法的概述。
+​	在掌握了基本概念后，您可以回到这个页面了解Git提供了哪些命令。您可以使用 "git help command" 命令了解有关单个Git命令的更多信息。[gitcli[7]](../7/gitcli) 手册页面提供了有关命令行命令语法的概述。
 
 ​	最新的Git文档格式化并带有超链接，可在https://git.github.io/htmldocs/git.html或https://git-scm.com/docs上查看。
 
@@ -43,13 +43,13 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 - --version
 
-  打印 *git* 程序所属的Git套件版本。此选项在内部转换为 `git version ...`，并接受与 [git-version[1]](https://chat.openai.com/1/git-version) 命令相同的选项。如果同时给出 `--help`，则 `--version` 会优先于 `--help`。
+  打印 *git* 程序所属的Git套件版本。此选项在内部转换为 `git version ...`，并接受与 [git-version[1]](../1/git-version) 命令相同的选项。如果同时给出 `--help`，则 `--version` 会优先于 `--help`。
 
 - -h
 
 - --help
 
-  打印简介和最常用的命令列表。如果给出了选项 `--all` 或 `-a`，则打印所有可用的命令。如果命名了一个Git命令，此选项将显示该命令的手册页。其他选项可用于控制手册页的显示方式。有关更多信息，请参阅 [git-help[1]](https://chat.openai.com/1/git-help)，因为 `git --help ...` 在内部转换为 `git help ...`。
+  打印简介和最常用的命令列表。如果给出了选项 `--all` 或 `-a`，则打印所有可用的命令。如果命名了一个Git命令，此选项将显示该命令的手册页。其他选项可用于控制手册页的显示方式。有关更多信息，请参阅 [git-help[1]](../1/git-help)，因为 `git --help ...` 在内部转换为 `git help ...`。
 
 - -C <path>
 
@@ -99,11 +99,11 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 - --work-tree=<path>
 
-  设置工作树的路径。它可以是绝对路径或相对于当前工作目录的路径。这也可以通过设置GIT_WORK_TREE环境变量和core.worktree配置变量来控制（有关更详细的讨论，请参阅[git-config[1]](https://chat.openai.com/1/git-config)中的core.worktree）。
+  设置工作树的路径。它可以是绝对路径或相对于当前工作目录的路径。这也可以通过设置GIT_WORK_TREE环境变量和core.worktree配置变量来控制（有关更详细的讨论，请参阅[git-config[1]](../1/git-config)中的core.worktree）。
 
 - --namespace=<path>
 
-  设置Git命名空间。有关更多详细信息，请参阅[gitnamespaces[7]](https://chat.openai.com/7/gitnamespaces)。等同于设置 `GIT_NAMESPACE` 环境变量。
+  设置Git命名空间。有关更多详细信息，请参阅[gitnamespaces[7]](../7/gitnamespaces)。等同于设置 `GIT_NAMESPACE` 环境变量。
 
 - --bare
 
@@ -111,7 +111,7 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 - --no-replace-objects
 
-  不使用替代引用来替换Git对象。有关更多信息，请参阅[git-replace[1]](https://chat.openai.com/1/git-replace)。
+  不使用替代引用来替换Git对象。有关更多信息，请参阅[git-replace[1]](../1/git-replace)。
 
 - --literal-pathspecs
 
@@ -139,7 +139,7 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 - --attr-source=<tree-ish>
 
-  从 *<tree-ish>* 中读取gitattributes，而不是工作树。有关详细信息，请参阅[gitattributes[5]](https://chat.openai.com/5/gitattributes)。这等同于设置 `GIT_ATTR_SOURCE` 环境变量。
+  从 *<tree-ish>* 中读取gitattributes，而不是工作树。有关详细信息，请参阅[gitattributes[5]](../5/gitattributes)。这等同于设置 `GIT_ATTR_SOURCE` 环境变量。
 
 ## Git命令
 
@@ -493,18 +493,18 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 ​	有三个命令具有相似的名称：`git reset`、`git restore`和`git revert`。
 
-- [git-revert[1]](https://chat.openai.com/1/git-revert) 用于创建一个新的提交，撤消其他提交所做的更改。
+- [git-revert[1]](../1/git-revert) 用于创建一个新的提交，撤消其他提交所做的更改。
 
-- [git-restore[1]](https://chat.openai.com/1/git-restore) 用于从索引或另一个提交中恢复工作树中的文件。该命令不会更新您的分支。此命令还可用于从其他提交中恢复索引中的文件。
+- [git-restore[1]](../1/git-restore) 用于从索引或另一个提交中恢复工作树中的文件。该命令不会更新您的分支。此命令还可用于从其他提交中恢复索引中的文件。
 
-- [git-reset[1]](https://chat.openai.com/1/git-reset) 用于更新您的分支，移动分支头以添加或删除分支上的提交。此操作会更改提交历史记录。
+- [git-reset[1]](../1/git-reset) 用于更新您的分支，移动分支头以添加或删除分支上的提交。此操作会更改提交历史记录。
 
   `git reset` 也可以用于恢复索引，与 `git restore` 重叠。
 
 
 ## 低级命令（plumbing）
 
-​	虽然Git包含了自己的Porcelain层，但其低级命令足以支持开发替代Porcelain的工具。开发这些工具的开发人员可能会首先阅读有关 [git-update-index[1]](https://chat.openai.com/1/git-update-index) 和 [git-read-tree[1]](https://chat.openai.com/1/git-read-tree)的信息。
+​	虽然Git包含了自己的Porcelain层，但其低级命令足以支持开发替代Porcelain的工具。开发这些工具的开发人员可能会首先阅读有关 [git-update-index[1]](../1/git-update-index) 和 [git-read-tree[1]](../1/git-read-tree)的信息。
 
 ​	这些低级命令的接口（输入、输出、选项集和语义）更稳定，比Porcelain级别的命令更稳定，因为这些命令主要用于脚本使用。另一方面，Porcelain命令的接口可能会改变，以改进最终用户体验。
 
@@ -858,7 +858,7 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 ## 仓库、命令和文件接口
 
-​	本文档讨论用户预期直接与之交互的仓库和命令接口。有关标准的详细信息，请参阅 [git-help[1]](https://chat.openai.com/1/git-help) 中的 `--user-formats`。
+​	本文档讨论用户预期直接与之交互的仓库和命令接口。有关标准的详细信息，请参阅 [git-help[1]](../1/git-help) 中的 `--user-formats`。
 
 - [gitattributes[5]](../5/gitattributes)
 
@@ -894,7 +894,7 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 ## 文件格式、协议和其他开发者接口
 
-​	本文档讨论文件格式、通过网络传输的协议和其他git开发者接口。有关标准的详细信息，请参阅 [git-help[1]](https://chat.openai.com/1/git-help) 中的 `--developer-interfaces`。
+​	本文档讨论文件格式、通过网络传输的协议和其他git开发者接口。有关标准的详细信息，请参阅 [git-help[1]](../1/git-help) 中的 `--developer-interfaces`。
 
 - [gitformat-bundle[5]](../5/gitformat-bundle)
 
@@ -960,7 +960,7 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 	email = "gitster@pobox.com"
 ```
 
-​	各种命令从配置文件中读取并相应地调整其操作。有关配置机制的列表和更多详细信息，请参阅 [git-config[1]](https://chat.openai.com/1/git-config)。
+​	各种命令从配置文件中读取并相应地调整其操作。有关配置机制的列表和更多详细信息，请参阅 [git-config[1]](../1/git-config)。
 
 ## 标识符术语
 
@@ -1012,19 +1012,19 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
   一个有效的 head*名称*（即一个 `refs/heads/<head>` 引用）。
 
-​	有关更多对象名称拼写方式的完整列表，请参阅 [gitrevisions[7]](https://chat.openai.com/7/gitrevisions) 中的 "SPECIFYING REVISIONS" 部分。
+​	有关更多对象名称拼写方式的完整列表，请参阅 [gitrevisions[7]](../7/gitrevisions) 中的 "SPECIFYING REVISIONS" 部分。
 
 ## 文件/目录结构
 
-​	请参阅 [gitrepository-layout[5]](https://chat.openai.com/5/gitrepository-layout) 文档。
+​	请参阅 [gitrepository-layout[5]](../5/gitrepository-layout) 文档。
 
-​	有关每个钩子的更多详细信息，请阅读 [githooks[5]](https://chat.openai.com/5/githooks)。
+​	有关每个钩子的更多详细信息，请阅读 [githooks[5]](../5/githooks)。
 
 ​	更高级的版本控制系统（SCM）可能在 `$GIT_DIR` 中提供和管理其他信息。
 
 ## 术语
 
-​	请参阅 [gitglossary[7]](https://chat.openai.com/7/gitglossary)。
+​	请参阅 [gitglossary[7]](../7/gitglossary)。
 
 ## 环境变量
 
@@ -1044,7 +1044,7 @@ Here are the variables:
 
 - `GIT_INDEX_VERSION`
 
-  此环境变量指定写出索引文件时使用的索引版本。它不会影响现有的索引文件。默认情况下，使用索引文件版本2或3。有关更多信息，请参阅 [git-update-index[1]](https://chat.openai.com/1/git-update-index)。
+  此环境变量指定写出索引文件时使用的索引版本。它不会影响现有的索引文件。默认情况下，使用索引文件版本2或3。有关更多信息，请参阅 [git-update-index[1]](../1/git-update-index)。
 
 - `GIT_OBJECT_DIRECTORY`
 
@@ -1064,7 +1064,7 @@ Here are the variables:
 
 - `GIT_NAMESPACE`
 
-  设置 Git 命名空间；有关详细信息，请参阅 [gitnamespaces[7]](https://chat.openai.com/7/gitnamespaces)。`--namespace` 命令行选项也会设置这个值。
+  设置 Git 命名空间；有关详细信息，请参阅 [gitnamespaces[7]](../7/gitnamespaces)。`--namespace` 命令行选项也会设置这个值。
 
 - `GIT_CEILING_DIRECTORIES`
 
@@ -1076,11 +1076,11 @@ Here are the variables:
 
 - `GIT_COMMON_DIR`
 
-  如果将此变量设置为路径，则通常在 `$GIT_DIR` 中的非工作树文件将从此路径中获取。从 $GIT_DIR 获取工作树特定的文件，例如 HEAD 或 index。有关详细信息，请参阅 [gitrepository-layout[5]](https://chat.openai.com/5/gitrepository-layout) 和 [git-worktree[1]](https://chat.openai.com/1/git-worktree)。此变量的优先级低于其他路径变量，例如 GIT_INDEX_FILE、GIT_OBJECT_DIRECTORY…
+  如果将此变量设置为路径，则通常在 `$GIT_DIR` 中的非工作树文件将从此路径中获取。从 $GIT_DIR 获取工作树特定的文件，例如 HEAD 或 index。有关详细信息，请参阅 [gitrepository-layout[5]](../5/gitrepository-layout) 和 [git-worktree[1]](../1/git-worktree)。此变量的优先级低于其他路径变量，例如 GIT_INDEX_FILE、GIT_OBJECT_DIRECTORY…
 
 - `GIT_DEFAULT_HASH`
 
-  如果设置了此变量，新仓库的默认哈希算法将设置为此值。当克隆时，此值将被忽略，并始终使用远程仓库的设置。默认值为 "sha1"。此变量是实验性的！请参阅 [git-init[1]](https://chat.openai.com/1/git-init) 中的 `--object-format`。
+  如果设置了此变量，新仓库的默认哈希算法将设置为此值。当克隆时，此值将被忽略，并始终使用远程仓库的设置。默认值为 "sha1"。此变量是实验性的！请参阅 [git-init[1]](../1/git-init) 中的 `--object-format`。
 
 ### Git 提交
 
@@ -1094,7 +1094,7 @@ Here are the variables:
 
 - `GIT_AUTHOR_DATE`
 
-  创建提交或标签对象，或写入reflog时使用的作者身份的日期。有关有效格式，请参阅 [git-commit[1]](https://chat.openai.com/1/git-commit)。
+  创建提交或标签对象，或写入reflog时使用的作者身份的日期。有关有效格式，请参阅 [git-commit[1]](../1/git-commit)。
 
 - `GIT_COMMITTER_NAME`
 
@@ -1106,7 +1106,7 @@ Here are the variables:
 
 - `GIT_COMMITTER_DATE`
 
-  创建提交或标签对象，或写入reflog时使用的提交者身份的日期。有关有效格式，请参阅 [git-commit[1]](https://chat.openai.com/1/git-commit)。
+  创建提交或标签对象，或写入reflog时使用的提交者身份的日期。有关有效格式，请参阅 [git-commit[1]](../1/git-commit)。
 
 - `EMAIL`
 
@@ -1146,11 +1146,11 @@ Here are the variables:
 
 - `GIT_MERGE_VERBOSITY`
 
-  一个控制递归合并策略输出量的数字。覆盖了 merge.verbosity。参见 [git-merge[1]](https://chat.openai.com/1/git-merge)。
+  一个控制递归合并策略输出量的数字。覆盖了 merge.verbosity。参见 [git-merge[1]](../1/git-merge)。
 
 - `GIT_PAGER`
 
-  此环境变量覆盖了 `$PAGER`。如果设置为空字符串或值为 "cat"，Git 将不会启动分页器。请参阅 [git-config[1]](https://chat.openai.com/1/git-config) 中的 `core.pager` 选项。
+  此环境变量覆盖了 `$PAGER`。如果设置为空字符串或值为 "cat"，Git 将不会启动分页器。请参阅 [git-config[1]](../1/git-config) 中的 `core.pager` 选项。
 
 - `GIT_PROGRESS_DELAY`
 
@@ -1158,17 +1158,17 @@ Here are the variables:
 
 - `GIT_EDITOR`
 
-  此环境变量覆盖了 `$EDITOR` 和 `$VISUAL`。在交互模式下启动编辑器时，多个 Git 命令将使用它。请参阅 [git-var[1]](https://chat.openai.com/1/git-var) 和 [git-config[1]](https://chat.openai.com/1/git-config) 中的 `core.editor` 选项。
+  此环境变量覆盖了 `$EDITOR` 和 `$VISUAL`。在交互模式下启动编辑器时，多个 Git 命令将使用它。请参阅 [git-var[1]](../1/git-var) 和 [git-config[1]](../1/git-config) 中的 `core.editor` 选项。
 
 - `GIT_SEQUENCE_EDITOR`
 
-  此环境变量覆盖了配置的 Git 编辑器，用于编辑交互式 rebase 的待办列表。请参阅 [git-rebase[1]](https://chat.openai.com/1/git-rebase) 和 [git-config[1]](https://chat.openai.com/1/git-config) 中的 `sequence.editor` 选项。
+  此环境变量覆盖了配置的 Git 编辑器，用于编辑交互式 rebase 的待办列表。请参阅 [git-rebase[1]](../1/git-rebase) 和 [git-config[1]](../1/git-config) 中的 `sequence.editor` 选项。
 
 - `GIT_SSH`
 
 - `GIT_SSH_COMMAND`
 
-  如果设置了这两个环境变量中的任意一个，则 *git fetch* 和 *git push* 在需要连接到远程系统时将使用指定的命令代替 *ssh*。由 ssh 变种确定配置的命令的命令行参数。有关详情，请参阅 [git-config[1]](https://chat.openai.com/1/git-config) 中的 `ssh.variant` 选项。`$GIT_SSH_COMMAND` 优先于 `$GIT_SSH`，由 shell 解释，允许包含额外的参数。另一方面，`$GIT_SSH` 必须是程序的路径（如果需要额外的参数，可以是包装器 shell 脚本）。通常，更容易通过个人的 `.ssh/config` 文件配置所需的任何选项。请参阅您的 ssh 文档以获取更多详情。
+  如果设置了这两个环境变量中的任意一个，则 *git fetch* 和 *git push* 在需要连接到远程系统时将使用指定的命令代替 *ssh*。由 ssh 变种确定配置的命令的命令行参数。有关详情，请参阅 [git-config[1]](../1/git-config) 中的 `ssh.variant` 选项。`$GIT_SSH_COMMAND` 优先于 `$GIT_SSH`，由 shell 解释，允许包含额外的参数。另一方面，`$GIT_SSH` 必须是程序的路径（如果需要额外的参数，可以是包装器 shell 脚本）。通常，更容易通过个人的 `.ssh/config` 文件配置所需的任何选项。请参阅您的 ssh 文档以获取更多详情。
 
 - `GIT_SSH_VARIANT`
 
@@ -1184,7 +1184,7 @@ Here are the variables:
 
 - `GIT_ASKPASS`
 
-  如果设置了此环境变量，则需要获取密码或密码短语的 Git 命令（例如，用于 HTTP 或 IMAP 身份验证）将调用此程序，并使用适当的提示作为命令行参数，并从其 STDOUT 读取密码。请参阅 [git-config[1]](https://chat.openai.com/1/git-config) 中的 `core.askPass` 选项。
+  如果设置了此环境变量，则需要获取密码或密码短语的 Git 命令（例如，用于 HTTP 或 IMAP 身份验证）将调用此程序，并使用适当的提示作为命令行参数，并从其 STDOUT 读取密码。请参阅 [git-config[1]](../1/git-config) 中的 `core.askPass` 选项。
 
 - `GIT_TERMINAL_PROMPT`
 
@@ -1290,19 +1290,19 @@ Here are the variables:
 
 - `GIT_REF_PARANOIA`
 
-  如果将此布尔型环境变量设置为 false，在遍历引用列表时忽略损坏或命名错误的引用。通常情况下，Git 将尝试包含任何此类引用，这可能会导致某些操作失败。这通常是更可取的，因为潜在破坏性的操作（例如，[git-prune[1]](https://chat.openai.com/1/git-prune)）最好中止，而不是忽略损坏的引用（从而认为它们指向的历史不值得保存）。默认值为 `1`（即对于检测和中止所有操作保持警惕）。通常情况下，不需要将其设置为 `0`，但在尝试从已损坏的仓库中恢复数据时可能会有用。
+  如果将此布尔型环境变量设置为 false，在遍历引用列表时忽略损坏或命名错误的引用。通常情况下，Git 将尝试包含任何此类引用，这可能会导致某些操作失败。这通常是更可取的，因为潜在破坏性的操作（例如，[git-prune[1]](../1/git-prune)）最好中止，而不是忽略损坏的引用（从而认为它们指向的历史不值得保存）。默认值为 `1`（即对于检测和中止所有操作保持警惕）。通常情况下，不需要将其设置为 `0`，但在尝试从已损坏的仓库中恢复数据时可能会有用。
 
 - `GIT_ALLOW_PROTOCOL`
 
-  如果设置为以冒号分隔的协议列表，则行为就像 `protocol.allow` 被设置为 `never`，并且列出的每个协议都被设置为 `protocol.<name>.allow` 为 `always`（覆盖任何现有的配置）。有关更多详情，请参阅 [git-config[1]](https://chat.openai.com/1/git-config) 中 `protocol.allow` 的描述。
+  如果设置为以冒号分隔的协议列表，则行为就像 `protocol.allow` 被设置为 `never`，并且列出的每个协议都被设置为 `protocol.<name>.allow` 为 `always`（覆盖任何现有的配置）。有关更多详情，请参阅 [git-config[1]](../1/git-config) 中 `protocol.allow` 的描述。
 
 - `GIT_PROTOCOL_FROM_USER`
 
-  将此布尔型环境变量设置为 false，可以阻止由配置为 `user` 状态的 fetch/push/clone 使用的协议。这对于限制从不受信任的仓库进行递归子模块初始化或向 Git 命令提供可能不受信任的 URLS 的程序非常有用。有关更多详情，请参阅 [git-config[1]](https://chat.openai.com/1/git-config)。
+  将此布尔型环境变量设置为 false，可以阻止由配置为 `user` 状态的 fetch/push/clone 使用的协议。这对于限制从不受信任的仓库进行递归子模块初始化或向 Git 命令提供可能不受信任的 URLS 的程序非常有用。有关更多详情，请参阅 [git-config[1]](../1/git-config)。
 
 - `GIT_PROTOCOL`
 
-  仅供内部使用。用于在握手过程中进行协议的传输。包含以冒号 *:* 分隔的键列表，每个键可以有可选的值 *key[=value]*。应忽略未知键和值。请注意，服务器可能需要配置以允许此变量通过某些传输。它将在访问本地仓库（即 `file://` 或文件系统路径）时自动传播，以及通过 `git://` 协议传播。对于 git-over-http，它在大多数配置中应该自动工作，但请参阅 [git-http-backend[1]](https://chat.openai.com/1/git-http-backend) 中的讨论。对于 git-over-ssh，可能需要配置 ssh 服务器以允许客户端传递此变量（例如，使用 OpenSSH 的 `AcceptEnv GIT_PROTOCOL`）。此配置是可选的。如果不传播此变量，则客户端将回退到原始的 "v0" 协议（但可能会错过某些性能改进或功能）。目前，此变量仅影响克隆和获取；对于推送尚未使用（但将来可能会使用）。
+  仅供内部使用。用于在握手过程中进行协议的传输。包含以冒号 *:* 分隔的键列表，每个键可以有可选的值 *key[=value]*。应忽略未知键和值。请注意，服务器可能需要配置以允许此变量通过某些传输。它将在访问本地仓库（即 `file://` 或文件系统路径）时自动传播，以及通过 `git://` 协议传播。对于 git-over-http，它在大多数配置中应该自动工作，但请参阅 [git-http-backend[1]](../1/git-http-backend) 中的讨论。对于 git-over-ssh，可能需要配置 ssh 服务器以允许客户端传递此变量（例如，使用 OpenSSH 的 `AcceptEnv GIT_PROTOCOL`）。此配置是可选的。如果不传播此变量，则客户端将回退到原始的 "v0" 协议（但可能会错过某些性能改进或功能）。目前，此变量仅影响克隆和获取；对于推送尚未使用（但将来可能会使用）。
 
 - `GIT_OPTIONAL_LOCKS`
 
@@ -1318,11 +1318,11 @@ Here are the variables:
 
 - `GIT_PRINT_SHA1_ELLIPSIS` (deprecated)
 
-  如果设置为 `yes`，在（缩写的）SHA-1 值后面打印省略号。这会影响分离的 HEADs（[git-checkout[1]](https://chat.openai.com/1/git-checkout)）和原始 diff 输出（[git-diff[1]](https://chat.openai.com/1/git-diff)）的指示。在上述情况下打印省略号已不再被认为是合适的，对此的支持可能会在可预见的将来被删除（以及此变量）。
+  如果设置为 `yes`，在（缩写的）SHA-1 值后面打印省略号。这会影响分离的 HEADs（[git-checkout[1]](../1/git-checkout)）和原始 diff 输出（[git-diff[1]](../1/git-diff)）的指示。在上述情况下打印省略号已不再被认为是合适的，对此的支持可能会在可预见的将来被删除（以及此变量）。
 
 ## 讨论
 
-​	关于下面内容的更多细节可在[用户手册中的 Git 概念章节](https://git-scm.com/docs/user-manual#git-concepts)和[gitcore-tutorial[7]](https://chat.openai.com/7/gitcore-tutorial)中找到。
+​	关于下面内容的更多细节可在[用户手册中的 Git 概念章节](https://git-scm.com/docs/user-manual#git-concepts)和[gitcore-tutorial[7]](../7/gitcore-tutorial)中找到。
 
 ​	一个 Git 项目通常由一个工作目录和位于顶层的 ".git" 子目录组成。.git 目录包含了项目完整历史的压缩对象数据库，一个 "index" 文件将历史链接到当前工作树的内容，以及指向历史中具体位置的命名指针，例如标签和分支头。
 
@@ -1344,21 +1344,21 @@ Here are the variables:
 
 ​	查看 "描述" 部分中的引用，以开始使用 Git。以下内容可能比初次使用者需要的更详细。
 
-​	[用户手册中的 Git 概念章节](https://git-scm.com/docs/user-manual#git-concepts)和[gitcore-tutorial[7]](https://chat.openai.com/7/gitcore-tutorial)都提供了对底层 Git 架构的介绍。
+​	[用户手册中的 Git 概念章节](https://git-scm.com/docs/user-manual#git-concepts)和[gitcore-tutorial[7]](../7/gitcore-tutorial)都提供了对底层 Git 架构的介绍。
 
-​	参见[gitworkflows[7]](https://chat.openai.com/7/gitworkflows)以了解推荐的工作流程概述。
+​	参见[gitworkflows[7]](../7/gitworkflows)以了解推荐的工作流程概述。
 
 ​	还可以参考 [howto](https://git-scm.com/docs/howto-index) 文档，其中包含一些有用的示例。
 
 ​	内部结构在 [Git API 文档](https://git-scm.com/docs/api-index) 中有所记录。
 
-​	从 CVS 迁移的用户可能还想阅读 [gitcvs-migration[7]](https://chat.openai.com/7/gitcvs-migration)。
+​	从 CVS 迁移的用户可能还想阅读 [gitcvs-migration[7]](../7/gitcvs-migration)。
 
 ## 作者
 
 ​	Git 是由 Linus Torvalds 开始的，目前由 Junio C Hamano 维护。许多贡献来自 Git 邮件列表 <[git@vger.kernel.org](mailto:git@vger.kernel.org)>。http://www.openhub.net/p/git/contributors/summary 提供了更完整的贡献者列表。
 
-​	如果您克隆了 git.git 本身，[git-shortlog[1]](https://chat.openai.com/1/git-shortlog) 和 [git-blame[1]](https://chat.openai.com/1/git-blame) 的输出可以显示项目特定部分的作者。
+​	如果您克隆了 git.git 本身，[git-shortlog[1]](../1/git-shortlog) 和 [git-blame[1]](../1/git-blame) 的输出可以显示项目特定部分的作者。
 
 ## 报告漏洞
 
@@ -1372,5 +1372,5 @@ Here are the variables:
 
 ## GIT
 
-​	Git 套件的一部分 [git[1]](https://chat.openai.com/1/git)
+​	Git 套件的一部分 [git[1]](../1/git)
 
