@@ -46,19 +46,19 @@ The exit value of this program is negative on error, and the number of conflicts
 
   Quiet; do not warn about conflicts.
 
-- --diff3
+- `--diff3`
 
   Show conflicts in "diff3" style.
 
-- --zdiff3
+- `--zdiff3`
 
   Show conflicts in "zdiff3" style.
 
-- --ours
+- `--ours`
 
-- --theirs
+- `--theirs`
 
-- --union
+- `--union`
 
   Instead of leaving conflicts in the file, resolve conflicts favouring our (or their or both) side of the lines.
 

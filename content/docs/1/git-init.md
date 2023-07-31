@@ -40,33 +40,33 @@ Running *git init* in an existing repository is safe. It will not overwrite thin
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Only print error and warning messages; all other output will be suppressed.
 
-- --bare
+- `--bare`
 
   Create a bare repository. If `GIT_DIR` environment is not set, it is set to the current working directory.
 
-- --object-format=<format>
+- `--object-format=<format>`
 
   Specify the given object format (hash algorithm) for the repository. The valid values are *sha1* and (if enabled) *sha256*. *sha1* is the default.THIS OPTION IS EXPERIMENTAL! SHA-256 support is experimental and still in an early stage. A SHA-256 repository will in general not be able to share work with "regular" SHA-1 repositories. It should be assumed that, e.g., Git internal file formats in relation to SHA-256 repositories may change in backwards-incompatible ways. Only use `--object-format=sha256` for testing purposes.
 
-- --template=<template-directory>
+- `--template=<template-directory>`
 
   Specify the directory from which templates will be used. (See the "TEMPLATE DIRECTORY" section below.)
 
-- --separate-git-dir=<git-dir>
+- `--separate-git-dir=<git-dir>`
 
   Instead of initializing the repository as a directory to either `$GIT_DIR` or `./.git/`, create a text file there containing the path to the actual repository. This file acts as filesystem-agnostic Git symbolic link to the repository.If this is reinitialization, the repository will be moved to the specified path.
 
 - -b <branch-name>
 
-- --initial-branch=<branch-name>
+- `--initial-branch=<branch-name>`
 
   Use the specified name for the initial branch in the newly created repository. If not specified, fall back to the default name (currently `master`, but this is subject to change in the future; the name can be customized via the `init.defaultBranch` configuration variable).
 
-- --shared[=(false|true|umask|group|all|world|everybody|<perm>)]
+- `--shared[=(false|true|umask|group|all|world|everybody|<perm>)]`
 
   Specify that the Git repository is to be shared amongst several users. This allows users belonging to the same group to push into that repository. When specified, the config variable "core.sharedRepository" is set so that files and directories under `$GIT_DIR` are created with the requested permissions. When not specified, Git will use permissions reported by umask(2).
   

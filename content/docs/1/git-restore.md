@@ -41,79 +41,79 @@ THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
 - -s <tree>
 
-- --source=<tree>
+- `--source=<tree>`
 
   Restore the working tree files with the content from the given tree. It is common to specify the source tree by naming a commit, branch or tag associated with it.If not specified, the contents are restored from `HEAD` if `--staged` is given, otherwise from the index.As a special case, you may use `"A...B"` as a shortcut for the merge base of `A` and `B` if there is exactly one merge base. You can leave out at most one of `A` and `B`, in which case it defaults to `HEAD`.
 
 - -p
 
-- --patch
+- `--patch`
 
   Interactively select hunks in the difference between the restore source and the restore location. See the “Interactive Mode” section of [git-add[1]](../git-add) to learn how to operate the `--patch` mode.Note that `--patch` can accept no pathspec and will prompt to restore all modified paths.
 
 - -W
 
-- --worktree
+- `--worktree`
 
 - -S
 
-- --staged
+- `--staged`
 
   Specify the restore location. If neither option is specified, by default the working tree is restored. Specifying `--staged` will only restore the index. Specifying both restores both.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Quiet, suppress feedback messages. Implies `--no-progress`.
 
-- --progress
+- `--progress`
 
-- --no-progress
+- `--no-progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag enables progress reporting even if not attached to a terminal, regardless of `--quiet`.
 
-- --ours
+- `--ours`
 
-- --theirs
+- `--theirs`
 
   When restoring files in the working tree from the index, use stage #2 (*ours*) or #3 (*theirs*) for unmerged paths.Note that during `git rebase` and `git pull --rebase`, *ours* and *theirs* may appear swapped. See the explanation of the same options in [git-checkout[1]](../git-checkout) for details.
 
 - -m
 
-- --merge
+- `--merge`
 
   When restoring files on the working tree from the index, recreate the conflicted merge in the unmerged paths.
 
-- --conflict=<style>
+- `--conflict=<style>`
 
   The same as `--merge` option above, but changes the way the conflicting hunks are presented, overriding the `merge.conflictStyle` configuration variable. Possible values are "merge" (default), "diff3", and "zdiff3".
 
-- --ignore-unmerged
+- `--ignore-unmerged`
 
   When restoring files on the working tree from the index, do not abort the operation if there are unmerged entries and neither `--ours`, `--theirs`, `--merge` or `--conflict` is specified. Unmerged paths on the working tree are left alone.
 
-- --ignore-skip-worktree-bits
+- `--ignore-skip-worktree-bits`
 
   In sparse checkout mode, by default is to only update entries matched by `<pathspec>` and sparse patterns in $GIT_DIR/info/sparse-checkout. This option ignores the sparse patterns and unconditionally restores any files in `<pathspec>`.
 
-- --recurse-submodules
+- `--recurse-submodules`
 
-- --no-recurse-submodules
+- `--no-recurse-submodules`
 
   If `<pathspec>` names an active submodule and the restore location includes the working tree, the submodule will only be updated if this option is given, in which case its working tree will be restored to the commit recorded in the superproject, and any local modifications overwritten. If nothing (or `--no-recurse-submodules`) is used, submodules working trees will not be updated. Just like [git-checkout[1]](../git-checkout), this will detach `HEAD` of the submodule.
 
-- --overlay
+- `--overlay`
 
-- --no-overlay
+- `--no-overlay`
 
   In overlay mode, the command never removes files when restoring. In no-overlay mode, tracked files that do not appear in the `--source` tree are removed, to make them match `<tree>` exactly. The default is no-overlay mode.
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
 

@@ -53,41 +53,41 @@ The "exists" subcommand checks whether a ref has a reflog. It exits with zero st
 
 ### Options for `expire`
 
-- --all
+- `--all`
 
   Process the reflogs of all references.
 
-- --single-worktree
+- `--single-worktree`
 
   By default when `--all` is specified, reflogs from all working trees are processed. This option limits the processing to reflogs from the current working tree only.
 
-- --expire=<time>
+- `--expire=<time>`
 
   Prune entries older than the specified time. If this option is not specified, the expiration time is taken from the configuration setting `gc.reflogExpire`, which in turn defaults to 90 days. `--expire=all` prunes entries regardless of their age; `--expire=never` turns off pruning of reachable entries (but see `--expire-unreachable`).
 
-- --expire-unreachable=<time>
+- `--expire-unreachable=<time>`
 
   Prune entries older than `<time>` that are not reachable from the current tip of the branch. If this option is not specified, the expiration time is taken from the configuration setting `gc.reflogExpireUnreachable`, which in turn defaults to 30 days. `--expire-unreachable=all` prunes unreachable entries regardless of their age; `--expire-unreachable=never` turns off early pruning of unreachable entries (but see `--expire`).
 
-- --updateref
+- `--updateref`
 
   Update the reference to the value of the top reflog entry (i.e. <ref>@{0}) if the previous top entry was pruned. (This option is ignored for symbolic references.)
 
-- --rewrite
+- `--rewrite`
 
   If a reflog entry’s predecessor is pruned, adjust its "old" SHA-1 to be equal to the "new" SHA-1 field of the entry that now precedes it.
 
-- --stale-fix
+- `--stale-fix`
 
   Prune any reflog entries that point to "broken commits". A broken commit is a commit that is not reachable from any of the reference tips and that refers, directly or indirectly, to a missing commit, tree, or blob object.This computation involves traversing all the reachable objects, i.e. it has the same cost as *git prune*. It is primarily intended to fix corruption caused by garbage collecting using older versions of Git, which didn’t protect objects referred to by reflogs.
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Do not actually prune any entries; just show what would have been pruned.
 
-- --verbose
+- `--verbose`
 
   Print extra information on screen.
 

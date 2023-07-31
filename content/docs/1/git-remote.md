@@ -30,7 +30,7 @@ Manage the set of repositories ("remotes") whose branches you track.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Be a little more verbose and show remote url after name. For promisor remotes, also show which filter (`blob:none` etc.) are configured. NOTE: This must be placed between `remote` and subcommand.
 

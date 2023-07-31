@@ -37,15 +37,15 @@ The way *git update-index* handles files it is told about can be modified using 
 
 ## 选项
 
-- --add
+- `--add`
 
   If a specified file isn’t in the index already then it’s added. Default behaviour is to ignore new files.
 
-- --remove
+- `--remove`
 
   If a specified file is in the index but is missing then it’s removed. Default behavior is to ignore removed file.
 
-- --refresh
+- `--refresh`
 
   Looks at the current index and checks to see if merges or updates are needed by checking stat() information.
 
@@ -53,15 +53,15 @@ The way *git update-index* handles files it is told about can be modified using 
 
   Quiet. If --refresh finds that the index needs an update, the default behavior is to error out. This option makes *git update-index* continue anyway.
 
-- --ignore-submodules
+- `--ignore-submodules`
 
   Do not try to update submodules. This option is only respected when passed before --refresh.
 
-- --unmerged
+- `--unmerged`
 
   If --refresh finds unmerged changes in the index, the default behavior is to error out. This option makes *git update-index* continue anyway.
 
-- --ignore-missing
+- `--ignore-missing`
 
   Ignores missing files during a --refresh
 
@@ -71,61 +71,61 @@ The way *git update-index* handles files it is told about can be modified using 
 
   Directly insert the specified info into the index. For backward compatibility, you can also give these three arguments as three separate parameters, but new users are encouraged to use a single-parameter form.
 
-- --index-info
+- `--index-info`
 
   Read index information from stdin.
 
-- --chmod=(+|-)x
+- `--chmod=(+|-)x`
 
   Set the execute permissions on the updated files.
 
-- --[no-]assume-unchanged
+- `--[no-]assume-unchanged`
 
   When this flag is specified, the object names recorded for the paths are not updated. Instead, this option sets/unsets the "assume unchanged" bit for the paths. When the "assume unchanged" bit is on, the user promises not to change the file and allows Git to assume that the working tree file matches what is recorded in the index. If you want to change the working tree file, you need to unset the bit to tell Git. This is sometimes helpful when working with a big project on a filesystem that has very slow lstat(2) system call (e.g. cifs).Git will fail (gracefully) in case it needs to modify this file in the index e.g. when merging in a commit; thus, in case the assumed-untracked file is changed upstream, you will need to handle the situation manually.
 
-- --really-refresh
+- `--really-refresh`
 
   Like `--refresh`, but checks stat information unconditionally, without regard to the "assume unchanged" setting.
 
-- --[no-]skip-worktree
+- `--[no-]skip-worktree`
 
   When one of these flags is specified, the object name recorded for the paths are not updated. Instead, these options set and unset the "skip-worktree" bit for the paths. See section "Skip-worktree bit" below for more information.
 
-- --[no-]ignore-skip-worktree-entries
+- `--[no-]ignore-skip-worktree-entries`
 
   Do not remove skip-worktree (AKA "index-only") entries even when the `--remove` option was specified.
 
-- --[no-]fsmonitor-valid
+- `--[no-]fsmonitor-valid`
 
   When one of these flags is specified, the object name recorded for the paths are not updated. Instead, these options set and unset the "fsmonitor valid" bit for the paths. See section "File System Monitor" below for more information.
 
 - -g
 
-- --again
+- `--again`
 
   Runs *git update-index* itself on the paths whose index entries are different from those from the `HEAD` commit.
 
-- --unresolve
+- `--unresolve`
 
   Restores the *unmerged* or *needs updating* state of a file during a merge if it was cleared by accident.
 
-- --info-only
+- `--info-only`
 
   Do not create objects in the object database for all <file> arguments that follow this flag; just insert their object IDs into the index.
 
-- --force-remove
+- `--force-remove`
 
   Remove the file from the index even when the working directory still has such a file. (Implies --remove.)
 
-- --replace
+- `--replace`
 
   By default, when a file `path` exists in the index, *git update-index* refuses an attempt to add `path/file`. Similarly if a file `path/file` exists, a file `path` cannot be added. With --replace flag, existing entries that conflict with the entry being added are automatically removed with warning messages.
 
-- --stdin
+- `--stdin`
 
   Instead of taking list of paths from the command line, read list of paths from the standard input. Paths are separated by LF (i.e. one path per line) by default.
 
-- --verbose
+- `--verbose`
 
   Report what is being added and removed from index.
 
@@ -137,29 +137,29 @@ The way *git update-index* handles files it is told about can be modified using 
 
   Only meaningful with `--stdin` or `--index-info`; paths are separated with NUL character instead of LF.
 
-- --split-index
+- `--split-index`
 
-- --no-split-index
+- `--no-split-index`
 
   Enable or disable split index mode. If split-index mode is already enabled and `--split-index` is given again, all changes in $GIT_DIR/index are pushed back to the shared index file.These options take effect whatever the value of the `core.splitIndex` configuration variable (see [git-config[1]](../git-config)). But a warning is emitted when the change goes against the configured value, as the configured value will take effect next time the index is read and this will remove the intended effect of the option.
 
-- --untracked-cache
+- `--untracked-cache`
 
-- --no-untracked-cache
+- `--no-untracked-cache`
 
   Enable or disable untracked cache feature. Please use `--test-untracked-cache` before enabling it.These options take effect whatever the value of the `core.untrackedCache` configuration variable (see [git-config[1]](../git-config)). But a warning is emitted when the change goes against the configured value, as the configured value will take effect next time the index is read and this will remove the intended effect of the option.
 
-- --test-untracked-cache
+- `--test-untracked-cache`
 
   Only perform tests on the working directory to make sure untracked cache can be used. You have to manually enable untracked cache using `--untracked-cache` or `--force-untracked-cache` or the `core.untrackedCache` configuration variable afterwards if you really want to use it. If a test fails the exit code is 1 and a message explains what is not working as needed, otherwise the exit code is 0 and OK is printed.
 
-- --force-untracked-cache
+- `--force-untracked-cache`
 
   Same as `--untracked-cache`. Provided for backwards compatibility with older versions of Git where `--untracked-cache` used to imply `--test-untracked-cache` but this option would enable the extension unconditionally.
 
-- --fsmonitor
+- `--fsmonitor`
 
-- --no-fsmonitor
+- `--no-fsmonitor`
 
   Enable or disable files system monitor feature. These options take effect whatever the value of the `core.fsmonitor` configuration variable (see [git-config[1]](../git-config)). But a warning is emitted when the change goes against the configured value, as the configured value will take effect next time the index is read and this will remove the intended effect of the option.
 

@@ -51,11 +51,11 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
   Show blank SHA-1 for boundary commits. This can also be controlled via the `blame.blankBoundary` config option.
 
-- --root
+- `--root`
 
   Do not treat root commits as boundaries. This can also be controlled via the `blame.showRoot` config option.
 
-- --show-stats
+- `--show-stats`
 
   Include additional statistics at the end of blame output.
 
@@ -81,25 +81,25 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
   Walk history forward instead of backward. Instead of showing the revision in which a line appeared, this shows the last revision in which a line has existed. This requires a range of revision like START..END where the path to blame exists in START. `git blame --reverse START` is taken as `git blame --reverse START..HEAD` for convenience.
 
-- --first-parent
+- `--first-parent`
 
   Follow only the first parent commit upon seeing a merge commit. This option can be used to determine when a line was introduced to a particular integration branch, rather than when it was introduced to the history overall.
 
 - -p
 
-- --porcelain
+- `--porcelain`
 
   Show in a format designed for machine consumption.
 
-- --line-porcelain
+- `--line-porcelain`
 
   Show the porcelain format, but output commit information for each line, not just the first time a commit is referenced. Implies --porcelain.
 
-- --incremental
+- `--incremental`
 
   Show the result incrementally in a format designed for machine consumption.
 
-- --encoding=<encoding>
+- `--encoding=<encoding>`
 
   Specifies the encoding used to output author names and commit summaries. Setting it to `none` makes blame output unconverted data. For more information see the discussion about encoding in the [git-log[1]](../git-log) manual page.
 
@@ -111,7 +111,7 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
   Specifies the format used to output dates. If --date is not provided, the value of the blame.date config variable is used. If the blame.date config variable is also not set, the iso format is used. For supported values, see the discussion of the --date option at [git-log[1]](../git-log).
 
-- --[no-]progress
+- `--[no-]progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal. This flag enables progress reporting even if not attached to a terminal. Can’t use `--progress` together with `--porcelain` or `--incremental`.
 
@@ -131,11 +131,11 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
   Ignore revisions listed in `file`, which must be in the same format as an `fsck.skipList`. This option may be repeated, and these files will be processed after any files specified with the `blame.ignoreRevsFile` config option. An empty file name, `""`, will clear the list of revs from previously processed files.
 
-- --color-lines
+- `--color-lines`
 
   Color line annotations in the default format differently if they come from the same commit as the preceding line. This makes it easier to distinguish code blocks introduced by different commits. The color defaults to cyan and can be adjusted using the `color.blame.repeatedLines` config option.
 
-- --color-by-age
+- `--color-by-age`
 
   Color line annotations depending on the age of the line in the default format. The `color.blame.highlightRecent` config option controls what color is used for each range of age.
 
@@ -147,19 +147,19 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
   Use the same output mode as [git-annotate[1]](../git-annotate) (Default: off).
 
-- --score-debug
+- `--score-debug`
 
   Include debugging information related to the movement of lines between files (see `-C`) and lines moved within a file (see `-M`). The first number listed is the score. This is the number of alphanumeric characters detected as having been moved between or within files. This must be above a certain threshold for *git blame* to consider those lines of code to have been moved.
 
 - -f
 
-- --show-name
+- `--show-name`
 
   Show the filename in the original commit. By default the filename is shown if there is any line that came from a file with a different name, due to rename detection.
 
 - -n
 
-- --show-number
+- `--show-number`
 
   Show the line number in the original commit (Default: off).
 
@@ -169,7 +169,7 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
 - -e
 
-- --show-email
+- `--show-email`
 
   Show the author email instead of author name (Default: off). This can also be controlled via the `blame.showEmail` config option.
 
@@ -177,7 +177,7 @@ ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 
   Ignore whitespace when comparing the parent’s version and the child’s to find where the lines came from.
 
-- --abbrev=<n>
+- `--abbrev=<n>`
 
   Instead of using the default 7+1 hexadecimal digits as the abbreviated object name, use <m>+1 digits, where <m> is at least <n> but ensures the commit object names are unique. Note that 1 column is used for a caret to mark the boundary commit.
 

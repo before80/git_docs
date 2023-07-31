@@ -32,23 +32,23 @@ There are three ways to specify the commit ranges:
 
 ## 选项
 
-- --no-dual-color
+- `--no-dual-color`
 
   When the commit diffs differ, `git range-diff` recreates the original diffs' coloring, and adds outer -/+ diff markers with the **background** being red/green to make it easier to see e.g. when there was a change in what exact lines were added.Additionally, the commit diff lines that are only present in the first commit range are shown "dimmed" (this can be overridden using the `color.diff.<slot>` config setting where `<slot>` is one of `contextDimmed`, `oldDimmed` and `newDimmed`), and the commit diff lines that are only present in the second commit range are shown in bold (which can be overridden using the config settings `color.diff.<slot>` with `<slot>` being one of `contextBold`, `oldBold` or `newBold`).This is known to `range-diff` as "dual coloring". Use `--no-dual-color` to revert to color all lines according to the outer diff markers (and completely ignore the inner diff when it comes to color).
 
-- --creation-factor=<percent>
+- `--creation-factor=<percent>`
 
   Set the creation/deletion cost fudge factor to `<percent>`. Defaults to 60. Try a larger value if `git range-diff` erroneously considers a large change a total rewrite (deletion of one commit and addition of another), and a smaller one in the reverse case. See the ``Algorithm`` section below for an explanation why this is needed.
 
-- --left-only
+- `--left-only`
 
   Suppress commits that are missing from the first specified range (or the "left range" when using the `<rev1>...<rev2>` format).
 
-- --right-only
+- `--right-only`
 
   Suppress commits that are missing from the second specified range (or the "right range" when using the `<rev1>...<rev2>` format).
 
-- --[no-]notes[=<ref>]
+- `--[no-]notes[=<ref>]`
 
   This flag is passed to the `git log` program (see [git-log[1]](../git-log)) that generates the patches.
 

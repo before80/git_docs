@@ -20,31 +20,31 @@ If one or more <file> parameters are given, the merge tool program will be run t
 
 - -t <tool>
 
-- --tool=<tool>
+- `--tool=<tool>`
 
   Use the merge resolution program specified by <tool>. Valid values include emerge, gvimdiff, kdiff3, meld, vimdiff, and tortoisemerge. Run `git mergetool --tool-help` for the list of valid <tool> settings.If a merge resolution program is not specified, *git mergetool* will use the configuration variable `merge.tool`. If the configuration variable `merge.tool` is not set, *git mergetool* will pick a suitable default.You can explicitly provide a full path to the tool by setting the configuration variable `mergetool.<tool>.path`. For example, you can configure the absolute path to kdiff3 by setting `mergetool.kdiff3.path`. Otherwise, *git mergetool* assumes the tool is available in PATH.Instead of running one of the known merge tool programs, *git mergetool* can be customized to run an alternative program by specifying the command line to invoke in a configuration variable `mergetool.<tool>.cmd`.When *git mergetool* is invoked with this tool (either through the `-t` or `--tool` option or the `merge.tool` configuration variable) the configured command line will be invoked with `$BASE` set to the name of a temporary file containing the common base for the merge, if available; `$LOCAL` set to the name of a temporary file containing the contents of the file on the current branch; `$REMOTE` set to the name of a temporary file containing the contents of the file to be merged, and `$MERGED` set to the name of the file to which the merge tool should write the result of the merge resolution.If the custom merge tool correctly indicates the success of a merge resolution with its exit code, then the configuration variable `mergetool.<tool>.trustExitCode` can be set to `true`. Otherwise, *git mergetool* will prompt the user to indicate the success of the resolution after the custom tool has exited.
 
-- --tool-help
+- `--tool-help`
 
   Print a list of merge tools that may be used with `--tool`.
 
 - -y
 
-- --no-prompt
+- `--no-prompt`
 
   Don’t prompt before each invocation of the merge resolution program. This is the default if the merge resolution program is explicitly specified with the `--tool` option or with the `merge.tool` configuration variable.
 
-- --prompt
+- `--prompt`
 
   Prompt before each invocation of the merge resolution program to give the user a chance to skip the path.
 
 - -g
 
-- --gui
+- `--gui`
 
   When *git-mergetool* is invoked with the `-g` or `--gui` option the default merge tool will be read from the configured `merge.guitool` variable instead of `merge.tool`. If `merge.guitool` is not set, we will fallback to the tool configured under `merge.tool`.
 
-- --no-gui
+- `--no-gui`
 
   This overrides a previous `-g` or `--gui` setting and reads the default merge tool will be read from the configured `merge.tool` variable.
 

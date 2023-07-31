@@ -32,11 +32,11 @@ See [git-repack[1]](../git-repack) for options to generate new packs and replace
 
   When unpacking a corrupt packfile, the command dies at the first corruption. This flag tells it to keep going and make the best effort to recover as many objects as possible.
 
-- --strict
+- `--strict`
 
   Don’t write objects with broken content or links.
 
-- --max-input-size=<size>
+- `--max-input-size=<size>`
 
   Die, if the pack is larger than <size>.
 

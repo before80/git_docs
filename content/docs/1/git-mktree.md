@@ -20,11 +20,11 @@ Reads standard input in non-recursive `ls-tree` output format, and creates a tre
 
   Read the NUL-terminated `ls-tree -z` output instead.
 
-- --missing
+- `--missing`
 
   Allow missing objects. The default behaviour (without this option) is to verify that each tree entry’s sha1 identifies an existing object. This option has no effect on the treatment of gitlink entries (aka "submodules") which are always allowed to be missing.
 
-- --batch
+- `--batch`
 
   Allow building of more than one tree object before exiting. Each tree is separated by a single blank line. The final new-line is optional. Note - if the `-z` option is used, lines are terminated with NUL.
 

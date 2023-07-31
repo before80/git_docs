@@ -61,25 +61,25 @@ Updates files in the working tree to match the version in the index or the speci
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Quiet, suppress feedback messages.
 
-- --progress
+- `--progress`
 
-- --no-progress
+- `--no-progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag enables progress reporting even if not attached to a terminal, regardless of `--quiet`.
 
 - -f
 
-- --force
+- `--force`
 
   When switching branches, proceed even if the index or the working tree differs from `HEAD`, and even if there are untracked files in the way. This is used to throw away local changes and any untracked files or directories that are in the way.When checking out paths from the index, do not fail upon unmerged entries; instead, unmerged entries are ignored.
 
-- --ours
+- `--ours`
 
-- --theirs
+- `--theirs`
 
   When checking out paths from the index, check out stage #2 (*ours*) or #3 (*theirs*) for unmerged paths.Note that during `git rebase` and `git pull --rebase`, *ours* and *theirs* may appear swapped; `--ours` gives the version from the branch the changes are rebased onto, while `--theirs` gives the version from the branch that holds your work that is being rebased.This is because `rebase` is used in a workflow that treats the history at the remote as the shared canonical one, and treats the work done on the branch you are rebasing as the third-party work to be integrated, and you are temporarily assuming the role of the keeper of the canonical history during the rebase. As the keeper of the canonical history, you need to view the history from the remote as `ours` (i.e. "our shared canonical history"), while what you did on your side branch as `theirs` (i.e. "one contributor’s work on top of it").
 
@@ -93,17 +93,17 @@ Updates files in the working tree to match the version in the index or the speci
 
 - -t
 
-- --track[=(direct|inherit)]
+- `--track[=(direct|inherit)]`
 
   When creating a new branch, set up "upstream" configuration. See "--track" in [git-branch[1]](../git-branch) for details.If no `-b` option is given, the name of the new branch will be derived from the remote-tracking branch, by looking at the local part of the refspec configured for the corresponding remote, and then stripping the initial part up to the "*". This would tell us to use `hack` as the local branch when branching off of `origin/hack` (or `remotes/origin/hack`, or even `refs/remotes/origin/hack`). If the given name has no slash, or the above guessing results in an empty name, the guessing is aborted. You can explicitly give a name with `-b` in such a case.
 
-- --no-track
+- `--no-track`
 
   Do not set up "upstream" configuration, even if the `branch.autoSetupMerge` configuration variable is true.
 
-- --guess
+- `--guess`
 
-- --no-guess
+- `--no-guess`
 
   If `<branch>` is not found but there does exist a tracking branch in exactly one remote (call it `<remote>`) with a matching name, treat as equivalent to`$ git checkout -b <branch> --track <remote>/<branch>`If the branch exists in multiple remotes and one of them is named by the `checkout.defaultRemote` configuration variable, we’ll use that one for the purposes of disambiguation, even if the `<branch>` isn’t unique across all remotes. Set it to e.g. `checkout.defaultRemote=origin` to always checkout remote branches from there if `<branch>` is ambiguous but exists on the *origin* remote. See also `checkout.defaultRemote` in [git-config[1]](../git-config).`--guess` is the default behavior. Use `--no-guess` to disable it.The default behavior can be set via the `checkout.guess` configuration variable.
 
@@ -113,7 +113,7 @@ Updates files in the working tree to match the version in the index or the speci
 
 - -d
 
-- --detach
+- `--detach`
 
   Rather than checking out a branch to work on it, check out a commit for inspection and discardable experiments. This is the default behavior of `git checkout <commit>` when `<commit>` is not a branch name. See the "DETACHED HEAD" section below for details.
 
@@ -121,53 +121,53 @@ Updates files in the working tree to match the version in the index or the speci
 
   Create a new *orphan* branch, named `<new-branch>`, started from `<start-point>` and switch to it. The first commit made on this new branch will have no parents and it will be the root of a new history totally disconnected from all the other branches and commits.The index and the working tree are adjusted as if you had previously run `git checkout <start-point>`. This allows you to start a new history that records a set of paths similar to `<start-point>` by easily running `git commit -a` to make the root commit.This can be useful when you want to publish the tree from a commit without exposing its full history. You might want to do this to publish an open source branch of a project whose current tree is "clean", but whose full history contains proprietary or otherwise encumbered bits of code.If you want to start a disconnected history that records a set of paths that is totally different from the one of `<start-point>`, then you should clear the index and the working tree right after creating the orphan branch by running `git rm -rf .` from the top level of the working tree. Afterwards you will be ready to prepare your new files, repopulating the working tree, by copying them from elsewhere, extracting a tarball, etc.
 
-- --ignore-skip-worktree-bits
+- `--ignore-skip-worktree-bits`
 
   In sparse checkout mode, `git checkout -- <paths>` would update only entries matched by `<paths>` and sparse patterns in `$GIT_DIR/info/sparse-checkout`. This option ignores the sparse patterns and adds back any files in `<paths>`.
 
 - -m
 
-- --merge
+- `--merge`
 
   When switching branches, if you have local modifications to one or more files that are different between the current branch and the branch to which you are switching, the command refuses to switch branches in order to preserve your modifications in context. However, with this option, a three-way merge between the current branch, your working tree contents, and the new branch is done, and you will be on the new branch.When a merge conflict happens, the index entries for conflicting paths are left unmerged, and you need to resolve the conflicts and mark the resolved paths with `git add` (or `git rm` if the merge should result in deletion of the path).When checking out paths from the index, this option lets you recreate the conflicted merge in the specified paths.When switching branches with `--merge`, staged changes may be lost.
 
-- --conflict=<style>
+- `--conflict=<style>`
 
   The same as `--merge` option above, but changes the way the conflicting hunks are presented, overriding the `merge.conflictStyle` configuration variable. Possible values are "merge" (default), "diff3", and "zdiff3".
 
 - -p
 
-- --patch
+- `--patch`
 
   Interactively select hunks in the difference between the `<tree-ish>` (or the index, if unspecified) and the working tree. The chosen hunks are then applied in reverse to the working tree (and if a `<tree-ish>` was specified, the index).This means that you can use `git checkout -p` to selectively discard edits from your current working tree. See the “Interactive Mode” section of [git-add[1]](../git-add) to learn how to operate the `--patch` mode.Note that this option uses the no overlay mode by default (see also `--overlay`), and currently doesn’t support overlay mode.
 
-- --ignore-other-worktrees
+- `--ignore-other-worktrees`
 
   `git checkout` refuses when the wanted ref is already checked out by another worktree. This option makes it check the ref out anyway. In other words, the ref can be held by more than one worktree.
 
-- --overwrite-ignore
+- `--overwrite-ignore`
 
-- --no-overwrite-ignore
+- `--no-overwrite-ignore`
 
   Silently overwrite ignored files when switching branches. This is the default behavior. Use `--no-overwrite-ignore` to abort the operation when the new branch contains ignored files.
 
-- --recurse-submodules
+- `--recurse-submodules`
 
-- --no-recurse-submodules
+- `--no-recurse-submodules`
 
   Using `--recurse-submodules` will update the content of all active submodules according to the commit recorded in the superproject. If local modifications in a submodule would be overwritten the checkout will fail unless `-f` is used. If nothing (or `--no-recurse-submodules`) is used, submodules working trees will not be updated. Just like [git-submodule[1]](../git-submodule), this will detach `HEAD` of the submodule.
 
-- --overlay
+- `--overlay`
 
-- --no-overlay
+- `--no-overlay`
 
   In the default overlay mode, `git checkout` never removes files from the index or the working tree. When specifying `--no-overlay`, files that appear in the index and working tree, but not in `<tree-ish>` are removed, to make them match `<tree-ish>` exactly.
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
 

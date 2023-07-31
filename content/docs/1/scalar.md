@@ -49,11 +49,11 @@ The following options can be specified *before* the subcommand:
 
   Instead of checking out the branch pointed to by the cloned repository’s HEAD, check out the `<name>` branch instead.
 
-- --[no-]single-branch
+- `--[no-]single-branch`
 
   Clone only the history leading to the tip of a single branch, either specified by the `--branch` option or the primary branch remote’s `HEAD` points at.Further fetches into the resulting repository will only update the remote-tracking branch for the branch this option was used for the initial cloning. If the HEAD at the remote did not point at any branch when `--single-branch` clone was made, no remote-tracking branch is created.
 
-- --[no-]full-clone
+- `--[no-]full-clone`
 
   A sparse-checkout is initialized by default. This behavior can be turned off via `--full-clone`.
 

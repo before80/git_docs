@@ -18,15 +18,15 @@ You can use it as a human-readable bundle replacement (see [git-bundle[1]](../gi
 
 ## 选项
 
-- --progress=<n>
+- `--progress=<n>`
 
   Insert *progress* statements every <n> objects, to be shown by *git fast-import* during import.
 
-- --signed-tags=(verbatim|warn|warn-strip|strip|abort)
+- `--signed-tags=(verbatim|warn|warn-strip|strip|abort)`
 
   Specify how to handle signed tags. Since any transformation after the export can change the tag names (which can also happen when excluding revisions) the signatures will not match.When asking to *abort* (which is the default), this program will die when encountering a signed tag. With *strip*, the tags will silently be made unsigned, with *warn-strip* they will be made unsigned but a warning will be displayed, with *verbatim*, they will be silently exported and with *warn*, they will be exported, but you will see a warning.
 
-- --tag-of-filtered-object=(abort|drop|rewrite)
+- `--tag-of-filtered-object=(abort|drop|rewrite)`
 
   Specify how to handle tags whose tagged object is filtered out. Since revisions and files to export can be limited by path, tagged objects may be filtered completely.When asking to *abort* (which is the default), this program will die when encountering such a tag. With *drop* it will omit such tags from the output. With *rewrite*, if the tagged object is a commit, it will rewrite the tag to tag an ancestor commit (via parent rewriting; see [git-rev-list[1]](../git-rev-list))
 
@@ -36,55 +36,55 @@ You can use it as a human-readable bundle replacement (see [git-bundle[1]](../gi
 
   Perform move and/or copy detection, as described in the [git-diff[1]](../git-diff) manual page, and use it to generate rename and copy commands in the output dump.Note that earlier versions of this command did not complain and produced incorrect results if you gave these options.
 
-- --export-marks=<file>
+- `--export-marks=<file>`
 
   Dumps the internal marks table to <file> when complete. Marks are written one per line as `:markid SHA-1`. Only marks for revisions are dumped; marks for blobs are ignored. Backends can use this file to validate imports after they have been completed, or to save the marks table across incremental runs. As <file> is only opened and truncated at completion, the same path can also be safely given to --import-marks. The file will not be written if no new object has been marked/exported.
 
-- --import-marks=<file>
+- `--import-marks=<file>`
 
   Before processing any input, load the marks specified in <file>. The input file must exist, must be readable, and must use the same format as produced by --export-marks.
 
-- --mark-tags
+- `--mark-tags`
 
   In addition to labelling blobs and commits with mark ids, also label tags. This is useful in conjunction with `--export-marks` and `--import-marks`, and is also useful (and necessary) for exporting of nested tags. It does not hurt other cases and would be the default, but many fast-import frontends are not prepared to accept tags with mark identifiers.Any commits (or tags) that have already been marked will not be exported again. If the backend uses a similar --import-marks file, this allows for incremental bidirectional exporting of the repository by keeping the marks the same across runs.
 
-- --fake-missing-tagger
+- `--fake-missing-tagger`
 
   Some old repositories have tags without a tagger. The fast-import protocol was pretty strict about that, and did not allow that. So fake a tagger to be able to fast-import the output.
 
-- --use-done-feature
+- `--use-done-feature`
 
   Start the stream with a *feature done* stanza, and terminate it with a *done* command.
 
-- --no-data
+- `--no-data`
 
   Skip output of blob objects and instead refer to blobs via their original SHA-1 hash. This is useful when rewriting the directory structure or history of a repository without touching the contents of individual files. Note that the resulting stream can only be used by a repository which already contains the necessary objects.
 
-- --full-tree
+- `--full-tree`
 
   This option will cause fast-export to issue a "deleteall" directive for each commit followed by a full list of all files in the commit (as opposed to just listing the files which are different from the commit’s first parent).
 
-- --anonymize
+- `--anonymize`
 
   Anonymize the contents of the repository while still retaining the shape of the history and stored tree. See the section on `ANONYMIZING` below.
 
-- --anonymize-map=<from>[:<to>]
+- `--anonymize-map=<from>[:<to>]`
 
   Convert token `<from>` to `<to>` in the anonymized output. If `<to>` is omitted, map `<from>` to itself (i.e., do not anonymize it). See the section on `ANONYMIZING` below.
 
-- --reference-excluded-parents
+- `--reference-excluded-parents`
 
   By default, running a command such as `git fast-export master~5..master` will not include the commit master~5 and will make master~4 no longer have master~5 as a parent (though both the old master~4 and new master~4 will have all the same files). Use --reference-excluded-parents to instead have the stream refer to commits in the excluded range of history by their sha1sum. Note that the resulting stream can only be used by a repository which already contains the necessary parent commits.
 
-- --show-original-ids
+- `--show-original-ids`
 
   Add an extra directive to the output for commits and blobs, `original-oid <SHA1SUM>`. While such directives will likely be ignored by importers such as git-fast-import, it may be useful for intermediary filters (e.g. for rewriting commit messages which refer to older commits, or for stripping blobs by id).
 
-- --reencode=(yes|no|abort)
+- `--reencode=(yes|no|abort)`
 
   Specify how to handle `encoding` header in commit objects. When asking to *abort* (which is the default), this program will die when encountering such a commit object. With *yes*, the commit message will be re-encoded into UTF-8. With *no*, the original encoding will be preserved.
 
-- --refspec
+- `--refspec`
 
   Apply the specified refspec to each ref exported. Multiple of them can be specified.
 

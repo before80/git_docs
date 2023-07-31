@@ -167,7 +167,7 @@ All commands except clone accept these options.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Provide more progress information.
 
@@ -179,7 +179,7 @@ These options can be used in the initial *clone* as well as in subsequent *sync*
 
   Import changes into <ref> instead of refs/remotes/p4/master. If <ref> starts with refs/, it is used as is. Otherwise, if it does not start with p4/, that prefix is added.By default a <ref> not starting with refs/ is treated as the name of a remote-tracking branch (under refs/remotes/). This behavior can be modified using the --import-local option.The default <ref> is "master".This example imports a new remote "p4/proj2" into an existing Git repository:`    $ git init    $ git p4 sync --branch=refs/remotes/p4/proj2 //depot/proj2`
 
-- --detect-branches
+- `--detect-branches`
 
   Use the branch detection algorithm to find new paths in p4. It is documented below in "BRANCH DETECTION".
 
@@ -187,19 +187,19 @@ These options can be used in the initial *clone* as well as in subsequent *sync*
 
   Import exactly the p4 change numbers listed in *file*, one per line. Normally, *git p4* inspects the current p4 repository state and detects the changes it should import.
 
-- --silent
+- `--silent`
 
   Do not print any progress information.
 
-- --detect-labels
+- `--detect-labels`
 
   Query p4 for labels associated with the depot paths, and add them as tags in Git. Limited usefulness as only imports labels associated with new changelists. Deprecated.
 
-- --import-labels
+- `--import-labels`
 
   Import labels from p4 into Git.
 
-- --import-local
+- `--import-local`
 
   By default, p4 branches are stored in *refs/remotes/p4/*, where they will be treated as remote-tracking branches by [git-branch[1]](../git-branch) and other commands. This option instead puts p4 branches in *refs/heads/p4/*. Note that future sync operations must specify `--import-local` as well so that they can find the p4 branches in refs/heads.
 
@@ -211,11 +211,11 @@ These options can be used in the initial *clone* as well as in subsequent *sync*
 
   The internal block size to use when converting a revision specifier such as *@all* into a list of specific change numbers. Instead of using a single call to *p4 changes* to find the full list of changes for the conversion, there are a sequence of calls to *p4 changes -m*, each of which requests one block of changes of the given size. The default block size is 500, which should usually be suitable.
 
-- --keep-path
+- `--keep-path`
 
   The mapping of file names from the p4 depot path to Git, by default, involves removing the entire depot path. With this option, the full p4 depot path is retained in Git. For example, path *//depot/main/foo/bar.c*, when imported from *//depot/main/*, becomes *foo/bar.c*. With `--keep-path`, the Git path is instead *depot/main/foo/bar.c*.
 
-- --use-client-spec
+- `--use-client-spec`
 
   Use a client spec to find the list of interesting files in p4. See the "CLIENT SPEC" section below.
 
@@ -231,7 +231,7 @@ These options can be used in an initial *clone*, along with the *sync* options d
 
   Where to create the Git repository. If not provided, the last component in the p4 depot path is used to create a new directory.
 
-- --bare
+- `--bare`
 
   Perform a bare clone. See [git-clone[1]](../git-clone).
 
@@ -247,25 +247,25 @@ These options can be used to modify *git p4 submit* behavior.
 
   Detect renames. See [git-diff[1]](../git-diff). Renames will be represented in p4 using explicit *move* operations. There is no corresponding option to detect copies, but there are variables for both moves and copies.
 
-- --preserve-user
+- `--preserve-user`
 
   Re-author p4 changes before submitting to p4. This option requires p4 admin privileges.
 
-- --export-labels
+- `--export-labels`
 
   Export tags from Git as p4 labels. Tags found in Git are applied to the perforce working directory.
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Show just what commits would be submitted to p4; do not change state in Git or p4.
 
-- --prepare-p4-only
+- `--prepare-p4-only`
 
   Apply a commit to the p4 workspace, opening, adding and deleting files in p4 as for a normal submit operation. Do not issue the final "p4 submit", but instead print a message about how to submit manually or revert. This option always stops after the first (oldest) commit. Git tags are not exported to p4.
 
-- --shelve
+- `--shelve`
 
   Instead of submitting create a series of shelved changelists. After creating each shelve, the relevant files are reverted/deleted. If you have multiple commits pending multiple shelves will be created.
 
@@ -273,7 +273,7 @@ These options can be used to modify *git p4 submit* behavior.
 
   Update an existing shelved changelist with this commit. Implies --shelve. Repeat for multiple shelved changelists.
 
-- --conflict=(ask|skip|quit)
+- `--conflict=(ask|skip|quit)`
 
   Conflicts can occur when applying a commit to p4. When this happens, the default behavior ("ask") is to prompt whether to skip this commit and continue, or quit. This option can be used to bypass the prompt, causing conflicting commits to be automatically skipped, or to quit trying to apply commits, without prompting.
 
@@ -285,11 +285,11 @@ These options can be used to modify *git p4 submit* behavior.
 
   Submit only the specified commit or range of commits, instead of the full list of changes that are in the current Git branch.
 
-- --disable-rebase
+- `--disable-rebase`
 
   Disable the automatic rebase after all commits have been successfully submitted. Can also be set with git-p4.disableRebase.
 
-- --disable-p4sync
+- `--disable-p4sync`
 
   Disable the automatic sync of p4/master from Perforce after commits have been submitted. Implies --disable-rebase. Can also be set with git-p4.disableP4Sync. Sync with origin/master still goes ahead if possible.
 
@@ -321,13 +321,13 @@ The `p4-post-changelist` hook is invoked after the submit has successfully occur
 
 These options can be used to modify *git p4 rebase* behavior.
 
-- --import-labels
+- `--import-labels`
 
   Import p4 labels.
 
 ### Unshelve options
 
-- --origin
+- `--origin`
 
   Sets the git refspec against which the shelved P4 changelist is compared. Defaults to p4/master.
 

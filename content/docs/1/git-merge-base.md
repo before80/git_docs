@@ -26,19 +26,19 @@ More generally, among the two commits to compute the merge base from, one is spe
 
 As a consequence, the *merge base* is not necessarily contained in each of the commit arguments if more than two commits are specified. This is different from [git-show-branch[1]](../git-show-branch) when used with the `--merge-base` option.
 
-- --octopus
+- `--octopus`
 
   Compute the best common ancestors of all supplied commits, in preparation for an n-way merge. This mimics the behavior of *git show-branch --merge-base*.
 
-- --independent
+- `--independent`
 
   Instead of printing merge bases, print a minimal subset of the supplied commits with the same ancestors. In other words, among the commits given, list those which cannot be reached from any other. This mimics the behavior of *git show-branch --independent*.
 
-- --is-ancestor
+- `--is-ancestor`
 
   Check if the first <commit> is an ancestor of the second <commit>, and exit with status 0 if true, or with status 1 if not. Errors are signaled by a non-zero status that is not 1.
 
-- --fork-point
+- `--fork-point`
 
   Find the point at which a branch (or any history that leads to <commit>) forked from another branch (or any reference) <ref>. This does not just look for the common ancestor of the two commits, but also takes into account the reflog of <ref> to see if the history leading to <commit> forked from an earlier incarnation of the branch <ref> (see discussion on this mode below).
 
@@ -46,7 +46,7 @@ As a consequence, the *merge base* is not necessarily contained in each of the c
 
 - -a
 
-- --all
+- `--all`
 
   Output all merge bases for the commits, instead of just one.
 

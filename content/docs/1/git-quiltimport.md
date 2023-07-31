@@ -23,7 +23,7 @@ If a subject is not found in the patch description the patch name is preserved a
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Walk through the patches in the series and warn if we cannot find all of the necessary information to commit a patch. At the time of this writing only missing author information is warned about.
 
@@ -39,7 +39,7 @@ If a subject is not found in the patch description the patch name is preserved a
 
   The quilt series file.The default for the series file is <patches>/series or the value of the `$QUILT_SERIES` environment variable.
 
-- --keep-non-patch
+- `--keep-non-patch`
 
   Pass `-b` flag to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)).
 

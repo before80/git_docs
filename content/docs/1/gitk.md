@@ -37,47 +37,47 @@ gitk generally only understands options with arguments in the *sticked* form (se
 
 This manual page describes only the most frequently used options. See [git-rev-list[1]](../git-rev-list) for a complete list.
 
-- --all
+- `--all`
 
   Show all refs (branches, tags, etc.).
 
-- --branches[=<pattern>]
+- `--branches[=<pattern>]`
 
-- --tags[=<pattern>]
+- `--tags[=<pattern>]`
 
-- --remotes[=<pattern>]
+- `--remotes[=<pattern>]`
 
   Pretend as if all the branches (tags, remote branches, resp.) are listed on the command line as *<commit>*. If *<pattern>* is given, limit refs to ones matching given shell glob. If pattern lacks *?*, ***, or *[*, */** at the end is implied.
 
-- --since=<date>
+- `--since=<date>`
 
   Show commits more recent than a specific date.
 
-- --until=<date>
+- `--until=<date>`
 
   Show commits older than a specific date.
 
-- --date-order
+- `--date-order`
 
   Sort commits by date when possible.
 
-- --merge
+- `--merge`
 
   After an attempt to merge stops with conflicts, show the commits on the history between two branches (i.e. the HEAD and the MERGE_HEAD) that modify the conflicted files and do not exist on all the heads being merged.
 
-- --left-right
+- `--left-right`
 
   Mark which side of a symmetric difference a commit is reachable from. Commits from the left side are prefixed with a `<` symbol and those from the right with a `>` symbol.
 
-- --full-history
+- `--full-history`
 
   When filtering history with *<path>…*, does not prune some history. (See "History simplification" in [git-log[1]](../git-log) for a more detailed explanation.)
 
-- --simplify-merges
+- `--simplify-merges`
 
   Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge. (See "History simplification" in [git-log[1]](../git-log) for a more detailed explanation.)
 
-- --ancestry-path
+- `--ancestry-path`
 
   When given a range of commits to display (e.g. *commit1..commit2* or *commit2 ^commit1*), only display commits that exist directly on the ancestry chain between the *commit1* and *commit2*, i.e. commits that are both descendants of *commit1*, and ancestors of *commit2*. (See "History simplification" in [git-log[1]](../git-log) for a more detailed explanation.)
 
@@ -97,11 +97,11 @@ This manual page describes only the most frequently used options. See [git-rev-l
 
 ### gitk-specific options
 
-- --argscmd=<command>
+- `--argscmd=<command>`
 
   Command to be run each time gitk has to determine the revision range to show. The command is expected to print on its standard output a list of additional revisions to be shown, one per line. Use this instead of explicitly specifying a *<revision range>* if the set of commits to show may vary between refreshes.
 
-- --select-commit=<ref>
+- `--select-commit=<ref>`
 
   Select the specified commit after loading the graph. Default behavior is equivalent to specifying *--select-commit=HEAD*.
 

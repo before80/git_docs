@@ -65,23 +65,23 @@ A list of all available configuration variables can be obtained using the `git h
 
 ## 选项
 
-- --replace-all
+- `--replace-all`
 
   Default behavior is to replace at most one line. This replaces all lines matching the key (and optionally the `value-pattern`).
 
-- --add
+- `--add`
 
   Adds a new line to the option without altering any existing values. This is the same as providing *^$* as the `value-pattern` in `--replace-all`.
 
-- --get
+- `--get`
 
   Get the value for a given key (optionally filtered by a regex matching the value). Returns error code 1 if the key was not found and the last value if multiple key values were found.
 
-- --get-all
+- `--get-all`
 
   Like get, but returns all values for a multi-valued key.
 
-- --get-regexp
+- `--get-regexp`
 
   Like --get-all, but interprets the name as a regular expression and writes out the key names. Regular expression matching is currently case-sensitive and done against a canonicalized version of the key in which section and variable names are lowercased, but subsection names are not.
 
@@ -89,19 +89,19 @@ A list of all available configuration variables can be obtained using the `git h
 
   When given a two-part name section.key, the value for section.<URL>.key whose <URL> part matches the best to the given URL is returned (if no such key exists, the value for section.key is used as a fallback). When given just the section as name, do so for all the keys in the section and list them. Returns error code 1 if no value is found.
 
-- --global
+- `--global`
 
   For writing options: write to global `~/.gitconfig` file rather than the repository `.git/config`, write to `$XDG_CONFIG_HOME/git/config` file if this file exists and the `~/.gitconfig` file doesn’t.For reading options: read only from global `~/.gitconfig` and from `$XDG_CONFIG_HOME/git/config` rather than from all available files.See also [FILES](https://git-scm.com/docs/git-config#FILES).
 
-- --system
+- `--system`
 
   For writing options: write to system-wide `$(prefix)/etc/gitconfig` rather than the repository `.git/config`.For reading options: read only from system-wide `$(prefix)/etc/gitconfig` rather than from all available files.See also [FILES](https://git-scm.com/docs/git-config#FILES).
 
-- --local
+- `--local`
 
   For writing options: write to the repository `.git/config` file. This is the default behavior.For reading options: read only from the repository `.git/config` rather than from all available files.See also [FILES](https://git-scm.com/docs/git-config#FILES).
 
-- --worktree
+- `--worktree`
 
   Similar to `--local` except that `$GIT_DIR/config.worktree` is read from or written to if `extensions.worktreeConfig` is enabled. If not it’s the same as `--local`. Note that `$GIT_DIR` is equal to `$GIT_COMMON_DIR` for the main working tree, but is of the form `$GIT_DIR/worktrees/<id>/` for other working trees. See [git-worktree[1]](../git-worktree) to learn how to enable `extensions.worktreeConfig`.
 
@@ -115,29 +115,29 @@ A list of all available configuration variables can be obtained using the `git h
 
   Similar to `--file` but use the given blob instead of a file. E.g. you can use *master:.gitmodules* to read values from the file *.gitmodules* in the master branch. See "SPECIFYING REVISIONS" section in [gitrevisions[7]](../../7/gitrevisions) for a more complete list of ways to spell blob names.
 
-- --remove-section
+- `--remove-section`
 
   Remove the given section from the configuration file.
 
-- --rename-section
+- `--rename-section`
 
   Rename the given section to a new name.
 
-- --unset
+- `--unset`
 
   Remove the line matching the key from config file.
 
-- --unset-all
+- `--unset-all`
 
   Remove all lines matching the key from config file.
 
 - -l
 
-- --list
+- `--list`
 
   List all variables set in config file, along with their values.
 
-- --fixed-value
+- `--fixed-value`
 
   When used with the `value-pattern` argument, treat `value-pattern` as an exact string instead of a regular expression. This will restrict the name/value pairs that are matched to only those where the value is exactly equal to the `value-pattern`.
 
@@ -145,37 +145,37 @@ A list of all available configuration variables can be obtained using the `git h
 
   *git config* will ensure that any input or output is valid under the given type constraint(s), and will canonicalize outgoing values in `<type>`'s canonical form.Valid `<type>`'s include:*bool*: canonicalize values as either "true" or "false".*int*: canonicalize values as simple decimal numbers. An optional suffix of *k*, *m*, or *g* will cause the value to be multiplied by 1024, 1048576, or 1073741824 upon input.*bool-or-int*: canonicalize according to either *bool* or *int*, as described above.*path*: canonicalize by adding a leading `~` to the value of `$HOME` and `~user` to the home directory for the specified user. This specifier has no effect when setting the value (but you can use `git config section.variable ~/` from the command line to let your shell do the expansion.)*expiry-date*: canonicalize by converting from a fixed or relative date-string to a timestamp. This specifier has no effect when setting the value.*color*: When getting a value, canonicalize by converting to an ANSI color escape sequence. When setting a value, a sanity-check is performed to ensure that the given value is canonicalize-able as an ANSI color, but it is written as-is.
 
-- --bool
+- `--bool`
 
-- --int
+- `--int`
 
-- --bool-or-int
+- `--bool-or-int`
 
-- --path
+- `--path`
 
-- --expiry-date
+- `--expiry-date`
 
   Historical options for selecting a type specifier. Prefer instead `--type` (see above).
 
-- --no-type
+- `--no-type`
 
   Un-sets the previously set type specifier (if one was previously set). This option requests that *git config* not canonicalize the retrieved variable. `--no-type` has no effect without `--type=<type>` or `--<type>`.
 
 - -z
 
-- --null
+- `--null`
 
   For all options that output values and/or keys, always end values with the null character (instead of a newline). Use newline instead as a delimiter between key and value. This allows for secure parsing of the output without getting confused e.g. by values that contain line breaks.
 
-- --name-only
+- `--name-only`
 
   Output only the names of config variables for `--list` or `--get-regexp`.
 
-- --show-origin
+- `--show-origin`
 
   Augment the output of all queried config options with the origin type (file, standard input, blob, command line) and the actual origin (config file path, ref, or blob id if applicable).
 
-- --show-scope
+- `--show-scope`
 
   Similar to `--show-origin` in that it augments the output of all queried config options with the scope of that value (worktree, local, global, system, command).
 
@@ -189,11 +189,11 @@ A list of all available configuration variables can be obtained using the `git h
 
 - -e
 
-- --edit
+- `--edit`
 
   Opens an editor to modify the specified config file; either `--system`, `--global`, or repository (default).
 
-- --[no-]includes
+- `--[no-]includes`
 
   Respect `include.*` directives in config files when looking up values. Defaults to `off` when a specific file is given (e.g., using `--file`, `--global`, etc) and `on` when searching all config files.
 

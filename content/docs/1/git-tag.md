@@ -52,41 +52,41 @@ Annotated tags are meant for release while lightweight tags are meant for privat
 
 - -a
 
-- --annotate
+- `--annotate`
 
   Make an unsigned, annotated tag object
 
 - -s
 
-- --sign
+- `--sign`
 
   Make a GPG-signed tag, using the default e-mail address’s key. The default behavior of tag GPG-signing is controlled by `tag.gpgSign` configuration variable if it exists, or disabled otherwise. See [git-config[1]](../git-config).
 
-- --no-sign
+- `--no-sign`
 
   Override `tag.gpgSign` configuration variable that is set to force each and every tag to be signed.
 
 - -u <key-id>
 
-- --local-user=<key-id>
+- `--local-user=<key-id>`
 
   Make a GPG-signed tag, using the given key.
 
 - -f
 
-- --force
+- `--force`
 
   Replace an existing tag with the given name (instead of failing)
 
 - -d
 
-- --delete
+- `--delete`
 
   Delete existing tags with the given names.
 
 - -v
 
-- --verify
+- `--verify`
 
   Verify the GPG signature of the given tag names.
 
@@ -96,27 +96,27 @@ Annotated tags are meant for release while lightweight tags are meant for privat
 
 - -l
 
-- --list
+- `--list`
 
   List tags. With optional `<pattern>...`, e.g. `git tag --list 'v-*'`, list only the tags that match the pattern(s).Running "git tag" without arguments also lists all tags. The pattern is a shell wildcard (i.e., matched using fnmatch(3)). Multiple patterns may be given; if any of them matches, the tag is shown.This option is implicitly supplied if any other list-like option such as `--contains` is provided. See the documentation for each of those options for details.
 
-- --sort=<key>
+- `--sort=<key>`
 
   Sort based on the key given. Prefix `-` to sort in descending order of the value. You may use the --sort=<key> option multiple times, in which case the last key becomes the primary key. Also supports "version:refname" or "v:refname" (tag names are treated as versions). The "version:refname" sort order can also be affected by the "versionsort.suffix" configuration variable. The keys supported are the same as those in `git for-each-ref`. Sort order defaults to the value configured for the `tag.sort` variable if it exists, or lexicographic order otherwise. See [git-config[1]](../git-config).
 
-- --color[=<when>]
+- `--color[=<when>]`
 
   Respect any colors specified in the `--format` option. The `<when>` field must be one of `always`, `never`, or `auto` (if `<when>` is absent, behave as if `always` was given).
 
 - -i
 
-- --ignore-case
+- `--ignore-case`
 
   Sorting and filtering tags are case insensitive.
 
-- --column[=<options>]
+- `--column[=<options>]`
 
-- --no-column
+- `--no-column`
 
   Display tag listing in columns. See configuration variable `column.tag` for option syntax. `--column` and `--no-column` without options are equivalent to *always* and *never* respectively.This option is only applicable when listing tags without annotation lines.
 
@@ -142,31 +142,31 @@ Annotated tags are meant for release while lightweight tags are meant for privat
 
 - -m <msg>
 
-- --message=<msg>
+- `--message=<msg>`
 
   Use the given tag message (instead of prompting). If multiple `-m` options are given, their values are concatenated as separate paragraphs. Implies `-a` if none of `-a`, `-s`, or `-u <key-id>` is given.
 
 - -F <file>
 
-- --file=<file>
+- `--file=<file>`
 
   Take the tag message from the given file. Use *-* to read the message from the standard input. Implies `-a` if none of `-a`, `-s`, or `-u <key-id>` is given.
 
 - -e
 
-- --edit
+- `--edit`
 
   The message taken from file with `-F` and command line with `-m` are usually used as the tag message unmodified. This option lets you further edit the message taken from these sources.
 
-- --cleanup=<mode>
+- `--cleanup=<mode>`
 
   This option sets how the tag message is cleaned up. The *<mode>* can be one of *verbatim*, *whitespace* and *strip*. The *strip* mode is default. The *verbatim* mode does not change message at all, *whitespace* removes just leading/trailing whitespace lines and *strip* removes both whitespace and commentary.
 
-- --create-reflog
+- `--create-reflog`
 
   Create a reflog for the tag. To globally enable reflogs for tags, see `core.logAllRefUpdates` in [git-config[1]](../git-config). The negated form `--no-create-reflog` only overrides an earlier `--create-reflog`, but currently does not negate the setting of `core.logAllRefUpdates`.
 
-- --format=<format>
+- `--format=<format>`
 
   A string that interpolates `%(fieldname)` from a tag ref being shown and the object it points at. The format is the same as that of [git-for-each-ref[1]](../git-for-each-ref). When unspecified, defaults to `%(refname:strip=2)`.
 

@@ -21,45 +21,45 @@ Creates an archive of the specified format containing the tree structure for the
 
 ## 选项
 
-- --format=<fmt>
+- `--format=<fmt>`
 
   Format of the resulting archive. Possible values are `tar`, `zip`, `tar.gz`, `tgz`, and any format defined using the configuration option `tar.<format>.command`. If `--format` is not given, and the output file is specified, the format is inferred from the filename if possible (e.g. writing to `foo.zip` makes the output to be in the `zip` format). Otherwise the output format is `tar`.
 
 - -l
 
-- --list
+- `--list`
 
   Show all available formats.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Report progress to stderr.
 
-- --prefix=<prefix>/
+- `--prefix=<prefix>/`
 
   Prepend <prefix>/ to paths in the archive. Can be repeated; its rightmost value is used for all tracked files. See below which value gets used by `--add-file` and `--add-virtual-file`.
 
 - -o <file>
 
-- --output=<file>
+- `--output=<file>`
 
   Write the archive to <file> instead of stdout.
 
-- --add-file=<file>
+- `--add-file=<file>`
 
   Add a non-tracked file to the archive. Can be repeated to add multiple files. The path of the file in the archive is built by concatenating the value of the last `--prefix` option (if any) before this `--add-file` and the basename of <file>.
 
-- --add-virtual-file=<path>:<content>
+- `--add-virtual-file=<path>:<content>`
 
   Add the specified contents to the archive. Can be repeated to add multiple files. The path of the file in the archive is built by concatenating the value of the last `--prefix` option (if any) before this `--add-virtual-file` and `<path>`.The `<path>` argument can start and end with a literal double-quote character; the contained file name is interpreted as a C-style string, i.e. the backslash is interpreted as escape character. The path must be quoted if it contains a colon, to avoid the colon from being misinterpreted as the separator between the path and the contents, or if the path begins or ends with a double-quote character.The file mode is limited to a regular file, and the option may be subject to platform-dependent command-line limits. For non-trivial cases, write an untracked file and use `--add-file` instead.
 
-- --worktree-attributes
+- `--worktree-attributes`
 
   Look for attributes in .gitattributes files in the working tree as well (see [ATTRIBUTES](https://git-scm.com/docs/git-archive#ATTRIBUTES)).
 
-- --mtime=<time>
+- `--mtime=<time>`
 
   Set modification time of archive entries. Without this option the committer time is used if `<tree-ish>` is a commit or tag, and the current time if it is a tree.
 
@@ -67,11 +67,11 @@ Creates an archive of the specified format containing the tree structure for the
 
   This can be any options that the archiver backend understands. See next section.
 
-- --remote=<repo>
+- `--remote=<repo>`
 
   Instead of making a tar archive from the local repository, retrieve a tar archive from a remote repository. Note that the remote repository may place restrictions on which sha1 expressions may be allowed in `<tree-ish>`. See [git-upload-archive[1]](../git-upload-archive) for details.
 
-- --exec=<git-upload-archive>
+- `--exec=<git-upload-archive>`
 
   Used with --remote to specify the path to the *git-upload-archive* on the remote side.
 

@@ -33,7 +33,7 @@ git -c fsck.extraHeaderEntry=ignore mktag <my-tag-with-headers
 
 ## 选项
 
-- --strict
+- `--strict`
 
   By default mktag turns on the equivalent of [git-fsck[1]](../git-fsck) `--strict` mode. Use `--no-strict` to disable it.
 

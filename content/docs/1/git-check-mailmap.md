@@ -16,7 +16,7 @@ For each “Name <user@host>” or “<user@host>” from the command-line or st
 
 ## 选项
 
-- --stdin
+- `--stdin`
 
   Read contacts, one per line, from the standard input after exhausting contacts provided on the command-line.
 

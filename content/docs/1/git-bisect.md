@@ -246,11 +246,11 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 ## 选项
 
-- --no-checkout
+- `--no-checkout`
 
   Do not checkout the new working tree at each iteration of the bisection process. Instead just update a special reference named `BISECT_HEAD` to make it point to the commit that should be tested.This option may be useful when the test you would perform in each step does not require a checked out tree.If the repository is bare, `--no-checkout` is assumed.
 
-- --first-parent
+- `--first-parent`
 
   Follow only the first parent commit upon seeing a merge commit.In detecting regressions introduced through the merging of a branch, the merge commit will be identified as introduction of the bug and its ancestors will be ignored.This option is particularly useful in avoiding false positives when a merged branch contained broken or non-buildable commits, but the merge itself was OK.
 

@@ -22,11 +22,11 @@ A command interface to running git hooks (see [githooks[5]](../../5/githooks)), 
 
 ## 选项
 
-- --to-stdin
+- `--to-stdin`
 
   For "run"; Specify a file which will be streamed into the hook’s stdin. The hook will receive the entire file from beginning to EOF.
 
-- --ignore-missing
+- `--ignore-missing`
 
   Ignore any missing hook by quietly returning zero. Used for tools that want to do a blind one-shot run of a hook that may or may not be present.
 

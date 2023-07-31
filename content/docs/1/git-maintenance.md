@@ -70,23 +70,23 @@ The `git maintenance` command provides flexibility for how to optimize the Git r
 
 ## 选项
 
-- --auto
+- `--auto`
 
   When combined with the `run` subcommand, run maintenance tasks only if certain thresholds are met. For example, the `gc` task runs when the number of loose objects exceeds the number stored in the `gc.auto` config setting, or when the number of pack-files exceeds the `gc.autoPackLimit` config setting. Not compatible with the `--schedule` option.
 
-- --schedule
+- `--schedule`
 
   When combined with the `run` subcommand, run maintenance tasks only if certain time conditions are met, as specified by the `maintenance.<task>.schedule` config value for each `<task>`. This config value specifies a number of seconds since the last time that task ran, according to the `maintenance.<task>.lastRun` config value. The tasks that are tested are those provided by the `--task=<task>` option(s) or those with `maintenance.<task>.enabled` set to true.
 
-- --quiet
+- `--quiet`
 
   Do not report progress or other information over `stderr`.
 
-- --task=<task>
+- `--task=<task>`
 
   If this option is specified one or more times, then only run the specified tasks in the specified order. If no `--task=<task>` arguments are specified, then only the tasks with `maintenance.<task>.enabled` configured as `true` are considered. See the *TASKS* section for the list of accepted `<task>` values.
 
-- --scheduler=auto|crontab|systemd-timer|launchctl|schtasks
+- `--scheduler=auto|crontab|systemd-timer|launchctl|schtasks`
 
   When combined with the `start` subcommand, specify the scheduler for running the hourly, daily and weekly executions of `git maintenance run`. Possible values for `<scheduler>` are `auto`, `crontab` (POSIX), `systemd-timer` (Linux), `launchctl` (macOS), and `schtasks` (Windows). When `auto` is specified, the appropriate platform-specific scheduler is used; on Linux, `systemd-timer` is used if available, otherwise `crontab`. Default is `auto`.
 

@@ -33,19 +33,19 @@ After the merge completes, a new toplevel tree object is created. See `OUTPUT` b
 
   Do not quote filenames in the <Conflicted file info> section, and end each filename with a NUL character rather than newline. Also begin the messages section with a NUL character instead of a newline. See [OUTPUT](https://git-scm.com/docs/git-merge-tree#OUTPUT) below for more information.
 
-- --name-only
+- `--name-only`
 
   In the Conflicted file info section, instead of writing a list of (mode, oid, stage, path) tuples to output for conflicted files, just provide a list of filenames with conflicts (and do not list filenames multiple times if they have multiple conflicting stages).
 
-- --[no-]messages
+- `--[no-]messages`
 
   Write any informational messages such as "Auto-merging <path>" or CONFLICT notices to the end of stdout. If unspecified, the default is to include these messages if there are merge conflicts, and to omit them otherwise.
 
-- --allow-unrelated-histories
+- `--allow-unrelated-histories`
 
   merge-tree will by default error out if the two branches specified share no common history. This flag can be given to override that check and make the merge proceed anyway.
 
-- --merge-base=<commit>
+- `--merge-base=<commit>`
 
   Instead of finding the merge-bases for <branch1> and <branch2>, specify a merge-base for the merge, and specifying multiple bases is currently not supported. This option is incompatible with `--stdin`.
 

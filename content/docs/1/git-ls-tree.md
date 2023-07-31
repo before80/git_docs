@@ -39,7 +39,7 @@ Lists the contents of a given tree object, like what "/bin/ls -a" does in the cu
 
 - -l
 
-- --long
+- `--long`
 
   Show object size of blob (file) entries.
 
@@ -47,29 +47,29 @@ Lists the contents of a given tree object, like what "/bin/ls -a" does in the cu
 
   \0 line termination on output and do not quote filenames. See OUTPUT FORMAT below for more information.
 
-- --name-only
+- `--name-only`
 
-- --name-status
+- `--name-status`
 
   List only filenames (instead of the "long" output), one per line. Cannot be combined with `--object-only`.
 
-- --object-only
+- `--object-only`
 
   List only names of the objects, one per line. Cannot be combined with `--name-only` or `--name-status`. This is equivalent to specifying `--format='%(objectname)'`, but for both this option and that exact format the command takes a hand-optimized codepath instead of going through the generic formatting mechanism.
 
-- --abbrev[=<n>]
+- `--abbrev[=<n>]`
 
   Instead of showing the full 40-byte hexadecimal object lines, show the shortest prefix that is at least *<n>* hexdigits long that uniquely refers the object. Non default number of digits can be specified with --abbrev=<n>.
 
-- --full-name
+- `--full-name`
 
   Instead of showing the path names relative to the current working directory, show the full path names.
 
-- --full-tree
+- `--full-tree`
 
   Do not limit the listing to the current working directory. Implies --full-name.
 
-- --format=<format>
+- `--format=<format>`
 
   A string that interpolates `%(fieldname)` from the result being shown. It also interpolates `%%` to `%`, and `%xx` where `xx` are hex digits interpolates to character with hex code `xx`; for example `%00` interpolates to `\0` (NUL), `%09` to `\t` (TAB) and `%0a` to `\n` (LF). When specified, `--format` cannot be combined with other format-altering options, including `--long`, `--name-only` and `--object-only`.
 

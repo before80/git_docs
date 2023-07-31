@@ -17,39 +17,39 @@ Finds symbolic names suitable for human digestion for revisions given in any for
 
 ## 选项
 
-- --tags
+- `--tags`
 
   Do not use branch names, but only tags to name the commits
 
-- --refs=<pattern>
+- `--refs=<pattern>`
 
   Only use refs whose names match a given shell pattern. The pattern can be one of branch name, tag name or fully qualified ref name. If given multiple times, use refs whose names match any of the given shell patterns. Use `--no-refs` to clear any previous ref patterns given.
 
-- --exclude=<pattern>
+- `--exclude=<pattern>`
 
   Do not use any ref whose name matches a given shell pattern. The pattern can be one of branch name, tag name or fully qualified ref name. If given multiple times, a ref will be excluded when it matches any of the given patterns. When used together with --refs, a ref will be used as a match only when it matches at least one --refs pattern and does not match any --exclude patterns. Use `--no-exclude` to clear the list of exclude patterns.
 
-- --all
+- `--all`
 
   List all commits reachable from all refs
 
-- --annotate-stdin
+- `--annotate-stdin`
 
   Transform stdin by substituting all the 40-character SHA-1 hexes (say $hex) with "$hex ($rev_name)". When used with --name-only, substitute with "$rev_name", omitting $hex altogether.For example:`$ cat sample.txt An abbreviated revision 2ae0a9cb82 will not be substituted. The full name after substitution is 2ae0a9cb8298185a94e5998086f380a355dd8907, while its tree object is 70d105cc79e63b81cfdcb08a15297c23e60b07ad $ git name-rev --annotate-stdin <sample.txt An abbreviated revision 2ae0a9cb82 will not be substituted. The full name after substitution is 2ae0a9cb8298185a94e5998086f380a355dd8907 (master), while its tree object is 70d105cc79e63b81cfdcb08a15297c23e60b07ad $ git name-rev --name-only --annotate-stdin <sample.txt An abbreviated revision 2ae0a9cb82 will not be substituted. The full name after substitution is master, while its tree object is 70d105cc79e63b81cfdcb08a15297c23e60b07ad`
 
-- --stdin
+- `--stdin`
 
   This option is deprecated in favor of *git name-rev --annotate-stdin*. They are functionally equivalent.
 
-- --name-only
+- `--name-only`
 
   Instead of printing both the SHA-1 and the name, print only the name. If given with --tags the usual tag prefix of "tags/" is also omitted from the name, matching the output of `git-describe` more closely.
 
-- --no-undefined
+- `--no-undefined`
 
   Die with error code != 0 when a reference is undefined, instead of printing `undefined`.
 
-- --always
+- `--always`
 
   Show uniquely abbreviated commit object as fallback.
 

@@ -95,57 +95,57 @@ The latest stash you created is stored in `refs/stash`; older stashes are found 
 
 - -a
 
-- --all
+- `--all`
 
   This option is only valid for `push` and `save` commands.All ignored and untracked files are also stashed and then cleaned up with `git clean`.
 
 - -u
 
-- --include-untracked
+- `--include-untracked`
 
-- --no-include-untracked
+- `--no-include-untracked`
 
   When used with the `push` and `save` commands, all untracked files are also stashed and then cleaned up with `git clean`.When used with the `show` command, show the untracked files in the stash entry as part of the diff.
 
-- --only-untracked
+- `--only-untracked`
 
   This option is only valid for the `show` command.Show only the untracked files in the stash entry as part of the diff.
 
-- --index
+- `--index`
 
   This option is only valid for `pop` and `apply` commands.Tries to reinstate not only the working tree’s changes, but also the index’s ones. However, this can fail, when you have conflicts (which are stored in the index, where you therefore can no longer apply the changes as they were originally).
 
 - -k
 
-- --keep-index
+- `--keep-index`
 
-- --no-keep-index
+- `--no-keep-index`
 
   This option is only valid for `push` and `save` commands.All changes already added to the index are left intact.
 
 - -p
 
-- --patch
+- `--patch`
 
   This option is only valid for `push` and `save` commands.Interactively select hunks from the diff between HEAD and the working tree to be stashed. The stash entry is constructed such that its index state is the same as the index state of your repository, and its worktree contains only the changes you selected interactively. The selected changes are then rolled back from your worktree. See the “Interactive Mode” section of [git-add[1]](../git-add) to learn how to operate the `--patch` mode.The `--patch` option implies `--keep-index`. You can use `--no-keep-index` to override this.
 
 - -S
 
-- --staged
+- `--staged`
 
   This option is only valid for `push` and `save` commands.Stash only the changes that are currently staged. This is similar to basic `git commit` except the state is committed to the stash instead of current branch.The `--patch` option has priority over this one.
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   This option is only valid for `push` command.Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   This option is only valid for `push` command.Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
 
 - -q
 
-- --quiet
+- `--quiet`
 
   This option is only valid for `apply`, `drop`, `pop`, `push`, `save`, `store` commands.Quiet, suppress feedback messages.
 

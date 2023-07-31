@@ -41,17 +41,17 @@ All these options obviously only make sense if enforced by the server side. They
 
   Prepend *path* to requested CVSROOT
 
-- --strict-paths
+- `--strict-paths`
 
   Don’t allow recursing into subdirectories
 
-- --export-all
+- `--export-all`
 
   Don’t check for `gitcvs.enabled` in config. You also have to specify a list of allowed directories (see below) if you want to use this option.
 
 - -V
 
-- --version
+- `--version`
 
   Print version information and exit
 
@@ -59,7 +59,7 @@ All these options obviously only make sense if enforced by the server side. They
 
 - -H
 
-- --help
+- `--help`
 
   Print usage information and exit
 

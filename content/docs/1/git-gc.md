@@ -33,35 +33,35 @@ Running `git gc` manually should only be needed when adding objects to a reposit
 
 ## 选项
 
-- --aggressive
+- `--aggressive`
 
   Usually *git gc* runs very quickly while providing good disk space utilization and performance. This option will cause *git gc* to more aggressively optimize the repository at the expense of taking much more time. The effects of this optimization are mostly persistent. See the "AGGRESSIVE" section below for details.
 
-- --auto
+- `--auto`
 
   With this option, *git gc* checks whether any housekeeping is required; if not, it exits without performing any work.See the `gc.auto` option in the "CONFIGURATION" section below for how this heuristic works.Once housekeeping is triggered by exceeding the limits of configuration options such as `gc.auto` and `gc.autoPackLimit`, all other housekeeping tasks (e.g. rerere, working trees, reflog…) will be performed as well.
 
-- --cruft
+- `--cruft`
 
   When expiring unreachable objects, pack them separately into a cruft pack instead of storing them as loose objects.
 
-- --prune=<date>
+- `--prune=<date>`
 
   Prune loose objects older than date (default is 2 weeks ago, overridable by the config variable `gc.pruneExpire`). --prune=now prunes loose objects regardless of their age and increases the risk of corruption if another process is writing to the repository concurrently; see "NOTES" below. --prune is on by default.
 
-- --no-prune
+- `--no-prune`
 
   Do not prune any loose objects.
 
-- --quiet
+- `--quiet`
 
   Suppress all progress reports.
 
-- --force
+- `--force`
 
   Force `git gc` to run even if there may be another `git gc` instance running on this repository.
 
-- --keep-largest-pack
+- `--keep-largest-pack`
 
   All packs except the largest pack and those marked with a `.keep` files are consolidated into a single pack. When this option is used, `gc.bigPackThreshold` is ignored.
 

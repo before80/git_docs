@@ -56,119 +56,119 @@ The third syntax ("`git merge --continue`") can only be run after the merge has 
 
 ## 选项
 
-- --commit
+- `--commit`
 
-- --no-commit
+- `--no-commit`
 
   Perform the merge and commit the result. This option can be used to override --no-commit.With --no-commit perform the merge and stop just before creating a merge commit, to give the user a chance to inspect and further tweak the merge result before committing.Note that fast-forward updates do not create a merge commit and therefore there is no way to stop those merges with --no-commit. Thus, if you want to ensure your branch is not changed or updated by the merge command, use --no-ff with --no-commit.
 
-- --edit
+- `--edit`
 
 - -e
 
-- --no-edit
+- `--no-edit`
 
   Invoke an editor before committing successful mechanical merge to further edit the auto-generated merge message, so that the user can explain and justify the merge. The `--no-edit` option can be used to accept the auto-generated message (this is generally discouraged). The `--edit` (or `-e`) option is still useful if you are giving a draft message with the `-m` option from the command line and want to edit it in the editor.Older scripts may depend on the historical behaviour of not allowing the user to edit the merge log message. They will see an editor opened when they run `git merge`. To make it easier to adjust such scripts to the updated behaviour, the environment variable `GIT_MERGE_AUTOEDIT` can be set to `no` at the beginning of them.
 
-- --cleanup=<mode>
+- `--cleanup=<mode>`
 
   This option determines how the merge message will be cleaned up before committing. See [git-commit[1]](../git-commit) for more details. In addition, if the *<mode>* is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on to the commit machinery in the case of a merge conflict.
 
-- --ff
+- `--ff`
 
-- --no-ff
+- `--no-ff`
 
-- --ff-only
+- `--ff-only`
 
   Specifies how a merge is handled when the merged-in history is already a descendant of the current history. `--ff` is the default unless merging an annotated (and possibly signed) tag that is not stored in its natural place in the `refs/tags/` hierarchy, in which case `--no-ff` is assumed.With `--ff`, when possible resolve the merge as a fast-forward (only update the branch pointer to match the merged branch; do not create a merge commit). When not possible (when the merged-in history is not a descendant of the current history), create a merge commit.With `--no-ff`, create a merge commit in all cases, even when the merge could instead be resolved as a fast-forward.With `--ff-only`, resolve the merge as a fast-forward when possible. When not possible, refuse to merge and exit with a non-zero status.
 
 - -S[<keyid>]
 
-- --gpg-sign[=<keyid>]
+- `--gpg-sign[=<keyid>]`
 
-- --no-gpg-sign
+- `--no-gpg-sign`
 
   GPG-sign the resulting merge commit. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
 
-- --log[=<n>]
+- `--log[=<n>]`
 
-- --no-log
+- `--no-log`
 
   In addition to branch names, populate the log message with one-line descriptions from at most <n> actual commits that are being merged. See also [git-fmt-merge-msg[1]](../git-fmt-merge-msg).With --no-log do not list one-line descriptions from the actual commits being merged.
 
-- --signoff
+- `--signoff`
 
-- --no-signoff
+- `--no-signoff`
 
   Add a `Signed-off-by` trailer by the committer at the end of the commit log message. The meaning of a signoff depends on the project to which you’re committing. For example, it may certify that the committer has the rights to submit the work under the project’s license or agrees to some contributor representation, such as a Developer Certificate of Origin. (See [http://developercertificate.org](http://developercertificate.org/) for the one used by the Linux kernel and Git projects.) Consult the documentation or leadership of the project to which you’re contributing to understand how the signoffs are used in that project.The --no-signoff option can be used to countermand an earlier --signoff option on the command line.
 
-- --stat
+- `--stat`
 
 - -n
 
-- --no-stat
+- `--no-stat`
 
   Show a diffstat at the end of the merge. The diffstat is also controlled by the configuration option merge.stat.With -n or --no-stat do not show a diffstat at the end of the merge.
 
-- --squash
+- `--squash`
 
-- --no-squash
+- `--no-squash`
 
   Produce the working tree and index state as if a real merge happened (except for the merge information), but do not actually make a commit, move the `HEAD`, or record `$GIT_DIR/MERGE_HEAD` (to cause the next `git commit` command to create a merge commit). This allows you to create a single commit on top of the current branch whose effect is the same as merging another branch (or more in case of an octopus).With --no-squash perform the merge and commit the result. This option can be used to override --squash.With --squash, --commit is not allowed, and will fail.
 
-- --[no-]verify
+- `--[no-]verify`
 
   By default, the pre-merge and commit-msg hooks are run. When `--no-verify` is given, these are bypassed. See also [githooks[5]](../../5/githooks).
 
 - -s <strategy>
 
-- --strategy=<strategy>
+- `--strategy=<strategy>`
 
   Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no `-s` option, a built-in list of strategies is used instead (`ort` when merging a single head, `octopus` otherwise).
 
 - -X <option>
 
-- --strategy-option=<option>
+- `--strategy-option=<option>`
 
   Pass merge strategy specific option through to the merge strategy.
 
-- --verify-signatures
+- `--verify-signatures`
 
-- --no-verify-signatures
+- `--no-verify-signatures`
 
   Verify that the tip commit of the side branch being merged is signed with a valid key, i.e. a key that has a valid uid: in the default trust model, this means the signing key has been signed by a trusted key. If the tip commit of the side branch is not signed with a valid key, the merge is aborted.
 
-- --summary
+- `--summary`
 
-- --no-summary
+- `--no-summary`
 
   Synonyms to --stat and --no-stat; these are deprecated and will be removed in the future.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Operate quietly. Implies --no-progress.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Be verbose.
 
-- --progress
+- `--progress`
 
-- --no-progress
+- `--no-progress`
 
   Turn progress on/off explicitly. If neither is specified, progress is shown if standard error is connected to a terminal. Note that not all merge strategies may support progress reporting.
 
-- --autostash
+- `--autostash`
 
-- --no-autostash
+- `--no-autostash`
 
   Automatically create a temporary stash entry before the operation begins, record it in the special ref `MERGE_AUTOSTASH` and apply it after the operation ends. This means that you can run the operation on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts.
 
-- --allow-unrelated-histories
+- `--allow-unrelated-histories`
 
   By default, `git merge` command refuses to merge histories that do not share a common ancestor. This option can be used to override this safety when merging histories of two projects that started their lives independently. As that is a very rare occasion, no configuration variable to enable this by default exists and will not be added.
 
@@ -182,31 +182,31 @@ The third syntax ("`git merge --continue`") can only be run after the merge has 
 
 - -F <file>
 
-- --file=<file>
+- `--file=<file>`
 
   Read the commit message to be used for the merge commit (in case one is created).If `--log` is specified, a shortlog of the commits being merged will be appended to the specified message.
 
-- --rerere-autoupdate
+- `--rerere-autoupdate`
 
-- --no-rerere-autoupdate
+- `--no-rerere-autoupdate`
 
   After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git add`.
 
-- --overwrite-ignore
+- `--overwrite-ignore`
 
-- --no-overwrite-ignore
+- `--no-overwrite-ignore`
 
   Silently overwrite ignored files from the merge result. This is the default behavior. Use `--no-overwrite-ignore` to abort.
 
-- --abort
+- `--abort`
 
   Abort the current conflict resolution process, and try to reconstruct the pre-merge state. If an autostash entry is present, apply it to the worktree.If there were uncommitted worktree changes present when the merge started, *git merge --abort* will in some cases be unable to reconstruct these changes. It is therefore recommended to always commit or stash your changes before running *git merge*.*git merge --abort* is equivalent to *git reset --merge* when `MERGE_HEAD` is present unless `MERGE_AUTOSTASH` is also present in which case *git merge --abort* applies the stash entry to the worktree whereas *git reset --merge* will save the stashed changes in the stash list.
 
-- --quit
+- `--quit`
 
   Forget about the current merge in progress. Leave the index and the working tree as-is. If `MERGE_AUTOSTASH` is present, the stash entry will be saved to the stash list.
 
-- --continue
+- `--continue`
 
   After a *git merge* stops due to conflicts you can conclude the merge by running *git merge --continue* (see "HOW TO RESOLVE CONFLICTS" section below).
 

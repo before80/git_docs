@@ -30,7 +30,7 @@ Reads a single e-mail message from the standard input, and writes the commit log
 
   The commit log message, author name and author email are taken from the e-mail, and after minimally decoding MIME transfer encoding, re-coded in the charset specified by `i18n.commitEncoding` (defaulting to UTF-8) by transliterating them. This used to be optional but now it is the default.Note that the patch is always used as-is without charset conversion, even with this flag.
 
-- --encoding=<encoding>
+- `--encoding=<encoding>`
 
   Similar to -u. But when re-coding, the charset specified here is used instead of the one specified by `i18n.commitEncoding` or UTF-8.
 
@@ -40,19 +40,19 @@ Reads a single e-mail message from the standard input, and writes the commit log
 
 - -m
 
-- --message-id
+- `--message-id`
 
   Copy the Message-ID header at the end of the commit message. This is useful in order to associate commits with mailing list discussions.
 
-- --scissors
+- `--scissors`
 
   Remove everything in body before a scissors line (e.g. "-- >8 --"). The line represents scissors and perforation marks, and is used to request the reader to cut the message at that line. If that line appears in the body of the message before the patch, everything before it (including the scissors line itself) is ignored when this option is used.This is useful if you want to begin your message in a discussion thread with comments and suggestions on the message you are responding to, and to conclude it with a patch submission, separating the discussion and the beginning of the proposed commit log message with a scissors line.This can be enabled by default with the configuration option mailinfo.scissors.
 
-- --no-scissors
+- `--no-scissors`
 
   Ignore scissors lines. Useful for overriding mailinfo.scissors settings.
 
-- --quoted-cr=<action>
+- `--quoted-cr=<action>`
 
   Action when processes email messages sent with base64 or quoted-printable encoding, and the decoded lines end with a CRLF instead of a simple LF.The valid actions are:`nowarn`: Git will do nothing when such a CRLF is found.`warn`: Git will issue a warning for each message if such a CRLF is found.`strip`: Git will convert those CRLF to LF.The default action could be set by configuration option `mailinfo.quotedCR`. If no such configuration option has been set, `warn` will be used.
 

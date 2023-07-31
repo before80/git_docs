@@ -26,7 +26,7 @@ Trivial merges are done by *git read-tree* itself. Only conflicting paths will b
 
   Perform a merge, not just a read. The command will refuse to run if your index file has unmerged entries, indicating that you have not finished previous merge you started.
 
-- --reset
+- `--reset`
 
   Same as -m, except that unmerged entries are discarded instead of failing. When used with `-u`, updates leading to loss of working tree changes or untracked files or directories will not abort the operation.
 
@@ -40,7 +40,7 @@ Trivial merges are done by *git read-tree* itself. Only conflicting paths will b
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Check if the command would error out, without updating the index or the files in the working tree for real.
 
@@ -48,37 +48,37 @@ Trivial merges are done by *git read-tree* itself. Only conflicting paths will b
 
   Show the progress of checking files out.
 
-- --trivial
+- `--trivial`
 
   Restrict three-way merge by *git read-tree* to happen only if there is no file-level merging required, instead of resolving merge for trivial cases and leaving conflicting files unresolved in the index.
 
-- --aggressive
+- `--aggressive`
 
   Usually a three-way merge by *git read-tree* resolves the merge for really trivial cases and leaves other cases unresolved in the index, so that porcelains can implement different merge policies. This flag makes the command resolve a few more cases internally:when one side removes a path and the other side leaves the path unmodified. The resolution is to remove that path.when both sides remove a path. The resolution is to remove that path.when both sides add a path identically. The resolution is to add that path.
 
-- --prefix=<prefix>
+- `--prefix=<prefix>`
 
   Keep the current index contents, and read the contents of the named tree-ish under the directory at `<prefix>`. The command will refuse to overwrite entries that already existed in the original index file.
 
-- --index-output=<file>
+- `--index-output=<file>`
 
   Instead of writing the results out to `$GIT_INDEX_FILE`, write the resulting index in the named file. While the command is operating, the original index file is locked with the same mechanism as usual. The file must allow to be rename(2)ed into from a temporary file that is created next to the usual index file; typically this means it needs to be on the same filesystem as the index file itself, and you need write permission to the directories the index file and index output file are located in.
 
-- --[no-]recurse-submodules
+- `--[no-]recurse-submodules`
 
   Using --recurse-submodules will update the content of all active submodules according to the commit recorded in the superproject by calling read-tree recursively, also setting the submodules' HEAD to be detached at that commit.
 
-- --no-sparse-checkout
+- `--no-sparse-checkout`
 
   Disable sparse checkout support even if `core.sparseCheckout` is true.
 
-- --empty
+- `--empty`
 
   Instead of reading tree object(s) into the index, just empty it.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Quiet, suppress feedback messages.
 

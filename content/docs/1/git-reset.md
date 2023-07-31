@@ -50,21 +50,21 @@ See "Reset, restore and revert" in [git[1]](../git) for the differences between 
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Be quiet, only report errors.
 
-- --refresh
+- `--refresh`
 
-- --no-refresh
+- `--no-refresh`
 
   Refresh the index after a mixed reset. Enabled by default.
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
 

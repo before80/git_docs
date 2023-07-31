@@ -23,51 +23,51 @@ Will copy all files listed from the index to the working directory (not overwrit
 
 - -u
 
-- --index
+- `--index`
 
   update stat information for the checked out entries in the index file.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   be quiet if files exist or are not in the index
 
 - -f
 
-- --force
+- `--force`
 
   forces overwrite of existing files
 
 - -a
 
-- --all
+- `--all`
 
   checks out all files in the index except for those with the skip-worktree bit set (see `--ignore-skip-worktree-bits`). Cannot be used together with explicit filenames.
 
 - -n
 
-- --no-create
+- `--no-create`
 
   Don’t checkout new files, only refresh files already checked out.
 
-- --prefix=<string>
+- `--prefix=<string>`
 
   When creating files, prepend <string> (usually a directory including a trailing /)
 
-- --stage=<number>|all
+- `--stage=<number>|all`
 
   Instead of checking out unmerged entries, copy out the files from named stage. <number> must be between 1 and 3. Note: --stage=all automatically implies --temp.
 
-- --temp
+- `--temp`
 
   Instead of copying the files to the working directory write the content to temporary files. The temporary name associations will be written to stdout.
 
-- --ignore-skip-worktree-bits
+- `--ignore-skip-worktree-bits`
 
   Check out all files, including those with the skip-worktree bit set.
 
-- --stdin
+- `--stdin`
 
   Instead of taking list of paths from the command line, read list of paths from the standard input. Paths are separated by LF (i.e. one path per line) by default.
 

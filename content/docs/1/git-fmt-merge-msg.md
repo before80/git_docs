@@ -19,15 +19,15 @@ This command is intended mostly for internal use by scripts automatically invoki
 
 ## 选项
 
-- --log[=<n>]
+- `--log[=<n>]`
 
   In addition to branch names, populate the log message with one-line descriptions from the actual commits that are being merged. At most <n> commits from each merge parent will be used (20 if <n> is omitted). This overrides the `merge.log` configuration variable.
 
-- --no-log
+- `--no-log`
 
   Do not list one-line descriptions from the actual commits being merged.
 
-- --[no-]summary
+- `--[no-]summary`
 
   Synonyms to --log and --no-log; these are deprecated and will be removed in the future.
 

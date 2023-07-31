@@ -39,31 +39,31 @@ If any optional `<pathspec>...` arguments are given, only those paths that match
 
 - -f
 
-- --force
+- `--force`
 
   If the Git configuration variable clean.requireForce is not set to false, *git clean* will refuse to delete files or directories unless given -f or -i. Git will refuse to modify untracked nested git repositories (directories with a .git subdirectory) unless a second -f is given.
 
 - -i
 
-- --interactive
+- `--interactive`
 
   Show what would be done and clean files interactively. See “Interactive mode” for details.
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Don’t actually remove anything, just show what would be done.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Be quiet, only report errors, but not the files that are successfully removed.
 
 - -e <pattern>
 
-- --exclude=<pattern>
+- `--exclude=<pattern>`
 
   Use the given exclude pattern in addition to the standard ignore rules (see [gitignore[5]](../../5/gitignore)).
 

@@ -24,7 +24,7 @@ Note that you can get more information on a packfile by calling [git-verify-pack
 
 ## 选项
 
-- --object-format=<hash-algorithm>
+- `--object-format=<hash-algorithm>`
 
   Specify the given object format (hash algorithm) for the index file. The valid values are *sha1* and (if enabled) *sha256*. The default is the algorithm for the current repository (set by `extensions.objectFormat`), or *sha1* if no value is set or outside a repository..THIS OPTION IS EXPERIMENTAL! SHA-256 support is experimental and still in an early stage. A SHA-256 repository will in general not be able to share work with "regular" SHA-1 repositories. It should be assumed that, e.g., Git internal file formats in relation to SHA-256 repositories may change in backwards-incompatible ways. Only use `--object-format=sha256` for testing purposes.
 

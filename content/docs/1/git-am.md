@@ -31,163 +31,163 @@ Splits mail messages in a mailbox into commit log message, authorship informatio
 
 - -s
 
-- --signoff
+- `--signoff`
 
   Add a `Signed-off-by` trailer to the commit message, using the committer identity of yourself. See the signoff option in [git-commit[1]](../git-commit) for more information.
 
 - -k
 
-- --keep
+- `--keep`
 
   Pass `-k` flag to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)).
 
-- --keep-non-patch
+- `--keep-non-patch`
 
   Pass `-b` flag to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)).
 
-- --[no-]keep-cr
+- `--[no-]keep-cr`
 
   With `--keep-cr`, call *git mailsplit* (see [git-mailsplit[1]](../git-mailsplit)) with the same option, to prevent it from stripping CR at the end of lines. `am.keepcr` configuration variable can be used to specify the default behaviour. `--no-keep-cr` is useful to override `am.keepcr`.
 
 - -c
 
-- --scissors
+- `--scissors`
 
   Remove everything in body before a scissors line (see [git-mailinfo[1]](../git-mailinfo)). Can be activated by default using the `mailinfo.scissors` configuration variable.
 
-- --no-scissors
+- `--no-scissors`
 
   Ignore scissors lines (see [git-mailinfo[1]](../git-mailinfo)).
 
-- --quoted-cr=<action>
+- `--quoted-cr=<action>`
 
   This flag will be passed down to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)).
 
-- --empty=(stop|drop|keep)
+- `--empty=(stop|drop|keep)`
 
   By default, or when the option is set to *stop*, the command errors out on an input e-mail message lacking a patch and stops into the middle of the current am session. When this option is set to *drop*, skip such an e-mail message instead. When this option is set to *keep*, create an empty commit, recording the contents of the e-mail message as its log.
 
 - -m
 
-- --message-id
+- `--message-id`
 
   Pass the `-m` flag to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)), so that the Message-ID header is added to the commit message. The `am.messageid` configuration variable can be used to specify the default behaviour.
 
-- --no-message-id
+- `--no-message-id`
 
   Do not add the Message-ID header to the commit message. `no-message-id` is useful to override `am.messageid`.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Be quiet. Only print error messages.
 
 - -u
 
-- --utf8
+- `--utf8`
 
   Pass `-u` flag to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)). The proposed commit log message taken from the e-mail is re-coded into UTF-8 encoding (configuration variable `i18n.commitEncoding` can be used to specify project’s preferred encoding if it is not UTF-8).This was optional in prior versions of git, but now it is the default. You can use `--no-utf8` to override this.
 
-- --no-utf8
+- `--no-utf8`
 
   Pass `-n` flag to *git mailinfo* (see [git-mailinfo[1]](../git-mailinfo)).
 
 - -3
 
-- --3way
+- `--3way`
 
-- --no-3way
+- `--no-3way`
 
   When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally. `--no-3way` can be used to override am.threeWay configuration variable. For more information, see am.threeWay in [git-config[1]](../git-config).
 
-- --rerere-autoupdate
+- `--rerere-autoupdate`
 
-- --no-rerere-autoupdate
+- `--no-rerere-autoupdate`
 
   After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git add`.
 
-- --ignore-space-change
+- `--ignore-space-change`
 
-- --ignore-whitespace
+- `--ignore-whitespace`
 
-- --whitespace=<option>
+- `--whitespace=<option>`
 
 - -C<n>
 
 - -p<n>
 
-- --directory=<dir>
+- `--directory=<dir>`
 
-- --exclude=<path>
+- `--exclude=<path>`
 
-- --include=<path>
+- `--include=<path>`
 
-- --reject
+- `--reject`
 
   These flags are passed to the *git apply* (see [git-apply[1]](../git-apply)) program that applies the patch.
 
-- --patch-format
+- `--patch-format`
 
   By default the command will try to detect the patch format automatically. This option allows the user to bypass the automatic detection and specify the patch format that the patch(es) should be interpreted as. Valid formats are mbox, mboxrd, stgit, stgit-series and hg.
 
 - -i
 
-- --interactive
+- `--interactive`
 
   Run interactively.
 
 - -n
 
-- --no-verify
+- `--no-verify`
 
   By default, the pre-applypatch and applypatch-msg hooks are run. When any of `--no-verify` or `-n` is given, these are bypassed. See also [githooks[5]](../../5/githooks).
 
-- --committer-date-is-author-date
+- `--committer-date-is-author-date`
 
   By default the command records the date from the e-mail message as the commit author date, and uses the time of commit creation as the committer date. This allows the user to lie about the committer date by using the same value as the author date.
 
-- --ignore-date
+- `--ignore-date`
 
   By default the command records the date from the e-mail message as the commit author date, and uses the time of commit creation as the committer date. This allows the user to lie about the author date by using the same value as the committer date.
 
-- --skip
+- `--skip`
 
   Skip the current patch. This is only meaningful when restarting an aborted patch.
 
 - -S[<keyid>]
 
-- --gpg-sign[=<keyid>]
+- `--gpg-sign[=<keyid>]`
 
-- --no-gpg-sign
+- `--no-gpg-sign`
 
   GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
 
-- --continue
+- `--continue`
 
 - -r
 
-- --resolved
+- `--resolved`
 
   After a patch failure (e.g. attempting to apply conflicting patch), the user has applied it by hand and the index file stores the result of the application. Make a commit using the authorship and commit log extracted from the e-mail message and the current index file, and continue.
 
-- --resolvemsg=<msg>
+- `--resolvemsg=<msg>`
 
   When a patch failure occurs, <msg> will be printed to the screen before exiting. This overrides the standard message informing you to use `--continue` or `--skip` to handle the failure. This is solely for internal use between *git rebase* and *git am*.
 
-- --abort
+- `--abort`
 
   Restore the original branch and abort the patching operation. Revert contents of files involved in the am operation to their pre-am state.
 
-- --quit
+- `--quit`
 
   Abort the patching operation but keep HEAD and the index untouched.
 
-- --show-current-patch[=(diff|raw)]
+- `--show-current-patch[=(diff|raw)]`
 
   Show the message at which `git am` has stopped due to conflicts. If `raw` is specified, show the raw contents of the e-mail message; if `diff`, show the diff portion only. Defaults to `raw`.
 
-- --allow-empty
+- `--allow-empty`
 
   After a patch failure on an input e-mail message lacking a patch, create an empty commit with the contents of the e-mail message as its log message.
 

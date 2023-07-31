@@ -64,13 +64,13 @@ The `GIT_NO_REPLACE_OBJECTS` environment variable can be set to achieve the same
 
 - -f
 
-- --force
+- `--force`
 
   If an existing replace ref for the same object exists, it will be overwritten (instead of failing).
 
 - -d
 
-- --delete
+- `--delete`
 
   Delete existing replace refs for the given objects.
 
@@ -78,7 +78,7 @@ The `GIT_NO_REPLACE_OBJECTS` environment variable can be set to achieve the same
 
   Edit an object’s content interactively. The existing content for <object> is pretty-printed into a temporary file, an editor is launched on the file, and the result is parsed to create a new object of the same type as <object>. A replacement ref is then created to replace <object> with the newly created object. See [git-var[1]](../git-var) for details about how the editor will be chosen.
 
-- --raw
+- `--raw`
 
   When editing, provide the raw object contents rather than pretty-printed ones. Currently this only affects trees, which will be shown in their binary form. This is harder to work with, but can help when repairing a tree that is so corrupted it cannot be pretty-printed. Note that you may need to configure your editor to cleanly read and write binary data.
 
@@ -86,7 +86,7 @@ The `GIT_NO_REPLACE_OBJECTS` environment variable can be set to achieve the same
 
   Create a graft commit. A new commit is created with the same content as <commit> except that its parents will be [<parent>…] instead of <commit>'s parents. A replacement ref is then created to replace <commit> with the newly created commit. Use `--convert-graft-file` to convert a `$GIT_DIR/info/grafts` file and use replace refs instead.
 
-- --convert-graft-file
+- `--convert-graft-file`
 
   Creates graft commits for all entries in `$GIT_DIR/info/grafts` and deletes that file upon success. The purpose is to help users with transitioning off of the now-deprecated graft file.
 
@@ -96,7 +96,7 @@ The `GIT_NO_REPLACE_OBJECTS` environment variable can be set to achieve the same
 
   List replace refs for objects that match the given pattern (or all if no pattern is given). Typing "git replace" without arguments, also lists all replace refs.
 
-- --format=<format>
+- `--format=<format>`
 
   When listing, use the specified <format>, which can be one of *short*, *medium* and *long*. When omitted, the format defaults to *short*.
 

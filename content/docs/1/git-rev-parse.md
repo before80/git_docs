@@ -20,43 +20,43 @@ Many Git porcelainish commands take mixture of flags (i.e. parameters that begin
 
 Each of these options must appear first on the command line.
 
-- --parseopt
+- `--parseopt`
 
   Use *git rev-parse* in option parsing mode (see PARSEOPT section below).
 
-- --sq-quote
+- `--sq-quote`
 
   Use *git rev-parse* in shell quoting mode (see SQ-QUOTE section below). In contrast to the `--sq` option below, this mode does only quoting. Nothing else is done to command input.
 
 ### Options for --parseopt
 
-- --keep-dashdash
+- `--keep-dashdash`
 
   Only meaningful in `--parseopt` mode. Tells the option parser to echo out the first `--` met instead of skipping it.
 
-- --stop-at-non-option
+- `--stop-at-non-option`
 
   Only meaningful in `--parseopt` mode. Lets the option parser stop at the first non-option argument. This can be used to parse sub-commands that take options themselves.
 
-- --stuck-long
+- `--stuck-long`
 
   Only meaningful in `--parseopt` mode. Output the options in their long form if available, and with their arguments stuck.
 
 ### Options for Filtering
 
-- --revs-only
+- `--revs-only`
 
   Do not output flags and parameters not meant for *git rev-list* command.
 
-- --no-revs
+- `--no-revs`
 
   Do not output flags and parameters meant for *git rev-list* command.
 
-- --flags
+- `--flags`
 
   Do not output non-flag parameters.
 
-- --no-flags
+- `--no-flags`
 
   Do not output flag parameters.
 
@@ -70,87 +70,87 @@ Each of these options must appear first on the command line.
 
   Behave as if *git rev-parse* was invoked from the `<arg>` subdirectory of the working tree. Any relative filenames are resolved as if they are prefixed by `<arg>` and will be printed in that form.This can be used to convert arguments to a command run in a subdirectory so that they can still be used after moving to the top-level of the repository. For example:`prefix=$(git rev-parse --show-prefix) cd "$(git rev-parse --show-toplevel)" # rev-parse provides the -- needed for 'set' eval "set $(git rev-parse --sq --prefix "$prefix" -- "$@")"`
 
-- --verify
+- `--verify`
 
   Verify that exactly one parameter is provided, and that it can be turned into a raw 20-byte SHA-1 that can be used to access the object database. If so, emit it to the standard output; otherwise, error out.If you want to make sure that the output actually names an object in your object database and/or can be used as a specific type of object you require, you can add the `^{type}` peeling operator to the parameter. For example, `git rev-parse "$VAR^{commit}"` will make sure `$VAR` names an existing object that is a commit-ish (i.e. a commit, or an annotated tag that points at a commit). To make sure that `$VAR` names an existing object of any type, `git rev-parse "$VAR^{object}"` can be used.Note that if you are verifying a name from an untrusted source, it is wise to use `--end-of-options` so that the name argument is not mistaken for another option.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Only meaningful in `--verify` mode. Do not output an error message if the first argument is not a valid object name; instead exit with non-zero status silently. SHA-1s for valid object names are printed to stdout on success.
 
-- --sq
+- `--sq`
 
   Usually the output is made one line per flag and parameter. This option makes output a single line, properly quoted for consumption by shell. Useful when you expect your parameter to contain whitespaces and newlines (e.g. when using pickaxe `-S` with *git diff-**). In contrast to the `--sq-quote` option, the command input is still interpreted as usual.
 
-- --short[=length]
+- `--short[=length]`
 
   Same as `--verify` but shortens the object name to a unique prefix with at least `length` characters. The minimum length is 4, the default is the effective value of the `core.abbrev` configuration variable (see [git-config[1]](../git-config)).
 
-- --not
+- `--not`
 
   When showing object names, prefix them with *^* and strip *^* prefix from the object names that already have one.
 
-- --abbrev-ref[=(strict|loose)]
+- `--abbrev-ref[=(strict|loose)]`
 
   A non-ambiguous short name of the objects name. The option core.warnAmbiguousRefs is used to select the strict abbreviation mode.
 
-- --symbolic
+- `--symbolic`
 
   Usually the object names are output in SHA-1 form (with possible *^* prefix); this option makes them output in a form as close to the original input as possible.
 
-- --symbolic-full-name
+- `--symbolic-full-name`
 
   This is similar to --symbolic, but it omits input that are not refs (i.e. branch or tag names; or more explicitly disambiguating "heads/master" form, when you want to name the "master" branch when there is an unfortunately named tag "master"), and show them as full refnames (e.g. "refs/heads/master").
 
 ### Options for Objects
 
-- --all
+- `--all`
 
   Show all refs found in `refs/`.
 
-- --branches[=pattern]
+- `--branches[=pattern]`
 
-- --tags[=pattern]
+- `--tags[=pattern]`
 
-- --remotes[=pattern]
+- `--remotes[=pattern]`
 
   Show all branches, tags, or remote-tracking branches, respectively (i.e., refs found in `refs/heads`, `refs/tags`, or `refs/remotes`, respectively).If a `pattern` is given, only refs matching the given shell glob are shown. If the pattern does not contain a globbing character (`?`, `*`, or `[`), it is turned into a prefix match by appending `/*`.
 
-- --glob=pattern
+- `--glob=pattern`
 
   Show all refs matching the shell glob pattern `pattern`. If the pattern does not start with `refs/`, this is automatically prepended. If the pattern does not contain a globbing character (`?`, `*`, or `[`), it is turned into a prefix match by appending `/*`.
 
-- --exclude=<glob-pattern>
+- `--exclude=<glob-pattern>`
 
   Do not include refs matching *<glob-pattern>* that the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` would otherwise consider. Repetitions of this option accumulate exclusion patterns up to the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` option (other options or arguments do not clear accumulated patterns).The patterns given should not begin with `refs/heads`, `refs/tags`, or `refs/remotes` when applied to `--branches`, `--tags`, or `--remotes`, respectively, and they must begin with `refs/` when applied to `--glob` or `--all`. If a trailing */** is intended, it must be given explicitly.
 
-- --exclude-hidden=[receive|uploadpack]
+- `--exclude-hidden=[receive|uploadpack]`
 
   Do not include refs that would be hidden by `git-receive-pack` or `git-upload-pack` by consulting the appropriate `receive.hideRefs` or `uploadpack.hideRefs` configuration along with `transfer.hideRefs` (see [git-config[1]](../git-config)). This option affects the next pseudo-ref option `--all` or `--glob` and is cleared after processing them.
 
-- --disambiguate=<prefix>
+- `--disambiguate=<prefix>`
 
   Show every object whose name begins with the given prefix. The <prefix> must be at least 4 hexadecimal digits long to avoid listing each and every object in the repository by mistake.
 
 ### Options for Files
 
-- --local-env-vars
+- `--local-env-vars`
 
   List the GIT_* environment variables that are local to the repository (e.g. GIT_DIR or GIT_WORK_TREE, but not GIT_EDITOR). Only the names of the variables are listed, not their value, even if they are set.
 
-- --path-format=(absolute|relative)
+- `--path-format=(absolute|relative)`
 
   Controls the behavior of certain other options. If specified as absolute, the paths printed by those options will be absolute and canonical. If specified as relative, the paths will be relative to the current working directory if that is possible. The default is option specific.This option may be specified multiple times and affects only the arguments that follow it on the command line, either to the end of the command line or the next instance of this option.
 
 The following options are modified by `--path-format`:
 
-- --git-dir
+- `--git-dir`
 
   Show `$GIT_DIR` if defined. Otherwise show the path to the .git directory. The path shown, when relative, is relative to the current working directory.If `$GIT_DIR` is not defined and the current directory is not detected to lie in a Git repository or work tree print a message to stderr and exit with nonzero status.
 
-- --git-common-dir
+- `--git-common-dir`
 
   Show `$GIT_COMMON_DIR` if defined, else `$GIT_DIR`.
 
@@ -162,63 +162,63 @@ The following options are modified by `--path-format`:
 
   Resolve "$GIT_DIR/<path>" and takes other path relocation variables such as $GIT_OBJECT_DIRECTORY, $GIT_INDEX_FILE… into account. For example, if $GIT_OBJECT_DIRECTORY is set to /foo/bar then "git rev-parse --git-path objects/abc" returns /foo/bar/abc.
 
-- --show-toplevel
+- `--show-toplevel`
 
   Show the (by default, absolute) path of the top-level directory of the working tree. If there is no working tree, report an error.
 
-- --show-superproject-working-tree
+- `--show-superproject-working-tree`
 
   Show the absolute path of the root of the superproject’s working tree (if exists) that uses the current repository as its submodule. Outputs nothing if the current repository is not used as a submodule by any project.
 
-- --shared-index-path
+- `--shared-index-path`
 
   Show the path to the shared index file in split index mode, or empty if not in split-index mode.
 
 The following options are unaffected by `--path-format`:
 
-- --absolute-git-dir
+- `--absolute-git-dir`
 
   Like `--git-dir`, but its output is always the canonicalized absolute path.
 
-- --is-inside-git-dir
+- `--is-inside-git-dir`
 
   When the current working directory is below the repository directory print "true", otherwise "false".
 
-- --is-inside-work-tree
+- `--is-inside-work-tree`
 
   When the current working directory is inside the work tree of the repository print "true", otherwise "false".
 
-- --is-bare-repository
+- `--is-bare-repository`
 
   When the repository is bare print "true", otherwise "false".
 
-- --is-shallow-repository
+- `--is-shallow-repository`
 
   When the repository is shallow print "true", otherwise "false".
 
-- --show-cdup
+- `--show-cdup`
 
   When the command is invoked from a subdirectory, show the path of the top-level directory relative to the current directory (typically a sequence of "../", or an empty string).
 
-- --show-prefix
+- `--show-prefix`
 
   When the command is invoked from a subdirectory, show the path of the current directory relative to the top-level directory.
 
-- --show-object-format[=(storage|input|output)]
+- `--show-object-format[=(storage|input|output)]`
 
   Show the object format (hash algorithm) used for the repository for storage inside the `.git` directory, input, or output. For input, multiple algorithms may be printed, space-separated. If not specified, the default is "storage".
 
 ### Other Options
 
-- --since=datestring
+- `--since=datestring`
 
-- --after=datestring
+- `--after=datestring`
 
   Parse the date string, and output the corresponding --max-age= parameter for *git rev-list*.
 
-- --until=datestring
+- `--until=datestring`
 
-- --before=datestring
+- `--before=datestring`
 
   Parse the date string, and output the corresponding --min-age= parameter for *git rev-list*.
 

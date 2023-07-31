@@ -130,7 +130,7 @@ Commands which have the enhanced option parser activated all understand a couple
 
   请注意，某些子命令（例如 `git grep`）在命令行上还有其他 `-h` 以外的内容时，可能会有不同的行为，但是 `git subcmd -h` 在命令行上没有其他内容时应始终给出一致的使用说明。
 
-- --help-all
+- `--help-all`
 
   Some Git commands take options that are only used for plumbing or that are deprecated, and such options are hidden from the default usage. This option gives the full list of options.
 

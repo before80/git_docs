@@ -34,11 +34,11 @@ See [git-merge[1]](../git-merge) for some hints on resolving such conflicts.
 
 - -e
 
-- --edit
+- `--edit`
 
   With this option, *git cherry-pick* will let you edit the commit message prior to committing.
 
-- --cleanup=<mode>
+- `--cleanup=<mode>`
 
   This option determines how the commit message will be cleaned up before being passed on to the commit machinery. See [git-commit[1]](../git-commit) for more details. In particular, if the *<mode>* is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on in the case of a conflict.
 
@@ -58,71 +58,71 @@ See [git-merge[1]](../git-merge) for some hints on resolving such conflicts.
 
 - -n
 
-- --no-commit
+- `--no-commit`
 
   Usually the command automatically creates a sequence of commits. This flag applies the changes necessary to cherry-pick each named commit to your working tree and the index, without making any commit. In addition, when this option is used, your index does not have to match the HEAD commit. The cherry-pick is done against the beginning state of your index.This is useful when cherry-picking more than one commits' effect to your index in a row.
 
 - -s
 
-- --signoff
+- `--signoff`
 
   Add a `Signed-off-by` trailer at the end of the commit message. See the signoff option in [git-commit[1]](../git-commit) for more information.
 
 - -S[<keyid>]
 
-- --gpg-sign[=<keyid>]
+- `--gpg-sign[=<keyid>]`
 
-- --no-gpg-sign
+- `--no-gpg-sign`
 
   GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
 
-- --ff
+- `--ff`
 
   If the current HEAD is the same as the parent of the cherry-pick’ed commit, then a fast forward to this commit will be performed.
 
-- --allow-empty
+- `--allow-empty`
 
   By default, cherry-picking an empty commit will fail, indicating that an explicit invocation of `git commit --allow-empty` is required. This option overrides that behavior, allowing empty commits to be preserved automatically in a cherry-pick. Note that when "--ff" is in effect, empty commits that meet the "fast-forward" requirement will be kept even without this option. Note also, that use of this option only keeps commits that were initially empty (i.e. the commit recorded the same tree as its parent). Commits which are made empty due to a previous commit are dropped. To force the inclusion of those commits use `--keep-redundant-commits`.
 
-- --allow-empty-message
+- `--allow-empty-message`
 
   By default, cherry-picking a commit with an empty message will fail. This option overrides that behavior, allowing commits with empty messages to be cherry picked.
 
-- --keep-redundant-commits
+- `--keep-redundant-commits`
 
   If a commit being cherry picked duplicates a commit already in the current history, it will become empty. By default these redundant commits cause `cherry-pick` to stop so the user can examine the commit. This option overrides that behavior and creates an empty commit object. Implies `--allow-empty`.
 
-- --strategy=<strategy>
+- `--strategy=<strategy>`
 
   Use the given merge strategy. Should only be used once. See the MERGE STRATEGIES section in [git-merge[1]](../git-merge) for details.
 
 - -X<option>
 
-- --strategy-option=<option>
+- `--strategy-option=<option>`
 
   Pass the merge strategy-specific option through to the merge strategy. See [git-merge[1]](../git-merge) for details.
 
-- --rerere-autoupdate
+- `--rerere-autoupdate`
 
-- --no-rerere-autoupdate
+- `--no-rerere-autoupdate`
 
   After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git add`.
 
 ## SEQUENCER SUBCOMMANDS
 
-- --continue
+- `--continue`
 
   Continue the operation in progress using the information in `.git/sequencer`. Can be used to continue after resolving conflicts in a failed cherry-pick or revert.
 
-- --skip
+- `--skip`
 
   Skip the current commit and continue with the rest of the sequence.
 
-- --quit
+- `--quit`
 
   Forget about the current operation in progress. Can be used to clear the sequencer state after a failed cherry-pick or revert.
 
-- --abort
+- `--abort`
 
   Cancel the operation and return to the pre-sequence state.
 

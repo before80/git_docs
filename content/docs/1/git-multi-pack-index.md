@@ -16,11 +16,11 @@ Write or verify a multi-pack-index (MIDX) file.
 
 ## 选项
 
-- --object-dir=<dir>
+- `--object-dir=<dir>`
 
   Use given directory for the location of Git objects. We check `<dir>/packs/multi-pack-index` for the current MIDX file, and `<dir>/packs` for the pack-files to index.`<dir>` must be an alternate of the current repository.
 
-- --[no-]progress
+- `--[no-]progress`
 
   Turn progress on/off explicitly. If neither is specified, progress is shown if standard error is connected to a terminal. Supported by sub-commands `write`, `verify`, `expire`, and `repack.
 

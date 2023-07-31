@@ -36,55 +36,55 @@ Verifies the connectivity and validity of the objects in the database.
 
   An object to treat as the head of an unreachability trace.If no objects are given, *git fsck* defaults to using the index file, all SHA-1 references in `refs` namespace, and all reflogs (unless --no-reflogs is given) as heads.
 
-- --unreachable
+- `--unreachable`
 
   Print out objects that exist but that aren’t reachable from any of the reference nodes.
 
-- --[no-]dangling
+- `--[no-]dangling`
 
   Print objects that exist but that are never *directly* used (default). `--no-dangling` can be used to omit this information from the output.
 
-- --root
+- `--root`
 
   Report root nodes.
 
-- --tags
+- `--tags`
 
   Report tags.
 
-- --cache
+- `--cache`
 
   Consider any object recorded in the index also as a head node for an unreachability trace.
 
-- --no-reflogs
+- `--no-reflogs`
 
   Do not consider commits that are referenced only by an entry in a reflog to be reachable. This option is meant only to search for commits that used to be in a ref, but now aren’t, but are still in that corresponding reflog.
 
-- --full
+- `--full`
 
   Check not just objects in GIT_OBJECT_DIRECTORY ($GIT_DIR/objects), but also the ones found in alternate object pools listed in GIT_ALTERNATE_OBJECT_DIRECTORIES or $GIT_DIR/objects/info/alternates, and in packed Git archives found in $GIT_DIR/objects/pack and corresponding pack subdirectories in alternate object pools. This is now default; you can turn it off with --no-full.
 
-- --connectivity-only
+- `--connectivity-only`
 
   Check only the connectivity of reachable objects, making sure that any objects referenced by a reachable tag, commit, or tree is present. This speeds up the operation by avoiding reading blobs entirely (though it does still check that referenced blobs exist). This will detect corruption in commits and trees, but not do any semantic checks (e.g., for format errors). Corruption in blob objects will not be detected at all.Unreachable tags, commits, and trees will also be accessed to find the tips of dangling segments of history. Use `--no-dangling` if you don’t care about this output and want to speed it up further.
 
-- --strict
+- `--strict`
 
   Enable more strict checking, namely to catch a file mode recorded with g+w bit set, which was created by older versions of Git. Existing repositories, including the Linux kernel, Git itself, and sparse repository have old objects that triggers this check, but it is recommended to check new projects with this flag.
 
-- --verbose
+- `--verbose`
 
   Be chatty.
 
-- --lost-found
+- `--lost-found`
 
   Write dangling objects into .git/lost-found/commit/ or .git/lost-found/other/, depending on type. If the object is a blob, the contents are written into the file, rather than its object name.
 
-- --name-objects
+- `--name-objects`
 
   When displaying names of reachable objects, in addition to the SHA-1 also display a name that describes **how** they are reachable, compatible with [git-rev-parse[1]](../git-rev-parse), e.g. `HEAD@{1234567890}~25^2:src/`.
 
-- --[no-]progress
+- `--[no-]progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless --no-progress or --verbose is specified. --progress forces progress status even if the standard error stream is not directed to a terminal.
 

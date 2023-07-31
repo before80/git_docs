@@ -49,73 +49,73 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 
   要添加内容的文件。可以使用文件通配符（例如 `*.c`）来添加所有匹配的文件。也可以给出前导目录名（例如 `dir`，以更新索引以与整个目录的当前状态相匹配）。例如，指定 `dir` 将记录不仅在工作树中修改的文件 `dir/file1`，在工作树中添加的文件 `dir/file2`，还会从工作树中删除的文件 `dir/file3`。注意，旧版本的 Git 会忽略已删除的文件；如果您想添加已修改或新建的文件但忽略已删除的文件，请使用 `--no-all` 选项。有关 `<pathspec>` 语法的更多详细信息，请参阅 [gitglossary[7]](../7/gitglossary) 中的“pathspec”条目。
 - -n
-- --dry-run
+- `--dry-run`
 
   Don’t actually add the file(s), just show if they exist and/or will be ignored.
   
   仅显示文件是否存在或将被忽略，不实际添加文件。
 - -v
-- --verbose
+- `--verbose`
 
   显示详细输出。
 - -f
-- --force
+- `--force`
 
   允许添加被忽略的文件。
-- --sparse
+- `--sparse`
 
   允许更新超出 sparse-checkout 范围的索引条目。通常，`git add` 拒绝更新不符合 sparse-checkout 范围的索引条目，因为这些文件可能在工作树中被删除而没有警告。有关更多详细信息，请参阅 [git-sparse-checkout[1]](../git-sparse-checkout)。
 - -i
-- --interactive
+- `--interactive`
 
   交互式地将工作树中的修改内容添加到索引。可以提供可选的路径参数，以将操作限制为工作树的子集。详细信息请参阅“交互模式”。
 - -p
-- --patch
+- `--patch`
 
   选择索引与工作树之间的补丁的交互式部分，并将它们添加到索引。这使用户有机会在将修改的内容添加到索引之前查看差异。这实际上运行了 `add --interactive`，但绕过了初始的命令菜单，直接跳转到 `patch` 子命令。详细信息请参阅“交互模式”。
 - -e
-- --edit
+- `--edit`
 
   在编辑器中打开索引与 diff，并允许用户进行编辑。在编辑器关闭后，调整块标题并将补丁应用于索引。此选项的目的是选择和选择要应用的补丁行，或者甚至修改要暂存的行内容。这比使用交互式补丁选择器更快且更灵活。但是，容易混淆自己并创建无法应用于索引的补丁。请参阅下面的“编辑补丁”部分。
 - -u
-- --update
+- `--update`
 
   仅在索引中已经存在与 `<pathspec>` 匹配的条目时更新索引。这将删除并修改索引条目以与工作树匹配，但不添加新文件。如果在使用 `-u` 选项时未给出 `<pathspec>`，则将更新整个工作树中的所有跟踪文件（旧版本的 Git 会将更新限制为当前目录及其子目录）。
 - -A
-- --all
-- --no-ignore-removal
+- `--all`
+- `--no-ignore-removal`
 
   不仅在工作树中有与 `<pathspec>` 匹配的文件时更新索引，还在索引中已经有的条目时更新索引。这将添加、修改和删除索引条目以与工作树匹配。如果在使用 `-A` 选项时未给出 `<pathspec>`，则将更新整个工作树中的所有文件（旧版本的 Git 会将更新限制为当前目录及其子目录）。
-- --no-all
-- --ignore-removal
+- `--no-all`
+- `--ignore-removal`
 
   更新索引，添加工作树中未知的新文件和修改的文件，但忽略从工作树中删除的文件。当未使用 `<pathspec>` 时，此选项不执行任何操作。此选项主要是帮助习惯于旧版本 Git 的用户，这些版本中的“git add `<pathspec>`…”是“git add --no-all `<pathspec>`…”的同义词，即忽略被删除的文件。
 - -N
-- --intent-to-add
+- `--intent-to-add`
 
   仅记录该路径稍后将要添加的事实。将路径的条目放置在索引中，但没有内容。这对于使用 `git diff` 显示此类文件的未暂存内容，并使用 `git commit -a` 提交它们非常有用。
-- --refresh
+- `--refresh`
 
   不添加文件，仅刷新索引中的 stat() 信息。
-- --ignore-errors
+- `--ignore-errors`
 
   如果由于对文件进行索引时出现错误而无法添加某些文件，则不中止操作，而是继续添加其他文件。命令仍将以非零状态退出。可以设置配置变量 `add.ignoreErrors` 为 true，以使其成为默认行为。
-- --ignore-missing
+- `--ignore-missing`
 
   此选项只能与 --dry-run 一起使用。使用此选项，用户可以检查任何给定的文件是否会被忽略，无论它们是否已存在于工作树中。
-- --no-warn-embedded-repo
+- `--no-warn-embedded-repo`
 
   默认情况下，当向索引添加嵌入的存储库时而不使用 `git submodule add` 在 `.gitmodules` 中创建条目时，`git add` 会发出警告。此选项将抑制警告（例如，如果您手动对子模块执行操作）。
-- --renormalize
+- `--renormalize`
 
   将“干净”过程重新应用到所有跟踪的文件中，以强制再次将它们添加到索引中。在更改 `core.autocrlf` 配置或 `text` 属性后，以修正使用错误的 CRLF/LF 行结尾添加的文件时，这非常有用。此选项隐含了 `-u` 选项。孤立的 CR 字符保持不变，因此，虽然 CRLF 会变为 LF，但 CRCRLF 序列只会部分清除为 CRLF。
-- --chmod=(+|-)x
+- `--chmod=(+|-)x`
 
   覆盖已添加文件的可执行位。可执行位仅在索引中更改，磁盘上的文件保持不变。
-- --pathspec-from-file=`<file>`
+- `--pathspec-from-file=`<file>``
 
   将 pathspec 传递给 `<file>` 而不是命令行参数。如果 `<file>` 恰好是 `-`，则使用标准输入。pathspec 元素由 LF 或 CR/LF 分隔。pathspec 元素可以引用配置变量 `core.quotePath` 中解释的方式进行引用（参见 [git-config[1]](../git-config)）。另请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   仅与 `--pathspec-from-file` 一起使用时才有意义。pathspec 元素以 NUL 字符分隔，所有其他字符都被视为字面值（包括换行符和引号）。
 

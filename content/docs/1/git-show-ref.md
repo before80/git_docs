@@ -25,43 +25,43 @@ Use of this utility is encouraged in favor of directly accessing files under the
 
 ## 选项
 
-- --head
+- `--head`
 
   Show the HEAD reference, even if it would normally be filtered out.
 
-- --heads
+- `--heads`
 
-- --tags
+- `--tags`
 
   Limit to "refs/heads" and "refs/tags", respectively. These options are not mutually exclusive; when given both, references stored in "refs/heads" and "refs/tags" are displayed.
 
 - -d
 
-- --dereference
+- `--dereference`
 
   Dereference tags into object IDs as well. They will be shown with "^{}" appended.
 
 - -s
 
-- --hash[=<n>]
+- `--hash[=<n>]`
 
   Only show the SHA-1 hash, not the reference name. When combined with --dereference the dereferenced tag will still be shown after the SHA-1.
 
-- --verify
+- `--verify`
 
   Enable stricter reference checking by requiring an exact ref path. Aside from returning an error code of 1, it will also print an error message if `--quiet` was not specified.
 
-- --abbrev[=<n>]
+- `--abbrev[=<n>]`
 
   Abbreviate the object name. When using `--hash`, you do not have to say `--hash --abbrev`; `--hash=n` would do.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Do not print any results to stdout. When combined with `--verify` this can be used to silently check if a reference exists.
 
-- --exclude-existing[=<pattern>]
+- `--exclude-existing[=<pattern>]`
 
   Make *git show-ref* act as a filter that reads refs from stdin of the form "`^(?:<anything>\s)?<refname>(?:\^{})?$`" and performs the following actions on each: (1) strip "^{}" at the end of line if any; (2) ignore if pattern is provided and does not head-match refname; (3) warn if refname is not a well-formed refname and skip; (4) ignore if refname is a ref that exists in the local repository; (5) otherwise output the line.
 

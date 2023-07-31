@@ -22,21 +22,21 @@ git format-patch --signoff --stdout --attach origin | git imap-send
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Be verbose.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Be quiet.
 
-- --curl
+- `--curl`
 
   Use libcurl to communicate with the IMAP server, unless tunneling into it. Ignored if Git was built without the USE_CURL_FOR_IMAP_SEND option set.
 
-- --no-curl
+- `--no-curl`
 
   Talk to the IMAP server using git’s own IMAP routines instead of using libcurl. Ignored if Git was built with the NO_OPENSSL option set.
 

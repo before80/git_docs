@@ -70,7 +70,7 @@ If the working tree for a linked worktree is stored on a portable device or netw
 
 - -f
 
-- --force
+- `--force`
 
   By default, `add` refuses to create a new worktree when `<commit-ish>` is a branch name and is already checked out by another worktree, or if `<path>` is already assigned to some worktree but is missing (for instance, if `<path>` was deleted manually). This option overrides these safeguards. To add a missing but locked worktree path, specify `--force` twice.`move` refuses to move a locked worktree unless `--force` is specified twice. If the destination is already assigned to some other worktree but is missing (for instance, if `<new-path>` was deleted manually), then `--force` allows the move to proceed; use `--force` twice if the destination is locked.`remove` refuses to remove an unclean worktree unless `--force` is used. To remove a locked worktree, specify `--force` twice.
 
@@ -82,33 +82,33 @@ If the working tree for a linked worktree is stored on a portable device or netw
 
 - -d
 
-- --detach
+- `--detach`
 
   With `add`, detach `HEAD` in the new worktree. See "DETACHED HEAD" in [git-checkout[1]](../git-checkout).
 
-- --[no-]checkout
+- `--[no-]checkout`
 
   By default, `add` checks out `<commit-ish>`, however, `--no-checkout` can be used to suppress checkout in order to make customizations, such as configuring sparse-checkout. See "Sparse checkout" in [git-read-tree[1]](../git-read-tree).
 
-- --[no-]guess-remote
+- `--[no-]guess-remote`
 
   With `worktree add <path>`, without `<commit-ish>`, instead of creating a new branch from `HEAD`, if there exists a tracking branch in exactly one remote matching the basename of `<path>`, base the new branch on the remote-tracking branch, and mark the remote-tracking branch as "upstream" from the new branch.This can also be set up as the default behaviour by using the `worktree.guessRemote` config option.
 
-- --[no-]track
+- `--[no-]track`
 
   When creating a new branch, if `<commit-ish>` is a branch, mark it as "upstream" from the new branch. This is the default if `<commit-ish>` is a remote-tracking branch. See `--track` in [git-branch[1]](../git-branch) for details.
 
-- --lock
+- `--lock`
 
   Keep the worktree locked after creation. This is the equivalent of `git worktree lock` after `git worktree add`, but without a race condition.
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   With `prune`, do not remove anything; just report what it would remove.
 
-- --porcelain
+- `--porcelain`
 
   With `list`, output in an easy-to-parse format for scripts. This format will remain stable across Git versions and regardless of user configuration. It is recommended to combine this with `-z`. See below for details.
 
@@ -118,13 +118,13 @@ If the working tree for a linked worktree is stored on a portable device or netw
 
 - -q
 
-- --quiet
+- `--quiet`
 
   With `add`, suppress feedback messages.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   With `prune`, report all removals.With `list`, output additional information about worktrees (see below).
 

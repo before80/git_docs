@@ -41,7 +41,7 @@ This tool differs from [git-bugreport[1]](../git-bugreport) in that it collects 
 
   Specify an alternate suffix for the diagnostics archive name, to create a file named *git-diagnostics-<formatted suffix>*. This should take the form of a strftime(3) format string; the current local time will be used.
 
-- --mode=(stats|all)
+- `--mode=(stats|all)`
 
   Specify the type of diagnostics that should be collected. The default behavior of *git diagnose* is equivalent to `--mode=stats`.The `--mode=all` option collects everything included in `--mode=stats`, as well as copies of `.git`, `.git/hooks`, `.git/info`, `.git/logs`, and `.git/objects/info` directories. This additional information may be sensitive, as it can be used to reconstruct the full contents of the diagnosed repository. Users should exercise caution when sharing an archive generated with `--mode=all`.
 

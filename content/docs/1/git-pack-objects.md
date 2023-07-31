@@ -34,81 +34,81 @@ The *git unpack-objects* command can read the packed archive and expand the obje
 
   Write into pairs of files (.pack and .idx), using <base-name> to determine the name of the created file. When this option is used, the two files in a pair are written in <base-name>-<SHA-1>.{pack,idx} files. <SHA-1> is a hash based on the pack content and is written to the standard output of the command.
 
-- --stdout
+- `--stdout`
 
   Write the pack contents (what would have been written to .pack file) out to the standard output.
 
-- --revs
+- `--revs`
 
   Read the revision arguments from the standard input, instead of individual object names. The revision arguments are processed the same way as *git rev-list* with the `--objects` flag uses its `commit` arguments to build the list of objects it outputs. The objects on the resulting list are packed. Besides revisions, `--not` or `--shallow <SHA-1>` lines are also accepted.
 
-- --unpacked
+- `--unpacked`
 
   This implies `--revs`. When processing the list of revision arguments read from the standard input, limit the objects packed to those that are not already packed.
 
-- --all
+- `--all`
 
   This implies `--revs`. In addition to the list of revision arguments read from the standard input, pretend as if all refs under `refs/` are specified to be included.
 
-- --include-tag
+- `--include-tag`
 
   Include unasked-for annotated tags if the object they reference was included in the resulting packfile. This can be useful to send new tags to native Git clients.
 
-- --stdin-packs
+- `--stdin-packs`
 
   Read the basenames of packfiles (e.g., `pack-1234abcd.pack`) from the standard input, instead of object names or revision arguments. The resulting pack contains all objects listed in the included packs (those not beginning with `^`), excluding any objects listed in the excluded packs (beginning with `^`).Incompatible with `--revs`, or options that imply `--revs` (such as `--all`), with the exception of `--unpacked`, which is compatible.
 
-- --cruft
+- `--cruft`
 
   Packs unreachable objects into a separate "cruft" pack, denoted by the existence of a `.mtimes` file. Typically used by `git repack --cruft`. Callers provide a list of pack names and indicate which packs will remain in the repository, along with which packs will be deleted (indicated by the `-` prefix). The contents of the cruft pack are all objects not contained in the surviving packs which have not exceeded the grace period (see `--cruft-expiration` below), or which have exceeded the grace period, but are reachable from an other object which hasn’t.When the input lists a pack containing all reachable objects (and lists all other packs as pending deletion), the corresponding cruft pack will contain all unreachable objects (with mtime newer than the `--cruft-expiration`) along with any unreachable objects whose mtime is older than the `--cruft-expiration`, but are reachable from an unreachable object whose mtime is newer than the `--cruft-expiration`).Incompatible with `--unpack-unreachable`, `--keep-unreachable`, `--pack-loose-unreachable`, `--stdin-packs`, as well as any other options which imply `--revs`. Also incompatible with `--max-pack-size`; when this option is set, the maximum pack size is not inferred from `pack.packSizeLimit`.
 
-- --cruft-expiration=<approxidate>
+- `--cruft-expiration=<approxidate>`
 
   If specified, objects are eliminated from the cruft pack if they have an mtime older than `<approxidate>`. If unspecified (and given `--cruft`), then no objects are eliminated.
 
-- --window=<n>
+- `--window=<n>`
 
-- --depth=<n>
+- `--depth=<n>`
 
   These two options affect how the objects contained in the pack are stored using delta compression. The objects are first internally sorted by type, size and optionally names and compared against the other objects within --window to see if using delta compression saves space. --depth limits the maximum delta depth; making it too deep affects the performance on the unpacker side, because delta data needs to be applied that many times to get to the necessary object.The default value for --window is 10 and --depth is 50. The maximum depth is 4095.
 
-- --window-memory=<n>
+- `--window-memory=<n>`
 
   This option provides an additional limit on top of `--window`; the window size will dynamically scale down so as to not take up more than *<n>* bytes in memory. This is useful in repositories with a mix of large and small objects to not run out of memory with a large window, but still be able to take advantage of the large window for the smaller objects. The size can be suffixed with "k", "m", or "g". `--window-memory=0` makes memory usage unlimited. The default is taken from the `pack.windowMemory` configuration variable.
 
-- --max-pack-size=<n>
+- `--max-pack-size=<n>`
 
   In unusual scenarios, you may not be able to create files larger than a certain size on your filesystem, and this option can be used to tell the command to split the output packfile into multiple independent packfiles, each not larger than the given size. The size can be suffixed with "k", "m", or "g". The minimum size allowed is limited to 1 MiB. The default is unlimited, unless the config variable `pack.packSizeLimit` is set. Note that this option may result in a larger and slower repository; see the discussion in `pack.packSizeLimit`.
 
-- --honor-pack-keep
+- `--honor-pack-keep`
 
   This flag causes an object already in a local pack that has a .keep file to be ignored, even if it would have otherwise been packed.
 
-- --keep-pack=<pack-name>
+- `--keep-pack=<pack-name>`
 
   This flag causes an object already in the given pack to be ignored, even if it would have otherwise been packed. `<pack-name>` is the pack file name without leading directory (e.g. `pack-123.pack`). The option could be specified multiple times to keep multiple packs.
 
-- --incremental
+- `--incremental`
 
   This flag causes an object already in a pack to be ignored even if it would have otherwise been packed.
 
-- --local
+- `--local`
 
   This flag causes an object that is borrowed from an alternate object store to be ignored even if it would have otherwise been packed.
 
-- --non-empty
+- `--non-empty`
 
   Only create a packed archive if it would contain at least one object.
 
-- --progress
+- `--progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
 
-- --all-progress
+- `--all-progress`
 
   When --stdout is specified then progress report is displayed during the object count and compression phases but inhibited during the write-out phase. The reason is that in some cases the output stream is directly linked to another command which may wish to display progress status of its own as it processes incoming pack data. This flag is like --progress except that it forces progress report for the write-out phase as well even if --stdout is used.
 
-- --all-progress-implied
+- `--all-progress-implied`
 
   This is used to imply --all-progress whenever progress display is activated. Unlike --all-progress this flag doesn’t actually force any progress display by itself.
 
@@ -116,75 +116,75 @@ The *git unpack-objects* command can read the packed archive and expand the obje
 
   This flag makes the command not to report its progress on the standard error stream.
 
-- --no-reuse-delta
+- `--no-reuse-delta`
 
   When creating a packed archive in a repository that has existing packs, the command reuses existing deltas. This sometimes results in a slightly suboptimal pack. This flag tells the command not to reuse existing deltas but compute them from scratch.
 
-- --no-reuse-object
+- `--no-reuse-object`
 
   This flag tells the command not to reuse existing object data at all, including non deltified object, forcing recompression of everything. This implies --no-reuse-delta. Useful only in the obscure case where wholesale enforcement of a different compression level on the packed data is desired.
 
-- --compression=<n>
+- `--compression=<n>`
 
   Specifies compression level for newly-compressed data in the generated pack. If not specified, pack compression level is determined first by pack.compression, then by core.compression, and defaults to -1, the zlib default, if neither is set. Add --no-reuse-object if you want to force a uniform compression level on all data no matter the source.
 
-- --[no-]sparse
+- `--[no-]sparse`
 
   Toggle the "sparse" algorithm to determine which objects to include in the pack, when combined with the "--revs" option. This algorithm only walks trees that appear in paths that introduce new objects. This can have significant performance benefits when computing a pack to send a small change. However, it is possible that extra objects are added to the pack-file if the included commits contain certain types of direct renames. If this option is not included, it defaults to the value of `pack.useSparse`, which is true unless otherwise specified.
 
-- --thin
+- `--thin`
 
   Create a "thin" pack by omitting the common objects between a sender and a receiver in order to reduce network transfer. This option only makes sense in conjunction with --stdout.Note: A thin pack violates the packed archive format by omitting required objects and is thus unusable by Git without making it self-contained. Use `git index-pack --fix-thin` (see [git-index-pack[1]](../git-index-pack)) to restore the self-contained property.
 
-- --shallow
+- `--shallow`
 
   Optimize a pack that will be provided to a client with a shallow repository. This option, combined with --thin, can result in a smaller pack at the cost of speed.
 
-- --delta-base-offset
+- `--delta-base-offset`
 
   A packed archive can express the base object of a delta as either a 20-byte object name or as an offset in the stream, but ancient versions of Git don’t understand the latter. By default, *git pack-objects* only uses the former format for better compatibility. This option allows the command to use the latter format for compactness. Depending on the average delta chain length, this option typically shrinks the resulting packfile by 3-5 per-cent.Note: Porcelain commands such as `git gc` (see [git-gc[1]](../git-gc)), `git repack` (see [git-repack[1]](../git-repack)) pass this option by default in modern Git when they put objects in your repository into pack files. So does `git bundle` (see [git-bundle[1]](../git-bundle)) when it creates a bundle.
 
-- --threads=<n>
+- `--threads=<n>`
 
   Specifies the number of threads to spawn when searching for best delta matches. This requires that pack-objects be compiled with pthreads otherwise this option is ignored with a warning. This is meant to reduce packing time on multiprocessor machines. The required amount of memory for the delta search window is however multiplied by the number of threads. Specifying 0 will cause Git to auto-detect the number of CPU’s and set the number of threads accordingly.
 
-- --index-version=<version>[,<offset>]
+- `--index-version=<version>[,<offset>]`
 
   This is intended to be used by the test suite only. It allows to force the version for the generated pack index, and to force 64-bit index entries on objects located above the given offset.
 
-- --keep-true-parents
+- `--keep-true-parents`
 
   With this option, parents that are hidden by grafts are packed nevertheless.
 
-- --filter=<filter-spec>
+- `--filter=<filter-spec>`
 
   Requires `--stdout`. Omits certain objects (usually blobs) from the resulting packfile. See [git-rev-list[1]](../git-rev-list) for valid `<filter-spec>` forms.
 
-- --no-filter
+- `--no-filter`
 
   Turns off any previous `--filter=` argument.
 
-- --missing=<missing-action>
+- `--missing=<missing-action>`
 
   A debug option to help with future "partial clone" development. This option specifies how missing objects are handled.The form *--missing=error* requests that pack-objects stop with an error if a missing object is encountered. If the repository is a partial clone, an attempt to fetch missing objects will be made before declaring them missing. This is the default action.The form *--missing=allow-any* will allow object traversal to continue if a missing object is encountered. No fetch of a missing object will occur. Missing objects will silently be omitted from the results.The form *--missing=allow-promisor* is like *allow-any*, but will only allow object traversal to continue for EXPECTED promisor missing objects. No fetch of a missing object will occur. An unexpected missing object will raise an error.
 
-- --exclude-promisor-objects
+- `--exclude-promisor-objects`
 
   Omit objects that are known to be in the promisor remote. (This option has the purpose of operating only on locally created objects, so that when we repack, we still maintain a distinction between locally created objects [without .promisor] and objects from the promisor remote [with .promisor].) This is used with partial clone.
 
-- --keep-unreachable
+- `--keep-unreachable`
 
   Objects unreachable from the refs in packs named with --unpacked= option are added to the resulting pack, in addition to the reachable objects that are not in packs marked with *.keep files. This implies `--revs`.
 
-- --pack-loose-unreachable
+- `--pack-loose-unreachable`
 
   Pack unreachable loose objects (and their loose counterparts removed). This implies `--revs`.
 
-- --unpack-unreachable
+- `--unpack-unreachable`
 
   Keep unreachable objects in loose form. This implies `--revs`.
 
-- --delta-islands
+- `--delta-islands`
 
   Restrict delta matches based on "islands". See DELTA ISLANDS below.
 

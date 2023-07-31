@@ -52,29 +52,29 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - -a
 
-- --all
+- `--all`
 
   命令会自动暂存已修改和已删除的文件，但不会影响尚未添加到 Git 中的新文件。
 
 - -p
 
-- --patch
+- `--patch`
 
   使用交互式补丁选择界面来选择要提交的更改。有关详情，请参阅 [git-add[1]](../git-add)。
 
 - -C <commit>
 
-- --reuse-message=<commit>
+- `--reuse-message=<commit>`
 
   使用现有的提交对象，并在创建提交时重用其日志消息和作者信息（包括时间戳）。
 
 - -c <commit>
 
-- --reedit-message=<commit>
+- `--reedit-message=<commit>`
 
   类似于 *-C*，但使用 `-c` 选项会调用编辑器，以便用户可以进一步编辑提交消息。
 
-- --fixup=[(amend|reword):]<commit>
+- `--fixup=[(amend|reword):]<commit>`
 
   创建一个新的提交，用于“修正” `<commit>`，当通过 `git rebase --autosquash` 应用时。简单的 `--fixup=<commit>` 创建一个 "fixup!" 提交，它会更改 `<commit>` 的内容，但保留其日志消息不变。`--fixup=amend:<commit>` 类似，但它创建一个 "amend!" 提交，它还将 `<commit>` 的日志消息替换为 "amend!" 提交的日志消息。
 
@@ -86,67 +86,67 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
   当通过 `git rebase --autosquash` 应用时，“fixup!” 和 “amend!” 提交不会更改 `<commit>` 的作者信息。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
-- --squash=<commit>
+- `--squash=<commit>`
 
   为 `rebase --autosquash` 构造提交消息。提交消息的主题行来自指定的提交，并带有 "squash! " 前缀。可以与其他提交消息选项 (`-m`/`-c`/`-C`/`-F`) 一起使用。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
-- --reset-author
+- `--reset-author`
 
   在使用 -C/-c/--amend 选项或在合并冲突的 cherry-pick 后提交时，声明生成的提交的作者是提交者。这还会更新作者的时间戳。
 
-- --short
+- `--short`
 
   在进行干运行时，以简短格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
-- --branch
+- `--branch`
 
   即使在简短格式中也显示分支和追踪信息。
 
-- --porcelain
+- `--porcelain`
 
   在进行干运行时，以瓷器格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
-- --long
+- `--long`
 
   在进行干运行时，以长格式输出。隐含了 `--dry-run`。
 
 - -z
 
-- --null
+- `--null`
 
   在显示 `short` 或 `porcelain` 状态输出时，直接打印文件名，并以 NUL 终止条目，而不是 LF。如果没有给定格式，则隐含了 `--porcelain` 输出格式。如果没有使用 `-z` 选项，则对于包含 "非常规" 字符的文件名，将对其进行引用，如配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的。
 
 - -F <file>
 
-- --file=<file>
+- `--file=<file>`
 
   使用给定文件中的内容作为提交消息。使用 *-* 从标准输入读取消息。
 
-- --author=<author>
+- `--author=<author>`
 
   覆盖提交作者。使用标准的 `A U Thor <author@example.com>` 格式指定明确的作者。否则，将假设 <author> 是一个模式，并使用该作者搜索现有的提交（即 rev-list --all -i --author=<author>）；然后将提交作者复制自第一个找到的提交。
 
-- --date=<date>
+- `--date=<date>`
 
   覆盖提交中使用的作者日期。
 
 - -m <msg>
 
-- --message=<msg>
+- `--message=<msg>`
 
   将给定的 <msg> 作为提交消息。如果给定了多个 `-m` 选项，则它们的值将作为单独的段落连接。`-m` 选项与 `-c`、`-C` 和 `-F` 选项互斥。
 
 - -t <file>
 
-- --template=<file>
+- `--template=<file>`
 
   编辑提交消息时，使用给定文件中的内容启动编辑器。`commit.template` 配置变量通常用于隐含地给命令提供此选项。该机制可用于希望向参与者提供一些有关按照什么顺序编写消息的提示的项目。如果用户退出编辑器而未编辑消息，则提交将被中止。当通过其他方式给出消息时（例如使用 `-m` 或 `-F` 选项），此选项无效。
 
 - -s
 
-- --signoff
+- `--signoff`
 
-- --no-signoff
+- `--no-signoff`
 
   在提交日志消息的末尾，由提交者添加 `Signed-off-by` 尾注。签名的含义取决于您要提交的项目。例如，它可以证明提交者在项目的许可证下有权提交工作，或者同意某些贡献者代表，例如开发者证书。 （有关 Linux 内核和 Git 项目使用的签名，请参阅 [http://developercertificate.org](http://developercertificate.org/)）。请咨询您要贡献的项目的文档或领导层，了解在该项目中如何使用签名。`--no-signoff` 选项可以用于抵消命令行上之前使用的 `--signoff` 选项。
 
@@ -156,19 +156,19 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - -n
 
-- --[no-]verify
+- `--[no-]verify`
 
   默认情况下，会运行预提交和提交消息挂钩。给出 `--no-verify` 或 `-n` 中的任何选项时，这些挂钩将被绕过。另请参阅 [githooks[5]](../5/githooks)。
 
-- --allow-empty
+- `--allow-empty`
 
   通常，记录与其唯一父提交具有完全相同的树的提交是错误的，命令会阻止您进行此类提交。此选项绕过了这种安全性，主要供外部 SCM 接口脚本使用。
 
-- --allow-empty-message
+- `--allow-empty-message`
 
   与 --allow-empty 一样，此命令主要供外部 SCM 接口脚本使用。它允许您创建一个没有使用像 [git-commit-tree[1]](../git-commit-tree) 等工具的空提交消息的提交。
 
-- --cleanup=<mode>
+- `--cleanup=<mode>`
 
   此选项确定在提交之前如何清理提供的提交消息。*<mode>* 可以是 `strip`、`whitespace`、`verbatim`、`scissors` 或 `default`。
 
@@ -202,15 +202,15 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - -e
 
-- --edit
+- `--edit`
 
   通常，从 `-F` 文件中获取的消息、命令行中的消息（使用 `-m` 选项）以及提交对象中获取的消息（使用 `-C` 选项）都会原样使用作为提交日志消息。此选项允许您进一步编辑从这些源中获取的消息。
 
-- --no-edit
+- `--no-edit`
 
   使用选定的提交消息而不启动编辑器。例如，`git commit --amend --no-edit` 会修改一个提交而不更改其提交消息。
 
-- --amend
+- `--amend`
 
   通过创建一个新的提交来替换当前分支的最新提交。记录的树会像往常一样准备好（包括 `-i` 和 `-o` 选项的影响和显式的路径规范），并且使用原始提交的消息作为起点，而不是空消息，当没有通过命令行的其他选项（例如 `-m`，`-F`，`-c` 等）指定其他消息时。新的提交具有与当前提交相同的父提交和作者（`--reset-author` 选项可以取消这一点）。这相当于：
 
@@ -222,33 +222,33 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
   但是可以用于修改合并提交。如果修改已经发布的提交，请理解重写历史的影响（参见 [git-rebase[1]](../git-rebase) 中的 "RECOVERING FROM UPSTREAM REBASE" 部分）。
 
-- --no-post-rewrite
+- `--no-post-rewrite`
 
   绕过 post-rewrite 钩子。
 
 - -i
 
-- --include
+- `--include`
 
   在将暂存内容提交为提交之前，也将命令行上指定的路径的内容暂存起来。除非你正在结束一个存在冲突的合并，否则通常不需要这样做。
 
 - -o
 
-- --only
+- `--only`
 
   通过获取命令行上指定的路径的已更新的工作树内容进行提交，而忽略已为其他路径暂存的任何内容。这是 *git commit* 的默认操作模式，如果命令行上给定了任何路径，则可以省略此选项。如果此选项与 `--amend` 一起使用，则无需指定路径，这可用于修改最后一次提交而不提交已经暂存的更改。如果与 `--allow-empty` 选项一起使用，则也不需要路径，将创建一个空提交。
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   将路径规范传递给 `<file>`，而不是命令行参数。如果 `<file>` 正好是 `-`，则使用标准输入。路径规范元素由 LF 或 CR/LF 分隔。路径规范元素可以像配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的那样进行引用。还请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   仅在 `--pathspec-from-file` 中具有意义。路径规范元素以 NUL 字符分隔，所有其他字符均按原样处理（包括换行符和引号）。
 
 - -u[<mode>]
 
-- --untracked-files[=<mode>]
+- `--untracked-files[=<mode>]`
 
   显示未跟踪的文件。
 
@@ -264,25 +264,25 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - -v
 
-- --verbose
+- `--verbose`
 
   在提交消息模板底部显示 HEAD 提交与将要提交的内容之间的统一差异，以帮助用户描述提交，提醒提交所做的更改。请注意，此差异输出不会在每行前面添加 *#* 字符。此差异不会成为提交消息的一部分。有关详细信息，请参阅 [git-config[1]](../git-config) 中的 commit.verbose 配置变量。如果指定两次，还会显示将要提交的内容与工作树文件之间的统一差异，即已跟踪文件的未暂存更改。
 
 - -q
 
-- --quiet
+- `--quiet`
 
   禁止提交的摘要消息。
 
-- --dry-run
+- `--dry-run`
 
   不创建提交，而是显示要提交的路径列表，保留未提交的本地更改以及未跟踪的路径列表。
 
-- --status
+- `--status`
 
   在使用编辑器准备提交消息时，将 [git-status[1]](../git-status) 的输出包含在提交消息模板中。默认为开启，但可以用于覆盖配置变量 commit.status。
 
-- --no-status
+- `--no-status`
 
   在使用编辑器准备默认提交消息时，不包含 [git-status[1]](../git-status) 的输出。
 
@@ -290,7 +290,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 - `--gpg-sign[=<keyid>]`
 
-- --no-gpg-sign
+- `--no-gpg-sign`
 
   对提交进行 GPG 签名。keyid 参数是可选的，默认为提交者的身份；如果指定，则必须将其与选项粘贴在一起，不要有空格。`--no-gpg-sign` 用于同时取消 `commit.gpgSign` 配置变量和之前的 `--gpg-sign`。
 

@@ -49,47 +49,47 @@ Look for specified patterns in the tracked files in the work tree, blobs registe
 
 ## 选项
 
-- --cached
+- `--cached`
 
   Instead of searching tracked files in the working tree, search blobs registered in the index file.
 
-- --no-index
+- `--no-index`
 
   Search files in the current directory that is not managed by Git.
 
-- --untracked
+- `--untracked`
 
   In addition to searching in the tracked files in the working tree, search also in untracked files.
 
-- --no-exclude-standard
+- `--no-exclude-standard`
 
   Also search in ignored files by not honoring the `.gitignore` mechanism. Only useful with `--untracked`.
 
-- --exclude-standard
+- `--exclude-standard`
 
   Do not pay attention to ignored files specified via the `.gitignore` mechanism. Only useful when searching files in the current directory with `--no-index`.
 
-- --recurse-submodules
+- `--recurse-submodules`
 
   Recursively search in each submodule that is active and checked out in the repository. When used in combination with the <tree> option the prefix of all submodule output will be the name of the parent project’s <tree> object. This option has no effect if `--no-index` is given.
 
 - -a
 
-- --text
+- `--text`
 
   Process binary files as if they were text.
 
-- --textconv
+- `--textconv`
 
   Honor textconv filter settings.
 
-- --no-textconv
+- `--no-textconv`
 
   Do not honor textconv filter settings. This is the default.
 
 - -i
 
-- --ignore-case
+- `--ignore-case`
 
   Ignore case differences between the patterns and the files.
 
@@ -103,23 +103,23 @@ Look for specified patterns in the tracked files in the work tree, blobs registe
 
 - -r
 
-- --recursive
+- `--recursive`
 
   Same as `--max-depth=-1`; this is the default.
 
-- --no-recursive
+- `--no-recursive`
 
   Same as `--max-depth=0`.
 
 - -w
 
-- --word-regexp
+- `--word-regexp`
 
   Match the pattern only at word boundary (either begin at the beginning of a line, or preceded by a non-word character; end at the end of a line or followed by a non-word character).
 
 - -v
 
-- --invert-match
+- `--invert-match`
 
   Select non-matching lines.
 
@@ -129,97 +129,97 @@ Look for specified patterns in the tracked files in the work tree, blobs registe
 
   By default, the command shows the filename for each match. `-h` option is used to suppress this output. `-H` is there for completeness and does not do anything except it overrides `-h` given earlier on the command line.
 
-- --full-name
+- `--full-name`
 
   When run from a subdirectory, the command usually outputs paths relative to the current directory. This option forces paths to be output relative to the project top directory.
 
 - -E
 
-- --extended-regexp
+- `--extended-regexp`
 
 - -G
 
-- --basic-regexp
+- `--basic-regexp`
 
   Use POSIX extended/basic regexp for patterns. Default is to use basic regexp.
 
 - -P
 
-- --perl-regexp
+- `--perl-regexp`
 
   Use Perl-compatible regular expressions for patterns.Support for these types of regular expressions is an optional compile-time dependency. If Git wasn’t compiled with support for them providing this option will cause it to die.
 
 - -F
 
-- --fixed-strings
+- `--fixed-strings`
 
   Use fixed strings for patterns (don’t interpret pattern as a regex).
 
 - -n
 
-- --line-number
+- `--line-number`
 
   Prefix the line number to matching lines.
 
-- --column
+- `--column`
 
   Prefix the 1-indexed byte-offset of the first match from the start of the matching line.
 
 - -l
 
-- --files-with-matches
+- `--files-with-matches`
 
-- --name-only
+- `--name-only`
 
 - -L
 
-- --files-without-match
+- `--files-without-match`
 
   Instead of showing every matched line, show only the names of files that contain (or do not contain) matches. For better compatibility with *git diff*, `--name-only` is a synonym for `--files-with-matches`.
 
 - -O[<pager>]
 
-- --open-files-in-pager[=<pager>]
+- `--open-files-in-pager[=<pager>]`
 
   Open the matching files in the pager (not the output of *grep*). If the pager happens to be "less" or "vi", and the user specified only one pattern, the first file is positioned at the first match automatically. The `pager` argument is optional; if specified, it must be stuck to the option without a space. If `pager` is unspecified, the default pager will be used (see `core.pager` in [git-config[1]](../git-config)).
 
 - -z
 
-- --null
+- `--null`
 
   Use \0 as the delimiter for pathnames in the output, and print them verbatim. Without this option, pathnames with "unusual" characters are quoted as explained for the configuration variable core.quotePath (see [git-config[1]](../git-config)).
 
 - -o
 
-- --only-matching
+- `--only-matching`
 
   Print only the matched (non-empty) parts of a matching line, with each such part on a separate output line.
 
 - -c
 
-- --count
+- `--count`
 
   Instead of showing every matched line, show the number of lines that match.
 
-- --color[=<when>]
+- `--color[=<when>]`
 
   Show colored matches. The value must be always (the default), never, or auto.
 
-- --no-color
+- `--no-color`
 
   Turn off match highlighting, even when the configuration file gives the default to color output. Same as `--color=never`.
 
-- --break
+- `--break`
 
   Print an empty line between matches from different files.
 
-- --heading
+- `--heading`
 
   Show the filename above the matches in that file instead of at the start of each shown line.
 
 - -p
 
-- --show-function
+- `--show-function`
 
   Show the preceding line that contains the function name of the match, unless the matching line is a function name itself. The name is determined in the same way as `git diff` works out patch hunk headers (see *Defining a custom hunk-header* in [gitattributes[5]](../../5/gitattributes)).
 
@@ -245,7 +245,7 @@ Look for specified patterns in the tracked files in the work tree, blobs registe
 
 - -W
 
-- --function-context
+- `--function-context`
 
   Show the surrounding text from the previous line containing a function name up to the one before the next function name, effectively showing the whole function in which the match was found. The function names are determined in the same way as `git diff` works out patch hunk headers (see *Defining a custom hunk-header* in [gitattributes[5]](../../5/gitattributes)).
 
@@ -267,23 +267,23 @@ Look for specified patterns in the tracked files in the work tree, blobs registe
 
   The next parameter is the pattern. This option has to be used for patterns starting with `-` and should be used in scripts passing user input to grep. Multiple patterns are combined by *or*.
 
-- --and
+- `--and`
 
-- --or
+- `--or`
 
-- --not
+- `--not`
 
 - ( … )
 
   Specify how multiple patterns are combined using Boolean expressions. `--or` is the default operator. `--and` has higher precedence than `--or`. `-e` has to be used for all patterns.
 
-- --all-match
+- `--all-match`
 
   When giving multiple pattern expressions combined with `--or`, this flag is specified to limit the match to files that have lines to match all of them.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Do not output matched lines; instead, exit with status 0 when there is a match and with non-zero status when there isn’t.
 

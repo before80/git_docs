@@ -22,7 +22,7 @@ You probably don’t want to invoke this command directly; it is meant to be use
 
 ## 选项
 
-- --file=<path>
+- `--file=<path>`
 
   Use `<path>` to lookup and store credentials. The file will have its filesystem permissions set to prevent other users on the system from reading it, but will not be encrypted or otherwise protected. If not specified, credentials will be searched for from `~/.git-credentials` and `$XDG_CONFIG_HOME/git/credentials`, and credentials will be written to `~/.git-credentials` if it exists, or `$XDG_CONFIG_HOME/git/credentials` if it exists and the former does not. See also [FILES](https://git-scm.com/docs/git-credential-store#FILES).
 

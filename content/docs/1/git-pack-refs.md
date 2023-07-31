@@ -22,11 +22,11 @@ A recommended practice to deal with a repository with too many refs is to pack i
 
 ## 选项
 
-- --all
+- `--all`
 
   The command by default packs all tags and refs that are already packed, and leaves other refs alone. This is because branches are expected to be actively developed and packing their tips does not help performance. This option causes branch tips to be packed as well. Useful for a repository with many branches of historical interests.
 
-- --no-prune
+- `--no-prune`
 
   The command usually removes loose refs under `$GIT_DIR/refs` hierarchy after packing them. This option tells it not to.
 

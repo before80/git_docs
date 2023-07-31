@@ -16,13 +16,13 @@ Validates the GPG signature created by *git commit -S*.
 
 ## 选项
 
-- --raw
+- `--raw`
 
   Print the raw gpg status output to standard error instead of the normal human-readable output.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Print the contents of the commit object before validating it.
 

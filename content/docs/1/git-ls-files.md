@@ -32,61 +32,61 @@ One or more of the options below may be used to determine the files shown, and e
 
 - -c
 
-- --cached
+- `--cached`
 
   Show all files cached in Git’s index, i.e. all tracked files. (This is the default if no -c/-s/-d/-o/-u/-k/-m/--resolve-undo options are specified.)
 
 - -d
 
-- --deleted
+- `--deleted`
 
   Show files with an unstaged deletion
 
 - -m
 
-- --modified
+- `--modified`
 
   Show files with an unstaged modification (note that an unstaged deletion also counts as an unstaged modification)
 
 - -o
 
-- --others
+- `--others`
 
   Show other (i.e. untracked) files in the output
 
 - -i
 
-- --ignored
+- `--ignored`
 
   Show only ignored files in the output. Must be used with either an explicit *-c* or *-o*. When showing files in the index (i.e. when used with *-c*), print only those files matching an exclude pattern. When showing "other" files (i.e. when used with *-o*), show only those matched by an exclude pattern. Standard ignore rules are not automatically activated, therefore at least one of the `--exclude*` options is required.
 
 - -s
 
-- --stage
+- `--stage`
 
   Show staged contents' mode bits, object name and stage number in the output.
 
-- --directory
+- `--directory`
 
   If a whole directory is classified as "other", show just its name (with a trailing slash) and not its whole contents. Has no effect without -o/--others.
 
-- --no-empty-directory
+- `--no-empty-directory`
 
   Do not list empty directories. Has no effect without --directory.
 
 - -u
 
-- --unmerged
+- `--unmerged`
 
   Show information about unmerged files in the output, but do not show any other tracked files (forces --stage, overrides --cached).
 
 - -k
 
-- --killed
+- `--killed`
 
   Show untracked files on the filesystem that need to be removed due to file/directory conflicts for tracked files to be able to be written to the filesystem.
 
-- --resolve-undo
+- `--resolve-undo`
 
   Show files having resolve-undo information in the index together with their resolve-undo information. (resolve-undo information is what is used to implement "git checkout -m $PATH", i.e. to recreate merge conflicts that were accidentally resolved)
 
@@ -94,35 +94,35 @@ One or more of the options below may be used to determine the files shown, and e
 
   \0 line termination on output and do not quote filenames. See OUTPUT below for more information.
 
-- --deduplicate
+- `--deduplicate`
 
   When only filenames are shown, suppress duplicates that may come from having multiple stages during a merge, or giving `--deleted` and `--modified` option at the same time. When any of the `-t`, `--unmerged`, or `--stage` option is in use, this option has no effect.
 
 - -x <pattern>
 
-- --exclude=<pattern>
+- `--exclude=<pattern>`
 
   Skip untracked files matching pattern. Note that pattern is a shell wildcard pattern. See EXCLUDE PATTERNS below for more information.
 
 - -X <file>
 
-- --exclude-from=<file>
+- `--exclude-from=<file>`
 
   Read exclude patterns from <file>; 1 per line.
 
-- --exclude-per-directory=<file>
+- `--exclude-per-directory=<file>`
 
   Read additional exclude patterns that apply only to the directory and its subdirectories in <file>. Deprecated; use --exclude-standard instead.
 
-- --exclude-standard
+- `--exclude-standard`
 
   Add the standard Git exclusions: .git/info/exclude, .gitignore in each directory, and the user’s global exclusion file.
 
-- --error-unmatch
+- `--error-unmatch`
 
   If any <file> does not appear in the index, treat this as an error (return 1).
 
-- --with-tree=<tree-ish>
+- `--with-tree=<tree-ish>`
 
   When using --error-unmatch to expand the user supplied <file> (i.e. path pattern) arguments to paths, pretend that paths which were removed in the index since the named <tree-ish> are still present. Using this option with `-s` or `-u` options does not make any sense.
 
@@ -138,31 +138,31 @@ One or more of the options below may be used to determine the files shown, and e
 
   Similar to `-t`, but use lowercase letters for files that are marked as *fsmonitor valid* (see [git-update-index[1]](../git-update-index)).
 
-- --full-name
+- `--full-name`
 
   When run from a subdirectory, the command usually outputs paths relative to the current directory. This option forces paths to be output relative to the project top directory.
 
-- --recurse-submodules
+- `--recurse-submodules`
 
   Recursively calls ls-files on each active submodule in the repository. Currently there is only support for the --cached and --stage modes.
 
-- --abbrev[=<n>]
+- `--abbrev[=<n>]`
 
   Instead of showing the full 40-byte hexadecimal object lines, show the shortest prefix that is at least *<n>* hexdigits long that uniquely refers the object. Non default number of digits can be specified with --abbrev=<n>.
 
-- --debug
+- `--debug`
 
   After each line that describes a file, add more data about its cache entry. This is intended to show as much information as possible for manual inspection; the exact format may change at any time.
 
-- --eol
+- `--eol`
 
   Show <eolinfo> and <eolattr> of files. <eolinfo> is the file content identification used by Git when the "text" attribute is "auto" (or not set and core.autocrlf is not false). <eolinfo> is either "-text", "none", "lf", "crlf", "mixed" or ""."" means the file is not a regular file, it is not in the index or not accessible in the working tree.<eolattr> is the attribute that is used when checking out or committing, it is either "", "-text", "text", "text=auto", "text eol=lf", "text eol=crlf". Since Git 2.10 "text=auto eol=lf" and "text=auto eol=crlf" are supported.Both the <eolinfo> in the index ("i/<eolinfo>") and in the working tree ("w/<eolinfo>") are shown for regular files, followed by the ("attr/<eolattr>").
 
-- --sparse
+- `--sparse`
 
   If the index is sparse, show the sparse directories without expanding to the contained files. Sparse directories will be shown with a trailing slash, such as "x/" for a sparse directory "x".
 
-- --format=<format>
+- `--format=<format>`
 
   A string that interpolates `%(fieldname)` from the result being shown. It also interpolates `%%` to `%`, and `%xx` where `xx` are hex digits interpolates to character with hex code `xx`; for example `%00` interpolates to `\0` (NUL), `%09` to `\t` (TAB) and %0a to `\n` (LF). --format cannot be combined with `-s`, `-o`, `-k`, `-t`, `--resolve-undo` and `--eol`.
 

@@ -41,13 +41,13 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
 - -v
 
-- --version
+- `--version`
 
   打印 *git* 程序所属的Git套件版本。此选项在内部转换为 `git version ...`，并接受与 [git-version[1]](../1/git-version) 命令相同的选项。如果同时给出 `--help`，则 `--version` 会优先于 `--help`。
 
 - -h
 
-- --help
+- `--help`
 
   打印简介和最常用的命令列表。如果给出了选项 `--all` 或 `-a`，则打印所有可用的命令。如果命名了一个Git命令，此选项将显示该命令的手册页。其他选项可用于控制手册页的显示方式。有关更多信息，请参阅 [git-help[1]](../1/git-help)，因为 `git --help ...` 在内部转换为 `git help ...`。
 
@@ -59,85 +59,85 @@ git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
 
   向命令传递配置参数。给定的值将覆盖配置文件中的值。*<name>* 的格式应与 *git config* 中列出的格式相同（由点分隔的子键）。请注意，允许在 `git -c foo.bar ...` 中省略 `=`，并将 `foo.bar` 设置为布尔值true（就像在配置文件中的`[foo]bar`那样）。包含等号，但值为空（例如 `git -c foo.bar= ...`）将 `foo.bar` 设置为空字符串，`git config --type=bool` 将会将其转换为false。
 
-- --config-env=<name>=<envvar>
+- `--config-env=<name>=<envvar>`
 
   与 `-c <name>=<value>` 类似，为配置变量 *<name>* 提供一个值，其中 *<envvar>* 是要从中检索值的环境变量的名称。与 `-c` 不同，不能直接将值设置为空字符串，而是必须将环境变量本身设置为空字符串。如果环境中不存在 `<envvar>`，则是一个错误。为了避免与包含等号的 *<name>* 产生歧义，*<envvar>* 不得包含等号。这对于您想向Git传递瞬态配置选项但在OS上这样做时（例如 `/proc/self/cmdline`），其他进程可能能够读取您的命令行（例如 `/proc/self/environ`），但不能读取您的环境。这在Linux上是默认行为，但可能不是在您的系统上。请注意，这可能会增加`http.extraHeader`等变量的安全性，其中敏感信息是值的一部分，但不会增加`url.<base>.insteadOf`等变量的安全性，其中敏感信息可以成为键的一部分。
 
-- --exec-path[=<path>]
+- `--exec-path[=<path>]`
 
   指定核心Git程序所安装的路径。这也可以通过设置GIT_EXEC_PATH环境变量来控制。如果没有给出路径，git将打印当前设置并退出。
 
-- --html-path
+- `--html-path`
 
   打印Git的HTML文档安装路径（不包含尾部斜线），然后退出。
 
-- --man-path
+- `--man-path`
 
   打印本版本Git的man页面路径（参见`man(1)`），然后退出。
 
-- --info-path
+- `--info-path`
 
   打印安装有本版本Git信息文件的路径，然后退出。
 
 - -p
 
-- --paginate
+- `--paginate`
 
   如果标准输出是终端，则将所有输出通过*less*（或者如果设置了$PAGER，则通过$PAGER）分页显示。这将覆盖配置选项`pager.<cmd>`（请参阅下面的"配置机制"部分）。
 
 - -P
 
-- --no-pager
+- `--no-pager`
 
   Do not pipe Git output into a pager.
 
   不要将Git输出传递给分页器。
 
-- --git-dir=<path>
+- `--git-dir=<path>`
 
   设置仓库（".git"目录）的路径。这也可以通过设置GIT_DIR环境变量来控制。它可以是绝对路径或相对于当前工作目录的相对路径。使用此选项（或GIT_DIR环境变量）指定“.git”目录的位置（这会关闭试图找到具有“.git”子目录的目录（这是查找仓库和工作树顶级的方法），并告诉Git您正在工作树的顶级位置。如果您不在工作树的顶级目录中，则应该使用 `--work-tree=<path>` 选项（或 `GIT_WORK_TREE` 环境变量）告诉Git工作树的顶级位置。如果您只想在 `<path>` 中运行git，可以使用 `git -C <path>`。
 
-- --work-tree=<path>
+- `--work-tree=<path>`
 
   设置工作树的路径。它可以是绝对路径或相对于当前工作目录的路径。这也可以通过设置GIT_WORK_TREE环境变量和core.worktree配置变量来控制（有关更详细的讨论，请参阅[git-config[1]](../1/git-config)中的core.worktree）。
 
-- --namespace=<path>
+- `--namespace=<path>`
 
   设置Git命名空间。有关更多详细信息，请参阅[gitnamespaces[7]](../7/gitnamespaces)。等同于设置 `GIT_NAMESPACE` 环境变量。
 
-- --bare
+- `--bare`
 
   将仓库视为裸仓库。如果未设置GIT_DIR环境变量，它将被设置为当前工作目录。
 
-- --no-replace-objects
+- `--no-replace-objects`
 
   不使用替代引用来替换Git对象。有关更多信息，请参阅[git-replace[1]](../1/git-replace)。
 
-- --literal-pathspecs
+- `--literal-pathspecs`
 
   字面对待路径规范（即没有通配符，没有路径规范魔法）。这等同于将 `GIT_LITERAL_PATHSPECS` 环境变量设置为 `1`。
 
-- --glob-pathspecs
+- `--glob-pathspecs`
 
   对所有路径规范添加"glob"魔法。这等同于将 `GIT_GLOB_PATHSPECS` 环境变量设置为 `1`。使用路径规范魔法“:(literal)”可以在单个路径规范上禁用通配符。
 
-- --noglob-pathspecs
+- `--noglob-pathspecs`
 
   对所有路径规范添加"literal"魔法。这等同于将 `GIT_NOGLOB_PATHSPECS` 环境变量设置为 `1`。使用路径规范魔法“:(glob)”可以在单个路径规范上启用通配符。
 
-- --icase-pathspecs
+- `--icase-pathspecs`
 
   对所有路径规范添加"icase"魔法。这等同于将 `GIT_ICASE_PATHSPECS` 环境变量设置为 `1`。
 
-- --no-optional-locks
+- `--no-optional-locks`
 
   不执行需要锁定的可选操作。这等同于将 `GIT_OPTIONAL_LOCKS` 设置为 `0`。
 
-- --list-cmds=group[,group…]
+- `--list-cmds=group[,group…]`
 
   按组列出命令。这是一个内部/实验性选项，可能会在将来更改或删除。支持的组有：builtins、parseopt（使用parse-options的内置命令），main（libexec目录中的所有命令），others（$PATH中有git-前缀的所有其他命令），list-<category>（请参阅command-list.txt中的类别），nohelpers（排除助手命令），alias和config（从配置变量completion.commands中检索命令列表）
 
-- --attr-source=<tree-ish>
+- `--attr-source=<tree-ish>`
 
   从 *<tree-ish>* 中读取gitattributes，而不是工作树。有关详细信息，请参阅[gitattributes[5]](../5/gitattributes)。这等同于设置 `GIT_ATTR_SOURCE` 环境变量。
 

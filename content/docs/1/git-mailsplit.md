@@ -45,11 +45,11 @@ Splits a mbox file or a Maildir into a list of files: "0001" "0002" .. in the sp
 
   Skip the first <nn> numbers, for example if -f3 is specified, start the numbering with 0004.
 
-- --keep-cr
+- `--keep-cr`
 
   Do not remove `\r` from lines ending with `\r\n`.
 
-- --mboxrd
+- `--mboxrd`
 
   Input is of the "mboxrd" format and "^>+From " line escaping is reversed.
 

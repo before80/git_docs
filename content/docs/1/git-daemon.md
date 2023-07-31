@@ -37,103 +37,103 @@ An `upload-archive` also exists to serve *git archive*.
 
 ## 选项
 
-- --strict-paths
+- `--strict-paths`
 
   Match paths exactly (i.e. don’t allow "/foo/repo" when the real path is "/foo/repo.git" or "/foo/repo/.git") and don’t do user-relative paths. *git daemon* will refuse to start when this option is enabled and no directory arguments are provided.
 
-- --base-path=<path>
+- `--base-path=<path>`
 
   Remap all the path requests as relative to the given path. This is sort of "Git root" - if you run *git daemon* with *--base-path=/srv/git* on example.com, then if you later try to pull *git://example.com/hello.git*, *git daemon* will interpret the path as `/srv/git/hello.git`.
 
-- --base-path-relaxed
+- `--base-path-relaxed`
 
   If --base-path is enabled and repo lookup fails, with this option *git daemon* will attempt to lookup without prefixing the base path. This is useful for switching to --base-path usage, while still allowing the old paths.
 
-- --interpolated-path=<pathtemplate>
+- `--interpolated-path=<pathtemplate>`
 
   To support virtual hosting, an interpolated path template can be used to dynamically construct alternate paths. The template supports %H for the target hostname as supplied by the client but converted to all lowercase, %CH for the canonical hostname, %IP for the server’s IP address, %P for the port number, and %D for the absolute path of the named repository. After interpolation, the path is validated against the directory list.
 
-- --export-all
+- `--export-all`
 
   Allow pulling from all directories that look like Git repositories (have the *objects* and *refs* subdirectories), even if they do not have the *git-daemon-export-ok* file.
 
-- --inetd
+- `--inetd`
 
   Have the server run as an inetd service. Implies --syslog (may be overridden with `--log-destination=`). Incompatible with --detach, --port, --listen, --user and --group options.
 
-- --listen=<host_or_ipaddr>
+- `--listen=<host_or_ipaddr>`
 
   Listen on a specific IP address or hostname. IP addresses can be either an IPv4 address or an IPv6 address if supported. If IPv6 is not supported, then --listen=hostname is also not supported and --listen must be given an IPv4 address. Can be given more than once. Incompatible with `--inetd` option.
 
-- --port=<n>
+- `--port=<n>`
 
   Listen on an alternative port. Incompatible with `--inetd` option.
 
-- --init-timeout=<n>
+- `--init-timeout=<n>`
 
   Timeout (in seconds) between the moment the connection is established and the client request is received (typically a rather low value, since that should be basically immediate).
 
-- --timeout=<n>
+- `--timeout=<n>`
 
   Timeout (in seconds) for specific client sub-requests. This includes the time it takes for the server to process the sub-request and the time spent waiting for the next client’s request.
 
-- --max-connections=<n>
+- `--max-connections=<n>`
 
   Maximum number of concurrent clients, defaults to 32. Set it to zero for no limit.
 
-- --syslog
+- `--syslog`
 
   Short for `--log-destination=syslog`.
 
-- --log-destination=<destination>
+- `--log-destination=<destination>`
 
   Send log messages to the specified destination. Note that this option does not imply --verbose, thus by default only error conditions will be logged. The <destination> must be one of:stderrWrite to standard error. Note that if `--detach` is specified, the process disconnects from the real standard error, making this destination effectively equivalent to `none`.syslogWrite to syslog, using the `git-daemon` identifier.noneDisable all logging.The default destination is `syslog` if `--inetd` or `--detach` is specified, otherwise `stderr`.
 
-- --user-path
+- `--user-path`
 
-- --user-path=<path>
+- `--user-path=<path>`
 
   Allow ~user notation to be used in requests. When specified with no parameter, requests to git://host/~alice/foo is taken as a request to access *foo* repository in the home directory of user `alice`. If `--user-path=path` is specified, the same request is taken as a request to access `path/foo` repository in the home directory of user `alice`.
 
-- --verbose
+- `--verbose`
 
   Log details about the incoming connections and requested files.
 
-- --reuseaddr
+- `--reuseaddr`
 
   Use SO_REUSEADDR when binding the listening socket. This allows the server to restart without waiting for old connections to time out.
 
-- --detach
+- `--detach`
 
   Detach from the shell. Implies --syslog.
 
-- --pid-file=<file>
+- `--pid-file=<file>`
 
   Save the process id in *file*. Ignored when the daemon is run under `--inetd`.
 
-- --user=<user>
+- `--user=<user>`
 
-- --group=<group>
+- `--group=<group>`
 
   Change daemon’s uid and gid before entering the service loop. When only `--user` is given without `--group`, the primary group ID for the user is used. The values of the option are given to `getpwnam(3)` and `getgrnam(3)` and numeric IDs are not supported.Giving these options is an error when used with `--inetd`; use the facility of inet daemon to achieve the same before spawning *git daemon* if needed.Like many programs that switch user id, the daemon does not reset environment variables such as `$HOME` when it runs git programs, e.g. `upload-pack` and `receive-pack`. When using this option, you may also want to set and export `HOME` to point at the home directory of `<user>` before starting the daemon, and make sure any Git configuration files in that directory are readable by `<user>`.
 
-- --enable=<service>
+- `--enable=<service>`
 
-- --disable=<service>
+- `--disable=<service>`
 
   Enable/disable the service site-wide per default. Note that a service disabled site-wide can still be enabled per repository if it is marked overridable and the repository enables the service with a configuration item.
 
-- --allow-override=<service>
+- `--allow-override=<service>`
 
-- --forbid-override=<service>
+- `--forbid-override=<service>`
 
   Allow/forbid overriding the site-wide default with per repository configuration. By default, all the services may be overridden.
 
-- --[no-]informative-errors
+- `--[no-]informative-errors`
 
   When informative errors are turned on, git-daemon will report more verbose errors to the client, differentiating conditions like "no such repository" from "repository not exported". This is more convenient for clients, but may leak information about the existence of unexported repositories. When informative errors are not enabled, all errors report "access denied" to the client. The default is --no-informative-errors.
 
-- --access-hook=<path>
+- `--access-hook=<path>`
 
   Every time a client connects, first run an external command specified by the <path> with service name (e.g. "upload-pack"), path to the repository, hostname (%H), canonical hostname (%CH), IP address (%IP), and TCP port (%P) as its command-line arguments. The external command can decide to decline the service by exiting with a non-zero status (or to allow it by exiting with a zero status). It can also look at the $REMOTE_ADDR and `$REMOTE_PORT` environment variables to learn about the requestor when making this decision.The external command can optionally write a single line to its standard output to be sent to the requestor as an error message when it declines the service.
 

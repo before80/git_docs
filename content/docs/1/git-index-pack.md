@@ -26,59 +26,59 @@ Reads a packed archive (.pack) from the specified file, and builds a pack index 
 
   Write the generated pack index into the specified file. Without this option the name of pack index file is constructed from the name of packed archive file by replacing .pack with .idx (and the program fails if the name of packed archive does not end with .pack).
 
-- --[no-]rev-index
+- `--[no-]rev-index`
 
   When this flag is provided, generate a reverse index (a `.rev` file) corresponding to the given pack. If `--verify` is given, ensure that the existing reverse index is correct. Takes precedence over `pack.writeReverseIndex`.
 
-- --stdin
+- `--stdin`
 
   When this flag is provided, the pack is read from stdin instead and a copy is then written to <pack-file>. If <pack-file> is not specified, the pack is written to objects/pack/ directory of the current Git repository with a default name determined from the pack content. If <pack-file> is not specified consider using --keep to prevent a race condition between this process and *git repack*.
 
-- --fix-thin
+- `--fix-thin`
 
   Fix a "thin" pack produced by `git pack-objects --thin` (see [git-pack-objects[1]](../git-pack-objects) for details) by adding the excluded objects the deltified objects are based on to the pack. This option only makes sense in conjunction with --stdin.
 
-- --keep
+- `--keep`
 
   Before moving the index into its final destination create an empty .keep file for the associated pack file. This option is usually necessary with --stdin to prevent a simultaneous *git repack* process from deleting the newly constructed pack and index before refs can be updated to use objects contained in the pack.
 
-- --keep=<msg>
+- `--keep=<msg>`
 
   Like --keep create a .keep file before moving the index into its final destination, but rather than creating an empty file place *<msg>* followed by an LF into the .keep file. The *<msg>* message can later be searched for within all .keep files to locate any which have outlived their usefulness.
 
-- --index-version=<version>[,<offset>]
+- `--index-version=<version>[,<offset>]`
 
   This is intended to be used by the test suite only. It allows to force the version for the generated pack index, and to force 64-bit index entries on objects located above the given offset.
 
-- --strict
+- `--strict`
 
   Die, if the pack contains broken objects or links.
 
-- --progress-title
+- `--progress-title`
 
   For internal use only.Set the title of the progress bar. The title is "Receiving objects" by default and "Indexing objects" when `--stdin` is specified.
 
-- --check-self-contained-and-connected
+- `--check-self-contained-and-connected`
 
   Die if the pack contains broken links. For internal use only.
 
-- --fsck-objects
+- `--fsck-objects`
 
   For internal use only.Die if the pack contains broken objects. If the pack contains a tree pointing to a .gitmodules blob that does not exist, prints the hash of that blob (for the caller to check) after the hash that goes into the name of the pack/idx file (see "Notes").
 
-- --threads=<n>
+- `--threads=<n>`
 
   Specifies the number of threads to spawn when resolving deltas. This requires that index-pack be compiled with pthreads otherwise this option is ignored with a warning. This is meant to reduce packing time on multiprocessor machines. The required amount of memory for the delta search window is however multiplied by the number of threads. Specifying 0 will cause Git to auto-detect the number of CPU’s and use maximum 3 threads.
 
-- --max-input-size=<size>
+- `--max-input-size=<size>`
 
   Die, if the pack is larger than <size>.
 
-- --object-format=<hash-algorithm>
+- `--object-format=<hash-algorithm>`
 
   Specify the given object format (hash algorithm) for the pack. The valid values are *sha1* and (if enabled) *sha256*. The default is the algorithm for the current repository (set by `extensions.objectFormat`), or *sha1* if no value is set or outside a repository.This option cannot be used with --stdin.THIS OPTION IS EXPERIMENTAL! SHA-256 support is experimental and still in an early stage. A SHA-256 repository will in general not be able to share work with "regular" SHA-1 repositories. It should be assumed that, e.g., Git internal file formats in relation to SHA-256 repositories may change in backwards-incompatible ways. Only use `--object-format=sha256` for testing purposes.
 
-- --promisor[=<message>]
+- `--promisor[=<message>]`
 
   Before committing the pack-index, create a .promisor file for this pack. Particularly helpful when writing a promisor pack with --fix-thin since the name of the pack is not final until the pack has been fully written. If a `<message>` is provided, then that content will be written to the .promisor file for future reference. See [partial clone](https://git-scm.com/docs/partial-clone) for more information.
 

@@ -22,49 +22,49 @@ Invokes *git-receive-pack* on a possibly remote repository, and updates it from 
 
 ## 选项
 
-- --receive-pack=<git-receive-pack>
+- `--receive-pack=<git-receive-pack>`
 
   Path to the *git-receive-pack* program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default $PATH.
 
-- --exec=<git-receive-pack>
+- `--exec=<git-receive-pack>`
 
   Same as --receive-pack=<git-receive-pack>.
 
-- --all
+- `--all`
 
   Instead of explicitly specifying which refs to update, update all heads that locally exist.
 
-- --stdin
+- `--stdin`
 
   Take the list of refs from stdin, one per line. If there are refs specified on the command line in addition to this option, then the refs from stdin are processed after those on the command line.If `--stateless-rpc` is specified together with this option then the list of refs must be in packet format (pkt-line). Each ref must be in a separate packet, and the list must end with a flush packet.
 
-- --dry-run
+- `--dry-run`
 
   Do everything except actually send the updates.
 
-- --force
+- `--force`
 
   Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. What this means is that the remote repository can lose commits; use it with care.
 
-- --verbose
+- `--verbose`
 
   Run verbosely.
 
-- --thin
+- `--thin`
 
   Send a "thin" pack, which records objects in deltified form based on objects not included in the pack to reduce network traffic.
 
-- --atomic
+- `--atomic`
 
   Use an atomic transaction for updating the refs. If any of the refs fails to update then the entire push will fail without changing any refs.
 
-- --[no-]signed
+- `--[no-]signed`
 
-- --signed=(true|false|if-asked)
+- `--signed=(true|false|if-asked)`
 
   GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. If `false` or `--no-signed`, no signing will be attempted. If `true` or `--signed`, the push will fail if the server does not support signed pushes. If set to `if-asked`, sign if and only if the server supports signed pushes. The push will also fail if the actual call to `gpg --sign` fails. See [git-receive-pack[1]](../git-receive-pack) for the details on the receiving end.
 
-- --push-option=<string>
+- `--push-option=<string>`
 
   Pass the specified string as a push option for consumption by hooks on the server side. If the server doesn’t support push options, error out. See [git-push[1]](../git-push) and [githooks[5]](../../5/githooks) for details.
 

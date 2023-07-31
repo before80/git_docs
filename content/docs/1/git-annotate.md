@@ -35,11 +35,11 @@ The only difference between this command and [git-blame[1]](../git-blame) is tha
 
   Show blank SHA-1 for boundary commits. This can also be controlled via the `blame.blankBoundary` config option.
 
-- --root
+- `--root`
 
   Do not treat root commits as boundaries. This can also be controlled via the `blame.showRoot` config option.
 
-- --show-stats
+- `--show-stats`
 
   Include additional statistics at the end of blame output.
 
@@ -65,25 +65,25 @@ The only difference between this command and [git-blame[1]](../git-blame) is tha
 
   Walk history forward instead of backward. Instead of showing the revision in which a line appeared, this shows the last revision in which a line has existed. This requires a range of revision like START..END where the path to blame exists in START. `git blame --reverse START` is taken as `git blame --reverse START..HEAD` for convenience.
 
-- --first-parent
+- `--first-parent`
 
   Follow only the first parent commit upon seeing a merge commit. This option can be used to determine when a line was introduced to a particular integration branch, rather than when it was introduced to the history overall.
 
 - -p
 
-- --porcelain
+- `--porcelain`
 
   Show in a format designed for machine consumption.
 
-- --line-porcelain
+- `--line-porcelain`
 
   Show the porcelain format, but output commit information for each line, not just the first time a commit is referenced. Implies --porcelain.
 
-- --incremental
+- `--incremental`
 
   Show the result incrementally in a format designed for machine consumption.
 
-- --encoding=<encoding>
+- `--encoding=<encoding>`
 
   Specifies the encoding used to output author names and commit summaries. Setting it to `none` makes blame output unconverted data. For more information see the discussion about encoding in the [git-log[1]](../git-log) manual page.
 
@@ -95,7 +95,7 @@ The only difference between this command and [git-blame[1]](../git-blame) is tha
 
   Specifies the format used to output dates. If --date is not provided, the value of the blame.date config variable is used. If the blame.date config variable is also not set, the iso format is used. For supported values, see the discussion of the --date option at [git-log[1]](../git-log).
 
-- --[no-]progress
+- `--[no-]progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal. This flag enables progress reporting even if not attached to a terminal. Can’t use `--progress` together with `--porcelain` or `--incremental`.
 
@@ -115,11 +115,11 @@ The only difference between this command and [git-blame[1]](../git-blame) is tha
 
   Ignore revisions listed in `file`, which must be in the same format as an `fsck.skipList`. This option may be repeated, and these files will be processed after any files specified with the `blame.ignoreRevsFile` config option. An empty file name, `""`, will clear the list of revs from previously processed files.
 
-- --color-lines
+- `--color-lines`
 
   Color line annotations in the default format differently if they come from the same commit as the preceding line. This makes it easier to distinguish code blocks introduced by different commits. The color defaults to cyan and can be adjusted using the `color.blame.repeatedLines` config option.
 
-- --color-by-age
+- `--color-by-age`
 
   Color line annotations depending on the age of the line in the default format. The `color.blame.highlightRecent` config option controls what color is used for each range of age.
 

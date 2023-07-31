@@ -110,9 +110,9 @@ Once tracking a Subversion repository (with any of the above methods), the Git r
 
 ## 选项
 
-- --shared[=(false|true|umask|group|all|world|everybody)]
+- `--shared[=(false|true|umask|group|all|world|everybody)]`
 
-- --template=<template-directory>
+- `--template=<template-directory>`
 
   Only used with the *init* command. These are passed directly to *git init*.
 
@@ -124,67 +124,67 @@ Once tracking a Subversion repository (with any of the above methods), the Git r
 
 - -
 
-- --stdin
+- `--stdin`
 
   Only used with the *set-tree* command.Read a list of commits from stdin and commit them in reverse order. Only the leading sha1 is read from each line, so *git rev-list --pretty=oneline* output can be used.
 
-- --rmdir
+- `--rmdir`
 
   Only used with the *dcommit*, *set-tree* and *commit-diff* commands.Remove directories from the SVN tree if there are no files left behind. SVN can version empty directories, and they are not removed by default if there are no files left in them. Git cannot version empty directories. Enabling this flag will make the commit to SVN act like Git.`config key: svn.rmdir`
 
 - -e
 
-- --edit
+- `--edit`
 
   Only used with the *dcommit*, *set-tree* and *commit-diff* commands.Edit the commit message before committing to SVN. This is off by default for objects that are commits, and forced on when committing tree objects.`config key: svn.edit`
 
 - -l<num>
 
-- --find-copies-harder
+- `--find-copies-harder`
 
   Only used with the *dcommit*, *set-tree* and *commit-diff* commands.They are both passed directly to *git diff-tree*; see [git-diff-tree[1]](../git-diff-tree) for more information.`config key: svn.l config key: svn.findcopiesharder`
 
 - -A<filename>
 
-- --authors-file=<filename>
+- `--authors-file=<filename>`
 
   Syntax is compatible with the file used by *git cvsimport* but an empty email address can be supplied with *<>*:`	loginname = Joe User <user@example.com>`If this option is specified and *git svn* encounters an SVN committer name that does not exist in the authors-file, *git svn* will abort operation. The user will then have to add the appropriate entry. Re-running the previous *git svn* command after the authors-file is modified should continue operation.`config key: svn.authorsfile`
 
-- --authors-prog=<filename>
+- `--authors-prog=<filename>`
 
   If this option is specified, for each SVN committer name that does not exist in the authors file, the given file is executed with the committer name as the first argument. The program is expected to return a single line of the form "Name <email>" or "Name <>", which will be treated as if included in the authors file.Due to historical reasons a relative *filename* is first searched relative to the current directory for *init* and *clone* and relative to the root of the working tree for *fetch*. If *filename* is not found, it is searched like any other command in *$PATH*.`config key: svn.authorsProg`
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Make *git svn* less verbose. Specify a second time to make it even less verbose.
 
 - -m
 
-- --merge
+- `--merge`
 
 - -s<strategy>
 
-- --strategy=<strategy>
+- `--strategy=<strategy>`
 
 - -p
 
-- --rebase-merges
+- `--rebase-merges`
 
   These are only used with the *dcommit* and *rebase* commands.Passed directly to *git rebase* when using *dcommit* if a *git reset* cannot be used (see *dcommit*).
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   This can be used with the *dcommit*, *rebase*, *branch* and *tag* commands.For *dcommit*, print out the series of Git arguments that would show which diffs would be committed to SVN.For *rebase*, display the local branch associated with the upstream svn repository associated with the current branch and the URL of svn repository that will be fetched from.For *branch* and *tag*, display the urls that will be used for copying when creating the branch or tag.
 
-- --use-log-author
+- `--use-log-author`
 
   When retrieving svn commits into Git (as part of *fetch*, *rebase*, or *dcommit* operations), look for the first `From:` line or `Signed-off-by` trailer in the log message and use that as the author string.`config key: svn.useLogAuthor`
 
-- --add-author-from
+- `--add-author-from`
 
   When committing to svn from Git (as part of *set-tree* or *dcommit* operations), if the existing log message doesn’t already have a `From:` or `Signed-off-by` trailer, append a `From:` line based on the Git commit’s author string. If you use this, then `--use-log-author` will retrieve a valid author string for all commits.`config key: svn.addAuthorFrom`
 
@@ -202,7 +202,7 @@ Once tracking a Subversion repository (with any of the above methods), the Git r
 
   Specify the [svn-remote "<remote name>"] section to use, this allows SVN multiple repositories to be tracked. Default: "svn"
 
-- --follow-parent
+- `--follow-parent`
 
   This option is only relevant if we are tracking branches (using one of the repository layout options --trunk, --tags, --branches, --stdlayout). For each tracked branch, try to find out where its revision was copied from, and set a suitable parent in the first Git commit for the branch. This is especially helpful when we’re tracking a directory that has been moved around within the repository. If this feature is disabled, the branches created by *git svn* will all be linear and not share any history, meaning that there will be no information on where branches were branched off or merged. However, following long/convoluted histories can take a long time, so disabling this feature may speed up the cloning process. This feature is enabled by default, use --no-follow-parent to disable it.`config key: svn.followparent`
 

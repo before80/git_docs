@@ -24,53 +24,53 @@ Iterate over all refs that match `<pattern>` and show them according to the give
 
   If one or more patterns are given, only refs are shown that match against at least one pattern, either using fnmatch(3) or literally, in the latter case matching completely or from the beginning up to a slash.
 
-- --count=<count>
+- `--count=<count>`
 
   By default the command shows all refs that match `<pattern>`. This option makes it stop after showing that many refs.
 
-- --sort=<key>
+- `--sort=<key>`
 
   A field name to sort on. Prefix `-` to sort in descending order of the value. When unspecified, `refname` is used. You may use the --sort=<key> option multiple times, in which case the last key becomes the primary key.
 
-- --format=<format>
+- `--format=<format>`
 
   A string that interpolates `%(fieldname)` from a ref being shown and the object it points at. If `fieldname` is prefixed with an asterisk (`*`) and the ref points at a tag object, use the value for the field in the object which the tag object refers to (instead of the field in the tag object). When unspecified, `<format>` defaults to `%(objectname) SPC %(objecttype) TAB %(refname)`. It also interpolates `%%` to `%`, and `%xx` where `xx` are hex digits interpolates to character with hex code `xx`; for example `%00` interpolates to `\0` (NUL), `%09` to `\t` (TAB) and `%0a` to `\n` (LF).
 
-- --color[=<when>]
+- `--color[=<when>]`
 
   Respect any colors specified in the `--format` option. The `<when>` field must be one of `always`, `never`, or `auto` (if `<when>` is absent, behave as if `always` was given).
 
-- --shell
+- `--shell`
 
-- --perl
+- `--perl`
 
-- --python
+- `--python`
 
-- --tcl
+- `--tcl`
 
   If given, strings that substitute `%(fieldname)` placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be `eval`ed.
 
-- --points-at=<object>
+- `--points-at=<object>`
 
   Only list refs which points at the given object.
 
-- --merged[=<object>]
+- `--merged[=<object>]`
 
   Only list refs whose tips are reachable from the specified commit (HEAD if not specified).
 
-- --no-merged[=<object>]
+- `--no-merged[=<object>]`
 
   Only list refs whose tips are not reachable from the specified commit (HEAD if not specified).
 
-- --contains[=<object>]
+- `--contains[=<object>]`
 
   Only list refs which contain the specified commit (HEAD if not specified).
 
-- --no-contains[=<object>]
+- `--no-contains[=<object>]`
 
   Only list refs which don’t contain the specified commit (HEAD if not specified).
 
-- --ignore-case
+- `--ignore-case`
 
   Sorting and filtering refs are case insensitive.
 

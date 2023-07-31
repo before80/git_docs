@@ -20,15 +20,15 @@ git fsck --full --unreachable | cut -d ' ' -f3 | \ git pack-redundant --all | xa
 
 ## 选项
 
-- --all
+- `--all`
 
   Processes all packs. Any filenames on the command line are ignored.
 
-- --alt-odb
+- `--alt-odb`
 
   Don’t require objects present in packs from alternate object database (odb) directories to be present in local packs.
 
-- --verbose
+- `--verbose`
 
   Outputs some statistics to stderr. Has a small performance penalty.
 

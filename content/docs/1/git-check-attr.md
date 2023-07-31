@@ -21,11 +21,11 @@ For every pathname, this command will list if each attribute is *unspecified*, *
 
   List all attributes that are associated with the specified paths. If this option is used, then *unspecified* attributes will not be included in the output.
 
-- --cached
+- `--cached`
 
   Consider `.gitattributes` in the index only, ignoring the working tree.
 
-- --stdin
+- `--stdin`
 
   Read pathnames from the standard input, one per line, instead of from the command-line.
 
@@ -33,7 +33,7 @@ For every pathname, this command will list if each attribute is *unspecified*, *
 
   The output format is modified to be machine-parsable. If `--stdin` is also given, input paths are separated with a NUL character instead of a linefeed character.
 
-- --source=<tree-ish>
+- `--source=<tree-ish>`
 
   Check attributes against the specified tree-ish. It is common to specify the source tree by naming a commit, branch or tag associated with it.
 

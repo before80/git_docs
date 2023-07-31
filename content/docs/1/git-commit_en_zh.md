@@ -67,7 +67,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -a
 
-- --all
+- `--all`
 
   Tell the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
 
@@ -75,7 +75,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -p
 
-- --patch
+- `--patch`
 
   Use the interactive patch selection interface to choose which changes to commit. See [git-add[1]](../git-add) for details.
 
@@ -83,7 +83,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -C <commit>
 
-- --reuse-message=<commit>
+- `--reuse-message=<commit>`
 
   Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit.
 
@@ -91,13 +91,13 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -c <commit>
 
-- --reedit-message=<commit>
+- `--reedit-message=<commit>`
 
   Like *-C*, but with `-c` the editor is invoked, so that the user can further edit the commit message.
 
   类似于 *-C*，但使用 `-c` 选项会调用编辑器，以便用户可以进一步编辑提交消息。
 
-- --fixup=[(amend|reword):]<commit>
+- `--fixup=[(amend|reword):]<commit>`
 
   Create a new commit which "fixes up" `<commit>` when applied with `git rebase --autosquash`. Plain `--fixup=<commit>` creates a "fixup!" commit which changes the content of `<commit>` but leaves its log message untouched. `--fixup=amend:<commit>` is similar but creates an "amend!" commit which also replaces the log message of `<commit>` with the log message of the "amend!" commit.
 
@@ -119,37 +119,37 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   当通过 `git rebase --autosquash` 应用时，“fixup!” 和 “amend!” 提交不会更改 `<commit>` 的作者信息。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
-- --squash=<commit>
+- `--squash=<commit>`
 
   Construct a commit message for use with `rebase --autosquash`. The commit message subject line is taken from the specified commit with a prefix of "squash! ". Can be used with additional commit message options (`-m`/`-c`/`-C`/`-F`). See [git-rebase[1]](../git-rebase) for details.
 
   为 `rebase --autosquash` 构造提交消息。提交消息的主题行来自指定的提交，并带有 "squash! " 前缀。可以与其他提交消息选项 (`-m`/`-c`/`-C`/`-F`) 一起使用。有关详情，请参阅 [git-rebase[1]](../git-rebase)。
 
-- --reset-author
+- `--reset-author`
 
   When used with -C/-c/--amend options, or when committing after a conflicting cherry-pick, declare that the authorship of the resulting commit now belongs to the committer. This also renews the author timestamp.
 
   在使用 -C/-c/--amend 选项或在合并冲突的 cherry-pick 后提交时，声明生成的提交的作者是提交者。这还会更新作者的时间戳。
 
-- --short
+- `--short`
 
   When doing a dry-run, give the output in the short-format. See [git-status[1]](../git-status) for details. Implies `--dry-run`.
 
   在进行干运行时，以简短格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
-- --branch
+- `--branch`
 
   Show the branch and tracking info even in short-format.
 
   即使在简短格式中也显示分支和追踪信息。
 
-- --porcelain
+- `--porcelain`
 
   When doing a dry-run, give the output in a porcelain-ready format. See [git-status[1]](../git-status) for details. Implies `--dry-run`.
 
   在进行干运行时，以瓷器格式输出。有关详情，请参阅 [git-status[1]](../git-status)。隐含了 `--dry-run`。
 
-- --long
+- `--long`
 
   When doing a dry-run, give the output in the long-format. Implies `--dry-run`.
 
@@ -157,7 +157,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -z
 
-- --null
+- `--null`
 
   When showing `short` or `porcelain` status output, print the filename verbatim and terminate the entries with NUL, instead of LF. If no format is given, implies the `--porcelain` output format. Without the `-z` option, filenames with "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)).
 
@@ -165,19 +165,19 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -F <file>
 
-- --file=<file>
+- `--file=<file>`
 
   Take the commit message from the given file. Use *-* to read the message from the standard input.
 
   使用给定文件中的内容作为提交消息。使用 *-* 从标准输入读取消息。
 
-- --author=<author>
+- `--author=<author>`
 
   Override the commit author. Specify an explicit author using the standard `A U Thor <author@example.com>` format. Otherwise <author> is assumed to be a pattern and is used to search for an existing commit by that author (i.e. rev-list --all -i --author=<author>); the commit author is then copied from the first such commit found.
 
   覆盖提交作者。使用标准的 `A U Thor <author@example.com>` 格式指定明确的作者。否则，将假设 <author> 是一个模式，并使用该作者搜索现有的提交（即 rev-list --all -i --author=<author>）；然后将提交作者复制自第一个找到的提交。
 
-- --date=<date>
+- `--date=<date>`
 
   Override the author date used in the commit.
 
@@ -185,7 +185,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -m <msg>
 
-- --message=<msg>
+- `--message=<msg>`
 
   Use the given <msg> as the commit message. If multiple `-m` options are given, their values are concatenated as separate paragraphs.The `-m` option is mutually exclusive with `-c`, `-C`, and `-F`.
 
@@ -193,7 +193,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -t <file>
 
-- --template=<file>
+- `--template=<file>`
 
   When editing the commit message, start the editor with the contents in the given file. The `commit.template` configuration variable is often used to give this option implicitly to the command. This mechanism can be used by projects that want to guide participants with some hints on what to write in the message in what order. If the user exits the editor without editing the message, the commit is aborted. This has no effect when a message is given by other means, e.g. with the `-m` or `-F` options.
 
@@ -201,9 +201,9 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -s
 
-- --signoff
+- `--signoff`
 
-- --no-signoff
+- `--no-signoff`
 
   Add a `Signed-off-by` trailer by the committer at the end of the commit log message. The meaning of a signoff depends on the project to which you’re committing. For example, it may certify that the committer has the rights to submit the work under the project’s license or agrees to some contributor representation, such as a Developer Certificate of Origin. (See [http://developercertificate.org](http://developercertificate.org/) for the one used by the Linux kernel and Git projects.) Consult the documentation or leadership of the project to which you’re contributing to understand how the signoffs are used in that project.The --no-signoff option can be used to countermand an earlier --signoff option on the command line.
 
@@ -217,25 +217,25 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -n
 
-- --[no-]verify
+- `--[no-]verify`
 
   By default, the pre-commit and commit-msg hooks are run. When any of `--no-verify` or `-n` is given, these are bypassed. See also [githooks[5]](../../5/githooks).
 
   默认情况下，会运行预提交和提交消息挂钩。给出 `--no-verify` 或 `-n` 中的任何选项时，这些挂钩将被绕过。另请参阅 [githooks[5]](../5/githooks)。
 
-- --allow-empty
+- `--allow-empty`
 
   Usually recording a commit that has the exact same tree as its sole parent commit is a mistake, and the command prevents you from making such a commit. This option bypasses the safety, and is primarily for use by foreign SCM interface scripts.
 
   通常，记录与其唯一父提交具有完全相同的树的提交是错误的，命令会阻止您进行此类提交。此选项绕过了这种安全性，主要供外部 SCM 接口脚本使用。
 
-- --allow-empty-message
+- `--allow-empty-message`
 
   Like --allow-empty this command is primarily for use by foreign SCM interface scripts. It allows you to create a commit with an empty commit message without using plumbing commands like [git-commit-tree[1]](../git-commit-tree).
 
   与 --allow-empty 一样，此命令主要供外部 SCM 接口脚本使用。它允许您创建一个没有使用像 [git-commit-tree[1]](../git-commit-tree) 等工具的空提交消息的提交。
 
-- --cleanup=<mode>
+- `--cleanup=<mode>`
 
   This option determines how the supplied commit message should be cleaned up before committing. The *<mode>* can be `strip`, `whitespace`, `verbatim`, `scissors` or `default`.
 
@@ -283,19 +283,19 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -e
 
-- --edit
+- `--edit`
 
   The message taken from file with `-F`, command line with `-m`, and from commit object with `-C` are usually used as the commit log message unmodified. This option lets you further edit the message taken from these sources.
 
   通常，从 `-F` 文件中获取的消息、命令行中的消息（使用 `-m` 选项）以及提交对象中获取的消息（使用 `-C` 选项）都会原样使用作为提交日志消息。此选项允许您进一步编辑从这些源中获取的消息。
 
-- --no-edit
+- `--no-edit`
 
   Use the selected commit message without launching an editor. For example, `git commit --amend --no-edit` amends a commit without changing its commit message.
 
   使用选定的提交消息而不启动编辑器。例如，`git commit --amend --no-edit` 会修改一个提交而不更改其提交消息。
 
-- --amend
+- `--amend`
 
   Replace the tip of the current branch by creating a new commit. The recorded tree is prepared as usual (including the effect of the `-i` and `-o` options and explicit pathspec), and the message from the original commit is used as the starting point, instead of an empty message, when no other message is specified from the command line via options such as `-m`, `-F`, `-c`, etc. The new commit has the same parents and author as the current one (the `--reset-author` option can countermand this).It is a rough equivalent for:
 
@@ -311,7 +311,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
   但是可以用于修改合并提交。如果修改已经发布的提交，请理解重写历史的影响（参见 [git-rebase[1]](../git-rebase) 中的 "RECOVERING FROM UPSTREAM REBASE" 部分）。
 
-- --no-post-rewrite
+- `--no-post-rewrite`
 
   Bypass the post-rewrite hook.
 
@@ -319,7 +319,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -i
 
-- --include
+- `--include`
 
   Before making a commit out of staged contents so far, stage the contents of paths given on the command line as well. This is usually not what you want unless you are concluding a conflicted merge.
 
@@ -327,19 +327,19 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -o
 
-- --only
+- `--only`
 
   Make a commit by taking the updated working tree contents of the paths specified on the command line, disregarding any contents that have been staged for other paths. This is the default mode of operation of *git commit* if any paths are given on the command line, in which case this option can be omitted. If this option is specified together with `--amend`, then no paths need to be specified, which can be used to amend the last commit without committing changes that have already been staged. If used together with `--allow-empty` paths are also not required, and an empty commit will be created.
 
   通过获取命令行上指定的路径的已更新的工作树内容进行提交，而忽略已为其他路径暂存的任何内容。这是 *git commit* 的默认操作模式，如果命令行上给定了任何路径，则可以省略此选项。如果此选项与 `--amend` 一起使用，则无需指定路径，这可用于修改最后一次提交而不提交已经暂存的更改。如果与 `--allow-empty` 选项一起使用，则也不需要路径，将创建一个空提交。
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
   将路径规范传递给 `<file>`，而不是命令行参数。如果 `<file>` 正好是 `-`，则使用标准输入。路径规范元素由 LF 或 CR/LF 分隔。路径规范元素可以像配置变量 `core.quotePath`（参见 [git-config[1]](../git-config)）中所解释的那样进行引用。还请参阅 `--pathspec-file-nul` 和全局 `--literal-pathspecs`。
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
 
@@ -347,7 +347,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -u[<mode>]
 
-- --untracked-files[=<mode>]
+- `--untracked-files[=<mode>]`
 
   Show untracked files.
 
@@ -374,7 +374,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Show unified diff between the HEAD commit and what would be committed at the bottom of the commit message template to help the user describe the commit by reminding what changes the commit has. Note that this diff output doesn’t have its lines prefixed with *#*. This diff will not be a part of the commit message. See the `commit.verbose` configuration variable in [git-config[1]](../git-config).If specified twice, show in addition the unified diff between what would be committed and the worktree files, i.e. the unstaged changes to tracked files.
 
@@ -382,25 +382,25 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Suppress commit summary message.
 
   禁止提交的摘要消息。
 
-- --dry-run
+- `--dry-run`
 
   Do not create a commit, but show a list of paths that are to be committed, paths with local changes that will be left uncommitted and paths that are untracked.
 
   不创建提交，而是显示要提交的路径列表，保留未提交的本地更改以及未跟踪的路径列表。
 
-- --status
+- `--status`
 
   Include the output of [git-status[1]](../git-status) in the commit message template when using an editor to prepare the commit message. Defaults to on, but can be used to override configuration variable commit.status.
 
   在使用编辑器准备提交消息时，将 [git-status[1]](../git-status) 的输出包含在提交消息模板中。默认为开启，但可以用于覆盖配置变量 commit.status。
 
-- --no-status
+- `--no-status`
 
   Do not include the output of [git-status[1]](../git-status) in the commit message template when using an editor to prepare the default commit message.
 
@@ -410,7 +410,7 @@ If you make a commit and then find a mistake immediately after that, you can rec
 
 - `--gpg-sign[=<keyid>]`
 
-- --no-gpg-sign
+- `--no-gpg-sign`
 
   GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
 

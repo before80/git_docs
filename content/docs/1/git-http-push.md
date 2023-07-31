@@ -18,19 +18,19 @@ Sends missing objects to remote repository, and updates the remote branch.
 
 ## 选项
 
-- --all
+- `--all`
 
   Do not assume that the remote repository is complete in its current state, and verify all objects in the entire local ref’s history exist in the remote repository.
 
-- --force
+- `--force`
 
   Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. What this means is that the remote repository can lose commits; use it with care.
 
-- --dry-run
+- `--dry-run`
 
   Do everything except actually send the updates.
 
-- --verbose
+- `--verbose`
 
   Report the list of objects being walked locally and the list of objects successfully sent to the remote repository.
 

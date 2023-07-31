@@ -45,15 +45,15 @@ Packs are used to reduce the load on mirror systems, backup engines, disk storag
 
   After packing, if the newly created packs make some existing packs redundant, remove the redundant packs. Also run *git prune-packed* to remove redundant loose object files.
 
-- --cruft
+- `--cruft`
 
   Same as `-a`, unless `-d` is used. Then any unreachable objects are packed into a separate cruft pack. Unreachable objects can be pruned using the normal expiry rules with the next `git gc` invocation (see [git-gc[1]](../git-gc)). Incompatible with `-k`.
 
-- --cruft-expiration=<approxidate>
+- `--cruft-expiration=<approxidate>`
 
   Expire unreachable objects older than `<approxidate>` immediately instead of waiting for the next `git gc` invocation. Only useful with `--cruft -d`.
 
-- --expire-to=<dir>
+- `--expire-to=<dir>`
 
   Write a cruft pack containing pruned objects (if any) to the directory `<dir>`. This option is useful for keeping a copy of any pruned objects in a separate directory as a backup. Only useful with `--cruft -d`.
 
@@ -71,7 +71,7 @@ Packs are used to reduce the load on mirror systems, backup engines, disk storag
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Show no progress over the standard error stream and pass the `-q` option to *git pack-objects*. See [git-pack-objects[1]](../git-pack-objects).
 
@@ -79,63 +79,63 @@ Packs are used to reduce the load on mirror systems, backup engines, disk storag
 
   Do not update the server information with *git update-server-info*. This option skips updating local catalog files needed to publish this repository (or a direct copy of it) over HTTP or FTP. See [git-update-server-info[1]](../git-update-server-info).
 
-- --window=<n>
+- `--window=<n>`
 
-- --depth=<n>
+- `--depth=<n>`
 
   These two options affect how the objects contained in the pack are stored using delta compression. The objects are first internally sorted by type, size and optionally names and compared against the other objects within `--window` to see if using delta compression saves space. `--depth` limits the maximum delta depth; making it too deep affects the performance on the unpacker side, because delta data needs to be applied that many times to get to the necessary object.The default value for --window is 10 and --depth is 50. The maximum depth is 4095.
 
-- --threads=<n>
+- `--threads=<n>`
 
   This option is passed through to `git pack-objects`.
 
-- --window-memory=<n>
+- `--window-memory=<n>`
 
   This option provides an additional limit on top of `--window`; the window size will dynamically scale down so as to not take up more than *<n>* bytes in memory. This is useful in repositories with a mix of large and small objects to not run out of memory with a large window, but still be able to take advantage of the large window for the smaller objects. The size can be suffixed with "k", "m", or "g". `--window-memory=0` makes memory usage unlimited. The default is taken from the `pack.windowMemory` configuration variable. Note that the actual memory usage will be the limit multiplied by the number of threads used by [git-pack-objects[1]](../git-pack-objects).
 
-- --max-pack-size=<n>
+- `--max-pack-size=<n>`
 
   Maximum size of each output pack file. The size can be suffixed with "k", "m", or "g". The minimum size allowed is limited to 1 MiB. If specified, multiple packfiles may be created, which also prevents the creation of a bitmap index. The default is unlimited, unless the config variable `pack.packSizeLimit` is set. Note that this option may result in a larger and slower repository; see the discussion in `pack.packSizeLimit`.
 
 - -b
 
-- --write-bitmap-index
+- `--write-bitmap-index`
 
   Write a reachability bitmap index as part of the repack. This only makes sense when used with `-a`, `-A` or `-m`, as the bitmaps must be able to refer to all reachable objects. This option overrides the setting of `repack.writeBitmaps`. This option has no effect if multiple packfiles are created, unless writing a MIDX (in which case a multi-pack bitmap is created).
 
-- --pack-kept-objects
+- `--pack-kept-objects`
 
   Include objects in `.keep` files when repacking. Note that we still do not delete `.keep` packs after `pack-objects` finishes. This means that we may duplicate objects, but this makes the option safe to use when there are concurrent pushes or fetches. This option is generally only useful if you are writing bitmaps with `-b` or `repack.writeBitmaps`, as it ensures that the bitmapped packfile has the necessary objects.
 
-- --keep-pack=<pack-name>
+- `--keep-pack=<pack-name>`
 
   Exclude the given pack from repacking. This is the equivalent of having `.keep` file on the pack. `<pack-name>` is the pack file name without leading directory (e.g. `pack-123.pack`). The option could be specified multiple times to keep multiple packs.
 
-- --unpack-unreachable=<when>
+- `--unpack-unreachable=<when>`
 
   When loosening unreachable objects, do not bother loosening any objects older than `<when>`. This can be used to optimize out the write of any objects that would be immediately pruned by a follow-up `git prune`.
 
 - -k
 
-- --keep-unreachable
+- `--keep-unreachable`
 
   When used with `-ad`, any unreachable objects from existing packs will be appended to the end of the packfile instead of being removed. In addition, any unreachable loose objects will be packed (and their loose counterparts removed).
 
 - -i
 
-- --delta-islands
+- `--delta-islands`
 
   Pass the `--delta-islands` option to `git-pack-objects`, see [git-pack-objects[1]](../git-pack-objects).
 
 - -g=<factor>
 
-- --geometric=<factor>
+- `--geometric=<factor>`
 
   Arrange resulting pack structure so that each successive pack contains at least `<factor>` times the number of objects as the next-largest pack.`git repack` ensures this by determining a "cut" of packfiles that need to be repacked into one in order to ensure a geometric progression. It picks the smallest set of packfiles such that as many of the larger packfiles (by count of objects contained in that pack) may be left intact.Unlike other repack modes, the set of objects to pack is determined uniquely by the set of packs being "rolled-up"; in other words, the packs determined to need to be combined in order to restore a geometric progression.When `--unpacked` is specified, loose objects are implicitly included in this "roll-up", without respect to their reachability. This is subject to change in the future. This option (implying a drastically different repack mode) is not guaranteed to work with all other combinations of option to `git repack`.When writing a multi-pack bitmap, `git repack` selects the largest resulting pack as the preferred pack for object selection by the MIDX (see [git-multi-pack-index[1]](../git-multi-pack-index)).
 
 - -m
 
-- --write-midx
+- `--write-midx`
 
   Write a multi-pack index (see [git-multi-pack-index[1]](../git-multi-pack-index)) containing the non-redundant packs.
 

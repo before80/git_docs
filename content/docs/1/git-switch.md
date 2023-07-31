@@ -64,45 +64,45 @@ THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
 - -d
 
-- --detach
+- `--detach`
 
   Switch to a commit for inspection and discardable experiments. See the "DETACHED HEAD" section in [git-checkout[1]](../git-checkout) for details.
 
-- --guess
+- `--guess`
 
-- --no-guess
+- `--no-guess`
 
   If `<branch>` is not found but there does exist a tracking branch in exactly one remote (call it `<remote>`) with a matching name, treat as equivalent to`$ git switch -c <branch> --track <remote>/<branch>`If the branch exists in multiple remotes and one of them is named by the `checkout.defaultRemote` configuration variable, we’ll use that one for the purposes of disambiguation, even if the `<branch>` isn’t unique across all remotes. Set it to e.g. `checkout.defaultRemote=origin` to always checkout remote branches from there if `<branch>` is ambiguous but exists on the *origin* remote. See also `checkout.defaultRemote` in [git-config[1]](../git-config).`--guess` is the default behavior. Use `--no-guess` to disable it.The default behavior can be set via the `checkout.guess` configuration variable.
 
 - -f
 
-- --force
+- `--force`
 
   An alias for `--discard-changes`.
 
-- --discard-changes
+- `--discard-changes`
 
   Proceed even if the index or the working tree differs from `HEAD`. Both the index and working tree are restored to match the switching target. If `--recurse-submodules` is specified, submodule content is also restored to match the switching target. This is used to throw away local changes.
 
 - -m
 
-- --merge
+- `--merge`
 
   If you have local modifications to one or more files that are different between the current branch and the branch to which you are switching, the command refuses to switch branches in order to preserve your modifications in context. However, with this option, a three-way merge between the current branch, your working tree contents, and the new branch is done, and you will be on the new branch.When a merge conflict happens, the index entries for conflicting paths are left unmerged, and you need to resolve the conflicts and mark the resolved paths with `git add` (or `git rm` if the merge should result in deletion of the path).
 
-- --conflict=<style>
+- `--conflict=<style>`
 
   The same as `--merge` option above, but changes the way the conflicting hunks are presented, overriding the `merge.conflictStyle` configuration variable. Possible values are "merge" (default), "diff3", and "zdiff3".
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Quiet, suppress feedback messages.
 
-- --progress
+- `--progress`
 
-- --no-progress
+- `--no-progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag enables progress reporting even if not attached to a terminal, regardless of `--quiet`.
 
@@ -112,7 +112,7 @@ THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
   When creating a new branch, set up "upstream" configuration. `-c` is implied. See `--track` in [git-branch[1]](../git-branch) for details.If no `-c` option is given, the name of the new branch will be derived from the remote-tracking branch, by looking at the local part of the refspec configured for the corresponding remote, and then stripping the initial part up to the "*". This would tell us to use `hack` as the local branch when branching off of `origin/hack` (or `remotes/origin/hack`, or even `refs/remotes/origin/hack`). If the given name has no slash, or the above guessing results in an empty name, the guessing is aborted. You can explicitly give a name with `-c` in such a case.
 
-- --no-track
+- `--no-track`
 
   Do not set up "upstream" configuration, even if the `branch.autoSetupMerge` configuration variable is true.
 
@@ -120,13 +120,13 @@ THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
 
   Create a new *orphan* branch, named `<new-branch>`. All tracked files are removed.
 
-- --ignore-other-worktrees
+- `--ignore-other-worktrees`
 
   `git switch` refuses when the wanted ref is already checked out by another worktree. This option makes it check the ref out anyway. In other words, the ref can be held by more than one worktree.
 
-- --recurse-submodules
+- `--recurse-submodules`
 
-- --no-recurse-submodules
+- `--no-recurse-submodules`
 
   Using `--recurse-submodules` will update the content of all active submodules according to the commit recorded in the superproject. If nothing (or `--no-recurse-submodules`) is used, submodules working trees will not be updated. Just like [git-submodule[1]](../git-submodule), this will detach `HEAD` of the submodules.
 

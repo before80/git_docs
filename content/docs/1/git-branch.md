@@ -66,7 +66,7 @@ Use `-r` together with `-d` to delete remote-tracking branches. Note, that it on
 
 - -d
 
-- --delete
+- `--delete`
 
   Delete a branch. The branch must be fully merged in its upstream branch, or in `HEAD` if no upstream was set with `--track` or `--set-upstream-to`.
 
@@ -74,19 +74,19 @@ Use `-r` together with `-d` to delete remote-tracking branches. Note, that it on
 
   Shortcut for `--delete --force`.
 
-- --create-reflog
+- `--create-reflog`
 
   Create the branch’s reflog. This activates recording of all changes made to the branch ref, enabling use of date based sha1 expressions such as "<branchname>@{yesterday}". Note that in non-bare repositories, reflogs are usually enabled by default by the `core.logAllRefUpdates` config option. The negated form `--no-create-reflog` only overrides an earlier `--create-reflog`, but currently does not negate the setting of `core.logAllRefUpdates`.
 
 - -f
 
-- --force
+- `--force`
 
   Reset <branchname> to <start-point>, even if <branchname> exists already. Without `-f`, *git branch* refuses to change an existing branch. In combination with `-d` (or `--delete`), allow deleting the branch irrespective of its merged status, or whether it even points to a valid commit. In combination with `-m` (or `--move`), allow renaming the branch even if the new branch name already exists, the same applies for `-c` (or `--copy`).Note that *git branch -f <branchname> [<start-point>]*, even with *-f*, refuses to change an existing branch `<branchname>` that is checked out in another worktree linked to the same repository.
 
 - -m
 
-- --move
+- `--move`
 
   Move/rename a branch, together with its config and reflog.
 
@@ -96,7 +96,7 @@ Use `-r` together with `-d` to delete remote-tracking branches. Note, that it on
 
 - -c
 
-- --copy
+- `--copy`
 
   Copy a branch, together with its config and reflog.
 
@@ -104,45 +104,45 @@ Use `-r` together with `-d` to delete remote-tracking branches. Note, that it on
 
   Shortcut for `--copy --force`.
 
-- --color[=<when>]
+- `--color[=<when>]`
 
   Color branches to highlight current, local, and remote-tracking branches. The value must be always (the default), never, or auto.
 
-- --no-color
+- `--no-color`
 
   Turn off branch colors, even when the configuration file gives the default to color output. Same as `--color=never`.
 
 - -i
 
-- --ignore-case
+- `--ignore-case`
 
   Sorting and filtering branches are case insensitive.
 
-- --column[=<options>]
+- `--column[=<options>]`
 
-- --no-column
+- `--no-column`
 
   Display branch listing in columns. See configuration variable `column.branch` for option syntax. `--column` and `--no-column` without options are equivalent to *always* and *never* respectively.This option is only applicable in non-verbose mode.
 
 - -r
 
-- --remotes
+- `--remotes`
 
   List or delete (if used with -d) the remote-tracking branches. Combine with `--list` to match the optional pattern(s).
 
 - -a
 
-- --all
+- `--all`
 
   List both remote-tracking branches and local branches. Combine with `--list` to match optional pattern(s).
 
 - -l
 
-- --list
+- `--list`
 
   List branches. With optional `<pattern>...`, e.g. `git branch --list 'maint-*'`, list only the branches that match the pattern(s).
 
-- --show-current
+- `--show-current`
 
   Print the name of the current branch. In detached HEAD state, nothing is printed.
 
@@ -150,53 +150,53 @@ Use `-r` together with `-d` to delete remote-tracking branches. Note, that it on
 
 - -vv
 
-- --verbose
+- `--verbose`
 
   When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the path of the linked worktree (if any) and the name of the upstream branch, as well (see also `git remote show <remote>`). Note that the current worktree’s HEAD will not have its path printed (it will always be your current directory).
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Be more quiet when creating or deleting a branch, suppressing non-error messages.
 
-- --abbrev=<n>
+- `--abbrev=<n>`
 
   In the verbose listing that show the commit object name, show the shortest prefix that is at least *<n>* hexdigits long that uniquely refers the object. The default value is 7 and can be overridden by the `core.abbrev` config option.
 
-- --no-abbrev
+- `--no-abbrev`
 
   Display the full sha1s in the output listing rather than abbreviating them.
 
 - -t
 
-- --track[=(direct|inherit)]
+- `--track[=(direct|inherit)]`
 
   When creating a new branch, set up `branch.<name>.remote` and `branch.<name>.merge` configuration entries to set "upstream" tracking configuration for the new branch. This configuration will tell git to show the relationship between the two branches in `git status` and `git branch -v`. Furthermore, it directs `git pull` without arguments to pull from the upstream when the new branch is checked out.The exact upstream branch is chosen depending on the optional argument: `-t`, `--track`, or `--track=direct` means to use the start-point branch itself as the upstream; `--track=inherit` means to copy the upstream configuration of the start-point branch.The branch.autoSetupMerge configuration variable specifies how `git switch`, `git checkout` and `git branch` should behave when neither `--track` nor `--no-track` are specified:The default option, `true`, behaves as though `--track=direct` were given whenever the start-point is a remote-tracking branch. `false` behaves as if `--no-track` were given. `always` behaves as though `--track=direct` were given. `inherit` behaves as though `--track=inherit` were given. `simple` behaves as though `--track=direct` were given only when the start-point is a remote-tracking branch and the new branch has the same name as the remote branch.See [git-pull[1]](../git-pull) and [git-config[1]](../git-config) for additional discussion on how the `branch.<name>.remote` and `branch.<name>.merge` options are used.
 
-- --no-track
+- `--no-track`
 
   Do not set up "upstream" configuration, even if the branch.autoSetupMerge configuration variable is set.
 
-- --recurse-submodules
+- `--recurse-submodules`
 
   THIS OPTION IS EXPERIMENTAL! Causes the current command to recurse into submodules if `submodule.propagateBranches` is enabled. See `submodule.propagateBranches` in [git-config[1]](../git-config). Currently, only branch creation is supported.When used in branch creation, a new branch <branchname> will be created in the superproject and all of the submodules in the superproject’s <start-point>. In submodules, the branch will point to the submodule commit in the superproject’s <start-point> but the branch’s tracking information will be set up based on the submodule’s branches and remotes e.g. `git branch --recurse-submodules topic origin/main` will create the submodule branch "topic" that points to the submodule commit in the superproject’s "origin/main", but tracks the submodule’s "origin/main".
 
-- --set-upstream
+- `--set-upstream`
 
   As this option had confusing syntax, it is no longer supported. Please use `--track` or `--set-upstream-to` instead.
 
 - -u <upstream>
 
-- --set-upstream-to=<upstream>
+- `--set-upstream-to=<upstream>`
 
   Set up <branchname>'s tracking information so <upstream> is considered <branchname>'s upstream branch. If no <branchname> is specified, then it defaults to the current branch.
 
-- --unset-upstream
+- `--unset-upstream`
 
   Remove the upstream information for <branchname>. If no branch is specified it defaults to the current branch.
 
-- --edit-description
+- `--edit-description`
 
   Open an editor and edit the text to explain what the branch is for, to be used by various other commands (e.g. `format-patch`, `request-pull`, and `merge` (if enabled)). Multi-line explanations may be used.
 
@@ -232,7 +232,7 @@ Use `-r` together with `-d` to delete remote-tracking branches. Note, that it on
 
   The new name for an existing branch. The same restrictions as for <branchname> apply.
 
-- --sort=<key>
+- `--sort=<key>`
 
   Sort based on the key given. Prefix `-` to sort in descending order of the value. You may use the --sort=<key> option multiple times, in which case the last key becomes the primary key. The keys supported are the same as those in `git for-each-ref`. Sort order defaults to the value configured for the `branch.sort` variable if exists, or to sorting based on the full refname (including `refs/...` prefix). This lists detached HEAD (if present) first, then local branches and finally remote-tracking branches. See [git-config[1]](../git-config).
 

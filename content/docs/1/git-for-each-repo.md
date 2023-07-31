@@ -26,7 +26,7 @@ This will run `git -C <repo> maintenance run` for each value `<repo>` in the mul
 
 ## 选项
 
-- --config=<config>
+- `--config=<config>`
 
   Use the given config variable as a multi-valued list storing absolute path names. Iterate on that list of paths to run the given arguments.These config values are loaded from system, global, and local Git config, as available. If `git for-each-repo` is run in a directory that is not a Git repository, then only the system and global config is used.
 

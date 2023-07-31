@@ -50,131 +50,131 @@ When neither the command-line nor the configuration specify what to push, the de
 
   Specify what destination ref to update with what source object. The format of a <refspec> parameter is an optional plus `+`, followed by the source object <src>, followed by a colon `:`, followed by the destination ref <dst>.The <src> is often the name of the branch you would want to push, but it can be any arbitrary "SHA-1 expression", such as `master~4` or `HEAD` (see [gitrevisions[7]](../../7/gitrevisions)).The <dst> tells which ref on the remote side is updated with this push. Arbitrary expressions cannot be used here, an actual ref must be named. If `git push [<repository>]` without any `<refspec>` argument is set to update some ref at the destination with `<src>` with `remote.<repository>.push` configuration variable, `:<dst>` part can be omitted—such a push will update a ref that `<src>` normally updates without any `<refspec>` on the command line. Otherwise, missing `:<dst>` means to update the same ref as the `<src>`.If <dst> doesn’t start with `refs/` (e.g. `refs/heads/master`) we will try to infer where in `refs/*` on the destination <repository> it belongs based on the type of <src> being pushed and whether <dst> is ambiguous.If <dst> unambiguously refers to a ref on the <repository> remote, then push to that ref.If <src> resolves to a ref starting with refs/heads/ or refs/tags/, then prepend that to <dst>.Other ambiguity resolutions might be added in the future, but for now any other cases will error out with an error indicating what we tried, and depending on the `advice.pushUnqualifiedRefname` configuration (see [git-config[1]](../git-config)) suggest what refs/ namespace you may have wanted to push to.The object referenced by <src> is used to update the <dst> reference on the remote side. Whether this is allowed depends on where in `refs/*` the <dst> reference lives as described in detail below, in those sections "update" means any modifications except deletes, which as noted after the next few sections are treated differently.The `refs/heads/*` namespace will only accept commit objects, and updates only if they can be fast-forwarded.The `refs/tags/*` namespace will accept any kind of object (as commits, trees and blobs can be tagged), and any updates to them will be rejected.It’s possible to push any type of object to any namespace outside of `refs/{tags,heads}/*`. In the case of tags and commits, these will be treated as if they were the commits inside `refs/heads/*` for the purposes of whether the update is allowed.I.e. a fast-forward of commits and tags outside `refs/{tags,heads}/*` is allowed, even in cases where what’s being fast-forwarded is not a commit, but a tag object which happens to point to a new commit which is a fast-forward of the commit the last tag (or commit) it’s replacing. Replacing a tag with an entirely different tag is also allowed, if it points to the same commit, as well as pushing a peeled tag, i.e. pushing the commit that existing tag object points to, or a new tag object which an existing commit points to.Tree and blob objects outside of `refs/{tags,heads}/*` will be treated the same way as if they were inside `refs/tags/*`, any update of them will be rejected.All of the rules described above about what’s not allowed as an update can be overridden by adding an the optional leading `+` to a refspec (or using `--force` command line option). The only exception to this is that no amount of forcing will make the `refs/heads/*` namespace accept a non-commit object. Hooks and configuration can also override or amend these rules, see e.g. `receive.denyNonFastForwards` in [git-config[1]](../git-config) and `pre-receive` and `update` in [githooks[5]](../../5/githooks).Pushing an empty <src> allows you to delete the <dst> ref from the remote repository. Deletions are always accepted without a leading `+` in the refspec (or `--force`), except when forbidden by configuration or hooks. See `receive.denyDeletes` in [git-config[1]](../git-config) and `pre-receive` and `update` in [githooks[5]](../../5/githooks).The special refspec `:` (or `+:` to allow non-fast-forward updates) directs Git to push "matching" branches: for every branch that exists on the local side, the remote side is updated if a branch of the same name already exists on the remote side.`tag <tag>` means the same as `refs/tags/<tag>:refs/tags/<tag>`.
 
-- --all
+- `--all`
 
   Push all branches (i.e. refs under `refs/heads/`); cannot be used with other <refspec>.
 
-- --prune
+- `--prune`
 
   Remove remote branches that don’t have a local counterpart. For example a remote branch `tmp` will be removed if a local branch with the same name doesn’t exist any more. This also respects refspecs, e.g. `git push --prune remote refs/heads/*:refs/tmp/*` would make sure that remote `refs/tmp/foo` will be removed if `refs/heads/foo` doesn’t exist.
 
-- --mirror
+- `--mirror`
 
   Instead of naming each ref to push, specifies that all refs under `refs/` (which includes but is not limited to `refs/heads/`, `refs/remotes/`, and `refs/tags/`) be mirrored to the remote repository. Newly created local refs will be pushed to the remote end, locally updated refs will be force updated on the remote end, and deleted refs will be removed from the remote end. This is the default if the configuration option `remote.<remote>.mirror` is set.
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Do everything except actually send the updates.
 
-- --porcelain
+- `--porcelain`
 
   Produce machine-readable output. The output status line for each ref will be tab-separated and sent to stdout instead of stderr. The full symbolic names of the refs will be given.
 
 - -d
 
-- --delete
+- `--delete`
 
   All listed refs are deleted from the remote repository. This is the same as prefixing all refs with a colon.
 
-- --tags
+- `--tags`
 
   All refs under `refs/tags` are pushed, in addition to refspecs explicitly listed on the command line.
 
-- --follow-tags
+- `--follow-tags`
 
   Push all the refs that would be pushed without this option, and also push annotated tags in `refs/tags` that are missing from the remote but are pointing at commit-ish that are reachable from the refs being pushed. This can also be specified with configuration variable `push.followTags`. For more information, see `push.followTags` in [git-config[1]](../git-config).
 
-- --[no-]signed
+- `--[no-]signed`
 
-- --signed=(true|false|if-asked)
+- `--signed=(true|false|if-asked)`
 
   GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. If `false` or `--no-signed`, no signing will be attempted. If `true` or `--signed`, the push will fail if the server does not support signed pushes. If set to `if-asked`, sign if and only if the server supports signed pushes. The push will also fail if the actual call to `gpg --sign` fails. See [git-receive-pack[1]](../git-receive-pack) for the details on the receiving end.
 
-- --[no-]atomic
+- `--[no-]atomic`
 
   Use an atomic transaction on the remote side if available. Either all refs are updated, or on error, no refs are updated. If the server does not support atomic pushes the push will fail.
 
 - -o <option>
 
-- --push-option=<option>
+- `--push-option=<option>`
 
   Transmit the given string to the server, which passes them to the pre-receive as well as the post-receive hook. The given string must not contain a NUL or LF character. When multiple `--push-option=<option>` are given, they are all sent to the other side in the order listed on the command line. When no `--push-option=<option>` is given from the command line, the values of configuration variable `push.pushOption` are used instead.
 
-- --receive-pack=<git-receive-pack>
+- `--receive-pack=<git-receive-pack>`
 
-- --exec=<git-receive-pack>
+- `--exec=<git-receive-pack>`
 
   Path to the *git-receive-pack* program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default $PATH.
 
-- --[no-]force-with-lease
+- `--[no-]force-with-lease`
 
-- --force-with-lease=<refname>
+- `--force-with-lease=<refname>`
 
-- --force-with-lease=<refname>:<expect>
+- `--force-with-lease=<refname>:<expect>`
 
   Usually, "git push" refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it.This option overrides this restriction if the current value of the remote ref is the expected value. "git push" fails otherwise.Imagine that you have to rebase what you have already published. You will have to bypass the "must fast-forward" rule in order to replace the history you originally published with the rebased history. If somebody else built on top of your original history while you are rebasing, the tip of the branch at the remote may advance with their commit, and blindly pushing with `--force` will lose their work.This option allows you to say that you expect the history you are updating is what you rebased and want to replace. If the remote ref still points at the commit you specified, you can be sure that no other people did anything to the ref. It is like taking a "lease" on the ref without explicitly locking it, and the remote ref is updated only if the "lease" is still valid.`--force-with-lease` alone, without specifying the details, will protect all remote refs that are going to be updated by requiring their current value to be the same as the remote-tracking branch we have for them.`--force-with-lease=<refname>`, without specifying the expected value, will protect the named ref (alone), if it is going to be updated, by requiring its current value to be the same as the remote-tracking branch we have for it.`--force-with-lease=<refname>:<expect>` will protect the named ref (alone), if it is going to be updated, by requiring its current value to be the same as the specified value `<expect>` (which is allowed to be different from the remote-tracking branch we have for the refname, or we do not even have to have such a remote-tracking branch when this form is used). If `<expect>` is the empty string, then the named ref must not already exist.Note that all forms other than `--force-with-lease=<refname>:<expect>` that specifies the expected current value of the ref explicitly are still experimental and their semantics may change as we gain experience with this feature."--no-force-with-lease" will cancel all the previous --force-with-lease on the command line.A general note on safety: supplying this option without an expected value, i.e. as `--force-with-lease` or `--force-with-lease=<refname>` interacts very badly with anything that implicitly runs `git fetch` on the remote to be pushed to in the background, e.g. `git fetch origin` on your repository in a cronjob.The protection it offers over `--force` is ensuring that subsequent changes your work wasn’t based on aren’t clobbered, but this is trivially defeated if some background process is updating refs in the background. We don’t have anything except the remote tracking info to go by as a heuristic for refs you’re expected to have seen & are willing to clobber.If your editor or some other system is running `git fetch` in the background for you a way to mitigate this is to simply set up another remote:`git remote add origin-push $(git config remote.origin.url) git fetch origin-push`Now when the background process runs `git fetch origin` the references on `origin-push` won’t be updated, and thus commands like:`git push --force-with-lease origin-push`Will fail unless you manually run `git fetch origin-push`. This method is of course entirely defeated by something that runs `git fetch --all`, in that case you’d need to either disable it or do something more tedious like:`git fetch              # update 'master' from remote git tag base master    # mark our base point git rebase -i master   # rewrite some commits git push --force-with-lease=master:base master:master`I.e. create a `base` tag for versions of the upstream code that you’ve seen and are willing to overwrite, then rewrite history, and finally force push changes to `master` if the remote version is still at `base`, regardless of what your local `remotes/origin/master` has been updated to in the background.Alternatively, specifying `--force-if-includes` as an ancillary option along with `--force-with-lease[=<refname>]` (i.e., without saying what exact commit the ref on the remote side must be pointing at, or which refs on the remote side are being protected) at the time of "push" will verify if updates from the remote-tracking refs that may have been implicitly updated in the background are integrated locally before allowing a forced update.
 
 - -f
 
-- --force
+- `--force`
 
   Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. Also, when `--force-with-lease` option is used, the command refuses to update a remote ref whose current value does not match what is expected.This flag disables these checks, and can cause the remote repository to lose commits; use it with care.Note that `--force` applies to all the refs that are pushed, hence using it with `push.default` set to `matching` or with multiple push destinations configured with `remote.*.push` may overwrite refs other than the current branch (including local refs that are strictly behind their remote counterpart). To force a push to only one branch, use a `+` in front of the refspec to push (e.g `git push origin +master` to force a push to the `master` branch). See the `<refspec>...` section above for details.
 
-- --[no-]force-if-includes
+- `--[no-]force-if-includes`
 
   Force an update only if the tip of the remote-tracking ref has been integrated locally.This option enables a check that verifies if the tip of the remote-tracking ref is reachable from one of the "reflog" entries of the local branch based in it for a rewrite. The check ensures that any updates from the remote have been incorporated locally by rejecting the forced update if that is not the case.If the option is passed without specifying `--force-with-lease`, or specified along with `--force-with-lease=<refname>:<expect>`, it is a "no-op".Specifying `--no-force-if-includes` disables this behavior.
 
-- --repo=<repository>
+- `--repo=<repository>`
 
   This option is equivalent to the <repository> argument. If both are specified, the command-line argument takes precedence.
 
 - -u
 
-- --set-upstream
+- `--set-upstream`
 
   For every branch that is up to date or successfully pushed, add upstream (tracking) reference, used by argument-less [git-pull[1]](../git-pull) and other commands. For more information, see `branch.<name>.merge` in [git-config[1]](../git-config).
 
-- --[no-]thin
+- `--[no-]thin`
 
   These options are passed to [git-send-pack[1]](../git-send-pack). A thin transfer significantly reduces the amount of sent data when the sender and receiver share many of the same objects in common. The default is `--thin`.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Suppress all output, including the listing of updated refs, unless an error occurs. Progress is not reported to the standard error stream.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Run verbosely.
 
-- --progress
+- `--progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
 
-- --no-recurse-submodules
+- `--no-recurse-submodules`
 
-- --recurse-submodules=check|on-demand|only|no
+- `--recurse-submodules=check|on-demand|only|no`
 
   May be used to make sure all submodule commits used by the revisions to be pushed are available on a remote-tracking branch. If *check* is used Git will verify that all submodule commits that changed in the revisions to be pushed are available on at least one remote of the submodule. If any commits are missing the push will be aborted and exit with non-zero status. If *on-demand* is used all submodules that changed in the revisions to be pushed will be pushed. If on-demand was not able to push all necessary revisions it will also be aborted and exit with non-zero status. If *only* is used all submodules will be pushed while the superproject is left unpushed. A value of *no* or using `--no-recurse-submodules` can be used to override the push.recurseSubmodules configuration variable when no submodule recursion is required.When using *on-demand* or *only*, if a submodule has a "push.recurseSubmodules={on-demand,only}" or "submodule.recurse" configuration, further recursion will occur. In this case, "only" is treated as "on-demand".
 
-- --[no-]verify
+- `--[no-]verify`
 
   Toggle the pre-push hook (see [githooks[5]](../../5/githooks)). The default is --verify, giving the hook a chance to prevent the push. With --no-verify, the hook is bypassed completely.
 
 - -4
 
-- --ipv4
+- `--ipv4`
 
   Use IPv4 addresses only, ignoring IPv6 addresses.
 
 - -6
 
-- --ipv6
+- `--ipv6`
 
   Use IPv6 addresses only, ignoring IPv4 addresses.
 

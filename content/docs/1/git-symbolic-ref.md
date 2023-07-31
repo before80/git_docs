@@ -26,23 +26,23 @@ A symbolic ref is a regular file that stores a string that begins with `ref: ref
 
 - -d
 
-- --delete
+- `--delete`
 
   Delete the symbolic ref <name>.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Do not issue an error message if the <name> is not a symbolic ref but a detached HEAD; instead exit with non-zero status silently.
 
-- --short
+- `--short`
 
   When showing the value of <name> as a symbolic ref, try to shorten the value, e.g. from `refs/heads/master` to `master`.
 
-- --recurse
+- `--recurse`
 
-- --no-recurse
+- `--no-recurse`
 
   When showing the value of <name> as a symbolic ref, if <name> refers to another symbolic ref, follow such a chain of symbolic refs until the result no longer points at a symbolic ref (`--recurse`, which is the default). `--no-recurse` stops after dereferencing only a single level of symbolic ref.
 

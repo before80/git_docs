@@ -49,59 +49,59 @@ In the second form, a list of objects (separated by linefeeds) is provided on st
 
   Typically this matches the real type of `<object>` but asking for a type that can trivially be dereferenced from the given `<object>` is also permitted. An example is to ask for a "tree" with `<object>` being a commit object that contains it, or to ask for a "blob" with `<object>` being a tag object that points at it.
 
-- --[no-]mailmap
+- `--[no-]mailmap`
 
-- --[no-]use-mailmap
+- `--[no-]use-mailmap`
 
   Use mailmap file to map author, committer and tagger names and email addresses to canonical real names and email addresses. See [git-shortlog[1]](../git-shortlog).
 
-- --textconv
+- `--textconv`
 
   Show the content as transformed by a textconv filter. In this case, `<object>` has to be of the form `<tree-ish>:<path>`, or `:<path>` in order to apply the filter to the content recorded in the index at `<path>`.
 
-- --filters
+- `--filters`
 
   Show the content as converted by the filters configured in the current working tree for the given `<path>` (i.e. smudge filters, end-of-line conversion, etc). In this case, `<object>` has to be of the form `<tree-ish>:<path>`, or `:<path>`.
 
-- --path=<path>
+- `--path=<path>`
 
   For use with `--textconv` or `--filters`, to allow specifying an object name and a path separately, e.g. when it is difficult to figure out the revision from which the blob came.
 
-- --batch
+- `--batch`
 
-- --batch=<format>
+- `--batch=<format>`
 
   Print object information and contents for each object provided on stdin. May not be combined with any other options or arguments except `--textconv`, `--filters`, or `--use-mailmap`.When used with `--textconv` or `--filters`, the input lines must specify the path, separated by whitespace. See the section `BATCH OUTPUT` below for details.When used with `--use-mailmap`, for commit and tag objects, the contents part of the output shows the identities replaced using the mailmap mechanism, while the information part of the output shows the size of the object as if it actually recorded the replacement identities.
 
-- --batch-check
+- `--batch-check`
 
-- --batch-check=<format>
+- `--batch-check=<format>`
 
   Print object information for each object provided on stdin. May not be combined with any other options or arguments except `--textconv`, `--filters` or `--use-mailmap`.When used with `--textconv` or `--filters`, the input lines must specify the path, separated by whitespace. See the section `BATCH OUTPUT` below for details.When used with `--use-mailmap`, for commit and tag objects, the printed object information shows the size of the object as if the identities recorded in it were replaced by the mailmap mechanism.
 
-- --batch-command
+- `--batch-command`
 
-- --batch-command=<format>
+- `--batch-command=<format>`
 
   Enter a command mode that reads commands and arguments from stdin. May only be combined with `--buffer`, `--textconv`, `--use-mailmap` or `--filters`.When used with `--textconv` or `--filters`, the input lines must specify the path, separated by whitespace. See the section `BATCH OUTPUT` below for details.When used with `--use-mailmap`, for commit and tag objects, the `contents` command shows the identities replaced using the mailmap mechanism, while the `info` command shows the size of the object as if it actually recorded the replacement identities.`--batch-command` recognizes the following commands:contents <object>Print object contents for object reference `<object>`. This corresponds to the output of `--batch`.info <object>Print object info for object reference `<object>`. This corresponds to the output of `--batch-check`.flushUsed with `--buffer` to execute all preceding commands that were issued since the beginning or since the last flush was issued. When `--buffer` is used, no output will come until a `flush` is issued. When `--buffer` is not used, commands are flushed each time without issuing `flush`.
 
-- --batch-all-objects
+- `--batch-all-objects`
 
   Instead of reading a list of objects on stdin, perform the requested batch operation on all objects in the repository and any alternate object stores (not just reachable objects). Requires `--batch` or `--batch-check` be specified. By default, the objects are visited in order sorted by their hashes; see also `--unordered` below. Objects are presented as-is, without respecting the "replace" mechanism of [git-replace[1]](../git-replace).
 
-- --buffer
+- `--buffer`
 
   Normally batch output is flushed after each object is output, so that a process can interactively read and write from `cat-file`. With this option, the output uses normal stdio buffering; this is much more efficient when invoking `--batch-check` or `--batch-command` on a large number of objects.
 
-- --unordered
+- `--unordered`
 
   When `--batch-all-objects` is in use, visit objects in an order which may be more efficient for accessing the object contents than hash order. The exact details of the order are unspecified, but if you do not require a specific order, this should generally result in faster output, especially with `--batch`. Note that `cat-file` will still show each object only once, even if it is stored multiple times in the repository.
 
-- --allow-unknown-type
+- `--allow-unknown-type`
 
   Allow `-s` or `-t` to query broken/corrupt objects of unknown type.
 
-- --follow-symlinks
+- `--follow-symlinks`
 
   With `--batch` or `--batch-check`, follow symlinks inside the repository when requesting objects with extended SHA-1 expressions of the form tree-ish:path-in-tree. Instead of providing output about the link itself, provide output about the linked-to object. If a symlink points outside the tree-ish (e.g. a link to `/foo` or a root-level link to `../foo`), the portion of the link which is outside the tree will be printed.This option does not (currently) work correctly when an object in the index is specified (e.g. `:link` instead of `HEAD:link`) rather than one in the tree.This option cannot (currently) be used unless `--batch` or `--batch-check` is used.For example, consider a git repository containing:`f: a file containing "hello\n" link: a symlink to f dir/link: a symlink to ../f plink: a symlink to ../f alink: a symlink to /etc/passwd`For a regular file `f`, `echo HEAD:f | git cat-file --batch` would print`ce013625030ba8dba906f756967f9e9ca394464a blob 6`And `echo HEAD:link | git cat-file --batch --follow-symlinks` would print the same thing, as would `HEAD:dir/link`, as they both point at `HEAD:f`.Without `--follow-symlinks`, these would print data about the symlink itself. In the case of `HEAD:link`, you would see`4d1ae35ba2c8ec712fa2a379db44ad639ca277bd blob 1`Both `plink` and `alink` point outside the tree, so they would respectively print:`symlink 4 ../f``symlink 11 /etc/passwd`
 

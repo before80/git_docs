@@ -20,49 +20,49 @@ A simple script to set up `gitweb` and a web server for browsing the local repos
 
 - -l
 
-- --local
+- `--local`
 
   Only bind the web server to the local IP (127.0.0.1).
 
 - -d
 
-- --httpd
+- `--httpd`
 
   The HTTP daemon command-line that will be executed. Command-line options may be specified here, and the configuration file will be added at the end of the command-line. Currently apache2, lighttpd, mongoose, plackup, python and webrick are supported. (Default: lighttpd)
 
 - -m
 
-- --module-path
+- `--module-path`
 
   The module path (only needed if httpd is Apache). (Default: /usr/lib/apache2/modules)
 
 - -p
 
-- --port
+- `--port`
 
   The port number to bind the httpd to. (Default: 1234)
 
 - -b
 
-- --browser
+- `--browser`
 
   The web browser that should be used to view the gitweb page. This will be passed to the *git web--browse* helper script along with the URL of the gitweb instance. See [git-web--browse[1]](../git-web--browse) for more information about this. If the script fails, the URL will be printed to stdout.
 
 - start
 
-- --start
+- `--start`
 
   Start the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance.
 
 - stop
 
-- --stop
+- `--stop`
 
   Stop the httpd instance and exit. This does not generate any of the configuration files for spawning a new instance, nor does it close the browser.
 
 - restart
 
-- --restart
+- `--restart`
 
   Restart the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance.
 

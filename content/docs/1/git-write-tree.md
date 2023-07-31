@@ -20,11 +20,11 @@ Conceptually, *git write-tree* sync()s the current index contents into a set of 
 
 ## 选项
 
-- --missing-ok
+- `--missing-ok`
 
   Normally *git write-tree* ensures that the objects referenced by the directory exist in the object database. This option disables this check.
 
-- --prefix=<prefix>/
+- `--prefix=<prefix>/`
 
   Writes a tree object that represents a subdirectory `<prefix>`. This can be used to write the tree object for a subproject that is in the named subdirectory.
 

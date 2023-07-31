@@ -18,7 +18,7 @@ A dumb server that does not do on-the-fly pack generations must have some auxili
 
 - -f
 
-- --force
+- `--force`
 
   update the info files from scratch.
 

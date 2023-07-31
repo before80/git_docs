@@ -50,57 +50,57 @@ This page can be displayed with *git help help* or `git help --help`
 
 - -a
 
-- --all
+- `--all`
 
   Prints all the available commands on the standard output.
 
-- --no-external-commands
+- `--no-external-commands`
 
   When used with `--all`, exclude the listing of external "git-*" commands found in the `$PATH`.
 
-- --no-aliases
+- `--no-aliases`
 
   When used with `--all`, exclude the listing of configured aliases.
 
-- --verbose
+- `--verbose`
 
   When used with `--all` print description for all recognized commands. This is the default.
 
 - -c
 
-- --config
+- `--config`
 
   List all available configuration variables. This is a short summary of the list in [git-config[1]](../git-config).
 
 - -g
 
-- --guides
+- `--guides`
 
   Prints a list of the Git concept guides on the standard output.
 
-- --user-interfaces
+- `--user-interfaces`
 
   Prints a list of the repository, command and file interfaces documentation on the standard output.In-repository file interfaces such as `.git/info/exclude` are documented here (see [gitrepository-layout[5]](../../5/gitrepository-layout)), as well as in-tree configuration such as `.mailmap` (see [gitmailmap[5]](../../5/gitmailmap)).This section of the documentation also covers general or widespread user-interface conventions (e.g. [gitcli[7]](../../7/gitcli)), and pseudo-configuration such as the file-based `.git/hooks/*` interface described in [githooks[5]](../../5/githooks).
 
-- --developer-interfaces
+- `--developer-interfaces`
 
   Print list of file formats, protocols and other developer interfaces documentation on the standard output.
 
 - -i
 
-- --info
+- `--info`
 
   Display manual page for the command in the *info* format. The *info* program will be used for that purpose.
 
 - -m
 
-- --man
+- `--man`
 
   Display manual page for the command in the *man* format. This option may be used to override a value set in the `help.format` configuration variable.By default the *man* program will be used to display the manual page, but the `man.viewer` configuration variable may be used to choose other display programs (see below).
 
 - -w
 
-- --web
+- `--web`
 
   Display manual page for the command in the *web* (HTML) format. A web browser will be used for that purpose.The web browser can be specified using the configuration variable `help.browser`, or `web.browser` if the former is not set. If none of these config variables is set, the *git web--browse* helper script (called by *git help*) will pick a suitable default. See [git-web--browse[1]](../git-web--browse) for more information about this.
 

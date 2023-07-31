@@ -24,13 +24,13 @@ Packs are used to reduce the load on mirror systems, backup engines, disk storag
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Don’t actually remove any objects, only show those that would have been removed.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Squelch the progress indicator.
 

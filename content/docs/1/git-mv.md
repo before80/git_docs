@@ -40,7 +40,7 @@ The index is updated after successful completion, but the change must still be c
 
 - -f
 
-- --force
+- `--force`
 
   Force renaming or moving of a file even if the <destination> exists.
 
@@ -50,13 +50,13 @@ The index is updated after successful completion, but the change must still be c
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Do nothing; only show what would happen
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Report the names of files as they are moved.
 

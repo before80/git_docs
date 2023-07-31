@@ -30,13 +30,13 @@ In the case where the input consists entirely of whitespace characters, no outpu
 
 - -s
 
-- --strip-comments
+- `--strip-comments`
 
   Skip and remove all lines starting with comment character (default *#*).
 
 - -c
 
-- --comment-lines
+- `--comment-lines`
 
   Prepend comment character and blank to each line. Lines will automatically be terminated with a newline. On empty lines, only the comment character will be prepended.
 

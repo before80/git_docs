@@ -46,9 +46,9 @@ Normally a commit would identify a new "HEAD" state, and while Git doesn’t car
 
 - -S[<keyid>]
 
-- --gpg-sign[=<keyid>]
+- `--gpg-sign[=<keyid>]`
 
-- --no-gpg-sign
+- `--no-gpg-sign`
 
   GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand a `--gpg-sign` option given earlier on the command line.
 

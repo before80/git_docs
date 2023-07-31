@@ -30,7 +30,7 @@ A number of other receive.* config options are available to tweak its behavior, 
 
   The repository to sync into.
 
-- --http-backend-info-refs
+- `--http-backend-info-refs`
 
   Used by [git-http-backend[1]](../git-http-backend) to serve up `$GIT_URL/info/refs?service=git-receive-pack` requests. See `--http-backend-info-refs` in [git-upload-pack[1]](../git-upload-pack).
 

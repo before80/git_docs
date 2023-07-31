@@ -40,11 +40,11 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 ## 选项
 
-- --in-place
+- `--in-place`
 
   Edit the files in place.
 
-- --trim-empty
+- `--trim-empty`
 
   If the <value> part of any trailer contains only whitespace, the whole trailer will be removed from the resulting message. This applies to existing trailers as well as new trailers.
 
@@ -54,39 +54,39 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - --where <placement>
 
-- --no-where
+- `--no-where`
 
   Specify where all new trailers will be added. A setting provided with *--where* overrides all configuration variables and applies to all *--trailer* options until the next occurrence of *--where* or *--no-where*. Possible values are `after`, `before`, `end` or `start`.
 
 - --if-exists <action>
 
-- --no-if-exists
+- `--no-if-exists`
 
   Specify what action will be performed when there is already at least one trailer with the same <token> in the message. A setting provided with *--if-exists* overrides all configuration variables and applies to all *--trailer* options until the next occurrence of *--if-exists* or *--no-if-exists*. Possible actions are `addIfDifferent`, `addIfDifferentNeighbor`, `add`, `replace` and `doNothing`.
 
 - --if-missing <action>
 
-- --no-if-missing
+- `--no-if-missing`
 
   Specify what action will be performed when there is no other trailer with the same <token> in the message. A setting provided with *--if-missing* overrides all configuration variables and applies to all *--trailer* options until the next occurrence of *--if-missing* or *--no-if-missing*. Possible actions are `doNothing` or `add`.
 
-- --only-trailers
+- `--only-trailers`
 
   Output only the trailers, not any other parts of the input.
 
-- --only-input
+- `--only-input`
 
   Output only trailers that exist in the input; do not add any from the command-line or by following configured `trailer.*` rules.
 
-- --unfold
+- `--unfold`
 
   Remove any whitespace-continuation in trailers, so that each trailer appears on a line by itself with its full content.
 
-- --parse
+- `--parse`
 
   A convenience alias for `--only-trailers --only-input --unfold`.
 
-- --no-divider
+- `--no-divider`
 
   Do not treat `---` as the end of the commit message. Use this when you know your input contains just the commit message itself (and not an email or the output of `git format-patch`).
 

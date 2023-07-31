@@ -31,7 +31,7 @@ Note that `git --version` is identical to `git version` because the former is in
 
 ## 选项
 
-- --build-options
+- `--build-options`
 
   Include additional information about how git was built for diagnostic purposes.
 

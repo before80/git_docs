@@ -19,19 +19,19 @@ This command is usually not invoked directly by the end user. The UI for the pro
 
 ## 选项
 
-- --[no-]strict
+- `--[no-]strict`
 
   Do not try <directory>/.git/ if <directory> is no Git directory.
 
-- --timeout=<n>
+- `--timeout=<n>`
 
   Interrupt transfer after <n> seconds of inactivity.
 
-- --stateless-rpc
+- `--stateless-rpc`
 
   Perform only a single read-write cycle with stdin and stdout. This fits with the HTTP POST request processing model where a program may read the request, write a response, and must exit.
 
-- --http-backend-info-refs
+- `--http-backend-info-refs`
 
   Used by [git-http-backend[1]](../git-http-backend) to serve up `$GIT_URL/info/refs?service=git-upload-pack` requests. See "Smart Clients" in [gitprotocol-http[5]](../../5/gitprotocol-http) and "HTTP Transport" in the [gitprotocol-v2[5]](../../5/gitprotocol-v2) documentation. Also understood by [git-receive-pack[1]](../git-receive-pack).
 

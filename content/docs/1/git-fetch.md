@@ -40,151 +40,151 @@ The names of refs that are fetched, together with the object names they point at
 
 ## 选项
 
-- --all
+- `--all`
 
   Fetch all remotes.
 
 - -a
 
-- --append
+- `--append`
 
   Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten.
 
-- --atomic
+- `--atomic`
 
   Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated.
 
-- --depth=<depth>
+- `--depth=<depth>`
 
   Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a *shallow* repository created by `git clone` with `--depth=<depth>` option (see [git-clone[1]](../git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched.
 
-- --deepen=<depth>
+- `--deepen=<depth>`
 
   Similar to --depth, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history.
 
-- --shallow-since=<date>
+- `--shallow-since=<date>`
 
   Deepen or shorten the history of a shallow repository to include all reachable commits after <date>.
 
-- --shallow-exclude=<revision>
+- `--shallow-exclude=<revision>`
 
   Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times.
 
-- --unshallow
+- `--unshallow`
 
   If the source repository is complete, convert a shallow repository to a complete one, removing all the limitations imposed by shallow repositories.If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository.
 
-- --update-shallow
+- `--update-shallow`
 
   By default when fetching from a shallow repository, `git fetch` refuses refs that require updating .git/shallow. This option updates .git/shallow and accept such refs.
 
-- --negotiation-tip=<commit|glob>
+- `--negotiation-tip=<commit|glob>`
 
   By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile. If specified, Git will only report commits reachable from the given tips. This is useful to speed up fetches when the user knows which local ref is likely to have commits in common with the upstream ref being fetched.This option may be specified more than once; if so, Git will report commits reachable from any of the given commits.The argument to this option may be a glob on ref names, a ref, or the (possibly abbreviated) SHA-1 of a commit. Specifying a glob is equivalent to specifying this option multiple times, one for each matching ref name.See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](../git-config), and the `--negotiate-only` option below.
 
-- --negotiate-only
+- `--negotiate-only`
 
   Do not fetch anything from the server, and instead print the ancestors of the provided `--negotiation-tip=*` arguments, which we have in common with the server.This is incompatible with `--recurse-submodules=[yes|on-demand]`. Internally this is used to implement the `push.negotiate` option, see [git-config[1]](../git-config).
 
-- --dry-run
+- `--dry-run`
 
   Show what would be done, without making any changes.
 
-- --[no-]write-fetch-head
+- `--[no-]write-fetch-head`
 
   Write the list of remote refs fetched in the `FETCH_HEAD` file directly under `$GIT_DIR`. This is the default. Passing `--no-write-fetch-head` from the command line tells Git not to write the file. Under `--dry-run` option, the file is never written.
 
 - -f
 
-- --force
+- `--force`
 
   When *git fetch* is used with `<src>:<dst>` refspec it may refuse to update the local branch as discussed in the `<refspec>` part below. This option overrides that check.
 
 - -k
 
-- --keep
+- `--keep`
 
   Keep downloaded pack.
 
-- --multiple
+- `--multiple`
 
   Allow several <repository> and <group> arguments to be specified. No <refspec>s may be specified.
 
-- --[no-]auto-maintenance
+- `--[no-]auto-maintenance`
 
-- --[no-]auto-gc
+- `--[no-]auto-gc`
 
   Run `git maintenance run --auto` at the end to perform automatic repository maintenance if needed. (`--[no-]auto-gc` is a synonym.) This is enabled by default.
 
-- --[no-]write-commit-graph
+- `--[no-]write-commit-graph`
 
   Write a commit-graph after fetching. This overrides the config setting `fetch.writeCommitGraph`.
 
-- --prefetch
+- `--prefetch`
 
   Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](../git-maintenance).
 
 - -p
 
-- --prune
+- `--prune`
 
   Before fetching, remove any remote-tracking references that no longer exist on the remote. Tags are not subject to pruning if they are fetched only because of the default tag auto-following or due to a --tags option. However, if tags are fetched due to an explicit refspec (either on the command line or in the remote configuration, for example if the remote was cloned with the --mirror option), then they are also subject to pruning. Supplying `--prune-tags` is a shorthand for providing the tag refspec.See the PRUNING section below for more details.
 
 - -P
 
-- --prune-tags
+- `--prune-tags`
 
   Before fetching, remove any local tags that no longer exist on the remote if `--prune` is enabled. This option should be used more carefully, unlike `--prune` it will remove any local references (local tags) that have been created. This option is a shorthand for providing the explicit tag refspec along with `--prune`, see the discussion about that in its documentation.See the PRUNING section below for more details.
 
 - -n
 
-- --no-tags
+- `--no-tags`
 
   By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the remote.<name>.tagOpt setting. See [git-config[1]](../git-config).
 
-- --refetch
+- `--refetch`
 
   Instead of negotiating with the server to avoid transferring commits and associated objects that are already present locally, this option fetches all objects as a fresh clone would. Use this to reapply a partial clone filter from configuration or using `--filter=` when the filter definition has changed. Automatic post-fetch maintenance will perform object database pack consolidation to remove any duplicate objects.
 
-- --refmap=<refspec>
+- `--refmap=<refspec>`
 
   When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.*.fetch` configuration variables for the remote repository. Providing an empty `<refspec>` to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details.
 
 - -t
 
-- --tags
+- `--tags`
 
   Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if --prune is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`).
 
-- --recurse-submodules[=yes|on-demand|no]
+- `--recurse-submodules[=yes|on-demand|no]`
 
   This option controls if and under what conditions new commits of submodules should be fetched too. When recursing through submodules, `git fetch` always attempts to fetch "changed" submodules, that is, a submodule that has commits that are referenced by a newly fetched superproject commit but are missing in the local submodule clone. A changed submodule can be fetched as long as it is present locally e.g. in `$GIT_DIR/modules/` (see [gitsubmodules[7]](../../7/gitsubmodules)); if the upstream adds a new submodule, that submodule cannot be fetched until it is cloned e.g. by `git submodule update`.When set to *on-demand*, only changed submodules are fetched. When set to *yes*, all populated submodules are fetched and submodules that are both unpopulated and changed are fetched. When set to *no*, submodules are never fetched.When unspecified, this uses the value of `fetch.recurseSubmodules` if it is set (see [git-config[1]](../git-config)), defaulting to *on-demand* if unset. When this option is used without any value, it defaults to *yes*.
 
 - -j
 
-- --jobs=<n>
+- `--jobs=<n>`
 
   Number of parallel children to be used for all forms of fetching.If the `--multiple` option was specified, the different remotes will be fetched in parallel. If multiple submodules are fetched, they will be fetched in parallel. To control them independently, use the config settings `fetch.parallel` and `submodule.fetchJobs` (see [git-config[1]](../git-config)).Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel.
 
-- --no-recurse-submodules
+- `--no-recurse-submodules`
 
   Disable recursive fetching of submodules (this has the same effect as using the `--recurse-submodules=no` option).
 
-- --set-upstream
+- `--set-upstream`
 
   If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](../git-pull) and other commands. For more information, see `branch.<name>.merge` and `branch.<name>.remote` in [git-config[1]](../git-config).
 
-- --submodule-prefix=<path>
+- `--submodule-prefix=<path>`
 
   Prepend <path> to paths printed in informative messages such as "Fetching submodule foo". This option is used internally when recursing over submodules.
 
-- --recurse-submodules-default=[yes|on-demand]
+- `--recurse-submodules-default=[yes|on-demand]`
 
   This option is used internally to temporarily provide a non-negative default value for the --recurse-submodules option. All other methods of configuring fetch’s submodule recursion (such as settings in [gitmodules[5]](../../5/gitmodules) and [git-config[1]](../git-config)) override this option, as does specifying --[no-]recurse-submodules directly.
 
 - -u
 
-- --update-head-ok
+- `--update-head-ok`
 
   By default *git fetch* refuses to update the head which corresponds to the current branch. This flag disables the check. This is purely for the internal use for *git pull* to communicate with *git fetch*, and unless you are implementing your own Porcelain you are not supposed to use it.
 
@@ -194,43 +194,43 @@ The names of refs that are fetched, together with the object names they point at
 
 - -q
 
-- --quiet
+- `--quiet`
 
   Pass --quiet to git-fetch-pack and silence any other internally used git commands. Progress is not reported to the standard error stream.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Be verbose.
 
-- --progress
+- `--progress`
 
   Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
 
 - -o <option>
 
-- --server-option=<option>
+- `--server-option=<option>`
 
   Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=<option>` are given, they are all sent to the other side in the order listed on the command line.
 
-- --show-forced-updates
+- `--show-forced-updates`
 
   By default, git checks if a branch is force-updated during fetch. This can be disabled through fetch.showForcedUpdates, but the --show-forced-updates option guarantees this check occurs. See [git-config[1]](../git-config).
 
-- --no-show-forced-updates
+- `--no-show-forced-updates`
 
   By default, git checks if a branch is force-updated during fetch. Pass --no-show-forced-updates or set fetch.showForcedUpdates to false to skip this check for performance reasons. If used during *git-pull* the --ff-only option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](../git-config).
 
 - -4
 
-- --ipv4
+- `--ipv4`
 
   Use IPv4 addresses only, ignoring IPv6 addresses.
 
 - -6
 
-- --ipv6
+- `--ipv6`
 
   Use IPv6 addresses only, ignoring IPv4 addresses.
 
@@ -246,7 +246,7 @@ The names of refs that are fetched, together with the object names they point at
 
   Specifies which refs to fetch and which local refs to update. When no <refspec>s appear on the command line, the refs to fetch are read from `remote.<repository>.fetch` variables instead (see [CONFIGURED REMOTE-TRACKING BRANCHES](https://git-scm.com/docs/git-fetch#CRTB) below).The format of a <refspec> parameter is an optional plus `+`, followed by the source <src>, followed by a colon `:`, followed by the destination ref <dst>. The colon can be omitted when <dst> is empty. <src> is typically a ref, but it can also be a fully spelled hex object name.A <refspec> may contain a `*` in its <src> to indicate a simple pattern match. Such a refspec functions like a glob that matches any ref with the same prefix. A pattern <refspec> must have a `*` in both the <src> and <dst>. It will map refs to the destination by replacing the `*` with the contents matched from the source.If a refspec is prefixed by `^`, it will be interpreted as a negative refspec. Rather than specifying which refs to fetch or which local refs to update, such a refspec will instead specify refs to exclude. A ref will be considered to match if it matches at least one positive refspec, and does not match any negative refspec. Negative refspecs can be useful to restrict the scope of a pattern refspec so that it will not include specific refs. Negative refspecs can themselves be pattern refspecs. However, they may only contain a <src> and do not specify a <dst>. Fully spelled out hex object names are also not supported.`tag <tag>` means the same as `refs/tags/<tag>:refs/tags/<tag>`; it requests fetching everything up to the given tag.The remote ref that matches <src> is fetched, and if <dst> is not an empty string, an attempt is made to update the local ref that matches it.Whether that update is allowed without `--force` depends on the ref namespace it’s being fetched to, the type of object being fetched, and whether the update is considered to be a fast-forward. Generally, the same rules apply for fetching as when pushing, see the `<refspec>...` section of [git-push[1]](../git-push) for what those are. Exceptions to those rules particular to *git fetch* are noted below.Until Git version 2.20, and unlike when pushing with [git-push[1]](../git-push), any updates to `refs/tags/*` would be accepted without `+` in the refspec (or `--force`). When fetching, we promiscuously considered all tag updates from a remote to be forced fetches. Since Git version 2.20, fetching to update `refs/tags/*` works the same way as when pushing. I.e. any updates will be rejected without `+` in the refspec (or `--force`).Unlike when pushing with [git-push[1]](../git-push), any updates outside of `refs/{tags,heads}/*` will be accepted without `+` in the refspec (or `--force`), whether that’s swapping e.g. a tree object for a blob, or a commit for another commit that’s doesn’t have the previous commit as an ancestor etc.Unlike when pushing with [git-push[1]](../git-push), there is no configuration which’ll amend these rules, and nothing like a `pre-fetch` hook analogous to the `pre-receive` hook.As with pushing with [git-push[1]](../git-push), all of the rules described above about what’s not allowed as an update can be overridden by adding an the optional leading `+` to a refspec (or using `--force` command line option). The only exception to this is that no amount of forcing will make the `refs/heads/*` namespace accept a non-commit object.NoteWhen the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.
 
-- --stdin
+- `--stdin`
 
   Read refspecs, one per line, from stdin in addition to those provided as arguments. The "tag <name>" format is not supported.
 

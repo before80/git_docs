@@ -54,215 +54,215 @@ Note that these are applied before commit ordering and formatting options, such 
 
 - -n <number>
 
-- --max-count=<number>
+- `--max-count=<number>`
 
   Limit the number of commits to output.
 
-- --skip=<number>
+- `--skip=<number>`
 
   Skip *number* commits before starting to show the commit output.
 
-- --since=<date>
+- `--since=<date>`
 
-- --after=<date>
+- `--after=<date>`
 
   Show commits more recent than a specific date.
 
-- --since-as-filter=<date>
+- `--since-as-filter=<date>`
 
   Show all commits more recent than a specific date. This visits all commits in the range, rather than stopping at the first commit which is older than a specific date.
 
-- --until=<date>
+- `--until=<date>`
 
-- --before=<date>
+- `--before=<date>`
 
   Show commits older than a specific date.
 
-- --max-age=<timestamp>
+- `--max-age=<timestamp>`
 
-- --min-age=<timestamp>
+- `--min-age=<timestamp>`
 
   Limit the commits output to specified time range.
 
-- --author=<pattern>
+- `--author=<pattern>`
 
-- --committer=<pattern>
+- `--committer=<pattern>`
 
   Limit the commits output to ones with author/committer header lines that match the specified pattern (regular expression). With more than one `--author=<pattern>`, commits whose author matches any of the given patterns are chosen (similarly for multiple `--committer=<pattern>`).
 
-- --grep-reflog=<pattern>
+- `--grep-reflog=<pattern>`
 
   Limit the commits output to ones with reflog entries that match the specified pattern (regular expression). With more than one `--grep-reflog`, commits whose reflog message matches any of the given patterns are chosen. It is an error to use this option unless `--walk-reflogs` is in use.
 
-- --grep=<pattern>
+- `--grep=<pattern>`
 
   Limit the commits output to ones with log message that matches the specified pattern (regular expression). With more than one `--grep=<pattern>`, commits whose message matches any of the given patterns are chosen (but see `--all-match`).
 
-- --all-match
+- `--all-match`
 
   Limit the commits output to ones that match all given `--grep`, instead of ones that match at least one.
 
-- --invert-grep
+- `--invert-grep`
 
   Limit the commits output to ones with log message that do not match the pattern specified with `--grep=<pattern>`.
 
 - -i
 
-- --regexp-ignore-case
+- `--regexp-ignore-case`
 
   Match the regular expression limiting patterns without regard to letter case.
 
-- --basic-regexp
+- `--basic-regexp`
 
   Consider the limiting patterns to be basic regular expressions; this is the default.
 
 - -E
 
-- --extended-regexp
+- `--extended-regexp`
 
   Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions.
 
 - -F
 
-- --fixed-strings
+- `--fixed-strings`
 
   Consider the limiting patterns to be fixed strings (don’t interpret pattern as a regular expression).
 
 - -P
 
-- --perl-regexp
+- `--perl-regexp`
 
   Consider the limiting patterns to be Perl-compatible regular expressions.Support for these types of regular expressions is an optional compile-time dependency. If Git wasn’t compiled with support for them providing this option will cause it to die.
 
-- --remove-empty
+- `--remove-empty`
 
   Stop when a given path disappears from the tree.
 
-- --merges
+- `--merges`
 
   Print only merge commits. This is exactly the same as `--min-parents=2`.
 
-- --no-merges
+- `--no-merges`
 
   Do not print commits with more than one parent. This is exactly the same as `--max-parents=1`.
 
-- --min-parents=<number>
+- `--min-parents=<number>`
 
-- --max-parents=<number>
+- `--max-parents=<number>`
 
-- --no-min-parents
+- `--no-min-parents`
 
-- --no-max-parents
+- `--no-max-parents`
 
   Show only commits which have at least (or at most) that many parent commits. In particular, `--max-parents=1` is the same as `--no-merges`, `--min-parents=2` is the same as `--merges`. `--max-parents=0` gives all root commits and `--min-parents=3` all octopus merges.`--no-min-parents` and `--no-max-parents` reset these limits (to no limit) again. Equivalent forms are `--min-parents=0` (any commit has 0 or more parents) and `--max-parents=-1` (negative numbers denote no upper limit).
 
-- --first-parent
+- `--first-parent`
 
   When finding commits to include, follow only the first parent commit upon seeing a merge commit. This option can give a better overview when viewing the evolution of a particular topic branch, because merges into a topic branch tend to be only about adjusting to updated upstream from time to time, and this option allows you to ignore the individual commits brought in to your history by such a merge.
 
-- --exclude-first-parent-only
+- `--exclude-first-parent-only`
 
   When finding commits to exclude (with a *^*), follow only the first parent commit upon seeing a merge commit. This can be used to find the set of changes in a topic branch from the point where it diverged from the remote branch, given that arbitrary merges can be valid topic branch changes.
 
-- --not
+- `--not`
 
   Reverses the meaning of the *^* prefix (or lack thereof) for all following revision specifiers, up to the next `--not`.
 
-- --all
+- `--all`
 
   Pretend as if all the refs in `refs/`, along with `HEAD`, are listed on the command line as *<commit>*.
 
-- --branches[=<pattern>]
+- `--branches[=<pattern>]`
 
   Pretend as if all the refs in `refs/heads` are listed on the command line as *<commit>*. If *<pattern>* is given, limit branches to ones matching given shell glob. If pattern lacks *?*, ***, or *[*, */** at the end is implied.
 
-- --tags[=<pattern>]
+- `--tags[=<pattern>]`
 
   Pretend as if all the refs in `refs/tags` are listed on the command line as *<commit>*. If *<pattern>* is given, limit tags to ones matching given shell glob. If pattern lacks *?*, ***, or *[*, */** at the end is implied.
 
-- --remotes[=<pattern>]
+- `--remotes[=<pattern>]`
 
   Pretend as if all the refs in `refs/remotes` are listed on the command line as *<commit>*. If *<pattern>* is given, limit remote-tracking branches to ones matching given shell glob. If pattern lacks *?*, ***, or *[*, */** at the end is implied.
 
-- --glob=<glob-pattern>
+- `--glob=<glob-pattern>`
 
   Pretend as if all the refs matching shell glob *<glob-pattern>* are listed on the command line as *<commit>*. Leading *refs/*, is automatically prepended if missing. If pattern lacks *?*, ***, or *[*, */** at the end is implied.
 
-- --exclude=<glob-pattern>
+- `--exclude=<glob-pattern>`
 
   Do not include refs matching *<glob-pattern>* that the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` would otherwise consider. Repetitions of this option accumulate exclusion patterns up to the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` option (other options or arguments do not clear accumulated patterns).The patterns given should not begin with `refs/heads`, `refs/tags`, or `refs/remotes` when applied to `--branches`, `--tags`, or `--remotes`, respectively, and they must begin with `refs/` when applied to `--glob` or `--all`. If a trailing */** is intended, it must be given explicitly.
 
-- --exclude-hidden=[receive|uploadpack]
+- `--exclude-hidden=[receive|uploadpack]`
 
   Do not include refs that would be hidden by `git-receive-pack` or `git-upload-pack` by consulting the appropriate `receive.hideRefs` or `uploadpack.hideRefs` configuration along with `transfer.hideRefs` (see [git-config[1]](../git-config)). This option affects the next pseudo-ref option `--all` or `--glob` and is cleared after processing them.
 
-- --reflog
+- `--reflog`
 
   Pretend as if all objects mentioned by reflogs are listed on the command line as `<commit>`.
 
-- --alternate-refs
+- `--alternate-refs`
 
   Pretend as if all objects mentioned as ref tips of alternate repositories were listed on the command line. An alternate repository is any repository whose object directory is specified in `objects/info/alternates`. The set of included objects may be modified by `core.alternateRefsCommand`, etc. See [git-config[1]](../git-config).
 
-- --single-worktree
+- `--single-worktree`
 
   By default, all working trees will be examined by the following options when there are more than one (see [git-worktree[1]](../git-worktree)): `--all`, `--reflog` and `--indexed-objects`. This option forces them to examine the current working tree only.
 
-- --ignore-missing
+- `--ignore-missing`
 
   Upon seeing an invalid object name in the input, pretend as if the bad input was not given.
 
-- --stdin
+- `--stdin`
 
   In addition to the *<commit>* listed on the command line, read them from the standard input. If a `--` separator is seen, stop reading commits and start reading paths to limit the result.
 
-- --quiet
+- `--quiet`
 
   Don’t print anything to standard output. This form is primarily meant to allow the caller to test the exit status to see if a range of objects is fully connected (or not). It is faster than redirecting stdout to `/dev/null` as the output does not have to be formatted.
 
-- --disk-usage
+- `--disk-usage`
 
-- --disk-usage=human
+- `--disk-usage=human`
 
   Suppress normal output; instead, print the sum of the bytes used for on-disk storage by the selected commits or objects. This is equivalent to piping the output into `git cat-file --batch-check='%(objectsize:disk)'`, except that it runs much faster (especially with `--use-bitmap-index`). See the `CAVEATS` section in [git-cat-file[1]](../git-cat-file) for the limitations of what "on-disk storage" means. With the optional value `human`, on-disk storage size is shown in human-readable string(e.g. 12.24 Kib, 3.50 Mib).
 
-- --cherry-mark
+- `--cherry-mark`
 
   Like `--cherry-pick` (see below) but mark equivalent commits with `=` rather than omitting them, and inequivalent ones with `+`.
 
-- --cherry-pick
+- `--cherry-pick`
 
   Omit any commit that introduces the same change as another commit on the “other side” when the set of commits are limited with symmetric difference.For example, if you have two branches, `A` and `B`, a usual way to list all commits on only one side of them is with `--left-right` (see the example below in the description of the `--left-right` option). However, it shows the commits that were cherry-picked from the other branch (for example, “3rd on b” may be cherry-picked from branch A). With this option, such pairs of commits are excluded from the output.
 
-- --left-only
+- `--left-only`
 
-- --right-only
+- `--right-only`
 
   List only commits on the respective side of a symmetric difference, i.e. only those which would be marked `<` resp. `>` by `--left-right`.For example, `--cherry-pick --right-only A...B` omits those commits from `B` which are in `A` or are patch-equivalent to a commit in `A`. In other words, this lists the `+` commits from `git cherry A B`. More precisely, `--cherry-pick --right-only --no-merges` gives the exact list.
 
-- --cherry
+- `--cherry`
 
   A synonym for `--right-only --cherry-mark --no-merges`; useful to limit the output to the commits on our side and mark those that have been applied to the other side of a forked history with `git log --cherry upstream...mybranch`, similar to `git cherry upstream mybranch`.
 
 - -g
 
-- --walk-reflogs
+- `--walk-reflogs`
 
   Instead of walking the commit ancestry chain, walk reflog entries from the most recent one to older ones. When this option is used you cannot specify commits to exclude (that is, *^commit*, *commit1..commit2*, and *commit1...commit2* notations cannot be used).With `--pretty` format other than `oneline` and `reference` (for obvious reasons), this causes the output to have two extra lines of information taken from the reflog. The reflog designator in the output may be shown as `ref@{Nth}` (where `Nth` is the reverse-chronological index in the reflog) or as `ref@{timestamp}` (with the timestamp for that entry), depending on a few rules:If the starting point is specified as `ref@{Nth}`, show the index format.If the starting point was specified as `ref@{now}`, show the timestamp format.If neither was used, but `--date` was given on the command line, show the timestamp in the format requested by `--date`.Otherwise, show the index format.Under `--pretty=oneline`, the commit message is prefixed with this information on the same line. This option cannot be combined with `--reverse`. See also [git-reflog[1]](../git-reflog).Under `--pretty=reference`, this information will not be shown at all.
 
-- --merge
+- `--merge`
 
   After a failed merge, show refs that touch files having a conflict and don’t exist on all heads to merge.
 
-- --boundary
+- `--boundary`
 
   Output excluded boundary commits. Boundary commits are prefixed with `-`.
 
-- --use-bitmap-index
+- `--use-bitmap-index`
 
   Try to speed up the traversal using the pack bitmap index (if one is available). Note that when traversing with `--objects`, trees and blobs will not have their associated path printed.
 
-- --progress=<header>
+- `--progress=<header>`
 
   Show progress reports on stderr as objects are considered. The `<header>` text will be printed with each progress update.
 
@@ -276,7 +276,7 @@ The following options select the commits to be shown:
 
   Commits modifying the given <paths> are selected.
 
-- --simplify-by-decoration
+- `--simplify-by-decoration`
 
   Commits that are referred by some branch or tag are selected.
 
@@ -288,27 +288,27 @@ The following options affect the way the simplification is performed:
 
   Simplifies the history to the simplest history explaining the final state of the tree. Simplest because it prunes some side branches if the end result is the same (i.e. merging branches with the same content)
 
-- --show-pulls
+- `--show-pulls`
 
   Include all commits from the default mode, but also any merge commits that are not TREESAME to the first parent but are TREESAME to a later parent. This mode is helpful for showing the merge commits that "first introduced" a change to a branch.
 
-- --full-history
+- `--full-history`
 
   Same as the default mode, but does not prune some history.
 
-- --dense
+- `--dense`
 
   Only the selected commits are shown, plus some to have a meaningful history.
 
-- --sparse
+- `--sparse`
 
   All commits in the simplified history are shown.
 
-- --simplify-merges
+- `--simplify-merges`
 
   Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge.
 
-- --ancestry-path[=<commit>]
+- `--ancestry-path[=<commit>]`
 
   When given a range of commits to display (e.g. *commit1..commit2* or *commit2 ^commit1*), only display commits in that range that are ancestors of <commit>, descendants of <commit>, or <commit> itself. If no commit is specified, use *commit1* (the excluded part of the range) as <commit>. Can be passed multiple times; if so, a commit is included if it is any of the commits given or if it is an ancestor or descendant of one of them.
 
@@ -352,21 +352,21 @@ The horizontal line of history A---Q is taken to be the first parent of each mer
 
 In addition to the above settings, you can change whether TREESAME affects inclusion:
 
-- --dense
+- `--dense`
 
   Commits that are walked are included if they are not TREESAME to any parent.
 
-- --sparse
+- `--sparse`
 
   All commits that are walked are included.Note that without `--full-history`, this still simplifies merges: if one of the parents is TREESAME, we follow only that one, so the other sides of the merge are never walked.
 
-- --simplify-merges
+- `--simplify-merges`
 
   First, build a history graph in the same way that `--full-history` with parent rewriting does (see above).Then simplify each commit `C` to its replacement `C'` in the final history according to the following rules:Set `C'` to `C`.Replace each parent `P` of `C'` with its simplification `P'`. In the process, drop parents that are ancestors of other parents or that are root commits TREESAME to an empty tree, and remove duplicates, but take care to never drop all parents that we are TREESAME to.If after this parent rewriting, `C'` is a root or merge commit (has zero or >1 parents), a boundary commit, or !TREESAME, it remains. Otherwise, it is replaced with its only parent.The effect of this is best shown by way of comparing to `--full-history` with parent rewriting. The example turns into:`	  .-A---M---N---O  /     /       / I     B       D  \   /       /   `---------'`Note the major differences in `N`, `P`, and `Q` over `--full-history`:`N`'s parent list had `I` removed, because it is an ancestor of the other parent `M`. Still, `N` remained because it is !TREESAME.`P`'s parent list similarly had `I` removed. `P` was then removed completely, because it had one parent and is TREESAME.`Q`'s parent list had `Y` simplified to `X`. `X` was then removed, because it was a TREESAME root. `Q` was then removed completely, because it had one parent and is TREESAME.
 
 There is another simplification mode available:
 
-- --ancestry-path[=<commit>]
+- `--ancestry-path[=<commit>]`
 
   Limit the displayed commits to those which are an ancestor of <commit>, or which are a descendant of <commit>, or are <commit> itself.As an example use case, consider the following commit history:`	    D---E-------F    /     \       \   B---C---G---H---I---J  /                     \ A-------K---------------L--M`A regular *D..M* computes the set of commits that are ancestors of `M`, but excludes the ones that are ancestors of `D`. This is useful to see what happened to the history leading to `M` since `D`, in the sense that “what does `M` have that did not exist in `D`”. The result in this example would be all the commits, except `A` and `B` (and `D` itself, of course).When we want to find out what commits in `M` are contaminated with the bug introduced by `D` and need fixing, however, we might want to view only the subset of *D..M* that are actually descendants of `D`, i.e. excluding `C` and `K`. This is exactly what the `--ancestry-path` option does. Applied to the *D..M* range, it results in:`		E-------F 	 \       \ 	  G---H---I---J 		       \ 			L--M`We can also use `--ancestry-path=D` instead of `--ancestry-path` which means the same thing when applied to the *D..M* range but is just more explicit.If we instead are interested in a given topic within this range, and all commits affected by that topic, we may only want to view the subset of `D..M` which contain that topic in their ancestry path. So, using `--ancestry-path=H D..M` for example would result in:`		E 	 \ 	  G---H---I---J 		       \ 			L--M`Whereas `--ancestry-path=K D..M` would result in`		K---------------L--M`
 
@@ -421,7 +421,7 @@ The first issue is performance. Unlike any previous option, the `--simplify-merg
 
 The second issue is one of auditing. When many contributors are working on the same repository, it is important which merge commits introduced a change into an important branch. The problematic merge `R` above is not likely to be the merge commit that was used to merge into an important branch. Instead, the merge `N` was used to merge `R` and `X` into the important branch. This commit may have information about why the change `X` came to override the changes from `A` and `B` in its commit message.
 
-- --show-pulls
+- `--show-pulls`
 
   In addition to the commits shown in the default history, show each merge commit that is not TREESAME to its first parent but is TREESAME to a later parent.When a merge commit is included by `--show-pulls`, the merge is treated as if it "pulled" the change from another branch. When using `--show-pulls` on this example (and no other options) the resulting graph is:`	I---X---R---N`Here, the merge commits `R` and `N` are included because they pulled the commits `X` and `R` into the base branch, respectively. These merges are the reason the commits `A` and `B` do not appear in the default history.When `--show-pulls` is paired with `--simplify-merges`, the graph includes all of the necessary information:`	  .-A---M--.   N  /     /    \ / I     B      R  \   /      /   \ /      /    `---X--'`Notice that since `M` is reachable from `R`, the edge from `N` to `M` was simplified away. However, `N` still appears in the history as an important commit because it "pulled" the change `R` into the main branch.
 
@@ -429,15 +429,15 @@ The `--simplify-by-decoration` option allows you to view only the big picture of
 
 ### Bisection Helpers
 
-- --bisect
+- `--bisect`
 
   Limit output to the one commit object which is roughly halfway between included and excluded commits. Note that the bad bisection ref `refs/bisect/bad` is added to the included commits (if it exists) and the good bisection refs `refs/bisect/good-*` are added to the excluded commits (if they exist). Thus, supposing there are no refs in `refs/bisect/`, if`	$ git rev-list --bisect foo ^bar ^baz`outputs *midpoint*, the output of the two commands`	$ git rev-list foo ^midpoint $ git rev-list midpoint ^bar ^baz`would be of roughly the same length. Finding the change which introduces a regression is thus reduced to a binary search: repeatedly generate and test new 'midpoint’s until the commit chain is of length one.
 
-- --bisect-vars
+- `--bisect-vars`
 
   This calculates the same as `--bisect`, except that refs in `refs/bisect/` are not used, and except that this outputs text ready to be eval’ed by the shell. These lines will assign the name of the midpoint revision to the variable `bisect_rev`, and the expected number of commits to be tested after `bisect_rev` is tested to `bisect_nr`, the expected number of commits to be tested if `bisect_rev` turns out to be good to `bisect_good`, the expected number of commits to be tested if `bisect_rev` turns out to be bad to `bisect_bad`, and the number of commits we are bisecting right now to `bisect_all`.
 
-- --bisect-all
+- `--bisect-all`
 
   This outputs all the commit objects between the included and excluded commits, ordered by their distance to the included and excluded commits. Refs in `refs/bisect/` are not used. The farthest from them is displayed first. (This is the only one displayed by `--bisect`.)This is useful because it makes it easy to choose a good commit to test when you want to avoid to test some of them for some reason (they may not compile for example).This option can be used along with `--bisect-vars`, in this case, after all the sorted commit objects, there will be the same text as if `--bisect-vars` had been used alone.
 
@@ -445,19 +445,19 @@ The `--simplify-by-decoration` option allows you to view only the big picture of
 
 By default, the commits are shown in reverse chronological order.
 
-- --date-order
+- `--date-order`
 
   Show no parents before all of its children are shown, but otherwise show commits in the commit timestamp order.
 
-- --author-date-order
+- `--author-date-order`
 
   Show no parents before all of its children are shown, but otherwise show commits in the author timestamp order.
 
-- --topo-order
+- `--topo-order`
 
   Show no parents before all of its children are shown, and avoid showing commits on multiple lines of history intermixed.For example, in a commit history like this:`    ---1----2----4----7 \	       \  3----5----6----8---`where the numbers denote the order of commit timestamps, `git rev-list` and friends with `--date-order` show the commits in the timestamp order: 8 7 6 5 4 3 2 1.With `--topo-order`, they would show 8 6 5 3 7 4 2 1 (or 8 7 4 2 6 5 3 1); some older commits are shown before newer ones in order to avoid showing the commits from two parallel development track mixed together.
 
-- --reverse
+- `--reverse`
 
   Output the commits chosen to be shown (see Commit Limiting section above) in reverse order. Cannot be combined with `--walk-reflogs`.
 
@@ -465,67 +465,67 @@ By default, the commits are shown in reverse chronological order.
 
 These options are mostly targeted for packing of Git repositories.
 
-- --objects
+- `--objects`
 
   Print the object IDs of any object referenced by the listed commits. `--objects foo ^bar` thus means “send me all object IDs which I need to download if I have the commit object *bar* but not *foo*”.
 
-- --in-commit-order
+- `--in-commit-order`
 
   Print tree and blob ids in order of the commits. The tree and blob ids are printed after they are first referenced by a commit.
 
-- --objects-edge
+- `--objects-edge`
 
   Similar to `--objects`, but also print the IDs of excluded commits prefixed with a “-” character. This is used by [git-pack-objects[1]](../git-pack-objects) to build a “thin” pack, which records objects in deltified form based on objects contained in these excluded commits to reduce network traffic.
 
-- --objects-edge-aggressive
+- `--objects-edge-aggressive`
 
   Similar to `--objects-edge`, but it tries harder to find excluded commits at the cost of increased time. This is used instead of `--objects-edge` to build “thin” packs for shallow repositories.
 
-- --indexed-objects
+- `--indexed-objects`
 
   Pretend as if all trees and blobs used by the index are listed on the command line. Note that you probably want to use `--objects`, too.
 
-- --unpacked
+- `--unpacked`
 
   Only useful with `--objects`; print the object IDs that are not in packs.
 
-- --object-names
+- `--object-names`
 
   Only useful with `--objects`; print the names of the object IDs that are found. This is the default behavior.
 
-- --no-object-names
+- `--no-object-names`
 
   Only useful with `--objects`; does not print the names of the object IDs that are found. This inverts `--object-names`. This flag allows the output to be more easily parsed by commands such as [git-cat-file[1]](../git-cat-file).
 
-- --filter=<filter-spec>
+- `--filter=<filter-spec>`
 
   Only useful with one of the `--objects*`; omits objects (usually blobs) from the list of printed objects. The *<filter-spec>* may be one of the following:The form *--filter=blob:none* omits all blobs.The form *--filter=blob:limit=<n>[kmg]* omits blobs larger than n bytes or units. n may be zero. The suffixes k, m, and g can be used to name units in KiB, MiB, or GiB. For example, *blob:limit=1k* is the same as *blob:limit=1024*.The form *--filter=object:type=(tag|commit|tree|blob)* omits all objects which are not of the requested type.The form *--filter=sparse:oid=<blob-ish>* uses a sparse-checkout specification contained in the blob (or blob-expression) *<blob-ish>* to omit blobs that would not be required for a sparse checkout on the requested refs.The form *--filter=tree:<depth>* omits all blobs and trees whose depth from the root tree is >= <depth> (minimum depth if an object is located at multiple depths in the commits traversed). <depth>=0 will not include any trees or blobs unless included explicitly in the command-line (or standard input when --stdin is used). <depth>=1 will include only the tree and blobs which are referenced directly by a commit reachable from <commit> or an explicitly-given object. <depth>=2 is like <depth>=1 while also including trees and blobs one more level removed from an explicitly-given commit or tree.Note that the form *--filter=sparse:path=<path>* that wants to read from an arbitrary path on the filesystem has been dropped for security reasons.Multiple *--filter=* flags can be specified to combine filters. Only objects which are accepted by every filter are included.The form *--filter=combine:<filter1>+<filter2>+…<filterN>* can also be used to combined several filters, but this is harder than just repeating the *--filter* flag and is usually not necessary. Filters are joined by *+* and individual filters are %-encoded (i.e. URL-encoded). Besides the *+* and *%* characters, the following characters are reserved and also must be encoded: `~!@#$^&*()[]{}\;",<>?``'`` as well as all characters with ASCII code <= `0x20`, which includes space and newline.Other arbitrary characters can also be encoded. For instance, *combine:tree:3+blob:none* and *combine:tree%3A3+blob%3Anone* are equivalent.
 
-- --no-filter
+- `--no-filter`
 
   Turn off any previous `--filter=` argument.
 
-- --filter-provided-objects
+- `--filter-provided-objects`
 
   Filter the list of explicitly provided objects, which would otherwise always be printed even if they did not match any of the filters. Only useful with `--filter=`.
 
-- --filter-print-omitted
+- `--filter-print-omitted`
 
   Only useful with `--filter=`; prints a list of the objects omitted by the filter. Object IDs are prefixed with a “~” character.
 
-- --missing=<missing-action>
+- `--missing=<missing-action>`
 
   A debug option to help with future "partial clone" development. This option specifies how missing objects are handled.The form *--missing=error* requests that rev-list stop with an error if a missing object is encountered. This is the default action.The form *--missing=allow-any* will allow object traversal to continue if a missing object is encountered. Missing objects will silently be omitted from the results.The form *--missing=allow-promisor* is like *allow-any*, but will only allow object traversal to continue for EXPECTED promisor missing objects. Unexpected missing objects will raise an error.The form *--missing=print* is like *allow-any*, but will also print a list of the missing objects. Object IDs are prefixed with a “?” character.
 
-- --exclude-promisor-objects
+- `--exclude-promisor-objects`
 
   (For internal use only.) Prefilter object traversal at promisor boundary. This is used with partial clone. This is stronger than `--missing=allow-promisor` because it limits the traversal, rather than just silencing errors about missing objects.
 
-- --no-walk[=(sorted|unsorted)]
+- `--no-walk[=(sorted|unsorted)]`
 
   Only show the given commits, but do not traverse their ancestors. This has no effect if a range is specified. If the argument `unsorted` is given, the commits are shown in the order they were given on the command line. Otherwise (if `sorted` or no argument was given), the commits are shown in reverse chronological order by commit time. Cannot be combined with `--graph`.
 
-- --do-walk
+- `--do-walk`
 
   Overrides a previous `--no-walk`.
 
@@ -533,85 +533,85 @@ These options are mostly targeted for packing of Git repositories.
 
 Using these options, [git-rev-list[1]](../git-rev-list) will act similar to the more specialized family of commit log tools: [git-log[1]](../git-log), [git-show[1]](../git-show), and [git-whatchanged[1]](../git-whatchanged)
 
-- --pretty[=<format>]
+- `--pretty[=<format>]`
 
-- --format=<format>
+- `--format=<format>`
 
   Pretty-print the contents of the commit logs in a given format, where *<format>* can be one of *oneline*, *short*, *medium*, *full*, *fuller*, *reference*, *email*, *raw*, *format:<string>* and *tformat:<string>*. When *<format>* is none of the above, and has *%placeholder* in it, it acts as if *--pretty=tformat:<format>* were given.See the "PRETTY FORMATS" section for some additional details for each format. When *=<format>* part is omitted, it defaults to *medium*.Note: you can specify the default pretty format in the repository configuration (see [git-config[1]](../git-config)).
 
-- --abbrev-commit
+- `--abbrev-commit`
 
   Instead of showing the full 40-byte hexadecimal commit object name, show a prefix that names the object uniquely. "--abbrev=<n>" (which also modifies diff output, if it is displayed) option can be used to specify the minimum length of the prefix.This should make "--pretty=oneline" a whole lot more readable for people using 80-column terminals.
 
-- --no-abbrev-commit
+- `--no-abbrev-commit`
 
   Show the full 40-byte hexadecimal commit object name. This negates `--abbrev-commit`, either explicit or implied by other options such as "--oneline". It also overrides the `log.abbrevCommit` variable.
 
-- --oneline
+- `--oneline`
 
   This is a shorthand for "--pretty=oneline --abbrev-commit" used together.
 
-- --encoding=<encoding>
+- `--encoding=<encoding>`
 
   Commit objects record the character encoding used for the log message in their encoding header; this option can be used to tell the command to re-code the commit log message in the encoding preferred by the user. For non plumbing commands this defaults to UTF-8. Note that if an object claims to be encoded in `X` and we are outputting in `X`, we will output the object verbatim; this means that invalid sequences in the original commit may be copied to the output. Likewise, if iconv(3) fails to convert the commit, we will quietly output the original object verbatim.
 
-- --expand-tabs=<n>
+- `--expand-tabs=<n>`
 
-- --expand-tabs
+- `--expand-tabs`
 
-- --no-expand-tabs
+- `--no-expand-tabs`
 
   Perform a tab expansion (replace each tab with enough spaces to fill to the next display column that is multiple of *<n>*) in the log message before showing it in the output. `--expand-tabs` is a short-hand for `--expand-tabs=8`, and `--no-expand-tabs` is a short-hand for `--expand-tabs=0`, which disables tab expansion.By default, tabs are expanded in pretty formats that indent the log message by 4 spaces (i.e. *medium*, which is the default, *full*, and *fuller*).
 
-- --show-signature
+- `--show-signature`
 
   Check the validity of a signed commit object by passing the signature to `gpg --verify` and show the output.
 
-- --relative-date
+- `--relative-date`
 
   Synonym for `--date=relative`.
 
-- --date=<format>
+- `--date=<format>`
 
   Only takes effect for dates shown in human-readable format, such as when using `--pretty`. `log.date` config variable sets a default value for the log command’s `--date` option. By default, dates are shown in the original time zone (either committer’s or author’s). If `-local` is appended to the format (e.g., `iso-local`), the user’s local time zone is used instead.`--date=relative` shows dates relative to the current time, e.g. “2 hours ago”. The `-local` option has no effect for `--date=relative`.`--date=local` is an alias for `--date=default-local`.`--date=iso` (or `--date=iso8601`) shows timestamps in a ISO 8601-like format. The differences to the strict ISO 8601 format are:a space instead of the `T` date/time delimitera space between time and time zoneno colon between hours and minutes of the time zone`--date=iso-strict` (or `--date=iso8601-strict`) shows timestamps in strict ISO 8601 format.`--date=rfc` (or `--date=rfc2822`) shows timestamps in RFC 2822 format, often found in email messages.`--date=short` shows only the date, but not the time, in `YYYY-MM-DD` format.`--date=raw` shows the date as seconds since the epoch (1970-01-01 00:00:00 UTC), followed by a space, and then the timezone as an offset from UTC (a `+` or `-` with four digits; the first two are hours, and the second two are minutes). I.e., as if the timestamp were formatted with `strftime("%s %z")`). Note that the `-local` option does not affect the seconds-since-epoch value (which is always measured in UTC), but does switch the accompanying timezone value.`--date=human` shows the timezone if the timezone does not match the current time-zone, and doesn’t print the whole date if that matches (ie skip printing year for dates that are "this year", but also skip the whole date itself if it’s in the last few days and we can just say what weekday it was). For older dates the hour and minute is also omitted.`--date=unix` shows the date as a Unix epoch timestamp (seconds since 1970). As with `--raw`, this is always in UTC and therefore `-local` has no effect.`--date=format:...` feeds the format `...` to your system `strftime`, except for %s, %z, and %Z, which are handled internally. Use `--date=format:%c` to show the date in your system locale’s preferred format. See the `strftime` manual for a complete list of format placeholders. When using `-local`, the correct syntax is `--date=format-local:...`.`--date=default` is the default format, and is based on ctime(3) output. It shows a single line with three-letter day of the week, three-letter month, day-of-month, hour-minute-seconds in "HH:MM:SS" format, followed by 4-digit year, plus timezone information, unless the local time zone is used, e.g. `Thu Jan 1 00:00:00 1970 +0000`.
 
-- --header
+- `--header`
 
   Print the contents of the commit in raw-format; each record is separated with a NUL character.
 
-- --no-commit-header
+- `--no-commit-header`
 
   Suppress the header line containing "commit" and the object ID printed before the specified format. This has no effect on the built-in formats; only custom formats are affected.
 
-- --commit-header
+- `--commit-header`
 
   Overrides a previous `--no-commit-header`.
 
-- --parents
+- `--parents`
 
   Print also the parents of the commit (in the form "commit parent…"). Also enables parent rewriting, see *History Simplification* above.
 
-- --children
+- `--children`
 
   Print also the children of the commit (in the form "commit child…"). Also enables parent rewriting, see *History Simplification* above.
 
-- --timestamp
+- `--timestamp`
 
   Print the raw commit timestamp.
 
-- --left-right
+- `--left-right`
 
   Mark which side of a symmetric difference a commit is reachable from. Commits from the left side are prefixed with `<` and those from the right with `>`. If combined with `--boundary`, those commits are prefixed with `-`.For example, if you have this topology:`	     y---b---b  branch B     / \ /    /   .   /   / \  o---x---a---a  branch A`you would get an output like this:`	$ git rev-list --left-right --boundary --pretty=oneline A...B 	>bbbbbbb... 3rd on b >bbbbbbb... 2nd on b <aaaaaaa... 3rd on a <aaaaaaa... 2nd on a -yyyyyyy... 1st on b -xxxxxxx... 1st on a`
 
-- --graph
+- `--graph`
 
   Draw a text-based graphical representation of the commit history on the left hand side of the output. This may cause extra lines to be printed in between commits, in order for the graph history to be drawn properly. Cannot be combined with `--no-walk`.This enables parent rewriting, see *History Simplification* above.This implies the `--topo-order` option by default, but the `--date-order` option may also be specified.
 
-- --show-linear-break[=<barrier>]
+- `--show-linear-break[=<barrier>]`
 
   When --graph is not used, all history branches are flattened which can make it hard to see that the two consecutive commits do not belong to a linear branch. This option puts a barrier in between them in that case. If `<barrier>` is specified, it is the string that will be shown instead of the default one.
 
-- --count
+- `--count`
 
   Print a number stating how many commits would have been listed, and suppress all other output. When used together with `--left-right`, instead print the counts for left and right commits, separated by a tab. When used together with `--cherry-mark`, omit patch equivalent commits from these counts and print the count for equivalent commits separated by a tab.
 

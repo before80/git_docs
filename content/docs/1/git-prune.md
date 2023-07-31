@@ -24,17 +24,17 @@ Note that unreachable, packed objects will remain. If this is not desired, see [
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Do not remove anything; just report what it would remove.
 
 - -v
 
-- --verbose
+- `--verbose`
 
   Report all removed objects.
 
-- --progress
+- `--progress`
 
   Show progress.
 

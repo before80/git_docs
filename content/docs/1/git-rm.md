@@ -37,13 +37,13 @@ Remove files matching pathspec from the index, or from the working tree and the 
 
 - -f
 
-- --force
+- `--force`
 
   Override the up-to-date check.
 
 - -n
 
-- --dry-run
+- `--dry-run`
 
   Don’t actually remove any file(s). Instead, just show if they exist in the index and would otherwise be removed by the command.
 
@@ -55,29 +55,29 @@ Remove files matching pathspec from the index, or from the working tree and the 
 
   This option can be used to separate command-line options from the list of files, (useful when filenames might be mistaken for command-line options).
 
-- --cached
+- `--cached`
 
   Use this option to unstage and remove paths only from the index. Working tree files, whether modified or not, will be left alone.
 
-- --ignore-unmatch
+- `--ignore-unmatch`
 
   Exit with a zero status even if no files matched.
 
-- --sparse
+- `--sparse`
 
   Allow updating index entries outside of the sparse-checkout cone. Normally, `git rm` refuses to update index entries whose paths do not fit within the sparse-checkout cone. See [git-sparse-checkout[1]](../git-sparse-checkout) for more.
 
 - -q
 
-- --quiet
+- `--quiet`
 
   `git rm` normally outputs one line (in the form of an `rm` command) for each file removed. This option suppresses that output.
 
-- --pathspec-from-file=<file>
+- `--pathspec-from-file=<file>`
 
   Pathspec is passed in `<file>` instead of commandline args. If `<file>` is exactly `-` then standard input is used. Pathspec elements are separated by LF or CR/LF. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](../git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
 
-- --pathspec-file-nul
+- `--pathspec-file-nul`
 
   Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with NUL character and all other characters are taken literally (including newlines and quotes).
 

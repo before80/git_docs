@@ -47,9 +47,9 @@ This tool is invoked via the typical Git setup process, which means that in some
 
   Specify an alternate suffix for the bugreport name, to create a file named *git-bugreport-<formatted suffix>*. This should take the form of a strftime(3) format string; the current local time will be used.
 
-- --no-diagnose
+- `--no-diagnose`
 
-- --diagnose[=<mode>]
+- `--diagnose[=<mode>]`
 
   Create a zip archive of supplemental information about the user’s machine, Git client, and repository state. The archive is written to the same output directory as the bug report and is named *git-diagnostics-<formatted suffix>*.Without `mode` specified, the diagnostic archive will contain the default set of statistics reported by `git diagnose`. An optional `mode` value may be specified to change which information is included in the archive. See [git-diagnose[1]](../git-diagnose) for the list of valid values for `mode` and details about their usage.
 

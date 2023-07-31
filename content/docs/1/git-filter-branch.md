@@ -80,7 +80,7 @@ A *map* function is available that takes an "original sha1 id" argument and outp
 
   This is the filter for rewriting tag names. When passed, it will be called for every tag ref that points to a rewritten object (or to a tag object which points to a rewritten object). The original tag name is passed via standard input, and the new tag name is expected on standard output.The original tags are not deleted, but can be overwritten; use "--tag-name-filter cat" to simply update the tags. In this case, be very careful and make sure you have the old tags backed up in case the conversion has run afoul.Nearly proper rewriting of tag objects is supported. If the tag has a message attached, a new tag object will be created with the same message, author, and timestamp. If the tag has a signature attached, the signature will be stripped. It is by definition impossible to preserve signatures. The reason this is "nearly" proper, is because ideally if the tag did not change (points to the same object, has the same name, etc.) it should retain any signature. That is not the case, signatures will always be removed, buyer beware. There is also no support for changing the author or timestamp (or the tag message for that matter). Tags which point to other tags will be rewritten to point to the underlying commit.
 
-- --prune-empty
+- `--prune-empty`
 
   Some filters will generate empty commits that leave the tree untouched. This option instructs git-filter-branch to remove such commits if they have exactly one or zero non-pruned parents; merge commits will therefore remain intact. This option cannot be used together with `--commit-filter`, though the same effect can be achieved by using the provided `git_commit_non_empty_tree` function in a commit filter.
 
@@ -94,7 +94,7 @@ A *map* function is available that takes an "original sha1 id" argument and outp
 
 - -f
 
-- --force
+- `--force`
 
   *git filter-branch* refuses to start with an existing temporary directory or when there are already refs starting with *refs/original/*, unless forced.
 
@@ -135,7 +135,7 @@ Now, you will get the rewritten history saved in HEAD.
 To rewrite the repository to look as if `foodir/` had been its project root, and discard all other history:
 
 ```
-git filter-branch --subdirectory-filter foodir -- --all
+git filter-branch --subdirectory-filter foodir -- `--all`
 ```
 
 Thus you can, e.g., turn a library subdirectory into a repository of its own. Note the `--` that separates *filter-branch* options from revision options, and the `--all` to rewrite all branches and tags.
@@ -220,7 +220,7 @@ git filter-branch --env-filter '
 	then
 		GIT_COMMITTER_EMAIL=john@example.com
 	fi
-' -- --all
+' -- `--all`
 ```
 
 To restrict rewriting to only part of the history, specify a revision range in addition to the new branch name. The new branch name will point to the top-most revision that a *git rev-list* of this range will print.

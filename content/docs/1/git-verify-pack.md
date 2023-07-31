@@ -22,13 +22,13 @@ Reads given idx file for packed Git archive created with the *git pack-objects* 
 
 - -v
 
-- --verbose
+- `--verbose`
 
   After verifying the pack, show list of objects contained in the pack and a histogram of delta chain length.
 
 - -s
 
-- --stat-only
+- `--stat-only`
 
   Do not verify the pack contents; only show the histogram of delta chain length. With `--verbose`, list of objects is also shown.
 
