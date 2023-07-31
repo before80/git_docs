@@ -79,7 +79,7 @@ extra-parameters  = 1*extra-parameter
 extra-parameter   = 1*( %x01-ff ) NUL
 ```
 
-host-parameter is used for the git-daemon name based virtual hosting. See --interpolated-path option to git daemon, with the %H/%CH format characters.
+host-parameter is used for the git-daemon name based virtual hosting. See `--interpolated-path` option to git daemon, with the %H/%CH format characters.
 
 Basically what the Git client is doing to connect to an *upload-pack* process on the server side over the Git protocol is this:
 
@@ -273,7 +273,7 @@ Without either multi_ack or multi_ack_detailed:
 - upload-pack sends "ACK obj-id" on the first common object it finds. After that it says nothing until the client gives it a "done".
 - upload-pack sends "NAK" on a flush-pkt if no common object has been found yet. If one has been found, and thus an ACK was already sent, it’s silent on the flush-pkt.
 
-After the client has gotten enough ACK responses that it can determine that the server has enough information to send an efficient packfile (in the canonical implementation, this is determined when it has received enough ACKs that it can color everything left in the --date-order queue as common with the server, or the --date-order queue is empty), or the client determines that it wants to give up (in the canonical implementation, this is determined when the client sends 256 *have* lines without getting any of them ACKed by the server - meaning there is nothing in common and the server should just send all of its objects), then the client will send a *done* command. The *done* command signals to the server that the client is ready to receive its packfile data.
+After the client has gotten enough ACK responses that it can determine that the server has enough information to send an efficient packfile (in the canonical implementation, this is determined when it has received enough ACKs that it can color everything left in the `--date-order` queue as common with the server, or the --date-order queue is empty), or the client determines that it wants to give up (in the canonical implementation, this is determined when the client sends 256 *have* lines without getting any of them ACKed by the server - meaning there is nothing in common and the server should just send all of its objects), then the client will send a *done* command. The *done* command signals to the server that the client is ready to receive its packfile data.
 
 However, the 256 limit **only** turns on in the canonical client implementation if we have received at least one "ACK %s continue" during a prior round. This helps to ensure that at least one common ancestor is found before we give up entirely.
 

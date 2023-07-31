@@ -49,7 +49,7 @@ The *multi_ack* capability allows the server to return "ACK obj-id continue" as 
 
 By sending this early, the server can potentially head off the client from walking any further down that particular branch of the client’s repository history. The client may still need to walk down other branches, sending have lines for those, until the server has a complete cut across the DAG, or the client has said "done".
 
-Without multi_ack, a client sends have lines in --date-order until the server has found a common base. That means the client will send have lines that are already known by the server to be common, because they overlap in time with another branch that the server hasn’t found a common base on yet.
+Without multi_ack, a client sends have lines in `--date-order` until the server has found a common base. That means the client will send have lines that are already known by the server to be common, because they overlap in time with another branch that the server hasn’t found a common base on yet.
 
 For example suppose the client has commits in caps that the server doesn’t and the server has commits in lower case that the client doesn’t, as in the following diagram:
 
@@ -138,11 +138,11 @@ This capability adds "deepen", "shallow" and "unshallow" commands to the fetch-p
 
 ## deepen-since
 
-This capability adds "deepen-since" command to fetch-pack/upload-pack protocol so the client can request shallow clones that are cut at a specific time, instead of depth. Internally it’s equivalent of doing "rev-list --max-age=<timestamp>" on the server side. "deepen-since" cannot be used with "deepen".
+This capability adds "deepen-since" command to fetch-pack/upload-pack protocol so the client can request shallow clones that are cut at a specific time, instead of depth. Internally it’s equivalent of doing "rev-list `--max-age=<timestamp>`" on the server side. "deepen-since" cannot be used with "deepen".
 
 ## deepen-not
 
-This capability adds "deepen-not" command to fetch-pack/upload-pack protocol so the client can request shallow clones that are cut at a specific revision, instead of depth. Internally it’s equivalent of doing "rev-list --not <rev>" on the server side. "deepen-not" cannot be used with "deepen", but can be used with "deepen-since".
+This capability adds "deepen-not" command to fetch-pack/upload-pack protocol so the client can request shallow clones that are cut at a specific revision, instead of depth. Internally it’s equivalent of doing "rev-list `--not <rev>`" on the server side. "deepen-not" cannot be used with "deepen", but can be used with "deepen-since".
 
 ## deepen-relative
 

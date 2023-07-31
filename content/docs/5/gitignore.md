@@ -105,9 +105,9 @@ The purpose of gitignore files is to ensure that certain files not tracked by Gi
 
 ​	`gitignore` 文件的目的是确保 Git 中未跟踪的某些文件保持未跟踪状态。
 
-To stop tracking a file that is currently tracked, use *git rm --cached*.
+To stop tracking a file that is currently tracked, use `git rm --cached`.
 
-​	要停止跟踪当前已跟踪的文件，请使用 *git rm --cached* 命令。
+​	要停止跟踪当前已跟踪的文件，请使用 `git rm --cached` 命令。
 
 Git does not follow symbolic links when accessing a `.gitignore` file in the working tree. This keeps behavior consistent when the file is accessed from the index or a tree versus from the filesystem.
 
