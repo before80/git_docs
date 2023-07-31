@@ -258,7 +258,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Automatically bisect a broken build between v1.2 and HEAD:
 
-  ```
+  ``` bash
   $ git bisect start HEAD v1.2 --      # HEAD is bad, v1.2 is good
   $ git bisect run make                # "make" builds the app
   $ git bisect reset                   # quit the bisect session
@@ -266,7 +266,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Automatically bisect a test failure between origin and HEAD:
 
-  ```
+  ``` bash
   $ git bisect start HEAD origin --    # HEAD is bad, origin is good
   $ git bisect run make test           # "make test" builds and tests
   $ git bisect reset                   # quit the bisect session
@@ -274,7 +274,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Automatically bisect a broken test case:
 
-  ```
+  ``` bash
   $ cat ~/test.sh
   #!/bin/sh
   make || exit 125                     # this skips broken builds
@@ -290,7 +290,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Automatically bisect with temporary modifications (hot-fix):
 
-  ```
+  ``` bash
   $ cat ~/test.sh
   #!/bin/sh
   
@@ -318,7 +318,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Automatically bisect a broken test case:
 
-  ```
+  ``` bash
   $ git bisect start HEAD HEAD~10 --   # culprit is among the last 10
   $ git bisect run sh -c "make || exit 125; ~/check_test_case.sh"
   $ git bisect reset                   # quit the bisect session
@@ -328,7 +328,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Locate a good region of the object graph in a damaged repository
 
-  ```
+  ``` bash
   $ git bisect start HEAD <known-good-commit> [ <boundary-commit> ... ] --no-checkout
   $ git bisect run sh -c '
   	GOOD=$(git for-each-ref "--format=%(objectname)" refs/bisect/good-*) &&
@@ -345,7 +345,7 @@ To cope with such a situation, after the inner *git bisect* finds the next revis
 
 - Look for a fix instead of a regression in the code
 
-  ```
+  ``` bash
   $ git bisect start
   $ git bisect new HEAD    # current commit is marked as new
   $ git bisect old HEAD~10 # the tenth commit from now is marked as old

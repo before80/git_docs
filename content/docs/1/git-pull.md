@@ -1,3 +1,16 @@
++++
+title = "git-pull"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# git-pull
+
 https://git-scm.com/docs/git-pull
 
 ## 名称
@@ -507,7 +520,7 @@ When no refspec was given on the command line, then `git pull` uses the refspec 
 
 - Update the remote-tracking branches for the repository you cloned from, then merge one of them into your current branch:
 
-  ```
+  ``` bash
   $ git pull
   $ git pull origin
   ```
@@ -516,13 +529,13 @@ When no refspec was given on the command line, then `git pull` uses the refspec 
 
 - Merge into the current branch the remote branch `next`:
 
-  ```
+  ``` bash
   $ git pull origin next
   ```
 
   This leaves a copy of `next` temporarily in FETCH_HEAD, and updates the remote-tracking branch `origin/next`. The same can be done by invoking fetch and merge:
 
-  ```
+  ``` bash
   $ git fetch origin
   $ git merge origin/next
   ```

@@ -53,9 +53,9 @@ or:
 $ git help log
 ```
 
-With the latter, you can use the manual viewer of your choice; see [git-help[1]](https://git-scm.com/docs/git-help) for more information.
+With the latter, you can use the manual viewer of your choice; see [git-help[1]](../../1/git-help) for more information.
 
-​	对于后者，您可以使用您选择的手册查看器；请参阅[git-help[1]](https://git-scm.com/docs/git-help)获取更多信息。
+​	对于后者，您可以使用您选择的手册查看器；请参阅[git-help[1]](../../1/git-help)获取更多信息。
 
 It is a good idea to introduce yourself to Git with your name and public email address before doing any operation. The easiest way to do so is:
 
@@ -167,9 +167,9 @@ which will automatically notice any modified (but not new) files, add them to th
 
 它将自动检测到任何已修改（但不是新建）的文件，将它们添加到索引并在一步中进行提交。
 
-A note on commit messages: Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
+A note on commit messages: Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](../../1/git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
 
-​	关于提交消息的一点说明：虽然不是必需的，但最好以单个简短（少于50个字符）的行开始提交消息，总结更改，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并且该标题在整个Git中使用。例如，[git-format-patch[1]](https://git-scm.com/docs/git-format-patch)将提交转换为电子邮件，并在主题行中使用标题，在正文中使用提交的其余部分。
+​	关于提交消息的一点说明：虽然不是必需的，但最好以单个简短（少于50个字符）的行开始提交消息，总结更改，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并且该标题在整个Git中使用。例如，[git-format-patch[1]](../../1/git-format-patch)将提交转换为电子邮件，并在主题行中使用标题，在正文中使用提交的其余部分。
 
 ## Git跟踪内容而不是文件
 
@@ -480,9 +480,9 @@ bob$ git config --get remote.origin.url
 /home/alice/project
 ```
 
-(The complete configuration created by `git clone` is visible using `git config -l`, and the [git-config[1]](https://git-scm.com/docs/git-config) man page explains the meaning of each option.)
+(The complete configuration created by `git clone` is visible using `git config -l`, and the [git-config[1]](../../1/git-config) man page explains the meaning of each option.)
 
-（`git clone`创建的完整配置可以使用`git config -l`查看，[git-config[1]](https://git-scm.com/docs/git-config)手册解释了每个选项的含义。）
+（`git clone`创建的完整配置可以使用`git config -l`查看，[git-config[1]](../../1/git-config)手册解释了每个选项的含义。）
 
 Git also keeps a pristine copy of Alice’s `master` branch under the name `origin/master`:
 
@@ -501,13 +501,13 @@ If Bob later decides to work from a different host, he can still perform clones 
 bob$ git clone alice.org:/home/alice/project myrepo
 ```
 
-Alternatively, Git has a native protocol, or can use http; see [git-pull[1]](https://git-scm.com/docs/git-pull) for details.
+Alternatively, Git has a native protocol, or can use http; see [git-pull[1]](../../1/git-pull) for details.
 
-​	另外，Git还有一个本地协议，或者可以使用http协议；有关详细信息，请参见[git-pull[1]](https://git-scm.com/docs/git-pull)。
+​	另外，Git还有一个本地协议，或者可以使用http协议；有关详细信息，请参见[git-pull[1]](../../1/git-pull)。
 
-Git can also be used in a CVS-like mode, with a central repository that various users push changes to; see [git-push[1]](https://git-scm.com/docs/git-push) and [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration).
+Git can also be used in a CVS-like mode, with a central repository that various users push changes to; see [git-push[1]](../../1/git-push) and [gitcvs-migration[7]](../../7/gitcvs-migration).
 
-​	Git还可以以类似CVS的模式使用，使用一个中央仓库，各个用户向其推送更改；请参见[git-push[1]](https://git-scm.com/docs/git-push)和[gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration)。
+​	Git还可以以类似CVS的模式使用，使用一个中央仓库，各个用户向其推送更改；请参见[git-push[1]](../../1/git-push)和[gitcvs-migration[7]](../../7/gitcvs-migration)。
 
 ## 探索历史
 
@@ -570,9 +570,9 @@ You can also give commits names of your own; after running
 $ git tag v2.5 1b2e1d63ff
 ```
 
-you can refer to `1b2e1d63ff` by the name `v2.5`. If you intend to share this name with other people (for example, to identify a release version), you should create a "tag" object, and perhaps sign it; see [git-tag[1]](https://git-scm.com/docs/git-tag) for details.
+you can refer to `1b2e1d63ff` by the name `v2.5`. If you intend to share this name with other people (for example, to identify a release version), you should create a "tag" object, and perhaps sign it; see [git-tag[1]](../../1/git-tag) for details.
 
-您可以使用名称`v2.5`来引用`1b2e1d63ff`。如果您打算与其他人共享此名称（例如用于标识发布版本），则应该创建一个“tag”对象，并可能对其进行签名；有关详细信息，请参见[git-tag[1]](https://git-scm.com/docs/git-tag)。
+您可以使用名称`v2.5`来引用`1b2e1d63ff`。如果您打算与其他人共享此名称（例如用于标识发布版本），则应该创建一个“tag”对象，并可能对其进行签名；有关详细信息，请参见[git-tag[1]](../../1/git-tag)。
 
 Any Git command that needs to know a commit can take any of these names. For example:
 
@@ -689,24 +689,24 @@ This tutorial should be enough to perform basic distributed revision control for
 - The index file is a cache of the state of a directory tree, used to create commits, check out working directories, and hold the various trees involved in a merge.
 - 索引文件是目录树状态的缓存，用于创建提交、检出工作目录和保存合并涉及的各种树。
 
-Part two of this tutorial explains the object database, the index file, and a few other odds and ends that you’ll need to make the most of Git. You can find it at [gittutorial-2[7]](https://git-scm.com/docs/gittutorial-2).
+Part two of this tutorial explains the object database, the index file, and a few other odds and ends that you’ll need to make the most of Git. You can find it at [gittutorial-2[7]](../../7/gittutorial-2).
 
-​	本教程的第二部分将解释对象数据库、索引文件和其他一些您需要掌握的Git要点。您可以在[gittutorial-2[7]](https://git-scm.com/docs/gittutorial-2)找到它。
+​	本教程的第二部分将解释对象数据库、索引文件和其他一些您需要掌握的Git要点。您可以在[gittutorial-2[7]](../../7/gittutorial-2)找到它。
 
 If you don’t want to continue with that right away, a few other digressions that may be interesting at this point are:
 
 ​	如果您暂时不想继续学习，这里有一些其他可能会在这个阶段引起兴趣的内容：
 
-- [git-format-patch[1]](https://git-scm.com/docs/git-format-patch), [git-am[1]](https://git-scm.com/docs/git-am): These convert series of git commits into emailed patches, and vice versa, useful for projects such as the Linux kernel which rely heavily on emailed patches.
-- [git-format-patch[1]](https://git-scm.com/docs/git-format-patch)和[git-am[1]](https://git-scm.com/docs/git-am)：这些命令用于将一系列Git提交转换为电子邮件补丁，反之亦然，对于像Linux内核这样大量依赖电子邮件补丁的项目非常有用。
-- [git-bisect[1]](https://git-scm.com/docs/git-bisect): When there is a regression in your project, one way to track down the bug is by searching through the history to find the exact commit that’s to blame. `git bisect` can help you perform a binary search for that commit. It is smart enough to perform a close-to-optimal search even in the case of complex non-linear history with lots of merged branches.
-- [git-bisect[1]](https://git-scm.com/docs/git-bisect)：当项目出现回归问题时，一种追踪错误的方法是通过搜索历史记录找到确切的有问题提交。`git bisect`可以帮助您对该提交进行二分搜索。即使在具有许多合并分支的复杂非线性历史记录的情况下，它也能执行接近最优的搜索。
-- [gitworkflows[7]](https://git-scm.com/docs/gitworkflows): Gives an overview of recommended workflows.
-- [gitworkflows[7]](https://git-scm.com/docs/gitworkflows)：提供推荐工作流程的概述。
-- [giteveryday[7]](https://git-scm.com/docs/giteveryday): Everyday Git with 20 Commands Or So.
-- [giteveryday[7]](https://git-scm.com/docs/giteveryday)：掌握每天使用的约20个Git命令。
-- [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration): Git for CVS users.
-- [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration)：面向CVS用户的Git使用指南。
+- [git-format-patch[1]](../../1/git-format-patch), [git-am[1]](../../1/git-am): These convert series of git commits into emailed patches, and vice versa, useful for projects such as the Linux kernel which rely heavily on emailed patches.
+- [git-format-patch[1]](../../1/git-format-patch)和[git-am[1]](../../1/git-am)：这些命令用于将一系列Git提交转换为电子邮件补丁，反之亦然，对于像Linux内核这样大量依赖电子邮件补丁的项目非常有用。
+- [git-bisect[1]](../../1/git-bisect): When there is a regression in your project, one way to track down the bug is by searching through the history to find the exact commit that’s to blame. `git bisect` can help you perform a binary search for that commit. It is smart enough to perform a close-to-optimal search even in the case of complex non-linear history with lots of merged branches.
+- [git-bisect[1]](../../1/git-bisect)：当项目出现回归问题时，一种追踪错误的方法是通过搜索历史记录找到确切的有问题提交。`git bisect`可以帮助您对该提交进行二分搜索。即使在具有许多合并分支的复杂非线性历史记录的情况下，它也能执行接近最优的搜索。
+- [gitworkflows[7]](../../7/gitworkflows): Gives an overview of recommended workflows.
+- [gitworkflows[7]](../../7/gitworkflows)：提供推荐工作流程的概述。
+- [giteveryday[7]](../../7/giteveryday): Everyday Git with 20 Commands Or So.
+- [giteveryday[7]](../../7/giteveryday)：掌握每天使用的约20个Git命令。
+- [gitcvs-migration[7]](../../7/gitcvs-migration): Git for CVS users.
+- [gitcvs-migration[7]](../../7/gitcvs-migration)：面向CVS用户的Git使用指南。
 
 ## 另请参阅
 

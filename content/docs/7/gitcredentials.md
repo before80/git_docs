@@ -58,11 +58,11 @@ git config credential.helper "$helper $options"
 
 - cache
 
-  在内存中缓存凭据一小段时间。详见 [git-credential-cache[1\]](https://git-scm.com/docs/git-credential-cache) 获取详细信息。
+  在内存中缓存凭据一小段时间。详见 [git-credential-cache[1]](../../1/git-credential-cache) 获取详细信息。
 
 - store
 
-  永久地将凭据存储在磁盘上。详见 [git-credential-store[1\]](https://git-scm.com/docs/git-credential-store) 获取详细信息。
+  永久地将凭据存储在磁盘上。详见 [git-credential-store[1]](../../1/git-credential-store) 获取详细信息。
 
 ​	你也可能安装了第三方的助手；在 `git help -a` 的输出中搜索 `credential-*`，并查阅各个助手的文档。选择了一个助手后，可以通过将其名称放入 `credential.helper` 变量中来告诉 Git 使用它。
 
@@ -131,7 +131,7 @@ git config credential.helper "$helper $options"
 
 ​	凭据助手是由 Git 执行的程序，用于从长期存储中获取或保存凭据（"长期" 意味着超过一个 Git 进程；例如，凭据可以在内存中存储几分钟，或永久地存储在磁盘上）。
 
-​	每个助手都由配置变量 `credential.helper`（以及其他变量，详见 [git-config[1\]](https://git-scm.com/docs/git-config)）中的一个字符串指定。Git 将根据以下规则将字符串转换为要执行的命令：
+​	每个助手都由配置变量 `credential.helper`（以及其他变量，详见 [git-config[1]](../../1/git-config)）中的一个字符串指定。Git 将根据以下规则将字符串转换为要执行的命令：
 
 1. 如果助手字符串以 "!" 开头，则被视为 Shell 片段，"!" 之后的部分成为命令。
 2. 否则，如果助手字符串以绝对路径开头，则原始助手字符串成为命令。
@@ -186,9 +186,9 @@ git config credential.helper "$helper $options"
 
   从助手的存储中删除匹配的凭据（如果有）。
 
-​	凭据的详细信息将在助手的标准输入流上提供。其确切格式与 `git credential` 基础命令的输入/输出格式相同（请参阅 [git-credential[1\]](https://git-scm.com/docs/git-credential) 中的 "INPUT/OUTPUT FORMAT" 部分，获取详细规范）。
+​	凭据的详细信息将在助手的标准输入流上提供。其确切格式与 `git credential` 基础命令的输入/输出格式相同（请参阅 [git-credential[1]](../../1/git-credential) 中的 "INPUT/OUTPUT FORMAT" 部分，获取详细规范）。
 
-​	对于 `get` 操作，助手应该在标准输出上以相同格式生成一系列属性（请参阅 [git-credential[1\]](https://git-scm.com/docs/git-credential) 获取常见属性）。助手可以自由地生成子集，甚至根本不提供任何值，如果没有有用的内容可以提供。提供的任何属性都将覆盖 Git 凭据子系统已知的属性。未被识别的属性会被静默丢弃。
+​	对于 `get` 操作，助手应该在标准输出上以相同格式生成一系列属性（请参阅 [git-credential[1]](../../1/git-credential) 获取常见属性）。助手可以自由地生成子集，甚至根本不提供任何值，如果没有有用的内容可以提供。提供的任何属性都将覆盖 Git 凭据子系统已知的属性。未被识别的属性会被静默丢弃。
 
 ​	虽然可以覆盖所有属性，但行为良好的助手应该在除了用户名和密码之外的任何属性上都不这样做。
 

@@ -23,13 +23,13 @@ Create a new Git repository from an existing p4 repository using *git p4 clone*,
 
 - Clone a repository:
 
-  ```
+  ``` bash
   $ git p4 clone //depot/path/project
   ```
 
 - Do some work in the newly created Git repository:
 
-  ```
+  ``` bash
   $ cd project
   $ vi foo.h
   $ git commit -a -m "edited foo.h"
@@ -37,13 +37,13 @@ Create a new Git repository from an existing p4 repository using *git p4 clone*,
 
 - Update the Git repository with recent changes from p4, rebasing your work on top:
 
-  ```
+  ``` bash
   $ git p4 rebase
   ```
 
 - Submit your commits back to p4:
 
-  ```
+  ``` bash
   $ git p4 submit
   ```
 

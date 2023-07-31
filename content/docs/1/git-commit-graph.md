@@ -42,25 +42,25 @@ Manage the serialized commit-graph file.
 
 - Write a commit-graph file for the packed commits in your local `.git` directory.
 
-  ```
+  ``` bash
   $ git commit-graph write
   ```
 
 - Write a commit-graph file, extending the current commit-graph file using commits in `<pack-index>`.
 
-  ```
+  ``` bash
   $ echo <pack-index> | git commit-graph write --stdin-packs
   ```
 
 - Write a commit-graph file containing all reachable commits.
 
-  ```
+  ``` bash
   $ git show-ref -s | git commit-graph write --stdin-commits
   ```
 
 - Write a commit-graph file containing all commits in the current commit-graph file along with those reachable from `HEAD`.
 
-  ```
+  ``` bash
   $ git rev-parse HEAD | git commit-graph write --stdin-commits --append
   ```
 

@@ -48,26 +48,26 @@ A standalone individual developer does not exchange patches with other people, a
 
 ​	独立的个人开发者不与他人交换补丁，独自在单个仓库中工作，使用以下命令：
 
-- [git-init[1\]](https://git-scm.com/docs/git-init) to create a new repository.
-- [git-log[1\]](https://git-scm.com/docs/git-log) to see what happened.
-- [git-switch[1\]](https://git-scm.com/docs/git-switch) and [git-branch[1\]](https://git-scm.com/docs/git-branch) to switch branches.
-- [git-add[1\]](https://git-scm.com/docs/git-add) to manage the index file.
-- [git-diff[1\]](https://git-scm.com/docs/git-diff) and [git-status[1\]](https://git-scm.com/docs/git-status) to see what you are in the middle of doing.
-- [git-commit[1\]](https://git-scm.com/docs/git-commit) to advance the current branch.
-- [git-restore[1\]](https://git-scm.com/docs/git-restore) to undo changes.
-- [git-merge[1\]](https://git-scm.com/docs/git-merge) to merge between local branches.
-- [git-rebase[1\]](https://git-scm.com/docs/git-rebase) to maintain topic branches.
-- [git-tag[1\]](https://git-scm.com/docs/git-tag) to mark a known point.
-- 使用 [git-init[1\]](https://git-scm.com/docs/git-init) 创建一个新的仓库。
-- 使用 [git-log[1\]](https://git-scm.com/docs/git-log) 查看提交历史。
-- 使用 [git-switch[1\]](https://git-scm.com/docs/git-switch) 和 [git-branch[1\]](https://git-scm.com/docs/git-branch) 切换分支。
-- 使用 [git-add[1\]](https://git-scm.com/docs/git-add) 管理索引文件。
-- 使用 [git-diff[1\]](https://git-scm.com/docs/git-diff) 和 [git-status[1\]](https://git-scm.com/docs/git-status) 查看当前操作的状态。
-- 使用 [git-commit[1\]](https://git-scm.com/docs/git-commit) 推进当前分支。
-- 使用 [git-restore[1\]](https://git-scm.com/docs/git-restore) 撤消更改。
-- 使用 [git-merge[1\]](https://git-scm.com/docs/git-merge) 在本地分支之间进行合并。
-- 使用 [git-rebase[1\]](https://git-scm.com/docs/git-rebase) 维护主题分支。
-- 使用 [git-tag[1\]](https://git-scm.com/docs/git-tag) 标记已知的提交点。
+- [git-init[1]](../../1/git-init) to create a new repository.
+- [git-log[1]](../../1/git-log) to see what happened.
+- [git-switch[1]](../../1/git-switch) and [git-branch[1]](../../1/git-branch) to switch branches.
+- [git-add[1]](../../1/git-add) to manage the index file.
+- [git-diff[1]](../../1/git-diff) and [git-status[1]](../../1/git-status) to see what you are in the middle of doing.
+- [git-commit[1]](../../1/git-commit) to advance the current branch.
+- [git-restore[1]](../../1/git-restore) to undo changes.
+- [git-merge[1]](../../1/git-merge) to merge between local branches.
+- [git-rebase[1]](../../1/git-rebase) to maintain topic branches.
+- [git-tag[1]](../../1/git-tag) to mark a known point.
+- 使用 [git-init[1]](../../1/git-init) 创建一个新的仓库。
+- 使用 [git-log[1]](../../1/git-log) 查看提交历史。
+- 使用 [git-switch[1]](../../1/git-switch) 和 [git-branch[1]](../../1/git-branch) 切换分支。
+- 使用 [git-add[1]](../../1/git-add) 管理索引文件。
+- 使用 [git-diff[1]](../../1/git-diff) 和 [git-status[1]](../../1/git-status) 查看当前操作的状态。
+- 使用 [git-commit[1]](../../1/git-commit) 推进当前分支。
+- 使用 [git-restore[1]](../../1/git-restore) 撤消更改。
+- 使用 [git-merge[1]](../../1/git-merge) 在本地分支之间进行合并。
+- 使用 [git-rebase[1]](../../1/git-rebase) 维护主题分支。
+- 使用 [git-tag[1]](../../1/git-tag) 标记已知的提交点。
 
 ### 示例
 
@@ -75,7 +75,7 @@ Use a tarball as a starting point for a new repository.
 
 ​	使用压缩包作为新仓库的起点。
 
-```
+``` bash
 $ tar zxf frotz.tar.gz
 $ cd frotz
 $ git init
@@ -93,7 +93,7 @@ Create a topic branch and develop.
 
 ​	创建主题分支并进行开发。
 
-```
+``` bash
 $ git switch -c alsa-audio (1)
 $ edit/compile/test
 $ git restore curses/ux_audio_oss.c (2)
@@ -139,18 +139,18 @@ A developer working as a participant in a group project needs to learn how to co
 
 ​	作为团队项目的参与者，开发者需要学习如何与他人沟通，并在必要时使用以下命令，除了独立开发者需要使用的命令：
 
-- [git-clone[1\]](https://git-scm.com/docs/git-clone) from the upstream to prime your local repository.
-- [git-pull[1\]](https://git-scm.com/docs/git-pull) and [git-fetch[1\]](https://git-scm.com/docs/git-fetch) from "origin" to keep up-to-date with the upstream.
-- [git-push[1\]](https://git-scm.com/docs/git-push) to shared repository, if you adopt CVS style shared repository workflow.
-- [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) to prepare e-mail submission, if you adopt Linux kernel-style public forum workflow.
-- [git-send-email[1\]](https://git-scm.com/docs/git-send-email) to send your e-mail submission without corruption by your MUA.
-- [git-request-pull[1\]](https://git-scm.com/docs/git-request-pull) to create a summary of changes for your upstream to pull.
-- 使用 [git-clone[1\]](https://git-scm.com/docs/git-clone) 从上游克隆至本地仓库。
-- 使用 [git-pull[1\]](https://git-scm.com/docs/git-pull) 和 [git-fetch[1\]](https://git-scm.com/docs/git-fetch) 从 "origin" 保持与上游的同步。
-- 使用 [git-push[1\]](https://git-scm.com/docs/git-push) 将变更推送到共享仓库，如果您采用 CVS 风格的共享仓库工作流程。
-- 使用 [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) 准备提交邮件，如果您采用 Linux 内核风格的公共论坛工作流程。
-- 使用 [git-send-email[1\]](https://git-scm.com/docs/git-send-email) 通过电子邮件提交代码，以免受到邮件客户端的破坏。
-- 使用 [git-request-pull[1\]](https://git-scm.com/docs/git-request-pull) 创建变更摘要，供上游拉取。
+- [git-clone[1]](../../1/git-clone) from the upstream to prime your local repository.
+- [git-pull[1]](../../1/git-pull) and [git-fetch[1]](../../1/git-fetch) from "origin" to keep up-to-date with the upstream.
+- [git-push[1]](../../1/git-push) to shared repository, if you adopt CVS style shared repository workflow.
+- [git-format-patch[1]](../../1/git-format-patch) to prepare e-mail submission, if you adopt Linux kernel-style public forum workflow.
+- [git-send-email[1]](../../1/git-send-email) to send your e-mail submission without corruption by your MUA.
+- [git-request-pull[1]](../../1/git-request-pull) to create a summary of changes for your upstream to pull.
+- 使用 [git-clone[1]](../../1/git-clone) 从上游克隆至本地仓库。
+- 使用 [git-pull[1]](../../1/git-pull) 和 [git-fetch[1]](../../1/git-fetch) 从 "origin" 保持与上游的同步。
+- 使用 [git-push[1]](../../1/git-push) 将变更推送到共享仓库，如果您采用 CVS 风格的共享仓库工作流程。
+- 使用 [git-format-patch[1]](../../1/git-format-patch) 准备提交邮件，如果您采用 Linux 内核风格的公共论坛工作流程。
+- 使用 [git-send-email[1]](../../1/git-send-email) 通过电子邮件提交代码，以免受到邮件客户端的破坏。
+- 使用 [git-request-pull[1]](../../1/git-request-pull) 创建变更摘要，供上游拉取。
 
 ### 示例
 
@@ -271,16 +271,16 @@ This section can also be used by those who respond to `git request-pull` or pull
 
 ​	这一节还可以被那些回应 `git request-pull` 或者在 GitHub ([www.github.com](http://www.github.com/)) 上提交 pull 请求的人用来将其他人的工作整合到他们的历史中。作为仓库的一个子区域副官，将同时扮演参与者和集成者的角色。
 
-- [git-am[1\]](https://git-scm.com/docs/git-am) to apply patches e-mailed in from your contributors.
-- [git-pull[1\]](https://git-scm.com/docs/git-pull) to merge from your trusted lieutenants.
-- [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) to prepare and send suggested alternative to contributors.
-- [git-revert[1\]](https://git-scm.com/docs/git-revert) to undo botched commits.
-- [git-push[1\]](https://git-scm.com/docs/git-push) to publish the bleeding edge.
-- [git-am[1\]](https://git-scm.com/docs/git-am) 用于应用通过邮件提交的补丁。
-- [git-pull[1\]](https://git-scm.com/docs/git-pull) 用于从可信副官那里合并更改。
-- [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) 用于准备并向贡献者发送建议的备选补丁。
-- [git-revert[1\]](https://git-scm.com/docs/git-revert) 用于撤消错误的提交。
-- [git-push[1\]](https://git-scm.com/docs/git-push) 用于发布最新的开发版本。
+- [git-am[1]](../../1/git-am) to apply patches e-mailed in from your contributors.
+- [git-pull[1]](../../1/git-pull) to merge from your trusted lieutenants.
+- [git-format-patch[1]](../../1/git-format-patch) to prepare and send suggested alternative to contributors.
+- [git-revert[1]](../../1/git-revert) to undo botched commits.
+- [git-push[1]](../../1/git-push) to publish the bleeding edge.
+- [git-am[1]](../../1/git-am) 用于应用通过邮件提交的补丁。
+- [git-pull[1]](../../1/git-pull) 用于从可信副官那里合并更改。
+- [git-format-patch[1]](../../1/git-format-patch) 用于准备并向贡献者发送建议的备选补丁。
+- [git-revert[1]](../../1/git-revert) 用于撤消错误的提交。
+- [git-push[1]](../../1/git-push) 用于发布最新的开发版本。
 
 ### 示例
 
@@ -361,14 +361,14 @@ A repository administrator uses the following tools to set up and maintain acces
 
 ​	仓库管理员使用以下工具来设置和维护开发者对仓库的访问权限。
 
-- [git-daemon[1\]](https://git-scm.com/docs/git-daemon) to allow anonymous download from repository.
-- [git-shell[1\]](https://git-scm.com/docs/git-shell) can be used as a *restricted login shell* for shared central repository users.
-- [git-http-backend[1\]](https://git-scm.com/docs/git-http-backend) provides a server side implementation of Git-over-HTTP ("Smart http") allowing both fetch and push services.
-- [gitweb[1\]](https://git-scm.com/docs/gitweb) provides a web front-end to Git repositories, which can be set-up using the [git-instaweb[1\]](https://git-scm.com/docs/git-instaweb) script.
-- [git-daemon[1\]](https://git-scm.com/docs/git-daemon) 用于允许匿名下载仓库内容。
-- [git-shell[1\]](https://git-scm.com/docs/git-shell) 可以作为共享中央仓库用户的*受限登录shell*。
-- [git-http-backend[1\]](https://git-scm.com/docs/git-http-backend) 提供了Git-over-HTTP（"智能HTTP"）的服务器端实现，允许提供获取和推送服务。
-- [gitweb[1\]](https://git-scm.com/docs/gitweb) 提供了Git仓库的Web前端，可以通过[git-instaweb[1\]](https://git-scm.com/docs/git-instaweb)脚本进行设置。
+- [git-daemon[1]](../../1/git-daemon) to allow anonymous download from repository.
+- [git-shell[1]](../../1/git-shell) can be used as a *restricted login shell* for shared central repository users.
+- [git-http-backend[1]](../../1/git-http-backend) provides a server side implementation of Git-over-HTTP ("Smart http") allowing both fetch and push services.
+- [gitweb[1]](../../1/gitweb) provides a web front-end to Git repositories, which can be set-up using the [git-instaweb[1]](../../1/git-instaweb) script.
+- [git-daemon[1]](../../1/git-daemon) 用于允许匿名下载仓库内容。
+- [git-shell[1]](../../1/git-shell) 可以作为共享中央仓库用户的*受限登录shell*。
+- [git-http-backend[1]](../../1/git-http-backend) 提供了Git-over-HTTP（"智能HTTP"）的服务器端实现，允许提供获取和推送服务。
+- [gitweb[1]](../../1/gitweb) 提供了Git仓库的Web前端，可以通过[git-instaweb[1]](../../1/git-instaweb)脚本进行设置。
 
 [update hook howto](https://git-scm.com/docs/howto/update-hook-example) has a good example of managing a shared central repository.
 
@@ -398,7 +398,7 @@ In addition there are a number of other widely deployed hosting, browsing and re
 
 - 使用inetd运行git-daemon来提供 /pub/scm 的服务。
 
-  ```
+  ``` bash
   $ grep git /etc/inetd.conf
   git	stream	tcp	nowait	nobody \
     /usr/bin/git-daemon git-daemon --inetd --export-all /pub/scm
@@ -412,7 +412,7 @@ In addition there are a number of other widely deployed hosting, browsing and re
 
 - 使用xinetd运行git-daemon来提供 /pub/scm 的服务。
 
-  ```
+  ``` bash
   $ cat /etc/xinetd.d/git-daemon
   # default: off
   # description: The Git server offers access to Git repositories
@@ -442,7 +442,7 @@ In addition there are a number of other widely deployed hosting, browsing and re
 
   例如：那些使用 `$ git push/pull ssh://host.xz/pub/scm/project` 的用户。
 
-  ```
+  ``` bash
   $ grep git /etc/passwd (1)
   alice:x:1000:1000::/home/alice:/usr/bin/git-shell
   bob:x:1001:1001::/home/bob:/usr/bin/git-shell
@@ -461,7 +461,7 @@ In addition there are a number of other widely deployed hosting, browsing and re
 
 - CVS风格的共享仓库。
 
-  ```
+  ``` bash
   $ grep git /etc/group (1)
   git:x:9418:alice,bob,cindy,david
   $ cd /home/devo.git

@@ -542,13 +542,13 @@ $ sh your-git-script.sh "a b'c"
 
 - Print the object name of the current commit:
 
-  ```
+  ``` bash
   $ git rev-parse --verify HEAD
   ```
 
 - Print the commit object name from the revision in the $REV shell variable:
 
-  ```
+  ``` bash
   $ git rev-parse --verify --end-of-options $REV^{commit}
   ```
 
@@ -556,7 +556,7 @@ $ sh your-git-script.sh "a b'c"
 
 - Similar to above:
 
-  ```
+  ``` bash
   $ git rev-parse --default master --verify --end-of-options $REV
   ```
 

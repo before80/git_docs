@@ -136,7 +136,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a *sign* trailer with a *Signed-off-by* key, and then add two of these trailers to a message:
 
-  ```
+  ``` bash
   $ git config trailer.sign.key "Signed-off-by"
   $ cat msg.txt
   subject
@@ -153,7 +153,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Use the `--in-place` option to edit a message file in place:
 
-  ```
+  ``` bash
   $ cat msg.txt
   subject
   
@@ -172,7 +172,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Extract the last commit as a patch, and add a *Cc* and a *Reviewed-by* trailer to it:
 
-  ```
+  ``` bash
   $ git format-patch -1
   0001-foo.patch
   $ git interpret-trailers --trailer 'Cc: Alice <alice@example.com>' --trailer 'Reviewed-by: Bob <bob@example.com>' 0001-foo.patch >0001-bar.patch
@@ -180,7 +180,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a *sign* trailer with a command to automatically add a 'Signed-off-by: ' with the author information only if there is no 'Signed-off-by: ' already, and show how it works:
 
-  ```
+  ``` bash
   $ git config trailer.sign.key "Signed-off-by: "
   $ git config trailer.sign.ifmissing add
   $ git config trailer.sign.ifexists doNothing
@@ -198,7 +198,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a *fix* trailer with a key that contains a *#* and no space after this character, and show how it works:
 
-  ```
+  ``` bash
   $ git config trailer.separators ":#"
   $ git config trailer.fix.key "Fix #"
   $ echo "subject" | git interpret-trailers --trailer fix=42
@@ -209,7 +209,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a *help* trailer with a cmd use a script `glog-find-author` which search specified author identity from git log in git repository and show how it works:
 
-  ```
+  ``` bash
   $ cat ~/bin/glog-find-author
   #!/bin/sh
   test -n "$1" && git log --author="$1" --pretty="%an <%ae>" -1 || true
@@ -232,7 +232,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a *ref* trailer with a cmd use a script `glog-grep` to grep last relevant commit from git log in the git repository and show how it works:
 
-  ```
+  ``` bash
   $ cat ~/bin/glog-grep
   #!/bin/sh
   test -n "$1" && git log --grep "$1" --pretty=reference -1 || true
@@ -254,7 +254,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a *see* trailer with a command to show the subject of a commit that is related, and show how it works:
 
-  ```
+  ``` bash
   $ git config trailer.see.key "See-also: "
   $ git config trailer.see.ifExists "replace"
   $ git config trailer.see.ifMissing "doNothing"
@@ -275,7 +275,7 @@ Note that *trailers* do not follow and are not intended to follow many rules for
 
 - Configure a commit template with some trailers with empty values (using sed to show and keep the trailing spaces at the end of the trailers), then configure a commit-msg hook that uses *git interpret-trailers* to remove trailers with empty values and to add a *git-version* trailer:
 
-  ```
+  ``` bash
   $ sed -e 's/ Z$/ /' >commit_template.txt <<EOF
   > ***subject***
   >

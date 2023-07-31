@@ -78,15 +78,15 @@ To use a helper, you must first select one to use. Git currently includes the fo
 
 - cache
 
-  Cache credentials in memory for a short period of time. See [git-credential-cache[1\]](https://git-scm.com/docs/git-credential-cache) for details.
+  Cache credentials in memory for a short period of time. See [git-credential-cache[1]](../../1/git-credential-cache) for details.
 
-  在内存中缓存凭据一小段时间。详见 [git-credential-cache[1\]](https://git-scm.com/docs/git-credential-cache) 获取详细信息。
+  在内存中缓存凭据一小段时间。详见 [git-credential-cache[1]](../../1/git-credential-cache) 获取详细信息。
 
 - store
 
-  Store credentials indefinitely on disk. See [git-credential-store[1\]](https://git-scm.com/docs/git-credential-store) for details.
+  Store credentials indefinitely on disk. See [git-credential-store[1]](../../1/git-credential-store) for details.
 
-  永久地将凭据存储在磁盘上。详见 [git-credential-store[1\]](https://git-scm.com/docs/git-credential-store) 获取详细信息。
+  永久地将凭据存储在磁盘上。详见 [git-credential-store[1]](../../1/git-credential-store) 获取详细信息。
 
 You may also have third-party helpers installed; search for `credential-*` in the output of `git help -a`, and consult the documentation of individual helpers. Once you have selected a helper, you can tell Git to use it by putting its name into the credential.helper variable.
 
@@ -187,9 +187,9 @@ Credential helpers are programs executed by Git to fetch or save credentials fro
 
 ​	凭据助手是由 Git 执行的程序，用于从长期存储中获取或保存凭据（"长期" 意味着超过一个 Git 进程；例如，凭据可以在内存中存储几分钟，或永久地存储在磁盘上）。
 
-Each helper is specified by a single string in the configuration variable `credential.helper` (and others, see [git-config[1\]](https://git-scm.com/docs/git-config)). The string is transformed by Git into a command to be executed using these rules:
+Each helper is specified by a single string in the configuration variable `credential.helper` (and others, see [git-config[1]](../../1/git-config)). The string is transformed by Git into a command to be executed using these rules:
 
-​	每个助手都由配置变量 `credential.helper`（以及其他变量，详见 [git-config[1\]](https://git-scm.com/docs/git-config)）中的一个字符串指定。Git 将根据以下规则将字符串转换为要执行的命令：
+​	每个助手都由配置变量 `credential.helper`（以及其他变量，详见 [git-config[1]](../../1/git-config)）中的一个字符串指定。Git 将根据以下规则将字符串转换为要执行的命令：
 
 1. If the helper string begins with "!", it is considered a shell snippet, and everything after the "!" becomes the command.
 2. Otherwise, if the helper string begins with an absolute path, the verbatim helper string becomes the command.
@@ -261,13 +261,13 @@ When a helper is executed, it will have one "operation" argument appended to its
 
   从助手的存储中删除匹配的凭据（如果有）。
 
-The details of the credential will be provided on the helper’s stdin stream. The exact format is the same as the input/output format of the `git credential` plumbing command (see the section `INPUT/OUTPUT FORMAT` in [git-credential[1\]](https://git-scm.com/docs/git-credential) for a detailed specification).
+The details of the credential will be provided on the helper’s stdin stream. The exact format is the same as the input/output format of the `git credential` plumbing command (see the section `INPUT/OUTPUT FORMAT` in [git-credential[1]](../../1/git-credential) for a detailed specification).
 
-​	凭据的详细信息将在助手的标准输入流上提供。其确切格式与 `git credential` 基础命令的输入/输出格式相同（请参阅 [git-credential[1\]](https://git-scm.com/docs/git-credential) 中的 "INPUT/OUTPUT FORMAT" 部分，获取详细规范）。
+​	凭据的详细信息将在助手的标准输入流上提供。其确切格式与 `git credential` 基础命令的输入/输出格式相同（请参阅 [git-credential[1]](../../1/git-credential) 中的 "INPUT/OUTPUT FORMAT" 部分，获取详细规范）。
 
-For a `get` operation, the helper should produce a list of attributes on stdout in the same format (see [git-credential[1\]](https://git-scm.com/docs/git-credential) for common attributes). A helper is free to produce a subset, or even no values at all if it has nothing useful to provide. Any provided attributes will overwrite those already known about by Git’s credential subsystem. Unrecognised attributes are silently discarded.
+For a `get` operation, the helper should produce a list of attributes on stdout in the same format (see [git-credential[1]](../../1/git-credential) for common attributes). A helper is free to produce a subset, or even no values at all if it has nothing useful to provide. Any provided attributes will overwrite those already known about by Git’s credential subsystem. Unrecognised attributes are silently discarded.
 
-​	对于 `get` 操作，助手应该在标准输出上以相同格式生成一系列属性（请参阅 [git-credential[1\]](https://git-scm.com/docs/git-credential) 获取常见属性）。助手可以自由地生成子集，甚至根本不提供任何值，如果没有有用的内容可以提供。提供的任何属性都将覆盖 Git 凭据子系统已知的属性。未被识别的属性会被静默丢弃。
+​	对于 `get` 操作，助手应该在标准输出上以相同格式生成一系列属性（请参阅 [git-credential[1]](../../1/git-credential) 获取常见属性）。助手可以自由地生成子集，甚至根本不提供任何值，如果没有有用的内容可以提供。提供的任何属性都将覆盖 Git 凭据子系统已知的属性。未被识别的属性会被静默丢弃。
 
 While it is possible to override all attributes, well behaving helpers should refrain from doing so for any attribute other than username and password.
 

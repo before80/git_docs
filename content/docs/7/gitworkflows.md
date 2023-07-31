@@ -34,13 +34,13 @@ git *
 
 ## 分割更改
 
-​	通常情况下，您应该尝试将更改分成小的逻辑步骤，并将每个步骤提交。它们应该一致，与后续提交无关，通过测试套件等。这使得审查过程更容易，历史记录对以后的检查和分析更有用，例如使用 [git-blame[1\]](https://git-scm.com/docs/git-blame) 和 [git-bisect[1\]](https://git-scm.com/docs/git-bisect)。
+​	通常情况下，您应该尝试将更改分成小的逻辑步骤，并将每个步骤提交。它们应该一致，与后续提交无关，通过测试套件等。这使得审查过程更容易，历史记录对以后的检查和分析更有用，例如使用 [git-blame[1]](../../1/git-blame) 和 [git-bisect[1]](../../1/git-bisect)。
 
-​	为实现这一点，请尽早将您的工作分解为小步骤。合并几个提交总比将一个大提交拆分为几个提交要容易得多。不要害怕在路上迈出太小或不完美的步伐。您可以随后使用 `git rebase --interactive` 编辑提交，然后再发布它们。您可以使用 `git stash push --keep-index` 在没有其他未提交更改的情况下运行测试套件；请参阅 [git-stash[1\]](https://git-scm.com/docs/git-stash) 的 EXAMPLES 部分。
+​	为实现这一点，请尽早将您的工作分解为小步骤。合并几个提交总比将一个大提交拆分为几个提交要容易得多。不要害怕在路上迈出太小或不完美的步伐。您可以随后使用 `git rebase --interactive` 编辑提交，然后再发布它们。您可以使用 `git stash push --keep-index` 在没有其他未提交更改的情况下运行测试套件；请参阅 [git-stash[1]](../../1/git-stash) 的 EXAMPLES 部分。
 
 ## 管理分支
 
-​	有两个主要工具可用于将一个分支上的更改包含到另一个分支上：[git-merge[1\]](https://git-scm.com/docs/git-merge) 和 [git-cherry-pick[1\]](https://git-scm.com/docs/git-cherry-pick)。
+​	有两个主要工具可用于将一个分支上的更改包含到另一个分支上：[git-merge[1]](../../1/git-merge) 和 [git-cherry-pick[1]](../../1/git-cherry-pick)。
 
 ​	合并具有许多优点，因此我们尽可能多地使用合并来解决问题。樱桃拣选偶尔仍然有用；有关示例，请参阅下面的“向上合并”。
 
@@ -72,7 +72,7 @@ git *
 
 ​	始终将您的修复提交到需要它们的最旧支持分支。然后（定期地）将集成分支向上合并到彼此之间。
 
-​	这提供了一个非常受控制的修复流程。如果注意到您已经将修复应用到了 *master* 中，而在 *maint* 中也需要它，则需要将其向下樱桃拣选（使用 [git-cherry-pick[1\]](https://git-scm.com/docs/git-cherry-pick)）。这会发生几次，不过除非您非常频繁地执行此操作，否则不用担心。
+​	这提供了一个非常受控制的修复流程。如果注意到您已经将修复应用到了 *master* 中，而在 *maint* 中也需要它，则需要将其向下樱桃拣选（使用 [git-cherry-pick[1]](../../1/git-cherry-pick)）。这会发生几次，不过除非您非常频繁地执行此操作，否则不用担心。
 
 ### 主题分支
 
@@ -90,9 +90,9 @@ git *
 
 - 要将功能/错误修复合并到集成分支中，只需合并它。如果该主题在此期间进一步发展，请再次合并。（请注意，您不一定要先将其合并到最旧的集成分支中。例如，您可以先将错误修复合并到 *next*，然后在确定其稳定后再合并到 *maint*。）
 - 如果发现需要从分支 *other* 获取新功能以继续处理主题，请将 *other* 合并到 *topic*。（但是，不要“习惯性地”这样做，请参阅下面的说明。）
-- 如果发现您当初分叉错误的分支并希望将其“回溯”，请使用 [git-rebase[1\]](https://git-scm.com/docs/git-rebase)。
+- 如果发现您当初分叉错误的分支并希望将其“回溯”，请使用 [git-rebase[1]](../../1/git-rebase)。
 
-​	请注意，最后一点与前两点冲突：已在其他地方合并的主题不应该进行变基。请参阅 [git-rebase[1\]](https://git-scm.com/docs/git-rebase) 中有关“从上游重新获得”的部分。
+​	请注意，最后一点与前两点冲突：已在其他地方合并的主题不应该进行变基。请参阅 [git-rebase[1]](../../1/git-rebase) 中有关“从上游重新获得”的部分。
 
 ​	我们应该指出，“习惯性地”（经常没有真正原因）将集成分支合并到您的主题中，而且顺便说一下，定期将上游的任何内容合并到下游的任何内容也是不受欢迎的：
 
@@ -198,9 +198,9 @@ git branch maint-X.Y.(Z-1) maint
 
 ​	这方面有三个主要工具可以使用：
 
-- [git-push[1\]](https://git-scm.com/docs/git-push) 将您的分支复制到远程存储库，通常是可由所有相关方读取的存储库；
-- [git-fetch[1\]](https://git-scm.com/docs/git-fetch) 将远程分支复制到您的存储库；以及
-- [git-pull[1\]](https://git-scm.com/docs/git-pull) 将获取和合并合并为一体。
+- [git-push[1]](../../1/git-push) 将您的分支复制到远程存储库，通常是可由所有相关方读取的存储库；
+- [git-fetch[1]](../../1/git-fetch) 将远程分支复制到您的存储库；以及
+- [git-pull[1]](../../1/git-pull) 将获取和合并合并为一体。
 
 ​	请注意最后一点。除非您真的想合并远程分支，否则不要使用 *git pull*。
 
@@ -210,7 +210,7 @@ git branch maint-X.Y.(Z-1) maint
 
 ​	`git push <remote> <branch>` 并告诉每个人从哪里获取。
 
-​	您仍然需要通过其他方式告诉其他人，例如邮件。（Git 提供了 [git-request-pull[1\]](https://git-scm.com/docs/git-request-pull) 以向上游维护者发送预格式化的拉取请求，以简化此任务。）
+​	您仍然需要通过其他方式告诉其他人，例如邮件。（Git 提供了 [git-request-pull[1]](../../1/git-request-pull) 以向上游维护者发送预格式化的拉取请求，以简化此任务。）
 
 ​	如果您只想获取集成分支的最新副本，保持最新状态也很容易：
 
@@ -239,7 +239,7 @@ git pull <URL> <branch>
 
 ### 补丁工作流程
 
-​	如果您是通过电子邮件将更改发送给上游的贡献者，则应按照通常的主题分支方式使用（请参阅上面）。然后使用 [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) 生成相应的电子邮件（强烈推荐比手动格式化它们，因为这样可以使维护者的生活更轻松）。
+​	如果您是通过电子邮件将更改发送给上游的贡献者，则应按照通常的主题分支方式使用（请参阅上面）。然后使用 [git-format-patch[1]](../../1/git-format-patch) 生成相应的电子邮件（强烈推荐比手动格式化它们，因为这样可以使维护者的生活更轻松）。
 
 Recipe: format-patch/am: Publishing branches/topics
 
@@ -249,7 +249,7 @@ Recipe: format-patch/am: Publishing branches/topics
 - `git format-patch -M upstream..topic` 将它们转换为预格式化的补丁文件
 - `git send-email --to=<recipient> <patches>`
 
-​	有关更多使用说明，请参阅 [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) 和 [git-send-email[1\]](https://git-scm.com/docs/git-send-email) 手册。
+​	有关更多使用说明，请参阅 [git-format-patch[1]](../../1/git-format-patch) 和 [git-send-email[1]](../../1/git-send-email) 手册。
 
 ​	如果维护者告诉您，您的补丁不再适用于当前的上游代码，您将不得不重新基于主题（您不能使用合并，因为您不能格式化合并）：
 
@@ -273,7 +273,7 @@ Recipe: format-patch/am: Importing patches
 git am < patch
 ```
 
-​	值得指出的一个功能是三方合并，它可以帮助您解决冲突：`git am -3` 将使用补丁中包含的索引信息来找出合并基准。有关其他选项，请参阅 [git-am[1\]](https://git-scm.com/docs/git-am)。
+​	值得指出的一个功能是三方合并，它可以帮助您解决冲突：`git am -3` 将使用补丁中包含的索引信息来找出合并基准。有关其他选项，请参阅 [git-am[1]](../../1/git-am)。
 
 
 

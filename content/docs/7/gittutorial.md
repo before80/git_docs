@@ -43,7 +43,7 @@ $ man git-log
 $ git help log
 ```
 
-​	对于后者，您可以使用您选择的手册查看器；请参阅[git-help[1]](https://git-scm.com/docs/git-help)获取更多信息。
+​	对于后者，您可以使用您选择的手册查看器；请参阅[git-help[1]](../../1/git-help)获取更多信息。
 
 ​	在执行任何操作之前，向Git介绍自己的姓名和公共电子邮件地址是个好主意。最简单的方法是：
 
@@ -127,7 +127,7 @@ $ git commit -a
 
 它将自动检测到任何已修改（但不是新建）的文件，将它们添加到索引并在一步中进行提交。
 
-​	关于提交消息的一点说明：虽然不是必需的，但最好以单个简短（少于50个字符）的行开始提交消息，总结更改，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并且该标题在整个Git中使用。例如，[git-format-patch[1]](https://git-scm.com/docs/git-format-patch)将提交转换为电子邮件，并在主题行中使用标题，在正文中使用提交的其余部分。
+​	关于提交消息的一点说明：虽然不是必需的，但最好以单个简短（少于50个字符）的行开始提交消息，总结更改，然后是一个空行，然后是更详细的描述。提交消息中第一个空行之前的文本被视为提交标题，并且该标题在整个Git中使用。例如，[git-format-patch[1]](../../1/git-format-patch)将提交转换为电子邮件，并在主题行中使用标题，在正文中使用提交的其余部分。
 
 ## Git跟踪内容而不是文件
 
@@ -350,7 +350,7 @@ bob$ git config --get remote.origin.url
 /home/alice/project
 ```
 
-（`git clone`创建的完整配置可以使用`git config -l`查看，[git-config[1]](https://git-scm.com/docs/git-config)手册解释了每个选项的含义。）
+（`git clone`创建的完整配置可以使用`git config -l`查看，[git-config[1]](../../1/git-config)手册解释了每个选项的含义。）
 
 ​	Git还在名为`origin/master`的名称下保存了Alice的`master`分支的原始副本：
 
@@ -365,9 +365,9 @@ bob$ git branch -r
 bob$ git clone alice.org:/home/alice/project myrepo
 ```
 
-​	另外，Git还有一个本地协议，或者可以使用http协议；有关详细信息，请参见[git-pull[1]](https://git-scm.com/docs/git-pull)。
+​	另外，Git还有一个本地协议，或者可以使用http协议；有关详细信息，请参见[git-pull[1]](../../1/git-pull)。
 
-​	Git还可以以类似CVS的模式使用，使用一个中央仓库，各个用户向其推送更改；请参见[git-push[1]](https://git-scm.com/docs/git-push)和[gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration)。
+​	Git还可以以类似CVS的模式使用，使用一个中央仓库，各个用户向其推送更改；请参见[git-push[1]](../../1/git-push)和[gitcvs-migration[7]](../../7/gitcvs-migration)。
 
 ## 探索历史
 
@@ -418,7 +418,7 @@ $ git show HEAD^2 # show the second parent of HEAD
 $ git tag v2.5 1b2e1d63ff
 ```
 
-您可以使用名称`v2.5`来引用`1b2e1d63ff`。如果您打算与其他人共享此名称（例如用于标识发布版本），则应该创建一个“tag”对象，并可能对其进行签名；有关详细信息，请参见[git-tag[1]](https://git-scm.com/docs/git-tag)。
+您可以使用名称`v2.5`来引用`1b2e1d63ff`。如果您打算与其他人共享此名称（例如用于标识发布版本），则应该创建一个“tag”对象，并可能对其进行签名；有关详细信息，请参见[git-tag[1]](../../1/git-tag)。
 
 ​	任何需要了解提交的Git命令都可以采用这些名称中的任何一个。例如：
 
@@ -501,15 +501,15 @@ $ git show v2.5:Makefile
 - 对象数据库是用于存储项目历史（文件、目录和提交）的相当优雅的系统。
 - 索引文件是目录树状态的缓存，用于创建提交、检出工作目录和保存合并涉及的各种树。
 
-​	本教程的第二部分将解释对象数据库、索引文件和其他一些您需要掌握的Git要点。您可以在[gittutorial-2[7]](https://git-scm.com/docs/gittutorial-2)找到它。
+​	本教程的第二部分将解释对象数据库、索引文件和其他一些您需要掌握的Git要点。您可以在[gittutorial-2[7]](../../7/gittutorial-2)找到它。
 
 ​	如果您暂时不想继续学习，这里有一些其他可能会在这个阶段引起兴趣的内容：
 
-- [git-format-patch[1]](https://git-scm.com/docs/git-format-patch)和[git-am[1]](https://git-scm.com/docs/git-am)：这些命令用于将一系列Git提交转换为电子邮件补丁，反之亦然，对于像Linux内核这样大量依赖电子邮件补丁的项目非常有用。
-- [git-bisect[1]](https://git-scm.com/docs/git-bisect)：当项目出现回归问题时，一种追踪错误的方法是通过搜索历史记录找到确切的有问题提交。`git bisect`可以帮助您对该提交进行二分搜索。即使在具有许多合并分支的复杂非线性历史记录的情况下，它也能执行接近最优的搜索。
-- [gitworkflows[7]](https://git-scm.com/docs/gitworkflows)：提供推荐工作流程的概述。
-- [giteveryday[7]](https://git-scm.com/docs/giteveryday)：掌握每天使用的约20个Git命令。
-- [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration)：面向CVS用户的Git使用指南。
+- [git-format-patch[1]](../../1/git-format-patch)和[git-am[1]](../../1/git-am)：这些命令用于将一系列Git提交转换为电子邮件补丁，反之亦然，对于像Linux内核这样大量依赖电子邮件补丁的项目非常有用。
+- [git-bisect[1]](../../1/git-bisect)：当项目出现回归问题时，一种追踪错误的方法是通过搜索历史记录找到确切的有问题提交。`git bisect`可以帮助您对该提交进行二分搜索。即使在具有许多合并分支的复杂非线性历史记录的情况下，它也能执行接近最优的搜索。
+- [gitworkflows[7]](../../7/gitworkflows)：提供推荐工作流程的概述。
+- [giteveryday[7]](../../7/giteveryday)：掌握每天使用的约20个Git命令。
+- [gitcvs-migration[7]](../../7/gitcvs-migration)：面向CVS用户的Git使用指南。
 
 ## 另请参阅
 

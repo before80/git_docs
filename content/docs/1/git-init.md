@@ -1,3 +1,16 @@
++++
+title = "git-init"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# git-init
+
 https://git-scm.com/docs/git-init
 
 ## 名称

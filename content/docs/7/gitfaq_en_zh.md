@@ -36,9 +36,9 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
 - `user.name` 应该放什么内容？
 
-  You should put your personal name, generally a form using a given name and family name. For example, the current maintainer of Git uses "Junio C Hamano". This will be the name portion that is stored in every commit you make.This configuration doesn’t have any effect on authenticating to remote services; for that, see `credential.username` in [git-config[1\]](https://git-scm.com/docs/git-config).
+  You should put your personal name, generally a form using a given name and family name. For example, the current maintainer of Git uses "Junio C Hamano". This will be the name portion that is stored in every commit you make.This configuration doesn’t have any effect on authenticating to remote services; for that, see `credential.username` in [git-config[1]](../../1/git-config).
 
-  您应该输入您的个人名称，通常是给定名和姓氏的形式。例如，Git 的当前维护者使用 "Junio C Hamano"。这将是存储在您进行每次提交时的名称部分。该配置对于身份验证到远程服务没有任何影响；有关该方面的信息，请参阅 [git-config[1\]](https://git-scm.com/docs/git-config) 中的 `credential.username`。
+  您应该输入您的个人名称，通常是给定名和姓氏的形式。例如，Git 的当前维护者使用 "Junio C Hamano"。这将是存储在您进行每次提交时的名称部分。该配置对于身份验证到远程服务没有任何影响；有关该方面的信息，请参阅 [git-config[1]](../../1/git-config) 中的 `credential.username`。
 
 - What does `http.postBuffer` really do?
 
@@ -60,9 +60,9 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
   export VISUAL=nano
   ```
 
-  If you want to configure an editor specifically for Git, you can either set the `core.editor` configuration value or the `GIT_EDITOR` environment variable. You can see [git-var[1\]](https://git-scm.com/docs/git-var) for details on the order in which these options are consulted.Note that in all cases, the editor value will be passed to the shell, so any arguments containing spaces should be appropriately quoted. Additionally, if your editor normally detaches from the terminal when invoked, you should specify it with an argument that makes it not do that, or else Git will not see any changes. An example of a configuration addressing both of these issues on Windows would be the configuration `"C:\Program Files\Vim\gvim.exe" --nofork`, which quotes the filename with spaces and specifies the `--nofork` option to avoid backgrounding the process.
+  If you want to configure an editor specifically for Git, you can either set the `core.editor` configuration value or the `GIT_EDITOR` environment variable. You can see [git-var[1]](../../1/git-var) for details on the order in which these options are consulted.Note that in all cases, the editor value will be passed to the shell, so any arguments containing spaces should be appropriately quoted. Additionally, if your editor normally detaches from the terminal when invoked, you should specify it with an argument that makes it not do that, or else Git will not see any changes. An example of a configuration addressing both of these issues on Windows would be the configuration `"C:\Program Files\Vim\gvim.exe" --nofork`, which quotes the filename with spaces and specifies the `--nofork` option to avoid backgrounding the process.
 
-  如果要为 Git 特定地配置编辑器，可以设置 `core.editor` 配置值或 `GIT_EDITOR` 环境变量。有关这些选项的咨询顺序的详细信息，请参阅 [git-var[1\]](https://git-scm.com/docs/git-var)。请注意，在所有情况下，编辑器值都将传递给 shell，因此任何包含空格的参数都应适当引用。此外，如果您的编辑器通常在调用时与终端断开连接，则应该指定一个不会这样做的参数，否则 Git 将无法检测到任何更改。在 Windows 上解决这两个问题的配置示例是 `"C:\Program Files\Vim\gvim.exe" --nofork`，它使用带有空格的文件名并指定了 `--nofork` 选项以避免将进程转为后台运行。
+  如果要为 Git 特定地配置编辑器，可以设置 `core.editor` 配置值或 `GIT_EDITOR` 环境变量。有关这些选项的咨询顺序的详细信息，请参阅 [git-var[1]](../../1/git-var)。请注意，在所有情况下，编辑器值都将传递给 shell，因此任何包含空格的参数都应适当引用。此外，如果您的编辑器通常在调用时与终端断开连接，则应该指定一个不会这样做的参数，否则 Git 将无法检测到任何更改。在 Windows 上解决这两个问题的配置示例是 `"C:\Program Files\Vim\gvim.exe" --nofork`，它使用带有空格的文件名并指定了 `--nofork` 选项以避免将进程转为后台运行。
 
 ## 凭据
 
@@ -82,7 +82,7 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
   `credential.helper` 配置选项还可以接受一个任意的 shell 命令，该命令在标准输出上生成凭据协议。这在将凭据传递到容器时非常有用。可以通过以感叹号开头来指定此类 shell 命令。如果您的密码或令牌存储在 `GIT_TOKEN` 中，可以运行以下命令来设置凭据帮助程序：
 
-  ```
+  ``` bash
   $ git config credential.helper \
   	'!f() { echo username=author; echo "password=$GIT_TOKEN"; };f'
   ```
@@ -97,7 +97,7 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
   通常，如果密码或令牌无效，Git 将擦除它并提示您输入新的。但是，有时并不总是发生这种情况。要更改密码或令牌，可以擦除现有凭据，然后 Git 将提示您输入新的凭据。要擦除凭据，请使用以下语法（替换您的用户名和主机名）：
 
-  ```
+  ``` bash
   $ echo url=https://author@git.example.org | git credential reject
   ```
 
@@ -107,9 +107,9 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
 - 如何在使用 HTTP 时在同一托管提供者上使用多个帐户？
 
-  Usually the easiest way to distinguish between these accounts is to use the username in the URL. For example, if you have the accounts `author` and `committer` on `git.example.org`, you can use the URLs https://author@git.example.org/org1/project1.git and https://committer@git.example.org/org2/project2.git. This way, when you use a credential helper, it will automatically try to look up the correct credentials for your account. If you already have a remote set up, you can change the URL with something like `git remote set-url origin https://author@git.example.org/org1/project1.git` (see [git-remote[1\]](https://git-scm.com/docs/git-remote) for details).
+  Usually the easiest way to distinguish between these accounts is to use the username in the URL. For example, if you have the accounts `author` and `committer` on `git.example.org`, you can use the URLs https://author@git.example.org/org1/project1.git and https://committer@git.example.org/org2/project2.git. This way, when you use a credential helper, it will automatically try to look up the correct credentials for your account. If you already have a remote set up, you can change the URL with something like `git remote set-url origin https://author@git.example.org/org1/project1.git` (see [git-remote[1]](../../1/git-remote) for details).
 
-  通常，区分这些帐户的最简单方法是在 URL 中使用用户名。例如，如果您在 `git.example.org` 上拥有 `author` 和 `committer` 帐户，则可以使用以下 URL：https://author@git.example.org/org1/project1.git 和 https://committer@git.example.org/org2/project2.git。这样，当您使用凭据帮助程序时，它会自动尝试查找适用于您帐户的正确凭据。如果您已经设置了一个远程，可以使用类似 `git remote set-url origin https://author@git.example.org/org1/project1.git` 的内容更改 URL（有关详情，请参阅 [git-remote[1\]](https://git-scm.com/docs/git-remote)）。
+  通常，区分这些帐户的最简单方法是在 URL 中使用用户名。例如，如果您在 `git.example.org` 上拥有 `author` 和 `committer` 帐户，则可以使用以下 URL：https://author@git.example.org/org1/project1.git 和 https://committer@git.example.org/org2/project2.git。这样，当您使用凭据帮助程序时，它会自动尝试查找适用于您帐户的正确凭据。如果您已经设置了一个远程，可以使用类似 `git remote set-url origin https://author@git.example.org/org1/project1.git` 的内容更改 URL（有关详情，请参阅 [git-remote[1]](../../1/git-remote)）。
 
 - How do I use multiple accounts with the same hosting provider using SSH?
 
@@ -174,17 +174,17 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
 - 我要求Git忽略各种文件，但它们仍然被追踪
 
-  A `gitignore` file ensures that certain file(s) which are not tracked by Git remain untracked. However, sometimes particular file(s) may have been tracked before adding them into the `.gitignore`, hence they still remain tracked. To untrack and ignore files/patterns, use `git rm --cached <file/pattern>` and add a pattern to `.gitignore` that matches the <file>. See [gitignore[5\]](https://git-scm.com/docs/gitignore) for details.
+  A `gitignore` file ensures that certain file(s) which are not tracked by Git remain untracked. However, sometimes particular file(s) may have been tracked before adding them into the `.gitignore`, hence they still remain tracked. To untrack and ignore files/patterns, use `git rm --cached <file/pattern>` and add a pattern to `.gitignore` that matches the <file>. See [gitignore[5]](../../5/gitignore) for details.
 
-  `gitignore` 文件确保 Git 不追踪某些未被 Git 跟踪的文件。然而，有时特定的文件在添加到 `.gitignore` 前可能已经被追踪，因此它们仍然被跟踪。要取消跟踪并忽略文件/模式，使用 `git rm --cached <file/pattern>` 并将一个模式添加到 `.gitignore` 中以匹配 `<file>`。详细信息请参阅 [gitignore[5\]](https://git-scm.com/docs/gitignore)。
+  `gitignore` 文件确保 Git 不追踪某些未被 Git 跟踪的文件。然而，有时特定的文件在添加到 `.gitignore` 前可能已经被追踪，因此它们仍然被跟踪。要取消跟踪并忽略文件/模式，使用 `git rm --cached <file/pattern>` 并将一个模式添加到 `.gitignore` 中以匹配 `<file>`。详细信息请参阅 [gitignore[5]](../../5/gitignore)。
 
 - How do I know if I want to do a fetch or a pull?
 
 - 我如何知道我是要执行 fetch 还是 pull？
 
-  A fetch stores a copy of the latest changes from the remote repository, without modifying the working tree or current branch. You can then at your leisure inspect, merge, rebase on top of, or ignore the upstream changes. A pull consists of a fetch followed immediately by either a merge or rebase. See [git-pull[1\]](https://git-scm.com/docs/git-pull).
+  A fetch stores a copy of the latest changes from the remote repository, without modifying the working tree or current branch. You can then at your leisure inspect, merge, rebase on top of, or ignore the upstream changes. A pull consists of a fetch followed immediately by either a merge or rebase. See [git-pull[1]](../../1/git-pull).
 
-  `fetch` 存储了来自远程仓库的最新更改的副本，而不修改工作树或当前分支。然后，您可以在适当的时候检查、合并、重新基于或忽略上游更改。`pull` 包含一个 fetch，紧接着是合并或变基。更多信息请参阅 [git-pull[1\]](https://git-scm.com/docs/git-pull)。
+  `fetch` 存储了来自远程仓库的最新更改的副本，而不修改工作树或当前分支。然后，您可以在适当的时候检查、合并、重新基于或忽略上游更改。`pull` 包含一个 fetch，紧接着是合并或变基。更多信息请参阅 [git-pull[1]](../../1/git-pull)。
 
 ## 合并和变基
 
@@ -200,9 +200,9 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
 - 如果我在两个分支上都做了更改，但在其中一个分支上对其进行了还原，为什么合并这些分支会包括这个更改？
 
-  By default, when Git does a merge, it uses a strategy called the `ort` strategy, which does a fancy three-way merge. In such a case, when Git performs the merge, it considers exactly three points: the two heads and a third point, called the *merge base*, which is usually the common ancestor of those commits. Git does not consider the history or the individual commits that have happened on those branches at all.As a result, if both sides have a change and one side has reverted that change, the result is to include the change. This is because the code has changed on one side and there is no net change on the other, and in this scenario, Git adopts the change.If this is a problem for you, you can do a rebase instead, rebasing the branch with the revert onto the other branch. A rebase in this scenario will revert the change, because a rebase applies each individual commit, including the revert. Note that rebases rewrite history, so you should avoid rebasing published branches unless you’re sure you’re comfortable with that. See the NOTES section in [git-rebase[1\]](https://git-scm.com/docs/git-rebase) for more details.
+  By default, when Git does a merge, it uses a strategy called the `ort` strategy, which does a fancy three-way merge. In such a case, when Git performs the merge, it considers exactly three points: the two heads and a third point, called the *merge base*, which is usually the common ancestor of those commits. Git does not consider the history or the individual commits that have happened on those branches at all.As a result, if both sides have a change and one side has reverted that change, the result is to include the change. This is because the code has changed on one side and there is no net change on the other, and in this scenario, Git adopts the change.If this is a problem for you, you can do a rebase instead, rebasing the branch with the revert onto the other branch. A rebase in this scenario will revert the change, because a rebase applies each individual commit, including the revert. Note that rebases rewrite history, so you should avoid rebasing published branches unless you’re sure you’re comfortable with that. See the NOTES section in [git-rebase[1]](../../1/git-rebase) for more details.
 
-  默认情况下，当 Git 进行合并时，它使用一种称为 `ort` 策略的高级三路合并策略。在这种情况下，当 Git 执行合并时，它会考虑两个头和第三个点，称为 *合并基础*，通常是这些提交的共同祖先。Git 不考虑这些分支上的历史或个别提交。因此，如果两侧都有更改，并且一侧已经对该更改进行了还原，结果将包含该更改。这是因为代码在一侧发生了更改，而另一侧没有净更改，因此在这种情况下，Git 采用该更改。如果这对您造成了问题，可以使用变基来解决，在这种情况下，将对执行还原的分支变基到另一个分支上。在这种情况下，变基将还原该更改，因为变基会应用每个单独的提交，包括还原。请注意，变基会重写历史记录，因此除非您确定您对此感到舒适，否则应避免对已发布的分支进行变基。详细信息请参阅 [git-rebase[1\]](https://git-scm.com/docs/git-rebase) 中的 NOTES 部分。
+  默认情况下，当 Git 进行合并时，它使用一种称为 `ort` 策略的高级三路合并策略。在这种情况下，当 Git 执行合并时，它会考虑两个头和第三个点，称为 *合并基础*，通常是这些提交的共同祖先。Git 不考虑这些分支上的历史或个别提交。因此，如果两侧都有更改，并且一侧已经对该更改进行了还原，结果将包含该更改。这是因为代码在一侧发生了更改，而另一侧没有净更改，因此在这种情况下，Git 采用该更改。如果这对您造成了问题，可以使用变基来解决，在这种情况下，将对执行还原的分支变基到另一个分支上。在这种情况下，变基将还原该更改，因为变基会应用每个单独的提交，包括还原。请注意，变基会重写历史记录，因此除非您确定您对此感到舒适，否则应避免对已发布的分支进行变基。详细信息请参阅 [git-rebase[1]](../../1/git-rebase) 中的 NOTES 部分。
 
 ## 钩子
 
@@ -220,17 +220,17 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
 - 我使用 Windows，但我的文本文件被检测为二进制文件。
 
-  Git works best when you store text files as UTF-8. Many programs on Windows support UTF-8, but some do not and only use the little-endian UTF-16 format, which Git detects as binary. If you can’t use UTF-8 with your programs, you can specify a working tree encoding that indicates which encoding your files should be checked out with, while still storing these files as UTF-8 in the repository. This allows tools like [git-diff[1\]](https://git-scm.com/docs/git-diff) to work as expected, while still allowing your tools to work.To do so, you can specify a [gitattributes[5\]](https://git-scm.com/docs/gitattributes) pattern with the `working-tree-encoding` attribute. For example, the following pattern sets all C files to use UTF-16LE-BOM, which is a common encoding on Windows:
+  Git works best when you store text files as UTF-8. Many programs on Windows support UTF-8, but some do not and only use the little-endian UTF-16 format, which Git detects as binary. If you can’t use UTF-8 with your programs, you can specify a working tree encoding that indicates which encoding your files should be checked out with, while still storing these files as UTF-8 in the repository. This allows tools like [git-diff[1]](../../1/git-diff) to work as expected, while still allowing your tools to work.To do so, you can specify a [gitattributes[5]](../../5/gitattributes) pattern with the `working-tree-encoding` attribute. For example, the following pattern sets all C files to use UTF-16LE-BOM, which is a common encoding on Windows:
 
-  当您将文本文件存储为 UTF-8 时，Git 的效果最好。Windows 上的许多程序支持 UTF-8，但有些不支持，只使用小端 UTF-16 格式，Git 将其检测为二进制文件。如果您不能在程序中使用 UTF-8，可以指定工作树编码，以指示应使用哪种编码检出文件，同时在存储库中仍以 UTF-8 存储这些文件。这样一来，像 [git-diff[1\]](https://git-scm.com/docs/git-diff) 这样的工具将按预期工作，同时您的工具也可以正常工作。要做到这一点，您可以在 [gitattributes[5\]](https://git-scm.com/docs/gitattributes) 文件中使用 `working-tree-encoding` 属性指定一个模式。例如，以下模式设置所有 C 文件使用 UTF-16LE-BOM，这是 Windows 上常用的编码：
+  当您将文本文件存储为 UTF-8 时，Git 的效果最好。Windows 上的许多程序支持 UTF-8，但有些不支持，只使用小端 UTF-16 格式，Git 将其检测为二进制文件。如果您不能在程序中使用 UTF-8，可以指定工作树编码，以指示应使用哪种编码检出文件，同时在存储库中仍以 UTF-8 存储这些文件。这样一来，像 [git-diff[1]](../../1/git-diff) 这样的工具将按预期工作，同时您的工具也可以正常工作。要做到这一点，您可以在 [gitattributes[5]](../../5/gitattributes) 文件中使用 `working-tree-encoding` 属性指定一个模式。例如，以下模式设置所有 C 文件使用 UTF-16LE-BOM，这是 Windows 上常用的编码：
 
   ```
   *.c	working-tree-encoding=UTF-16LE-BOM
   ```
 
-  You will need to run `git add --renormalize` to have this take effect. Note that if you are making these changes on a project that is used across platforms, you’ll probably want to make it in a per-user configuration file or in the one in `$GIT_DIR/info/attributes`, since making it in a `.gitattributes` file in the repository will apply to all users of the repository.See the following entry for information about normalizing line endings as well, and see [gitattributes[5\]](https://git-scm.com/docs/gitattributes) for more information about attribute files.
+  You will need to run `git add --renormalize` to have this take effect. Note that if you are making these changes on a project that is used across platforms, you’ll probably want to make it in a per-user configuration file or in the one in `$GIT_DIR/info/attributes`, since making it in a `.gitattributes` file in the repository will apply to all users of the repository.See the following entry for information about normalizing line endings as well, and see [gitattributes[5]](../../5/gitattributes) for more information about attribute files.
 
-  您需要运行 `git add --renormalize` 来使其生效。请注意，如果您在跨平台使用的项目中进行这些更改，您可能希望在每个用户的配置文件或 `$GIT_DIR/info/attributes` 中进行更改，因为在存储库的 `.gitattributes` 文件中进行更改会应用于存储库的所有用户。有关规范化行结束符的信息，请参阅下面的条目，有关属性文件的更多信息，请参阅 [gitattributes[5\]](https://git-scm.com/docs/gitattributes)。
+  您需要运行 `git add --renormalize` 来使其生效。请注意，如果您在跨平台使用的项目中进行这些更改，您可能希望在每个用户的配置文件或 `$GIT_DIR/info/attributes` 中进行更改，因为在存储库的 `.gitattributes` 文件中进行更改会应用于存储库的所有用户。有关规范化行结束符的信息，请参阅下面的条目，有关属性文件的更多信息，请参阅 [gitattributes[5]](../../5/gitattributes)。
 
 - I’m on Windows and git diff shows my files as having a `^M` at the end.
 
@@ -248,7 +248,7 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
   在内部，Git 总是将文件名存储为字节序列，不执行任何编码或大小写转换。然而，Windows 和 macOS 默认情况下都对文件名进行大小写折叠。因此，可能会出现多个文件或目录，它们的名称只在大小写方面有所不同。Git 可以很好地处理这一点，但文件系统只能存储其中一个文件，因此当 Git 读取其他文件以查看其内容时，它会显示为已修改。最好的方法是删除其中一个文件，以便您只有一个文件。您可以使用以下命令（假设两个文件名分别为 `AFile.txt` 和 `afile.txt`）在一个干净的工作树上执行此操作：
 
-  ```
+  ``` bash
   $ git rm --cached AFile.txt
   $ git commit -m 'Remove files conflicting in case'
   $ git checkout .
@@ -258,7 +258,7 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
   这样可以避免触碰磁盘，同时删除了额外的文件。您的项目可能希望采用命名约定，例如全部使用小写名称，以避免再次发生此问题；可以使用 `pre-receive` 钩子或作为持续集成（CI）系统的一部分检查这种约定。如果在您的系统上使用了 smudge 或 clean 过滤器，但是在运行 smudge 或 clean 过滤器之前先前提交了一个文件，则在任何平台上都可能发生永久性修改的文件问题。要修复这个问题，在一个干净的工作树上运行以下命令：
 
-  ```
+  ``` bash
   $ git add --renormalize .
   ```
 
@@ -268,9 +268,9 @@ The examples in this FAQ assume a standard POSIX shell, like `bash` or `dash`, a
 
 - 存储文件在 Git 中的推荐方法是什么？
 
-  While Git can store and handle any file of any type, there are some settings that work better than others. In general, we recommend that text files be stored in UTF-8 without a byte-order mark (BOM) with LF (Unix-style) endings. We also recommend the use of UTF-8 (again, without BOM) in commit messages. These are the settings that work best across platforms and with tools such as `git diff` and `git merge`.Additionally, if you have a choice between storage formats that are text based or non-text based, we recommend storing files in the text format and, if necessary, transforming them into the other format. For example, a text-based SQL dump with one record per line will work much better for diffing and merging than an actual database file. Similarly, text-based formats such as Markdown and AsciiDoc will work better than binary formats such as Microsoft Word and PDF.Similarly, storing binary dependencies (e.g., shared libraries or JAR files) or build products in the repository is generally not recommended. Dependencies and build products are best stored on an artifact or package server with only references, URLs, and hashes stored in the repository.We also recommend setting a [gitattributes[5\]](https://git-scm.com/docs/gitattributes) file to explicitly mark which files are text and which are binary. If you want Git to guess, you can set the attribute `text=auto`. For example, the following might be appropriate in some projects:
+  While Git can store and handle any file of any type, there are some settings that work better than others. In general, we recommend that text files be stored in UTF-8 without a byte-order mark (BOM) with LF (Unix-style) endings. We also recommend the use of UTF-8 (again, without BOM) in commit messages. These are the settings that work best across platforms and with tools such as `git diff` and `git merge`.Additionally, if you have a choice between storage formats that are text based or non-text based, we recommend storing files in the text format and, if necessary, transforming them into the other format. For example, a text-based SQL dump with one record per line will work much better for diffing and merging than an actual database file. Similarly, text-based formats such as Markdown and AsciiDoc will work better than binary formats such as Microsoft Word and PDF.Similarly, storing binary dependencies (e.g., shared libraries or JAR files) or build products in the repository is generally not recommended. Dependencies and build products are best stored on an artifact or package server with only references, URLs, and hashes stored in the repository.We also recommend setting a [gitattributes[5]](../../5/gitattributes) file to explicitly mark which files are text and which are binary. If you want Git to guess, you can set the attribute `text=auto`. For example, the following might be appropriate in some projects:
 
-  虽然 Git 可以存储和处理任何类型的文件，但某些设置效果比其他设置更好。一般来说，我们建议将文本文件存储为 UTF-8，没有字节顺序标记 (BOM)，并使用 LF（Unix 风格）换行符。我们还建议在提交消息中使用 UTF-8（同样没有 BOM）。这些设置在各个平台和工具（如 `git diff` 和 `git merge`）上效果最好。另外，如果您可以选择使用基于文本或非文本的存储格式，我们建议将文件存储为文本格式，并在必要时将其转换为其他格式。例如，基于文本的 SQL 转储，每行一个记录，比实际数据库文件更适合进行差异和合并。类似地，文本格式，如 Markdown 和 AsciiDoc，比二进制格式，如 Microsoft Word 和 PDF，效果更好。类似地，通常不建议将二进制依赖项（如共享库或 JAR 文件）或构建产物存储在存储库中。依赖项和构建产物最好存储在工件或包服务器上，而在存储库中只存储引用、URL 和哈希值。我们还建议设置一个 [gitattributes[5\]](https://git-scm.com/docs/gitattributes) 文件，明确标记哪些文件是文本，哪些是二进制。如果希望 Git 猜测，可以设置属性 `text=auto`。例如，在某些项目中可能适用以下设置：
+  虽然 Git 可以存储和处理任何类型的文件，但某些设置效果比其他设置更好。一般来说，我们建议将文本文件存储为 UTF-8，没有字节顺序标记 (BOM)，并使用 LF（Unix 风格）换行符。我们还建议在提交消息中使用 UTF-8（同样没有 BOM）。这些设置在各个平台和工具（如 `git diff` 和 `git merge`）上效果最好。另外，如果您可以选择使用基于文本或非文本的存储格式，我们建议将文件存储为文本格式，并在必要时将其转换为其他格式。例如，基于文本的 SQL 转储，每行一个记录，比实际数据库文件更适合进行差异和合并。类似地，文本格式，如 Markdown 和 AsciiDoc，比二进制格式，如 Microsoft Word 和 PDF，效果更好。类似地，通常不建议将二进制依赖项（如共享库或 JAR 文件）或构建产物存储在存储库中。依赖项和构建产物最好存储在工件或包服务器上，而在存储库中只存储引用、URL 和哈希值。我们还建议设置一个 [gitattributes[5]](../../5/gitattributes) 文件，明确标记哪些文件是文本，哪些是二进制。如果希望 Git 猜测，可以设置属性 `text=auto`。例如，在某些项目中可能适用以下设置：
 
   ```
   # By default, guess.

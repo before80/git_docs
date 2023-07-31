@@ -1,3 +1,16 @@
++++
+title = "git-merge"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# git-merge
+
 https://git-scm.com/docs/git-merge
 
 ## 名称
@@ -325,19 +338,19 @@ You can work through the conflict with a number of tools:
 
 - Merge branches `fixes` and `enhancements` on top of the current branch, making an octopus merge:
 
-  ```
+  ``` bash
   $ git merge fixes enhancements
   ```
 
 - Merge branch `obsolete` into the current branch, using `ours` merge strategy:
 
-  ```
+  ``` bash
   $ git merge -s ours obsolete
   ```
 
 - Merge branch `maint` into the current branch, but do not make a new commit automatically:
 
-  ```
+  ``` bash
   $ git merge --no-commit maint
   ```
 

@@ -179,21 +179,21 @@ If a helper advertises *connect*, Git will use it if possible and fall back to a
 
 - *export-marks* <file>
 
-  This modifies the *export* capability, instructing Git to dump the internal marks table to <file> when complete. For details, read up on `--export-marks=<file>` in [git-fast-export[1\]](https://git-scm.com/docs/git-fast-export).
+  This modifies the *export* capability, instructing Git to dump the internal marks table to <file> when complete. For details, read up on `--export-marks=<file>` in [git-fast-export[1]](../../1/git-fast-export).
 
-  这修改了 *export* 功能，指示Git在完成时将内部的标记表（marks table）导出到指定的 `<file>` 中。详情请参阅[git-fast-export[1\]](https://git-scm.com/docs/git-fast-export)中的 `--export-marks=<file>`。
+  这修改了 *export* 功能，指示Git在完成时将内部的标记表（marks table）导出到指定的 `<file>` 中。详情请参阅[git-fast-export[1]](../../1/git-fast-export)中的 `--export-marks=<file>`。
 
 - *import-marks* <file>
 
-  This modifies the *export* capability, instructing Git to load the marks specified in <file> before processing any input. For details, read up on `--import-marks=<file>` in [git-fast-export[1\]](https://git-scm.com/docs/git-fast-export).
+  This modifies the *export* capability, instructing Git to load the marks specified in <file> before processing any input. For details, read up on `--import-marks=<file>` in [git-fast-export[1]](../../1/git-fast-export).
 
-  这修改了 *export* 功能，指示Git在处理任何输入之前加载指定在 `<file>` 中的标记（marks）。详情请参阅[git-fast-export[1\]](https://git-scm.com/docs/git-fast-export)中的 `--import-marks=<file>`。
+  这修改了 *export* 功能，指示Git在处理任何输入之前加载指定在 `<file>` 中的标记（marks）。详情请参阅[git-fast-export[1]](../../1/git-fast-export)中的 `--import-marks=<file>`。
 
 - *signed-tags*
 
-  This modifies the *export* capability, instructing Git to pass `--signed-tags=verbatim` to [git-fast-export[1\]](https://git-scm.com/docs/git-fast-export). In the absence of this capability, Git will use `--signed-tags=warn-strip`.
+  This modifies the *export* capability, instructing Git to pass `--signed-tags=verbatim` to [git-fast-export[1]](../../1/git-fast-export). In the absence of this capability, Git will use `--signed-tags=warn-strip`.
 
-  这修改了 *export* 功能，指示Git向[git-fast-export[1\]](https://git-scm.com/docs/git-fast-export)传递 `--signed-tags=verbatim`。如果没有此功能，Git将使用 `--signed-tags=warn-strip`。
+  这修改了 *export* 功能，指示Git向[git-fast-export[1]](../../1/git-fast-export)传递 `--signed-tags=verbatim`。如果没有此功能，Git将使用 `--signed-tags=warn-strip`。
 
 - *object-format*
 

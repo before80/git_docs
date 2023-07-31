@@ -921,7 +921,7 @@ If you add a ` ` (space) after *%* of a placeholder, a space is inserted immedia
 
   The *tformat:* format works exactly like *format:*, except that it provides "terminator" semantics instead of "separator" semantics. In other words, each commit has the message terminator character (usually a newline) appended, rather than a separator placed between entries. This means that the final entry of a single-line format will be properly terminated with a new line, just as the "oneline" format does. For example:
 
-  ```
+  ``` bash
   $ git log -2 --pretty=format:%h 4da45bef \
     | perl -pe '$_ .= " -- NO NEWLINE\n" unless /\n/'
   4da45be
@@ -935,7 +935,7 @@ If you add a ` ` (space) after *%* of a placeholder, a space is inserted immedia
 
   In addition, any unrecognized string that has a `%` in it is interpreted as if it has `tformat:` in front of it. For example, these two are equivalent:
 
-  ```
+  ``` bash
   $ git log -2 --pretty=tformat:%h 4da45bef
   $ git log -2 --pretty=%h 4da45bef
   ```

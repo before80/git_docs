@@ -32,7 +32,7 @@ git <command> --recurse-submodules
 
 ​	在文件系统中，子模块通常（但不总是，参见下面的"FORMS"部分）由以下部分组成：(i) 位于超级项目的`$GIT_DIR/modules/`目录下的Git目录，(ii) 位于超级项目工作目录内的工作目录，以及位于子模块工作目录根目录的`.git`文件，该文件指向（i）。
 
-​	假设子模块在`$GIT_DIR/modules/foo/`具有Git目录，工作目录在`path/to/bar/`，则超级项目通过`path/to/bar`处的树中的`gitlink`条目以及其`.gitmodules`文件中的条目（参见[gitmodules[5\]](https://git-scm.com/docs/gitmodules)）来跟踪子模块。
+​	假设子模块在`$GIT_DIR/modules/foo/`具有Git目录，工作目录在`path/to/bar/`，则超级项目通过`path/to/bar`处的树中的`gitlink`条目以及其`.gitmodules`文件中的条目（参见[gitmodules[5]](../../5/gitmodules)）来跟踪子模块。
 
 ​	`gitlink`条目包含超级项目期望子模块的工作目录所在提交的对象名称。
 
@@ -191,7 +191,7 @@ git reset
 
 ## 实现细节
 
-​	在克隆或拉取包含子模块的仓库时，默认情况下不会检出子模块；您可以指示`clone`递归进入子模块。`git submodule`的`init`和`update`子命令将在您的工作树中维护已检出的子模块，并保持适当的修订。或者，您可以设置`submodule.recurse`，使`checkout`递归进入子模块（请注意，`submodule.recurse`还会影响其他Git命令，详见[git-config[1\]](https://git-scm.com/docs/git-config)获取完整列表）。
+​	在克隆或拉取包含子模块的仓库时，默认情况下不会检出子模块；您可以指示`clone`递归进入子模块。`git submodule`的`init`和`update`子命令将在您的工作树中维护已检出的子模块，并保持适当的修订。或者，您可以设置`submodule.recurse`，使`checkout`递归进入子模块（请注意，`submodule.recurse`还会影响其他Git命令，详见[git-config[1]](../../1/git-config)获取完整列表）。
 
 ## 另请参阅
 

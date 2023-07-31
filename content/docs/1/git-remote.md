@@ -96,7 +96,7 @@ On any other error, the exit status may be any other non-zero value.
 
 - Add a new remote, fetch, and check out a branch from it
 
-  ```
+  ``` bash
   $ git remote
   origin
   $ git branch -r
@@ -124,7 +124,7 @@ On any other error, the exit status may be any other non-zero value.
 
 - Imitate *git clone* but track only selected branches
 
-  ```
+  ``` bash
   $ mkdir project.git
   $ cd project.git
   $ git init

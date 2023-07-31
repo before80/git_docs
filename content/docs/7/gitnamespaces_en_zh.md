@@ -30,33 +30,33 @@ GIT_NAMESPACE=<namespace> git receive-pack
 
 ## 描述
 
-Git supports dividing the refs of a single repository into multiple namespaces, each of which has its own branches, tags, and HEAD. Git can expose each namespace as an independent repository to pull from and push to, while sharing the object store, and exposing all the refs to operations such as [git-gc[1\]](https://git-scm.com/docs/git-gc).
+Git supports dividing the refs of a single repository into multiple namespaces, each of which has its own branches, tags, and HEAD. Git can expose each namespace as an independent repository to pull from and push to, while sharing the object store, and exposing all the refs to operations such as [git-gc[1]](../../1/git-gc).
 
-​	Git 支持将单个存储库的引用分割为多个命名空间，每个命名空间都有自己的分支、标签和 HEAD。Git 可以将每个命名空间作为独立的存储库暴露出来，以供拉取和推送使用，同时共享对象存储，并将所有引用暴露给诸如 [git-gc[1\]](https://git-scm.com/docs/git-gc) 等操作。
+​	Git 支持将单个存储库的引用分割为多个命名空间，每个命名空间都有自己的分支、标签和 HEAD。Git 可以将每个命名空间作为独立的存储库暴露出来，以供拉取和推送使用，同时共享对象存储，并将所有引用暴露给诸如 [git-gc[1]](../../1/git-gc) 等操作。
 
 Storing multiple repositories as namespaces of a single repository avoids storing duplicate copies of the same objects, such as when storing multiple branches of the same source. The alternates mechanism provides similar support for avoiding duplicates, but alternates do not prevent duplication between new objects added to the repositories without ongoing maintenance, while namespaces do.
 
 ​	将多个存储库作为单个存储库的命名空间存储可以避免存储相同对象的重复副本，例如存储相同源代码的多个分支。alternates 机制提供了类似的支持来避免重复，但 alternates 不能防止新对象在没有持续维护的情况下添加到存储库时的重复，而命名空间则可以。
 
-To specify a namespace, set the `GIT_NAMESPACE` environment variable to the namespace. For each ref namespace, Git stores the corresponding refs in a directory under `refs/namespaces/`. For example, `GIT_NAMESPACE=foo` will store refs under `refs/namespaces/foo/`. You can also specify namespaces via the `--namespace` option to [git[1\]](https://git-scm.com/docs/git).
+To specify a namespace, set the `GIT_NAMESPACE` environment variable to the namespace. For each ref namespace, Git stores the corresponding refs in a directory under `refs/namespaces/`. For example, `GIT_NAMESPACE=foo` will store refs under `refs/namespaces/foo/`. You can also specify namespaces via the `--namespace` option to [git[1]](../../1/git).
 
-​	要指定命名空间，请将 `GIT_NAMESPACE` 环境变量设置为该命名空间。对于每个引用命名空间，Git 将相应的引用存储在 `refs/namespaces/` 目录下。例如，`GIT_NAMESPACE=foo` 将引用存储在 `refs/namespaces/foo/` 下。您还可以通过 [git[1\]](https://git-scm.com/docs/git) 命令的 `--namespace` 选项指定命名空间。
+​	要指定命名空间，请将 `GIT_NAMESPACE` 环境变量设置为该命名空间。对于每个引用命名空间，Git 将相应的引用存储在 `refs/namespaces/` 目录下。例如，`GIT_NAMESPACE=foo` 将引用存储在 `refs/namespaces/foo/` 下。您还可以通过 [git[1]](../../1/git) 命令的 `--namespace` 选项指定命名空间。
 
 Note that namespaces which include a `/` will expand to a hierarchy of namespaces; for example, `GIT_NAMESPACE=foo/bar` will store refs under `refs/namespaces/foo/refs/namespaces/bar/`. This makes paths in `GIT_NAMESPACE` behave hierarchically, so that cloning with `GIT_NAMESPACE=foo/bar` produces the same result as cloning with `GIT_NAMESPACE=foo` and cloning from that repo with `GIT_NAMESPACE=bar`. It also avoids ambiguity with strange namespace paths such as `foo/refs/heads/`, which could otherwise generate directory/file conflicts within the `refs` directory.
 
 ​	请注意，包含 `/` 的命名空间将扩展为一个命名空间的层次结构；例如，`GIT_NAMESPACE=foo/bar` 将引用存储在 `refs/namespaces/foo/refs/namespaces/bar/` 下。这使得 `GIT_NAMESPACE` 中的路径行为成为层次结构，因此使用 `GIT_NAMESPACE=foo/bar` 克隆将产生与使用 `GIT_NAMESPACE=foo` 克隆，并从该存储库克隆具有 `GIT_NAMESPACE=bar` 的结果相同。这还避免了奇怪的命名空间路径，比如 `foo/refs/heads/`，否则可能会在 `refs` 目录中生成目录/文件冲突。
 
-[git-upload-pack[1\]](https://git-scm.com/docs/git-upload-pack) and [git-receive-pack[1\]](https://git-scm.com/docs/git-receive-pack) rewrite the names of refs as specified by `GIT_NAMESPACE`. git-upload-pack and git-receive-pack will ignore all references outside the specified namespace.
+[git-upload-pack[1]](../../1/git-upload-pack) and [git-receive-pack[1]](../../1/git-receive-pack) rewrite the names of refs as specified by `GIT_NAMESPACE`. git-upload-pack and git-receive-pack will ignore all references outside the specified namespace.
 
-​	[git-upload-pack[1\]](https://git-scm.com/docs/git-upload-pack) 和 [git-receive-pack[1\]](https://git-scm.com/docs/git-receive-pack) 会根据 `GIT_NAMESPACE` 指定的名称重新编写引用名称。git-upload-pack 和 git-receive-pack 将忽略指定命名空间之外的所有引用。
+​	[git-upload-pack[1]](../../1/git-upload-pack) 和 [git-receive-pack[1]](../../1/git-receive-pack) 会根据 `GIT_NAMESPACE` 指定的名称重新编写引用名称。git-upload-pack 和 git-receive-pack 将忽略指定命名空间之外的所有引用。
 
-The smart HTTP server, [git-http-backend[1\]](https://git-scm.com/docs/git-http-backend), will pass GIT_NAMESPACE through to the backend programs; see [git-http-backend[1\]](https://git-scm.com/docs/git-http-backend) for sample configuration to expose repository namespaces as repositories.
+The smart HTTP server, [git-http-backend[1]](../../1/git-http-backend), will pass GIT_NAMESPACE through to the backend programs; see [git-http-backend[1]](../../1/git-http-backend) for sample configuration to expose repository namespaces as repositories.
 
-​	智能 HTTP 服务器 [git-http-backend[1\]](https://git-scm.com/docs/git-http-backend) 将 `GIT_NAMESPACE` 传递给后端程序；请参阅 [git-http-backend[1\]](https://git-scm.com/docs/git-http-backend) 中的示例配置以将存储库命名空间暴露为存储库。
+​	智能 HTTP 服务器 [git-http-backend[1]](../../1/git-http-backend) 将 `GIT_NAMESPACE` 传递给后端程序；请参阅 [git-http-backend[1]](../../1/git-http-backend) 中的示例配置以将存储库命名空间暴露为存储库。
 
-For a simple local test, you can use [git-remote-ext[1\]](https://git-scm.com/docs/git-remote-ext):
+For a simple local test, you can use [git-remote-ext[1]](../../1/git-remote-ext):
 
-​	对于简单的本地测试，您可以使用 [git-remote-ext[1\]](https://git-scm.com/docs/git-remote-ext)：
+​	对于简单的本地测试，您可以使用 [git-remote-ext[1]](../../1/git-remote-ext)：
 
 ```
 git clone ext::'git --namespace=foo %s /tmp/prefixed.git'

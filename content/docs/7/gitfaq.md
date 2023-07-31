@@ -30,7 +30,7 @@ gitfaq
 
 - `user.name` 应该放什么内容？
 
-  您应该输入您的个人名称，通常是给定名和姓氏的形式。例如，Git 的当前维护者使用 "Junio C Hamano"。这将是存储在您进行每次提交时的名称部分。该配置对于身份验证到远程服务没有任何影响；有关该方面的信息，请参阅 [git-config[1\]](https://git-scm.com/docs/git-config) 中的 `credential.username`。
+  您应该输入您的个人名称，通常是给定名和姓氏的形式。例如，Git 的当前维护者使用 "Junio C Hamano"。这将是存储在您进行每次提交时的名称部分。该配置对于身份验证到远程服务没有任何影响；有关该方面的信息，请参阅 [git-config[1]](../../1/git-config) 中的 `credential.username`。
 
 - `http.postBuffer` 究竟是做什么的？
 
@@ -44,7 +44,7 @@ gitfaq
   export VISUAL=nano
   ```
 
-  如果要为 Git 特定地配置编辑器，可以设置 `core.editor` 配置值或 `GIT_EDITOR` 环境变量。有关这些选项的咨询顺序的详细信息，请参阅 [git-var[1\]](https://git-scm.com/docs/git-var)。请注意，在所有情况下，编辑器值都将传递给 shell，因此任何包含空格的参数都应适当引用。此外，如果您的编辑器通常在调用时与终端断开连接，则应该指定一个不会这样做的参数，否则 Git 将无法检测到任何更改。在 Windows 上解决这两个问题的配置示例是 `"C:\Program Files\Vim\gvim.exe" --nofork`，它使用带有空格的文件名并指定了 `--nofork` 选项以避免将进程转为后台运行。
+  如果要为 Git 特定地配置编辑器，可以设置 `core.editor` 配置值或 `GIT_EDITOR` 环境变量。有关这些选项的咨询顺序的详细信息，请参阅 [git-var[1]](../../1/git-var)。请注意，在所有情况下，编辑器值都将传递给 shell，因此任何包含空格的参数都应适当引用。此外，如果您的编辑器通常在调用时与终端断开连接，则应该指定一个不会这样做的参数，否则 Git 将无法检测到任何更改。在 Windows 上解决这两个问题的配置示例是 `"C:\Program Files\Vim\gvim.exe" --nofork`，它使用带有空格的文件名并指定了 `--nofork` 选项以避免将进程转为后台运行。
 
 ## 凭据
 
@@ -56,7 +56,7 @@ gitfaq
 
   `credential.helper` 配置选项还可以接受一个任意的 shell 命令，该命令在标准输出上生成凭据协议。这在将凭据传递到容器时非常有用。可以通过以感叹号开头来指定此类 shell 命令。如果您的密码或令牌存储在 `GIT_TOKEN` 中，可以运行以下命令来设置凭据帮助程序：
 
-  ```
+  ``` bash
   $ git config credential.helper \
   	'!f() { echo username=author; echo "password=$GIT_TOKEN"; };f'
   ```
@@ -67,7 +67,7 @@ gitfaq
 
   通常，如果密码或令牌无效，Git 将擦除它并提示您输入新的。但是，有时并不总是发生这种情况。要更改密码或令牌，可以擦除现有凭据，然后 Git 将提示您输入新的凭据。要擦除凭据，请使用以下语法（替换您的用户名和主机名）：
 
-  ```
+  ``` bash
   $ echo url=https://author@git.example.org | git credential reject
   ```
 
@@ -75,7 +75,7 @@ gitfaq
 
 - 如何在使用 HTTP 时在同一托管提供者上使用多个帐户？
 
-  通常，区分这些帐户的最简单方法是在 URL 中使用用户名。例如，如果您在 `git.example.org` 上拥有 `author` 和 `committer` 帐户，则可以使用以下 URL：https://author@git.example.org/org1/project1.git 和 https://committer@git.example.org/org2/project2.git。这样，当您使用凭据帮助程序时，它会自动尝试查找适用于您帐户的正确凭据。如果您已经设置了一个远程，可以使用类似 `git remote set-url origin https://author@git.example.org/org1/project1.git` 的内容更改 URL（有关详情，请参阅 [git-remote[1\]](https://git-scm.com/docs/git-remote)）。
+  通常，区分这些帐户的最简单方法是在 URL 中使用用户名。例如，如果您在 `git.example.org` 上拥有 `author` 和 `committer` 帐户，则可以使用以下 URL：https://author@git.example.org/org1/project1.git 和 https://committer@git.example.org/org2/project2.git。这样，当您使用凭据帮助程序时，它会自动尝试查找适用于您帐户的正确凭据。如果您已经设置了一个远程，可以使用类似 `git remote set-url origin https://author@git.example.org/org1/project1.git` 的内容更改 URL（有关详情，请参阅 [git-remote[1]](../../1/git-remote)）。
 
 - 如何在使用 SSH 时在同一托管提供者上使用多个帐户？
 
@@ -120,11 +120,11 @@ gitfaq
 
 - 我要求Git忽略各种文件，但它们仍然被追踪
 
-  `gitignore` 文件确保 Git 不追踪某些未被 Git 跟踪的文件。然而，有时特定的文件在添加到 `.gitignore` 前可能已经被追踪，因此它们仍然被跟踪。要取消跟踪并忽略文件/模式，使用 `git rm --cached <file/pattern>` 并将一个模式添加到 `.gitignore` 中以匹配 `<file>`。详细信息请参阅 [gitignore[5\]](https://git-scm.com/docs/gitignore)。
+  `gitignore` 文件确保 Git 不追踪某些未被 Git 跟踪的文件。然而，有时特定的文件在添加到 `.gitignore` 前可能已经被追踪，因此它们仍然被跟踪。要取消跟踪并忽略文件/模式，使用 `git rm --cached <file/pattern>` 并将一个模式添加到 `.gitignore` 中以匹配 `<file>`。详细信息请参阅 [gitignore[5]](../../5/gitignore)。
 
 - 我如何知道我是要执行 fetch 还是 pull？
 
-  `fetch` 存储了来自远程仓库的最新更改的副本，而不修改工作树或当前分支。然后，您可以在适当的时候检查、合并、重新基于或忽略上游更改。`pull` 包含一个 fetch，紧接着是合并或变基。更多信息请参阅 [git-pull[1\]](https://git-scm.com/docs/git-pull)。
+  `fetch` 存储了来自远程仓库的最新更改的副本，而不修改工作树或当前分支。然后，您可以在适当的时候检查、合并、重新基于或忽略上游更改。`pull` 包含一个 fetch，紧接着是合并或变基。更多信息请参阅 [git-pull[1]](../../1/git-pull)。
 
 ## 合并和变基
 
@@ -134,7 +134,7 @@ gitfaq
 
 - 如果我在两个分支上都做了更改，但在其中一个分支上对其进行了还原，为什么合并这些分支会包括这个更改？
 
-  默认情况下，当 Git 进行合并时，它使用一种称为 `ort` 策略的高级三路合并策略。在这种情况下，当 Git 执行合并时，它会考虑两个头和第三个点，称为 *合并基础*，通常是这些提交的共同祖先。Git 不考虑这些分支上的历史或个别提交。因此，如果两侧都有更改，并且一侧已经对该更改进行了还原，结果将包含该更改。这是因为代码在一侧发生了更改，而另一侧没有净更改，因此在这种情况下，Git 采用该更改。如果这对您造成了问题，可以使用变基来解决，在这种情况下，将对执行还原的分支变基到另一个分支上。在这种情况下，变基将还原该更改，因为变基会应用每个单独的提交，包括还原。请注意，变基会重写历史记录，因此除非您确定您对此感到舒适，否则应避免对已发布的分支进行变基。详细信息请参阅 [git-rebase[1\]](https://git-scm.com/docs/git-rebase) 中的 NOTES 部分。
+  默认情况下，当 Git 进行合并时，它使用一种称为 `ort` 策略的高级三路合并策略。在这种情况下，当 Git 执行合并时，它会考虑两个头和第三个点，称为 *合并基础*，通常是这些提交的共同祖先。Git 不考虑这些分支上的历史或个别提交。因此，如果两侧都有更改，并且一侧已经对该更改进行了还原，结果将包含该更改。这是因为代码在一侧发生了更改，而另一侧没有净更改，因此在这种情况下，Git 采用该更改。如果这对您造成了问题，可以使用变基来解决，在这种情况下，将对执行还原的分支变基到另一个分支上。在这种情况下，变基将还原该更改，因为变基会应用每个单独的提交，包括还原。请注意，变基会重写历史记录，因此除非您确定您对此感到舒适，否则应避免对已发布的分支进行变基。详细信息请参阅 [git-rebase[1]](../../1/git-rebase) 中的 NOTES 部分。
 
 ## 钩子
 
@@ -146,13 +146,13 @@ gitfaq
 
 - 我使用 Windows，但我的文本文件被检测为二进制文件。
 
-  当您将文本文件存储为 UTF-8 时，Git 的效果最好。Windows 上的许多程序支持 UTF-8，但有些不支持，只使用小端 UTF-16 格式，Git 将其检测为二进制文件。如果您不能在程序中使用 UTF-8，可以指定工作树编码，以指示应使用哪种编码检出文件，同时在存储库中仍以 UTF-8 存储这些文件。这样一来，像 [git-diff[1\]](https://git-scm.com/docs/git-diff) 这样的工具将按预期工作，同时您的工具也可以正常工作。要做到这一点，您可以在 [gitattributes[5\]](https://git-scm.com/docs/gitattributes) 文件中使用 `working-tree-encoding` 属性指定一个模式。例如，以下模式设置所有 C 文件使用 UTF-16LE-BOM，这是 Windows 上常用的编码：
+  当您将文本文件存储为 UTF-8 时，Git 的效果最好。Windows 上的许多程序支持 UTF-8，但有些不支持，只使用小端 UTF-16 格式，Git 将其检测为二进制文件。如果您不能在程序中使用 UTF-8，可以指定工作树编码，以指示应使用哪种编码检出文件，同时在存储库中仍以 UTF-8 存储这些文件。这样一来，像 [git-diff[1]](../../1/git-diff) 这样的工具将按预期工作，同时您的工具也可以正常工作。要做到这一点，您可以在 [gitattributes[5]](../../5/gitattributes) 文件中使用 `working-tree-encoding` 属性指定一个模式。例如，以下模式设置所有 C 文件使用 UTF-16LE-BOM，这是 Windows 上常用的编码：
 
   ```
   *.c	working-tree-encoding=UTF-16LE-BOM
   ```
 
-  您需要运行 `git add --renormalize` 来使其生效。请注意，如果您在跨平台使用的项目中进行这些更改，您可能希望在每个用户的配置文件或 `$GIT_DIR/info/attributes` 中进行更改，因为在存储库的 `.gitattributes` 文件中进行更改会应用于存储库的所有用户。有关规范化行结束符的信息，请参阅下面的条目，有关属性文件的更多信息，请参阅 [gitattributes[5\]](https://git-scm.com/docs/gitattributes)。
+  您需要运行 `git add --renormalize` 来使其生效。请注意，如果您在跨平台使用的项目中进行这些更改，您可能希望在每个用户的配置文件或 `$GIT_DIR/info/attributes` 中进行更改，因为在存储库的 `.gitattributes` 文件中进行更改会应用于存储库的所有用户。有关规范化行结束符的信息，请参阅下面的条目，有关属性文件的更多信息，请参阅 [gitattributes[5]](../../5/gitattributes)。
 
 - 我使用 Windows，git diff 显示文件末尾有一个 `^M`。
 
@@ -162,7 +162,7 @@ gitfaq
 
   在内部，Git 总是将文件名存储为字节序列，不执行任何编码或大小写转换。然而，Windows 和 macOS 默认情况下都对文件名进行大小写折叠。因此，可能会出现多个文件或目录，它们的名称只在大小写方面有所不同。Git 可以很好地处理这一点，但文件系统只能存储其中一个文件，因此当 Git 读取其他文件以查看其内容时，它会显示为已修改。最好的方法是删除其中一个文件，以便您只有一个文件。您可以使用以下命令（假设两个文件名分别为 `AFile.txt` 和 `afile.txt`）在一个干净的工作树上执行此操作：
 
-  ```
+  ``` bash
   $ git rm --cached AFile.txt
   $ git commit -m 'Remove files conflicting in case'
   $ git checkout .
@@ -170,7 +170,7 @@ gitfaq
 
   这样可以避免触碰磁盘，同时删除了额外的文件。您的项目可能希望采用命名约定，例如全部使用小写名称，以避免再次发生此问题；可以使用 `pre-receive` 钩子或作为持续集成（CI）系统的一部分检查这种约定。如果在您的系统上使用了 smudge 或 clean 过滤器，但是在运行 smudge 或 clean 过滤器之前先前提交了一个文件，则在任何平台上都可能发生永久性修改的文件问题。要修复这个问题，在一个干净的工作树上运行以下命令：
 
-  ```
+  ``` bash
   $ git add --renormalize .
   ```
 
@@ -178,7 +178,7 @@ gitfaq
 
 - 存储文件在 Git 中的推荐方法是什么？
 
-  虽然 Git 可以存储和处理任何类型的文件，但某些设置效果比其他设置更好。一般来说，我们建议将文本文件存储为 UTF-8，没有字节顺序标记 (BOM)，并使用 LF（Unix 风格）换行符。我们还建议在提交消息中使用 UTF-8（同样没有 BOM）。这些设置在各个平台和工具（如 `git diff` 和 `git merge`）上效果最好。另外，如果您可以选择使用基于文本或非文本的存储格式，我们建议将文件存储为文本格式，并在必要时将其转换为其他格式。例如，基于文本的 SQL 转储，每行一个记录，比实际数据库文件更适合进行差异和合并。类似地，文本格式，如 Markdown 和 AsciiDoc，比二进制格式，如 Microsoft Word 和 PDF，效果更好。类似地，通常不建议将二进制依赖项（如共享库或 JAR 文件）或构建产物存储在存储库中。依赖项和构建产物最好存储在工件或包服务器上，而在存储库中只存储引用、URL 和哈希值。我们还建议设置一个 [gitattributes[5\]](https://git-scm.com/docs/gitattributes) 文件，明确标记哪些文件是文本，哪些是二进制。如果希望 Git 猜测，可以设置属性 `text=auto`。例如，在某些项目中可能适用以下设置：
+  虽然 Git 可以存储和处理任何类型的文件，但某些设置效果比其他设置更好。一般来说，我们建议将文本文件存储为 UTF-8，没有字节顺序标记 (BOM)，并使用 LF（Unix 风格）换行符。我们还建议在提交消息中使用 UTF-8（同样没有 BOM）。这些设置在各个平台和工具（如 `git diff` 和 `git merge`）上效果最好。另外，如果您可以选择使用基于文本或非文本的存储格式，我们建议将文件存储为文本格式，并在必要时将其转换为其他格式。例如，基于文本的 SQL 转储，每行一个记录，比实际数据库文件更适合进行差异和合并。类似地，文本格式，如 Markdown 和 AsciiDoc，比二进制格式，如 Microsoft Word 和 PDF，效果更好。类似地，通常不建议将二进制依赖项（如共享库或 JAR 文件）或构建产物存储在存储库中。依赖项和构建产物最好存储在工件或包服务器上，而在存储库中只存储引用、URL 和哈希值。我们还建议设置一个 [gitattributes[5]](../../5/gitattributes) 文件，明确标记哪些文件是文本，哪些是二进制。如果希望 Git 猜测，可以设置属性 `text=auto`。例如，在某些项目中可能适用以下设置：
 
   ```
   # By default, guess.

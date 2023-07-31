@@ -43,7 +43,7 @@ gitcli
 
 - 许多命令允许在路径中使用通配符，但你需要保护它们，以免被Shell展开。以下两个示例意义不同：
 
-  ```
+  ``` bash
   $ git restore *.c
   $ git restore \*.c
   ```
@@ -74,7 +74,7 @@ gitcli
 
   提供命令的漂亮打印使用说明。例如，`$ git describe -h` 的使用说明是：
 
-  ```
+  ``` bash
   $ git describe -h
   usage: git describe [<options>] <commit-ish>*
      or: git describe [<options>] --dirty
@@ -109,7 +109,7 @@ gitcli
 
 ​	你可以在命令行上将强制的选项参数作为单独的单词写入选项。这意味着以下所有用法都有效：
 
-```
+``` bash
 $ git foo --long-opt=Arg
 $ git foo --long-opt Arg
 $ git foo -oArg
@@ -118,7 +118,7 @@ $ git foo -o Arg
 
 ​	然而，对于具有可选值的开关选项，**不**允许这样使用，必须使用 *stuck* 形式：
 
-```
+``` bash
 $ git describe --abbrev HEAD     # correct
 $ git describe --abbrev=10 HEAD  # correct
 $ git describe --abbrev 10 HEAD  # NOT WHAT YOU MEANT

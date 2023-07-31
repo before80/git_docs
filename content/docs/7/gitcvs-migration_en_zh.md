@@ -32,9 +32,9 @@ Git differs from CVS in that every working tree contains a repository with a ful
 
 ​	Git 与 CVS 的不同之处在于每个工作树都包含有完整项目历史的存储库，并且没有存储库本身比其他存储库更重要。然而，您可以通过指定单个共享存储库来模拟 CVS 模型，供其他人进行同步；本文档解释了如何实现这一点。
 
-Some basic familiarity with Git is required. Having gone through [gittutorial[7\]](https://git-scm.com/docs/gittutorial) and [gitglossary[7\]](https://git-scm.com/docs/gitglossary) should be sufficient.
+Some basic familiarity with Git is required. Having gone through [gittutorial[7]](../../7/gittutorial) and [gitglossary[7]](../../7/gitglossary) should be sufficient.
 
-​	需要对 Git 有一些基本了解。阅读 [gittutorial[7\]](https://git-scm.com/docs/gittutorial) 和 [gitglossary[7\]](https://git-scm.com/docs/gitglossary) 应该足够。
+​	需要对 Git 有一些基本了解。阅读 [gittutorial[7]](../../7/gittutorial) 和 [gitglossary[7]](../../7/gitglossary) 应该足够。
 
 ## 针对共享存储库的开发
 
@@ -42,7 +42,7 @@ Suppose a shared repository is set up in /pub/repo.git on the host foo.com. Then
 
 ​	假设在主机 foo.com 上设置了共享存储库 /pub/repo.git。然后，作为个人提交者，您可以通过 ssh 克隆共享存储库：
 
-```
+``` bash
 $ git clone foo.com:/pub/repo.git/ my-project
 $ cd my-project
 ```
@@ -51,7 +51,7 @@ and hack away. The equivalent of *cvs update* is
 
 然后进行修改。*cvs update* 的等效操作是：
 
-```
+``` bash
 $ git pull origin
 ```
 
@@ -61,17 +61,17 @@ which merges in any work that others might have done since the clone operation. 
 
 > Note
 >
-> The *pull* command knows where to get updates from because of certain configuration variables that were set by the first *git clone* command; see `git config -l` and the [git-config[1\]](https://git-scm.com/docs/git-config) man page for details.
+> The *pull* command knows where to get updates from because of certain configuration variables that were set by the first *git clone* command; see `git config -l` and the [git-config[1]](../../1/git-config) man page for details.
 >
 > 注意
 >
-> ​	*pull* 命令知道从哪里获取更新，这是因为在第一个 *git clone* 命令中设置了某些配置变量；有关详细信息，请参阅 `git config -l` 和 [git-config[1\]](https://git-scm.com/docs/git-config) 手册页。
+> ​	*pull* 命令知道从哪里获取更新，这是因为在第一个 *git clone* 命令中设置了某些配置变量；有关详细信息，请参阅 `git config -l` 和 [git-config[1]](../../1/git-config) 手册页。
 
 You can update the shared repository with your changes by first committing your changes, and then using the *git push* command:
 
 ​	您可以通过先提交更改，然后使用 *git push* 命令将更改更新到共享存储库：
 
-```
+``` bash
 $ git push origin master
 ```
 
@@ -83,7 +83,7 @@ In the *git push* command above we specify the name of the remote branch to upda
 
 ​	在上面的 *git push* 命令中，我们指定要更新的远程分支的名称（`master`）。如果省略了该名称，*git push* 将尝试更新远程存储库中与本地存储库具有相同名称的任何分支。因此，最后一个 *push* 可以使用以下任一命令完成：
 
-```
+``` bash
 $ git push origin
 $ git push foo.com:/pub/project.git/
 ```
@@ -94,30 +94,30 @@ as long as the shared repository does not have any branches other than `master`.
 
 ## 设置共享存储库
 
-We assume you have already created a Git repository for your project, possibly created from scratch or from a tarball (see [gittutorial[7\]](https://git-scm.com/docs/gittutorial)), or imported from an already existing CVS repository (see the next section).
+We assume you have already created a Git repository for your project, possibly created from scratch or from a tarball (see [gittutorial[7]](../../7/gittutorial)), or imported from an already existing CVS repository (see the next section).
 
-​	我们假设您已经为您的项目创建了一个 Git 存储库，可能是从头开始创建的，或者从 tarball 创建的（参见 [gittutorial[7\]](https://git-scm.com/docs/gittutorial)），或者从已经存在的 CVS 存储库导入的（参见下一节）。
+​	我们假设您已经为您的项目创建了一个 Git 存储库，可能是从头开始创建的，或者从 tarball 创建的（参见 [gittutorial[7]](../../7/gittutorial)），或者从已经存在的 CVS 存储库导入的（参见下一节）。
 
 Assume your existing repo is at /home/alice/myproject. Create a new "bare" repository (a repository without a working tree) and fetch your project into it:
 
 ​	假设您现有的存储库位于 /home/alice/myproject。创建一个新的“裸”存储库（没有工作树的存储库）并将您的项目提取到其中：
 
-```
+``` bash
 $ mkdir /pub/my-repo.git
 $ cd /pub/my-repo.git
 $ git --bare init --shared
 $ git --bare fetch /home/alice/myproject master:master
 ```
 
-Next, give every team member read/write access to this repository. One easy way to do this is to give all the team members ssh access to the machine where the repository is hosted. If you don’t want to give them a full shell on the machine, there is a restricted shell which only allows users to do Git pushes and pulls; see [git-shell[1\]](https://git-scm.com/docs/git-shell).
+Next, give every team member read/write access to this repository. One easy way to do this is to give all the team members ssh access to the machine where the repository is hosted. If you don’t want to give them a full shell on the machine, there is a restricted shell which only allows users to do Git pushes and pulls; see [git-shell[1]](../../1/git-shell).
 
-​	然后，将每个团队成员都赋予此存储库的读写访问权限。一个简单的方法是给所有团队成员提供主机上托管存储库的 ssh 访问权限。如果您不想给他们在主机上提供完整的 shell，还有一个只允许用户执行 Git 推送和拉取操作的受限制 shell；请参阅 [git-shell[1\]](https://git-scm.com/docs/git-shell)。
+​	然后，将每个团队成员都赋予此存储库的读写访问权限。一个简单的方法是给所有团队成员提供主机上托管存储库的 ssh 访问权限。如果您不想给他们在主机上提供完整的 shell，还有一个只允许用户执行 Git 推送和拉取操作的受限制 shell；请参阅 [git-shell[1]](../../1/git-shell)。
 
 Put all the committers in the same group, and make the repository writable by that group:
 
 ​	将所有提交者放入同一组，并将该组设置为存储库的可写组：
 
-```
+``` bash
 $ chgrp -R $group /pub/my-repo.git
 ```
 
@@ -129,17 +129,17 @@ Make sure committers have a umask of at most 027, so that the directories they c
 
 > Note
 >
-> These instructions use the `git-cvsimport` script which ships with git, but other importers may provide better results. See the note in [git-cvsimport[1\]](https://git-scm.com/docs/git-cvsimport) for other options.
+> These instructions use the `git-cvsimport` script which ships with git, but other importers may provide better results. See the note in [git-cvsimport[1]](../../1/git-cvsimport) for other options.
 >
 > 注意
 >
-> ​	这些说明使用 git 随附的 `git-cvsimport` 脚本，但其他导入工具可能提供更好的结果。有关其他选项，请参阅 [git-cvsimport[1\]](https://git-scm.com/docs/git-cvsimport) 中的注释。
+> ​	这些说明使用 git 随附的 `git-cvsimport` 脚本，但其他导入工具可能提供更好的结果。有关其他选项，请参阅 [git-cvsimport[1]](../../1/git-cvsimport) 中的注释。
 
-First, install version 2.1 or higher of cvsps from https://github.com/andreyvit/cvsps and make sure it is in your path. Then cd to a checked out CVS working directory of the project you are interested in and run [git-cvsimport[1\]](https://git-scm.com/docs/git-cvsimport):
+First, install version 2.1 or higher of cvsps from https://github.com/andreyvit/cvsps and make sure it is in your path. Then cd to a checked out CVS working directory of the project you are interested in and run [git-cvsimport[1]](../../1/git-cvsimport):
 
-​	首先，请安装版本 2.1 或更高版本的 cvsps（https://github.com/andreyvit/cvsps），并确保其在您的路径中。然后，切换到您感兴趣的项目的已签出的 CVS 工作目录，并运行 [git-cvsimport[1\]](https://git-scm.com/docs/git-cvsimport)：
+​	首先，请安装版本 2.1 或更高版本的 cvsps（https://github.com/andreyvit/cvsps），并确保其在您的路径中。然后，切换到您感兴趣的项目的已签出的 CVS 工作目录，并运行 [git-cvsimport[1]](../../1/git-cvsimport)：
 
-```
+``` bash
 $ git cvsimport -C <destination> <module>
 ```
 
@@ -165,9 +165,9 @@ If you want a shared repository, you will need to make a bare clone of the impor
 
 ## 高级共享存储库管理
 
-Git allows you to specify scripts called "hooks" to be run at certain points. You can use these, for example, to send all commits to the shared repository to a mailing list. See [githooks[5\]](https://git-scm.com/docs/githooks).
+Git allows you to specify scripts called "hooks" to be run at certain points. You can use these, for example, to send all commits to the shared repository to a mailing list. See [githooks[5]](../../5/githooks).
 
-​	Git 允许您指定在某些点运行的脚本，称为“钩子”。您可以使用这些钩子，例如，将所有提交发送到共享存储库的邮件列表。请参阅 [githooks[5\]](https://git-scm.com/docs/githooks)。
+​	Git 允许您指定在某些点运行的脚本，称为“钩子”。您可以使用这些钩子，例如，将所有提交发送到共享存储库的邮件列表。请参阅 [githooks[5]](../../5/githooks)。
 
 You can enforce finer grained permissions using update hooks. See [Controlling access to branches using update hooks](https://git-scm.com/docs/howto/update-hook-example).
 
@@ -175,9 +175,9 @@ You can enforce finer grained permissions using update hooks. See [Controlling a
 
 ## 向 Git 存储库提供 CVS 访问权限
 
-It is also possible to provide true CVS access to a Git repository, so that developers can still use CVS; see [git-cvsserver[1\]](https://git-scm.com/docs/git-cvsserver) for details.
+It is also possible to provide true CVS access to a Git repository, so that developers can still use CVS; see [git-cvsserver[1]](../../1/git-cvsserver) for details.
 
-​	还可以为 Git 存储库提供真正的 CVS 访问权限，以便开发人员仍然可以使用 CVS；请参阅 [git-cvsserver[1\]](https://git-scm.com/docs/git-cvsserver) 获取详细信息。
+​	还可以为 Git 存储库提供真正的 CVS 访问权限，以便开发人员仍然可以使用 CVS；请参阅 [git-cvsserver[1]](../../1/git-cvsserver) 获取详细信息。
 
 ## 替代性开发模型
 

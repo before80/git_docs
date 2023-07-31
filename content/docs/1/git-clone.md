@@ -1,3 +1,16 @@
++++
+title = "git-clone"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# git-clone
+
 https://git-scm.com/docs/git-clone
 
 ## 名称
@@ -263,7 +276,7 @@ a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://exam
 
 - Clone from upstream:
 
-  ```
+  ``` bash
   $ git clone git://git.kernel.org/pub/scm/.../linux.git my-linux
   $ cd my-linux
   $ make
@@ -271,7 +284,7 @@ a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://exam
 
 - Make a local clone that borrows from the current directory, without checking things out:
 
-  ```
+  ``` bash
   $ git clone -l -s -n . ../copy
   $ cd ../copy
   $ git show-branch
@@ -279,7 +292,7 @@ a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://exam
 
 - Clone from upstream while borrowing from an existing local directory:
 
-  ```
+  ``` bash
   $ git clone --reference /git/linux.git \
   	git://git.kernel.org/pub/scm/.../linux.git \
   	my-linux
@@ -288,7 +301,7 @@ a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://exam
 
 - Create a bare repository to publish your changes to the public:
 
-  ```
+  ``` bash
   $ git clone --bare -l /home/proj/.git /pub/scm/proj.git
   ```
 

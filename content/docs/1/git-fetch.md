@@ -1,3 +1,16 @@
++++
+title = "git-fetch"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# git-fetch
+
 https://git-scm.com/docs/git-fetch
 
 ## 名称
@@ -477,7 +490,7 @@ In compact output mode, specified with configuration variable fetch.output, if e
 
 - Update the remote-tracking branches:
 
-  ```
+  ``` bash
   $ git fetch origin
   ```
 
@@ -485,7 +498,7 @@ In compact output mode, specified with configuration variable fetch.output, if e
 
 - Using refspecs explicitly:
 
-  ```
+  ``` bash
   $ git fetch origin +seen:seen maint:tmp
   ```
 
@@ -495,7 +508,7 @@ In compact output mode, specified with configuration variable fetch.output, if e
 
 - Peek at a remote’s branch, without configuring the remote in your local repository:
 
-  ```
+  ``` bash
   $ git fetch git://git.kernel.org/pub/scm/git/git.git maint
   $ git log FETCH_HEAD
   ```

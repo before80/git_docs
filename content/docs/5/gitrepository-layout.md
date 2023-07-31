@@ -1,3 +1,16 @@
++++
+title = "gitrepository-layout"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# gitrepository-layout
+
 https://git-scm.com/docs/gitrepository-layout
 
 ## 名称

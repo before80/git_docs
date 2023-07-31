@@ -40,19 +40,19 @@ We formulate a set of *rules* for quick reference, while the prose tries to moti
 
 ## 分割更改
 
-As a general rule, you should try to split your changes into small logical steps, and commit each of them. They should be consistent, working independently of any later commits, pass the test suite, etc. This makes the review process much easier, and the history much more useful for later inspection and analysis, for example with [git-blame[1\]](https://git-scm.com/docs/git-blame) and [git-bisect[1\]](https://git-scm.com/docs/git-bisect).
+As a general rule, you should try to split your changes into small logical steps, and commit each of them. They should be consistent, working independently of any later commits, pass the test suite, etc. This makes the review process much easier, and the history much more useful for later inspection and analysis, for example with [git-blame[1]](../../1/git-blame) and [git-bisect[1]](../../1/git-bisect).
 
-​	通常情况下，您应该尝试将更改分成小的逻辑步骤，并将每个步骤提交。它们应该一致，与后续提交无关，通过测试套件等。这使得审查过程更容易，历史记录对以后的检查和分析更有用，例如使用 [git-blame[1\]](https://git-scm.com/docs/git-blame) 和 [git-bisect[1\]](https://git-scm.com/docs/git-bisect)。
+​	通常情况下，您应该尝试将更改分成小的逻辑步骤，并将每个步骤提交。它们应该一致，与后续提交无关，通过测试套件等。这使得审查过程更容易，历史记录对以后的检查和分析更有用，例如使用 [git-blame[1]](../../1/git-blame) 和 [git-bisect[1]](../../1/git-bisect)。
 
-To achieve this, try to split your work into small steps from the very beginning. It is always easier to squash a few commits together than to split one big commit into several. Don’t be afraid of making too small or imperfect steps along the way. You can always go back later and edit the commits with `git rebase --interactive` before you publish them. You can use `git stash push --keep-index` to run the test suite independent of other uncommitted changes; see the EXAMPLES section of [git-stash[1\]](https://git-scm.com/docs/git-stash).
+To achieve this, try to split your work into small steps from the very beginning. It is always easier to squash a few commits together than to split one big commit into several. Don’t be afraid of making too small or imperfect steps along the way. You can always go back later and edit the commits with `git rebase --interactive` before you publish them. You can use `git stash push --keep-index` to run the test suite independent of other uncommitted changes; see the EXAMPLES section of [git-stash[1]](../../1/git-stash).
 
-​	为实现这一点，请尽早将您的工作分解为小步骤。合并几个提交总比将一个大提交拆分为几个提交要容易得多。不要害怕在路上迈出太小或不完美的步伐。您可以随后使用 `git rebase --interactive` 编辑提交，然后再发布它们。您可以使用 `git stash push --keep-index` 在没有其他未提交更改的情况下运行测试套件；请参阅 [git-stash[1\]](https://git-scm.com/docs/git-stash) 的 EXAMPLES 部分。
+​	为实现这一点，请尽早将您的工作分解为小步骤。合并几个提交总比将一个大提交拆分为几个提交要容易得多。不要害怕在路上迈出太小或不完美的步伐。您可以随后使用 `git rebase --interactive` 编辑提交，然后再发布它们。您可以使用 `git stash push --keep-index` 在没有其他未提交更改的情况下运行测试套件；请参阅 [git-stash[1]](../../1/git-stash) 的 EXAMPLES 部分。
 
 ## 管理分支
 
-There are two main tools that can be used to include changes from one branch on another: [git-merge[1\]](https://git-scm.com/docs/git-merge) and [git-cherry-pick[1\]](https://git-scm.com/docs/git-cherry-pick).
+There are two main tools that can be used to include changes from one branch on another: [git-merge[1]](../../1/git-merge) and [git-cherry-pick[1]](../../1/git-cherry-pick).
 
-​	有两个主要工具可用于将一个分支上的更改包含到另一个分支上：[git-merge[1\]](https://git-scm.com/docs/git-merge) 和 [git-cherry-pick[1\]](https://git-scm.com/docs/git-cherry-pick)。
+​	有两个主要工具可用于将一个分支上的更改包含到另一个分支上：[git-merge[1]](../../1/git-merge) 和 [git-cherry-pick[1]](../../1/git-cherry-pick)。
 
 Merges have many advantages, so we try to solve as many problems as possible with merges alone. Cherry-picking is still occasionally useful; see "Merging upwards" below for an example.
 
@@ -106,9 +106,9 @@ Always commit your fixes to the oldest supported branch that requires them. Then
 
 ​	始终将您的修复提交到需要它们的最旧支持分支。然后（定期地）将集成分支向上合并到彼此之间。
 
-This gives a very controlled flow of fixes. If you notice that you have applied a fix to e.g. *master* that is also required in *maint*, you will need to cherry-pick it (using [git-cherry-pick[1\]](https://git-scm.com/docs/git-cherry-pick)) downwards. This will happen a few times and is nothing to worry about unless you do it very frequently.
+This gives a very controlled flow of fixes. If you notice that you have applied a fix to e.g. *master* that is also required in *maint*, you will need to cherry-pick it (using [git-cherry-pick[1]](../../1/git-cherry-pick)) downwards. This will happen a few times and is nothing to worry about unless you do it very frequently.
 
-​	这提供了一个非常受控制的修复流程。如果注意到您已经将修复应用到了 *master* 中，而在 *maint* 中也需要它，则需要将其向下樱桃拣选（使用 [git-cherry-pick[1\]](https://git-scm.com/docs/git-cherry-pick)）。这会发生几次，不过除非您非常频繁地执行此操作，否则不用担心。
+​	这提供了一个非常受控制的修复流程。如果注意到您已经将修复应用到了 *master* 中，而在 *maint* 中也需要它，则需要将其向下樱桃拣选（使用 [git-cherry-pick[1]](../../1/git-cherry-pick)）。这会发生几次，不过除非您非常频繁地执行此操作，否则不用担心。
 
 ### 主题分支
 
@@ -138,12 +138,12 @@ Many things can then be done very naturally:
 - 要将功能/错误修复合并到集成分支中，只需合并它。如果该主题在此期间进一步发展，请再次合并。（请注意，您不一定要先将其合并到最旧的集成分支中。例如，您可以先将错误修复合并到 *next*，然后在确定其稳定后再合并到 *maint*。）
 - If you find you need new features from the branch *other* to continue working on your topic, merge *other* to *topic*. (However, do not do this "just habitually", see below.)
 - 如果发现需要从分支 *other* 获取新功能以继续处理主题，请将 *other* 合并到 *topic*。（但是，不要“习惯性地”这样做，请参阅下面的说明。）
-- If you find you forked off the wrong branch and want to move it "back in time", use [git-rebase[1\]](https://git-scm.com/docs/git-rebase).
-- 如果发现您当初分叉错误的分支并希望将其“回溯”，请使用 [git-rebase[1\]](https://git-scm.com/docs/git-rebase)。
+- If you find you forked off the wrong branch and want to move it "back in time", use [git-rebase[1]](../../1/git-rebase).
+- 如果发现您当初分叉错误的分支并希望将其“回溯”，请使用 [git-rebase[1]](../../1/git-rebase)。
 
-Note that the last point clashes with the other two: a topic that has been merged elsewhere should not be rebased. See the section on RECOVERING FROM UPSTREAM REBASE in [git-rebase[1\]](https://git-scm.com/docs/git-rebase).
+Note that the last point clashes with the other two: a topic that has been merged elsewhere should not be rebased. See the section on RECOVERING FROM UPSTREAM REBASE in [git-rebase[1]](../../1/git-rebase).
 
-​	请注意，最后一点与前两点冲突：已在其他地方合并的主题不应该进行变基。请参阅 [git-rebase[1\]](https://git-scm.com/docs/git-rebase) 中有关“从上游重新获得”的部分。
+​	请注意，最后一点与前两点冲突：已在其他地方合并的主题不应该进行变基。请参阅 [git-rebase[1]](../../1/git-rebase) 中有关“从上游重新获得”的部分。
 
 We should point out that "habitually" (regularly for no real reason) merging an integration branch into your topics — and by extension, merging anything upstream into anything downstream on a regular basis — is frowned upon:
 
@@ -307,12 +307,12 @@ There are three main tools that can be used for this:
 
 ​	这方面有三个主要工具可以使用：
 
-- [git-push[1\]](https://git-scm.com/docs/git-push) copies your branches to a remote repository, usually to one that can be read by all involved parties;
-- [git-push[1\]](https://git-scm.com/docs/git-push) 将您的分支复制到远程存储库，通常是可由所有相关方读取的存储库；
-- [git-fetch[1\]](https://git-scm.com/docs/git-fetch) that copies remote branches to your repository; and
-- [git-fetch[1\]](https://git-scm.com/docs/git-fetch) 将远程分支复制到您的存储库；以及
-- [git-pull[1\]](https://git-scm.com/docs/git-pull) that does fetch and merge in one go.
-- [git-pull[1\]](https://git-scm.com/docs/git-pull) 将获取和合并合并为一体。
+- [git-push[1]](../../1/git-push) copies your branches to a remote repository, usually to one that can be read by all involved parties;
+- [git-push[1]](../../1/git-push) 将您的分支复制到远程存储库，通常是可由所有相关方读取的存储库；
+- [git-fetch[1]](../../1/git-fetch) that copies remote branches to your repository; and
+- [git-fetch[1]](../../1/git-fetch) 将远程分支复制到您的存储库；以及
+- [git-pull[1]](../../1/git-pull) that does fetch and merge in one go.
+- [git-pull[1]](../../1/git-pull) 将获取和合并合并为一体。
 
 Note the last point. Do *not* use *git pull* unless you actually want to merge the remote branch.
 
@@ -328,9 +328,9 @@ Getting changes out is easy:
 
 ​	`git push <remote> <branch>` 并告诉每个人从哪里获取。
 
-You will still have to tell people by other means, such as mail. (Git provides the [git-request-pull[1\]](https://git-scm.com/docs/git-request-pull) to send preformatted pull requests to upstream maintainers to simplify this task.)
+You will still have to tell people by other means, such as mail. (Git provides the [git-request-pull[1]](../../1/git-request-pull) to send preformatted pull requests to upstream maintainers to simplify this task.)
 
-​	您仍然需要通过其他方式告诉其他人，例如邮件。（Git 提供了 [git-request-pull[1\]](https://git-scm.com/docs/git-request-pull) 以向上游维护者发送预格式化的拉取请求，以简化此任务。）
+​	您仍然需要通过其他方式告诉其他人，例如邮件。（Git 提供了 [git-request-pull[1]](../../1/git-request-pull) 以向上游维护者发送预格式化的拉取请求，以简化此任务。）
 
 If you just want to get the newest copies of the integration branches, staying up to date is easy too:
 
@@ -371,9 +371,9 @@ Occasionally, the maintainer may get merge conflicts when they try to pull chang
 
 ### 补丁工作流程
 
-If you are a contributor that sends changes upstream in the form of emails, you should use topic branches as usual (see above). Then use [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) to generate the corresponding emails (highly recommended over manually formatting them because it makes the maintainer’s life easier).
+If you are a contributor that sends changes upstream in the form of emails, you should use topic branches as usual (see above). Then use [git-format-patch[1]](../../1/git-format-patch) to generate the corresponding emails (highly recommended over manually formatting them because it makes the maintainer’s life easier).
 
-​	如果您是通过电子邮件将更改发送给上游的贡献者，则应按照通常的主题分支方式使用（请参阅上面）。然后使用 [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) 生成相应的电子邮件（强烈推荐比手动格式化它们，因为这样可以使维护者的生活更轻松）。
+​	如果您是通过电子邮件将更改发送给上游的贡献者，则应按照通常的主题分支方式使用（请参阅上面）。然后使用 [git-format-patch[1]](../../1/git-format-patch) 生成相应的电子邮件（强烈推荐比手动格式化它们，因为这样可以使维护者的生活更轻松）。
 
 Recipe: format-patch/am: Publishing branches/topics
 
@@ -383,9 +383,9 @@ Recipe: format-patch/am: Publishing branches/topics
 - `git format-patch -M upstream..topic` 将它们转换为预格式化的补丁文件
 - `git send-email --to=<recipient> <patches>`
 
-See the [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) and [git-send-email[1\]](https://git-scm.com/docs/git-send-email) manpages for further usage notes.
+See the [git-format-patch[1]](../../1/git-format-patch) and [git-send-email[1]](../../1/git-send-email) manpages for further usage notes.
 
-​	有关更多使用说明，请参阅 [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch) 和 [git-send-email[1\]](https://git-scm.com/docs/git-send-email) 手册。
+​	有关更多使用说明，请参阅 [git-format-patch[1]](../../1/git-format-patch) 和 [git-send-email[1]](../../1/git-send-email) 手册。
 
 If the maintainer tells you that your patch no longer applies to the current upstream, you will have to rebase your topic (you cannot use a merge because you cannot format-patch merges):
 
@@ -415,13 +415,13 @@ Recipe: format-patch/am: Importing patches
 git am < patch
 ```
 
-One feature worth pointing out is the three-way merge, which can help if you get conflicts: `git am -3` will use index information contained in patches to figure out the merge base. See [git-am[1\]](https://git-scm.com/docs/git-am) for other options.
+One feature worth pointing out is the three-way merge, which can help if you get conflicts: `git am -3` will use index information contained in patches to figure out the merge base. See [git-am[1]](../../1/git-am) for other options.
 
-​	值得指出的一个功能是三方合并，它可以帮助您解决冲突：`git am -3` 将使用补丁中包含的索引信息来找出合并基准。有关其他选项，请参阅 [git-am[1\]](https://git-scm.com/docs/git-am)。
+​	值得指出的一个功能是三方合并，它可以帮助您解决冲突：`git am -3` 将使用补丁中包含的索引信息来找出合并基准。有关其他选项，请参阅 [git-am[1]](../../1/git-am)。
 
 ## 另请参阅
 
-[gittutorial[7\]](https://git-scm.com/docs/gittutorial), [git-push[1\]](https://git-scm.com/docs/git-push), [git-pull[1\]](https://git-scm.com/docs/git-pull), [git-merge[1\]](https://git-scm.com/docs/git-merge), [git-rebase[1\]](https://git-scm.com/docs/git-rebase), [git-format-patch[1\]](https://git-scm.com/docs/git-format-patch), [git-send-email[1\]](https://git-scm.com/docs/git-send-email), [git-am[1\]](https://git-scm.com/docs/git-am)
+[gittutorial[7]](../../7/gittutorial), [git-push[1]](../../1/git-push), [git-pull[1]](../../1/git-pull), [git-merge[1]](../../1/git-merge), [git-rebase[1]](../../1/git-rebase), [git-format-patch[1]](../../1/git-format-patch), [git-send-email[1]](../../1/git-send-email), [git-am[1]](../../1/git-am)
 
 ## 另请参阅
 

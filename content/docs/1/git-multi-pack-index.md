@@ -46,25 +46,25 @@ The following subcommands are available:
 
 - Write a MIDX file for the packfiles in the current `.git` directory.
 
-  ```
+  ``` bash
   $ git multi-pack-index write
   ```
 
 - Write a MIDX file for the packfiles in the current `.git` directory with a corresponding bitmap.
 
-  ```
+  ``` bash
   $ git multi-pack-index write --preferred-pack=<pack> --bitmap
   ```
 
 - Write a MIDX file for the packfiles in an alternate object store.
 
-  ```
+  ``` bash
   $ git multi-pack-index --object-dir <alt> write
   ```
 
 - Verify the MIDX file for the packfiles in the current `.git` directory.
 
-  ```
+  ``` bash
   $ git multi-pack-index verify
   ```
 

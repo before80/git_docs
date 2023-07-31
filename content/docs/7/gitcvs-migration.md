@@ -28,20 +28,20 @@ git cvsimport *
 
 ​	Git 与 CVS 的不同之处在于每个工作树都包含有完整项目历史的存储库，并且没有存储库本身比其他存储库更重要。然而，您可以通过指定单个共享存储库来模拟 CVS 模型，供其他人进行同步；本文档解释了如何实现这一点。
 
-​	需要对 Git 有一些基本了解。阅读 [gittutorial[7\]](https://git-scm.com/docs/gittutorial) 和 [gitglossary[7\]](https://git-scm.com/docs/gitglossary) 应该足够。
+​	需要对 Git 有一些基本了解。阅读 [gittutorial[7]](../../7/gittutorial) 和 [gitglossary[7]](../../7/gitglossary) 应该足够。
 
 ## 针对共享存储库的开发
 
 ​	假设在主机 foo.com 上设置了共享存储库 /pub/repo.git。然后，作为个人提交者，您可以通过 ssh 克隆共享存储库：
 
-```
+``` bash
 $ git clone foo.com:/pub/repo.git/ my-project
 $ cd my-project
 ```
 
 然后进行修改。*cvs update* 的等效操作是：
 
-```
+``` bash
 $ git pull origin
 ```
 
@@ -49,11 +49,11 @@ $ git pull origin
 
 > 注意
 >
-> ​	*pull* 命令知道从哪里获取更新，这是因为在第一个 *git clone* 命令中设置了某些配置变量；有关详细信息，请参阅 `git config -l` 和 [git-config[1\]](https://git-scm.com/docs/git-config) 手册页。
+> ​	*pull* 命令知道从哪里获取更新，这是因为在第一个 *git clone* 命令中设置了某些配置变量；有关详细信息，请参阅 `git config -l` 和 [git-config[1]](../../1/git-config) 手册页。
 
 ​	您可以通过先提交更改，然后使用 *git push* 命令将更改更新到共享存储库：
 
-```
+``` bash
 $ git push origin master
 ```
 
@@ -61,7 +61,7 @@ $ git push origin master
 
 ​	在上面的 *git push* 命令中，我们指定要更新的远程分支的名称（`master`）。如果省略了该名称，*git push* 将尝试更新远程存储库中与本地存储库具有相同名称的任何分支。因此，最后一个 *push* 可以使用以下任一命令完成：
 
-```
+``` bash
 $ git push origin
 $ git push foo.com:/pub/project.git/
 ```
@@ -70,22 +70,22 @@ $ git push foo.com:/pub/project.git/
 
 ## 设置共享存储库
 
-​	我们假设您已经为您的项目创建了一个 Git 存储库，可能是从头开始创建的，或者从 tarball 创建的（参见 [gittutorial[7\]](https://git-scm.com/docs/gittutorial)），或者从已经存在的 CVS 存储库导入的（参见下一节）。
+​	我们假设您已经为您的项目创建了一个 Git 存储库，可能是从头开始创建的，或者从 tarball 创建的（参见 [gittutorial[7]](../../7/gittutorial)），或者从已经存在的 CVS 存储库导入的（参见下一节）。
 
 ​	假设您现有的存储库位于 /home/alice/myproject。创建一个新的“裸”存储库（没有工作树的存储库）并将您的项目提取到其中：
 
-```
+``` bash
 $ mkdir /pub/my-repo.git
 $ cd /pub/my-repo.git
 $ git --bare init --shared
 $ git --bare fetch /home/alice/myproject master:master
 ```
 
-​	然后，将每个团队成员都赋予此存储库的读写访问权限。一个简单的方法是给所有团队成员提供主机上托管存储库的 ssh 访问权限。如果您不想给他们在主机上提供完整的 shell，还有一个只允许用户执行 Git 推送和拉取操作的受限制 shell；请参阅 [git-shell[1\]](https://git-scm.com/docs/git-shell)。
+​	然后，将每个团队成员都赋予此存储库的读写访问权限。一个简单的方法是给所有团队成员提供主机上托管存储库的 ssh 访问权限。如果您不想给他们在主机上提供完整的 shell，还有一个只允许用户执行 Git 推送和拉取操作的受限制 shell；请参阅 [git-shell[1]](../../1/git-shell)。
 
 ​	将所有提交者放入同一组，并将该组设置为存储库的可写组：
 
-```
+``` bash
 $ chgrp -R $group /pub/my-repo.git
 ```
 
@@ -95,11 +95,11 @@ $ chgrp -R $group /pub/my-repo.git
 
 > 注意
 >
-> ​	这些说明使用 git 随附的 `git-cvsimport` 脚本，但其他导入工具可能提供更好的结果。有关其他选项，请参阅 [git-cvsimport[1\]](https://git-scm.com/docs/git-cvsimport) 中的注释。
+> ​	这些说明使用 git 随附的 `git-cvsimport` 脚本，但其他导入工具可能提供更好的结果。有关其他选项，请参阅 [git-cvsimport[1]](../../1/git-cvsimport) 中的注释。
 
-​	首先，请安装版本 2.1 或更高版本的 cvsps（https://github.com/andreyvit/cvsps），并确保其在您的路径中。然后，切换到您感兴趣的项目的已签出的 CVS 工作目录，并运行 [git-cvsimport[1\]](https://git-scm.com/docs/git-cvsimport)：
+​	首先，请安装版本 2.1 或更高版本的 cvsps（https://github.com/andreyvit/cvsps），并确保其在您的路径中。然后，切换到您感兴趣的项目的已签出的 CVS 工作目录，并运行 [git-cvsimport[1]](../../1/git-cvsimport)：
 
-```
+``` bash
 $ git cvsimport -C <destination> <module>
 ```
 
@@ -115,13 +115,13 @@ $ git cvsimport -C <destination> <module>
 
 ## 高级共享存储库管理
 
-​	Git 允许您指定在某些点运行的脚本，称为“钩子”。您可以使用这些钩子，例如，将所有提交发送到共享存储库的邮件列表。请参阅 [githooks[5\]](https://git-scm.com/docs/githooks)。
+​	Git 允许您指定在某些点运行的脚本，称为“钩子”。您可以使用这些钩子，例如，将所有提交发送到共享存储库的邮件列表。请参阅 [githooks[5]](../../5/githooks)。
 
 ​	您可以使用更新钩子来执行更细粒度的权限控制。请参阅 [使用更新钩子控制对分支的访问权限](https://git-scm.com/docs/howto/update-hook-example)。
 
 ## 向 Git 存储库提供 CVS 访问权限
 
-​	还可以为 Git 存储库提供真正的 CVS 访问权限，以便开发人员仍然可以使用 CVS；请参阅 [git-cvsserver[1\]](https://git-scm.com/docs/git-cvsserver) 获取详细信息。
+​	还可以为 Git 存储库提供真正的 CVS 访问权限，以便开发人员仍然可以使用 CVS；请参阅 [git-cvsserver[1]](../../1/git-cvsserver) 获取详细信息。
 
 ## 替代性开发模型
 

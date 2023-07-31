@@ -59,13 +59,13 @@ With the `--branch` option, the command takes a name and checks if it can be use
 
 - Print the name of the previous thing checked out:
 
-  ```
+  ``` bash
   $ git check-ref-format --branch @{-1}
   ```
 
 - Determine the reference name to use for a new branch:
 
-  ```
+  ``` bash
   $ ref=$(git check-ref-format --normalize "refs/heads/$newbranch")||
   { echo "we do not like '$newbranch' as a branch name." >&2 ; exit 1 ; }
   ```

@@ -24,9 +24,9 @@ gitrevisions
 
 ## 描述
 
-​	许多 Git 命令将修订版本参数作为参数。根据命令，它们表示特定的提交或者对于遍历修订版本图的命令（例如 [git-log[1\]](https://git-scm.com/docs/git-log)），表示所有从该提交可达的提交。对于遍历修订版本图的命令，还可以显式地指定一系列修订版本。
+​	许多 Git 命令将修订版本参数作为参数。根据命令，它们表示特定的提交或者对于遍历修订版本图的命令（例如 [git-log[1]](../../1/git-log)），表示所有从该提交可达的提交。对于遍历修订版本图的命令，还可以显式地指定一系列修订版本。
 
-​	此外，一些 Git 命令（例如 [git-show[1\]](https://git-scm.com/docs/git-show) 和 [git-push[1\]](https://git-scm.com/docs/git-push)）还可以接受表示与提交不同类型的对象的修订版本参数，例如 blob（“文件”）或 tree（“文件目录”）。
+​	此外，一些 Git 命令（例如 [git-show[1]](../../1/git-show) 和 [git-push[1]](../../1/git-push)）还可以接受表示与提交不同类型的对象的修订版本参数，例如 blob（“文件”）或 tree（“文件目录”）。
 
 ## 指定修订版本
 
@@ -78,7 +78,7 @@ gitrevisions
 
   后缀 *@{push}* 报告如果在检出了 branchname 的情况下运行 `git push`，则“我们将推送到的分支”。如果没有指定 branchname，则报告与远程对应的 remote-tracking 分支。就像 *@{upstream}* 一样，我们报告对应于该分支在远程的 remote-tracking 分支。下面是一个示例，以使其更清楚：
 
-  ```
+  ``` bash
   $ git config push.default current
   $ git config remote.pushdefault myfork
   $ git switch -c mybranch origin/master
@@ -184,7 +184,7 @@ J = F^2  = B^3^2   = A^^3^2
 
 ​	虽然确实有一些专门设计用于采用两个不同范围的 “git” 命令（例如 “git range-diff R1 R2” 来比较两个范围），但它们是例外情况。除非另有说明，所有操作一组提交的“git”命令都适用于单个修订范围。换句话说，将两个“两点范围表示法”写在一起，例如：
 
-```
+``` bash
 $ git log A..B C..D
 ```
 

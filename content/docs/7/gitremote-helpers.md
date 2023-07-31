@@ -123,15 +123,15 @@ git remote-<transport> <repository> [<URL>]
 
 - *export-marks* <file>
 
-  这修改了 *export* 功能，指示Git在完成时将内部的标记表（marks table）导出到指定的 `<file>` 中。详情请参阅[git-fast-export[1\]](https://git-scm.com/docs/git-fast-export)中的 `--export-marks=<file>`。
+  这修改了 *export* 功能，指示Git在完成时将内部的标记表（marks table）导出到指定的 `<file>` 中。详情请参阅[git-fast-export[1]](../../1/git-fast-export)中的 `--export-marks=<file>`。
 
 - *import-marks* <file>
 
-  这修改了 *export* 功能，指示Git在处理任何输入之前加载指定在 `<file>` 中的标记（marks）。详情请参阅[git-fast-export[1\]](https://git-scm.com/docs/git-fast-export)中的 `--import-marks=<file>`。
+  这修改了 *export* 功能，指示Git在处理任何输入之前加载指定在 `<file>` 中的标记（marks）。详情请参阅[git-fast-export[1]](../../1/git-fast-export)中的 `--import-marks=<file>`。
 
 - *signed-tags*
 
-  这修改了 *export* 功能，指示Git向[git-fast-export[1\]](https://git-scm.com/docs/git-fast-export)传递 `--signed-tags=verbatim`。如果没有此功能，Git将使用 `--signed-tags=warn-strip`。
+  这修改了 *export* 功能，指示Git向[git-fast-export[1]](../../1/git-fast-export)传递 `--signed-tags=verbatim`。如果没有此功能，Git将使用 `--signed-tags=warn-strip`。
 
 - *object-format*
 

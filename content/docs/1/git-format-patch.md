@@ -563,7 +563,7 @@ One way to test if your MUA is set up correctly is:
 
 - Apply it:
 
-  ```
+  ``` bash
   $ git fetch <project> master:test-apply
   $ git switch test-apply
   $ git restore --source=HEAD --staged --worktree :/
@@ -690,13 +690,13 @@ If set `--base=auto` in cmdline, it will automatically compute the base commit a
 
 - Extract commits between revisions R1 and R2, and apply them on top of the current branch using *git am* to cherry-pick them:
 
-  ```
+  ``` bash
   $ git format-patch -k --stdout R1..R2 | git am -3 -k
   ```
 
 - Extract all commits which are in the current branch but not in the origin branch:
 
-  ```
+  ``` bash
   $ git format-patch origin
   ```
 
@@ -704,13 +704,13 @@ If set `--base=auto` in cmdline, it will automatically compute the base commit a
 
 - Extract all commits that lead to *origin* since the inception of the project:
 
-  ```
+  ``` bash
   $ git format-patch --root origin
   ```
 
 - The same as the previous one:
 
-  ```
+  ``` bash
   $ git format-patch -M -B origin
   ```
 
@@ -718,7 +718,7 @@ If set `--base=auto` in cmdline, it will automatically compute the base commit a
 
 - Extract three topmost commits from the current branch and format them as e-mailable patches:
 
-  ```
+  ``` bash
   $ git format-patch -3
   ```
 

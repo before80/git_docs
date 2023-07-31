@@ -1,3 +1,16 @@
++++
+title = "git-add"
+weight = 30
+type = "docs"
+date = 2023-05-08T15:39:23+08:00
+description = ""
+isCJKLanguage = true
+draft = false
+
++++
+
+# git-add
+
 https://git-scm.com/docs/git-add
 
 ## 名称
@@ -110,14 +123,14 @@ Please see [git-commit[1]](../git-commit) for alternative ways to add content to
 
 - Adds content from all `*.txt` files under `Documentation` directory and its subdirectories:
 
-  ```
+  ``` bash
   $ git add Documentation/\*.txt
   ```
 
   Note that the asterisk `*` is quoted from the shell in this example; this lets the command include the files from subdirectories of `Documentation/` directory.
 - Considers adding content from all git-*.sh scripts:
 
-  ```
+  ``` bash
   $ git add git-*.sh
   ```
 

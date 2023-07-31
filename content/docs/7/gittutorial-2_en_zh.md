@@ -29,9 +29,9 @@ git *
 
 ## 描述
 
-You should work through [gittutorial[7\]](https://git-scm.com/docs/gittutorial) before reading this tutorial.
+You should work through [gittutorial[7]](../../7/gittutorial) before reading this tutorial.
 
-​	在阅读本教程之前，您应该先完成[gittutorial[7\]](https://git-scm.com/docs/gittutorial)。
+​	在阅读本教程之前，您应该先完成[gittutorial[7]](../../7/gittutorial)。
 
 The goal of this tutorial is to introduce two fundamental pieces of Git’s architecture—the object database and the index file—and to provide the reader with everything necessary to understand the rest of the Git documentation.
 
@@ -43,7 +43,7 @@ Let’s start a new project and create a small amount of history:
 
 ​	让我们开始一个新项目并创建少量历史记录：
 
-```
+``` bash
 $ mkdir test-project
 $ cd test-project
 $ git init
@@ -76,7 +76,7 @@ We can ask Git about this particular object with the `cat-file` command. Don’t
 
 ​	我们可以使用`cat-file`命令查询有关特定对象的信息。不要从此示例中复制40个十六进制数字，而是使用自己版本的数字。请注意，您可以缩短它以节省输入所有40个十六进制数字的时间：
 
-```
+``` bash
 $ git cat-file -t 54196cc2
 commit
 $ git cat-file commit 54196cc2
@@ -91,7 +91,7 @@ A tree can refer to one or more "blob" objects, each corresponding to a file. In
 
 ​	一个树可以引用一个或多个"blob"对象，每个对象对应一个文件。此外，一个树还可以引用其他树对象，从而创建一个目录层次结构。您可以使用`ls-tree`命令检查任何树的内容（记住足够长的SHA-1前缀也可以使用）：
 
-```
+``` bash
 $ git ls-tree 92b8b694
 100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    file.txt
 ```
@@ -100,7 +100,7 @@ Thus we see that this tree has one file in it. The SHA-1 hash is a reference to 
 
 ​	因此，我们可以看到这个树包含一个文件。SHA-1哈希是对该文件数据的引用：
 
-```
+``` bash
 $ git cat-file -t 3b18e512
 blob
 ```
@@ -109,7 +109,7 @@ A "blob" is just file data, which we can also examine with cat-file:
 
 ​	"blob"只是文件数据，我们也可以使用`cat-file`查看它：
 
-```
+``` bash
 $ git cat-file blob 3b18e512
 hello world
 ```
@@ -122,7 +122,7 @@ All of these objects are stored under their SHA-1 names inside the Git directory
 
 ​	所有这些对象都存储在Git目录中的SHA-1名称下：
 
-```
+``` bash
 $ find .git/objects/
 .git/objects/
 .git/objects/pack
@@ -149,7 +149,7 @@ The simplest commit to find is the HEAD commit, which we can find from .git/HEAD
 
 ​	最简单的提交是HEAD提交，我们可以从.git/HEAD找到它：
 
-```
+``` bash
 $ cat .git/HEAD
 ref: refs/heads/master
 ```
@@ -158,7 +158,7 @@ As you can see, this tells us which branch we’re currently on, and it tells us
 
 ​	如您所见，这告诉我们当前所在的分支，它通过为.git目录下的文件命名来指定一个引用到提交对象的SHA-1名称，我们可以使用cat-file查看它：
 
-```
+``` bash
 $ cat .git/refs/heads/master
 c4d59f390b9cfd4318117afde11d601c1085f241
 $ git cat-file -t c4d59f39
@@ -176,7 +176,7 @@ The "tree" object here refers to the new state of the tree:
 
 ​	这里的"tree"对象引用新的树状态：
 
-```
+``` bash
 $ git ls-tree d0492b36
 100644 blob a0423896973644771497bdc03eb99d5281615b51    file.txt
 $ git cat-file blob a0423896
@@ -187,7 +187,7 @@ and the "parent" object refers to the previous commit:
 
 而"parent"对象引用上一个提交：
 
-```
+``` bash
 $ git cat-file commit 54196cc2
 tree 92b8b694ffb1675e5975148e1121810081dbdffe
 author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
@@ -204,9 +204,9 @@ Most commits have only one parent, but it is also common for a commit to have mu
 
 ​	大多数提交只有一个父提交，但是一个提交也可能有多个父提交。在这种情况下，提交表示合并，其中父引用指向合并分支的头。
 
-Besides blobs, trees, and commits, the only remaining type of object is a "tag", which we won’t discuss here; refer to [git-tag[1\]](https://git-scm.com/docs/git-tag) for details.
+Besides blobs, trees, and commits, the only remaining type of object is a "tag", which we won’t discuss here; refer to [git-tag[1]](../../1/git-tag) for details.
 
-​	除了blob、tree和commit，剩下的唯一对象类型是"tag"，这里不会详细讨论它；有关详情，请参阅[git-tag[1\]](https://git-scm.com/docs/git-tag)。
+​	除了blob、tree和commit，剩下的唯一对象类型是"tag"，这里不会详细讨论它；有关详情，请参阅[git-tag[1]](../../1/git-tag)。
 
 So now we know how Git uses the object database to represent a project’s history:
 
@@ -245,7 +245,7 @@ Continuing with our test-project, let’s modify file.txt again:
 
 ​	继续使用我们的test-project，再次修改file.txt：
 
-```
+``` bash
 $ echo "hello world, again" >>file.txt
 ```
 
@@ -253,7 +253,7 @@ but this time instead of immediately making the commit, let’s take an intermed
 
 但是这一次，我们不会立即进行提交，而是采取一个中间步骤，请求在进行更改的同时生成差异，以跟踪发生的情况：
 
-```
+``` bash
 $ git diff
 --- a/file.txt
 +++ b/file.txt
@@ -268,7 +268,7 @@ The last diff is empty, but no new commits have been made, and the head still do
 
 ​	最后一个差异为空，但是没有创建新的提交，头还不包含新的行：
 
-```
+``` bash
 $ git diff HEAD
 diff --git a/file.txt b/file.txt
 index a042389..513feba 100644
@@ -283,7 +283,7 @@ So *git diff* is comparing against something other than the head. The thing that
 
 ​	因此，*git diff*正在与头不同的东西进行比较。它要比较的东西实际上是索引文件，索引文件以二进制格式存储在.git/index中，但我们可以使用ls-files查看其内容：
 
-```
+``` bash
 $ git ls-files --stage
 100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
 $ git cat-file -t 513feba2
@@ -297,7 +297,7 @@ So what our *git add* did was store a new blob and then put a reference to it in
 
 ​	因此，我们的*git add*操作是存储了一个新的blob，并将其引用放入索引文件。如果我们再次修改该文件，我们将看到新的修改反映在*git diff*输出中：
 
-```
+``` bash
 $ echo 'again?' >>file.txt
 $ git diff
 index 513feba..ba3da7b 100644
@@ -313,7 +313,7 @@ With the right arguments, *git diff* can also show us the difference between the
 
 ​	通过正确的参数，*git diff*还可以显示工作目录与上一次提交之间的差异，或者索引与上一次提交之间的差异：
 
-```
+``` bash
 $ git diff HEAD
 diff --git a/file.txt b/file.txt
 index a042389..ba3da7b 100644
@@ -337,7 +337,7 @@ At any time, we can create a new commit using *git commit* (without the "-a" opt
 
 ​	随时，我们可以使用*git commit*（不带"-a"选项）创建一个新的提交，并验证提交的状态仅包含存储在索引文件中的更改，而不包括仍然只存在于工作目录中的附加更改：
 
-```
+``` bash
 $ git commit -m "repeat"
 $ git diff HEAD
 diff --git a/file.txt b/file.txt
@@ -358,7 +358,7 @@ Finally, it’s worth looking at the effect of *git add* on the index file:
 
 ​	最后，值得注意的是*git add*对索引文件的影响：
 
-```
+``` bash
 $ echo "goodbye, world" >closing.txt
 $ git add closing.txt
 ```
@@ -367,7 +367,7 @@ The effect of the *git add* was to add one entry to the index file:
 
 ​	*git add*的影响是向索引文件添加了一个条目：
 
-```
+``` bash
 $ git ls-files --stage
 100644 8b9743b20d4b15be3955fc8d5cd2b09cd2336138 0       closing.txt
 100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
@@ -377,7 +377,7 @@ And, as you can see with cat-file, this new entry refers to the current contents
 
 ​	如您所见，这个新条目引用了文件的当前内容：
 
-```
+``` bash
 $ git cat-file blob 8b9743b2
 goodbye, world
 ```
@@ -386,7 +386,7 @@ The "status" command is a useful way to get a quick summary of the situation:
 
 ​	"status"命令是一个快速了解情况的有用方式：
 
-```
+``` bash
 $ git status
 On branch master
 Changes to be committed:
@@ -409,31 +409,31 @@ Also, note that a bare `git diff` shows the changes to file.txt, but not the add
 
 ​	此外，请注意，裸`git diff`显示file.txt的更改，但不显示closing.txt的添加，因为索引文件中closing.txt的版本与工作目录中的版本相同。
 
-In addition to being the staging area for new commits, the index file is also populated from the object database when checking out a branch, and is used to hold the trees involved in a merge operation. See [gitcore-tutorial[7\]](https://git-scm.com/docs/gitcore-tutorial) and the relevant man pages for details.
+In addition to being the staging area for new commits, the index file is also populated from the object database when checking out a branch, and is used to hold the trees involved in a merge operation. See [gitcore-tutorial[7]](../../7/gitcore-tutorial) and the relevant man pages for details.
 
-​	除了作为新提交的暂存区域，索引文件还在检出分支时从对象数据库中填充，并用于保存合并操作涉及的树。有关详情，请参阅[gitcore-tutorial[7\]](https://git-scm.com/docs/gitcore-tutorial)以及相关的手册页。
+​	除了作为新提交的暂存区域，索引文件还在检出分支时从对象数据库中填充，并用于保存合并操作涉及的树。有关详情，请参阅[gitcore-tutorial[7]](../../7/gitcore-tutorial)以及相关的手册页。
 
 ## 下一步？
 
-At this point you should know everything necessary to read the man pages for any of the git commands; one good place to start would be with the commands mentioned in [giteveryday[7\]](https://git-scm.com/docs/giteveryday). You should be able to find any unknown jargon in [gitglossary[7\]](https://git-scm.com/docs/gitglossary).
+At this point you should know everything necessary to read the man pages for any of the git commands; one good place to start would be with the commands mentioned in [giteveryday[7]](../../7/giteveryday). You should be able to find any unknown jargon in [gitglossary[7]](../../7/gitglossary).
 
-​	现在您应该已经了解了阅读git命令的手册页所需的所有知识；一个好的开始点是使用[giteveryday[7\]](https://git-scm.com/docs/giteveryday)中提到的命令。您应该能够在[gitglossary[7\]](https://git-scm.com/docs/gitglossary)中找到任何未知的术语。
+​	现在您应该已经了解了阅读git命令的手册页所需的所有知识；一个好的开始点是使用[giteveryday[7]](../../7/giteveryday)中提到的命令。您应该能够在[gitglossary[7]](../../7/gitglossary)中找到任何未知的术语。
 
 The [Git User’s Manual](https://git-scm.com/docs/user-manual) provides a more comprehensive introduction to Git.
 
 ​	[Git用户手册](https://git-scm.com/docs/user-manual)提供了更全面的Git入门指南。
 
-[gitcvs-migration[7\]](https://git-scm.com/docs/gitcvs-migration) explains how to import a CVS repository into Git, and shows how to use Git in a CVS-like way.
+[gitcvs-migration[7]](../../7/gitcvs-migration) explains how to import a CVS repository into Git, and shows how to use Git in a CVS-like way.
 
-​	[gitcvs-migration[7\]](https://git-scm.com/docs/gitcvs-migration)解释了如何将CVS存储库导入Git，并演示了如何以类似CVS的方式使用Git。
+​	[gitcvs-migration[7]](../../7/gitcvs-migration)解释了如何将CVS存储库导入Git，并演示了如何以类似CVS的方式使用Git。
 
 For some interesting examples of Git use, see the [howtos](https://git-scm.com/docs/howto-index).
 
 ​	对于一些有趣的Git用法示例，请参阅[howtos](https://git-scm.com/docs/howto-index)。
 
-For Git developers, [gitcore-tutorial[7\]](https://git-scm.com/docs/gitcore-tutorial) goes into detail on the lower-level Git mechanisms involved in, for example, creating a new commit.
+For Git developers, [gitcore-tutorial[7]](../../7/gitcore-tutorial) goes into detail on the lower-level Git mechanisms involved in, for example, creating a new commit.
 
-​	对于Git开发人员，[gitcore-tutorial[7\]](https://git-scm.com/docs/gitcore-tutorial)详细介绍了涉及创建新提交等低级别Git机制。
+​	对于Git开发人员，[gitcore-tutorial[7]](../../7/gitcore-tutorial)详细介绍了涉及创建新提交等低级别Git机制。
 
 ## 另请参阅
 
